@@ -8,7 +8,7 @@ $dir = '../../doc/';
 $f = (isset($_GET['f'])) ? $_GET['f'] : 'srs';
 switch($f) {
     case 'docs':
-        $file = '../../doc/Documentation.md';
+        $file = 'Documentation.md';
         break;
     case 'srs':
     default:
@@ -35,7 +35,7 @@ $documo->parseMarkdown();
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-        <link href="/css/documo/documo.jquery.css" rel="stylesheet" />
+        <link href="/css/documo/documo.jquery.css?v=<?php echo time() ?>" rel="stylesheet" />
         <link href="/css/documo/github-markdown.css" rel="stylesheet" />
         <script src="/js/documo/markdown.js"></script>
         <script src="/js/documo/jquery.viewport.js"></script>
@@ -46,7 +46,10 @@ $documo->parseMarkdown();
             <div id="markdown-original" style="display: none"><?php $documo->printMarkdown() ?></div>
 
             <div id="documentation-navigation" class="pull-left">
-                NAVIGATION
+                <ul>
+                    <li><a href="?f=docs">Information about this documentation</a></li>
+                    <li><a href="?f=srs">Software Requirements Specification</a></li>
+                </ul>
             </div>
 
             <div id="markdown-viewer" class="documo-viewer pull-left">
