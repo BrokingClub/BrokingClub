@@ -27,7 +27,7 @@ $documo->parseMarkdown();
             <div id="markdown-original" style="display: none"><?php $documo->printMarkdown() ?></div>
 
             <div id="markdown-viewer" class="documo-viewer">
-                MarkDown Here
+                MarkDown Here 2
             </div>
 
             <script>
