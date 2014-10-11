@@ -1,9 +1,7 @@
-/*
- *  jQuery Boilerplate - v3.3.4
- *  A jump-start for jQuery plugins development.
- *  http://jqueryboilerplate.com
+/**
+ *  Documo
  *
- *  Made by Zeno Rocha
+ *  Made by Simon Schneider @ triggerdesign.de
  *  Under MIT License
  */
 // the semi-colon before function invocation is a safety net against concatenated

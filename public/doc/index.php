@@ -19,11 +19,11 @@ $documo->parseMarkdown();
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-        <link href="css/documo.jquery.css" rel="stylesheet" />
-        <link href="css/github-markdown.css" rel="stylesheet" />
-        <script src="js/markdown.js"></script>
-        <script src="js/jquery.viewport.js"></script>
-        <script src="js/documo.jquery.js"></script>
+        <link href="/css/documo/documo.jquery.css" rel="stylesheet" />
+        <link href="/css/documo/github-markdown.css" rel="stylesheet" />
+        <script src="/js/documo/markdown.js"></script>
+        <script src="/js/documo/jquery.viewport.js"></script>
+        <script src="/js/documo/documo.jquery.js"></script>
     </head>
     <body>
         <div class="container">
