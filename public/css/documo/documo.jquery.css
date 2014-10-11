@@ -13,16 +13,16 @@
 }
 
 .documo-toc > ol > li > a{
-    font-size: 24px;
+    font-size: 22px;
 
 }
 
 .documo-toc > ol > li > ol > li > a{
-    font-size: 18px;
+    font-size: 16px;
 
 }
 
-.documo-toc ol { counter-reset: item; padding-left: 15px;}
+.documo-toc ol { counter-reset: item; padding-left: 10px;}
 .documo-toc > ol {  padding-left: 0px;}
 .documo-toc li { display: block }
 .documo-toc li:before { content: counters(item, ".") " "; counter-increment: item }
@@ -36,7 +36,7 @@
     height: 100%;
     overflow: scroll;
 
-
+    padding-top: 10px;
 
 }
 
@@ -44,6 +44,7 @@
     position: relative;
     padding-left: 370px;
     padding-right: 100px;
+    padding-top: 10px;
 
 }
 
