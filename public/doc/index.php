@@ -1,4 +1,5 @@
 <?php
+failfunction();
 require_once('Documo.php') ;
 $documo = new Triggerdesign\Documo('../../doc/Test.md');
 
