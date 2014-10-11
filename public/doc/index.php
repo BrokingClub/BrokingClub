@@ -3,8 +3,25 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
 
+$dir = '../../doc/';
+
+
+if(isset($_GET['f'])){
+    switch($_GET['f']) {
+        case 'docs':
+            $file = '../../doc/Documentation.md';
+            break;
+        case 'srs':
+        default:
+            $file = 'SoftwareRequirementsSpecification.md';
+            break;
+    }
+}
+
+$filePath = $dir . $file;
+
 require_once('Documo.php') ;
-$documo = new Triggerdesign\Documo('../../doc/SoftwareRequirementsSpecification.md');
+$documo = new Triggerdesign\Documo($filePath);
 
 $documo->parseMarkdown();
 

@@ -25,11 +25,8 @@ class Documo {
         if(!file_exists($markdownPath)){
             throw new \Exception($markdownPath . " not found");
             return false;
-        } else {
-            echo "file found";
         }
 
-        echo "Get Markdown of: " . $markdownPath;
         $this->markdownOri = file_get_contents($markdownPath);
     }
 
