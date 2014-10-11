@@ -1,7 +1,10 @@
 <?php
-failfunction();
+ini_set('display_errors',1);
+ini_set('display_startup_errors',1);
+error_reporting(-1);
+
 require_once('Documo.php') ;
-$documo = new Triggerdesign\Documo('../../doc/Test.md');
+$documo = new Triggerdesign\Documo('../../doc/SoftwareRequirementsSpecification.md');
 
 $documo->parseMarkdown();
 
