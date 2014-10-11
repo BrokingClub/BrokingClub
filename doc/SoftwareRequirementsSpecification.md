@@ -46,7 +46,7 @@ In this first state we will not provide an Android or iOS Version of the game, b
 # Specific Requirements 
 ## Functionality
 __Use case diagram:__
-![Image of Yaktocat](http://blog.broking.club/wp-content/uploads/2014/10/Uc_diagram.png)
+![Use case diagram](http://blog.broking.club/wp-content/uploads/2014/10/Uc_diagram.png)
 
 ### Landing Page (Login / Logout)
 ### Register

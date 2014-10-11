@@ -46,6 +46,8 @@ $documo->parseMarkdown();
             <div id="markdown-original" style="display: none"><?php $documo->printMarkdown() ?></div>
 
             <div id="documentation-navigation" class="pull-left">
+                <b>Documentation</b>
+                <br/>
                 <ul>
                     <li><a href="?f=docs">Information about this documentation</a></li>
                     <li><a href="?f=srs">Software Requirements Specification</a></li>

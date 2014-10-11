@@ -1,6 +1,9 @@
 .documo-toc ol li a{
-    line-height: 250%;
     padding: 3px;
+}
+
+.documo-toc ol li{
+    margin-bottom: 5px;
 }
 
 .documo-toc ol li a.active-heading{
@@ -46,15 +49,39 @@
 
 .documo-viewer{
     position: relative;
-    margin-left: 220px;
+    margin-left: 320px;
 }
 
-.documentation-navigation{
-    width: 200px;
+#documentation-navigation{
+    width: 300px;
     position: fixed;
     height: 100%;
     background-color: #222;
     color: #eee;
     padding: 10px;
 
+}
+
+#documentation-navigation ul, #documentation-navigation li{
+    list-stye-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+#documentation-navigation ul{
+    margin-top: 15px;
+}
+
+#documentation-navigation li a{
+    padding: 5px;
+    padding-left: 0px;
+    color: #eee;
+
+
+}
+
+#documentation-navigation li{
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #444;
 }
