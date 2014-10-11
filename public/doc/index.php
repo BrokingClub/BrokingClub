@@ -5,18 +5,17 @@ error_reporting(-1);
 
 $dir = '../../doc/';
 
-
-if(isset($_GET['f'])){
-    switch($_GET['f']) {
-        case 'docs':
-            $file = '../../doc/Documentation.md';
-            break;
-        case 'srs':
-        default:
-            $file = 'SoftwareRequirementsSpecification.md';
-            break;
-    }
+$f = (isset($_GET['f'])) ? $_GET['f'] : 'srs';
+switch($_GET['f']) {
+    case 'docs':
+        $file = '../../doc/Documentation.md';
+        break;
+    case 'srs':
+    default:
+        $file = 'SoftwareRequirementsSpecification.md';
+        break;
 }
+
 
 $filePath = $dir . $file;
 
