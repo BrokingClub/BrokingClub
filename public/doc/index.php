@@ -39,13 +39,18 @@ $documo->parseMarkdown();
         <link href="/css/documo/github-markdown.css" rel="stylesheet" />
         <script src="/js/documo/markdown.js"></script>
         <script src="/js/documo/jquery.viewport.js"></script>
-        <script src="/js/documo/documo.jquery.js"></script>
+        <script src="/js/documo/documo.jquery.js?v=<?php echo time() ?>"></script>
     </head>
     <body>
         <div class="documentation-container clearfix">
             <div id="markdown-original" style="display: none"><?php $documo->printMarkdown() ?></div>
 
             <div id="documentation-navigation" class="pull-left">
+                <span style="text-align: center;">
+                    <img src="/img/logo_250.png"/>
+                </span>
+                <br/>
+                <br/>
                 <b>Documentation</b>
                 <br/>
                 <ul>

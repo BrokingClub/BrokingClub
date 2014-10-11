@@ -95,7 +95,7 @@
 
             var $activeHeading =  $(inview.first());
 
-            $('a[title="'+ $activeHeading.attr('name') + '"').addClass('active-heading');
+            $('a[title="'+ $activeHeading.attr('name') + '"').parent().addClass('active-heading');
 
 
         },
