@@ -43,10 +43,14 @@ $documo->parseMarkdown();
         <script src="/js/documo/documo.jquery.js"></script>
     </head>
     <body>
-        <div class="container">
+        <div class="documentation-container clearfix">
             <div id="markdown-original" style="display: none"><?php $documo->printMarkdown() ?></div>
 
-            <div id="markdown-viewer" class="documo-viewer">
+            <div id="documentation-navigation" class="pull-left">
+                NAVIGATION
+            </div>
+
+            <div id="markdown-viewer" class="documo-viewer pull-left">
                 MarkDown Here 4
             </div>
 
