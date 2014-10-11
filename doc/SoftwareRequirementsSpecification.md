@@ -20,6 +20,7 @@ We will specify how reliable and how fast the application should be and why we d
 BrokingClub is a stock-market game, in which a player can easily buy real stocks with virtual money. You can join others in a club and try to manipulate opposing clubs using different actions. The service consists out of two parts: The landing page on which a user can get info about the game, register or contact the team, and the main application, where a user can work with his portfolio and interact with others.
 ## Definitions, Acronyms, and Abbreviations
 The definitions listed beyond are used inside the document and are summarized versions of the respective Wikipedia article. If the reader does not understand the meaning of a special technical term, it is very likely that he will find help in this section. 
+
 * __Wikipedia__: Wikipedia is a free-access, free content Internet encyclopedia, supported and hosted by the non-profit Wikimedia Foundation (visit en.wikipedia.org for further information).
 * __PHP__: PHP is a server-side scripting language designed for web development but also used as a general-purpose programming language.
 *__Laravel__: Laravel is a free, open source PHP web application framework, designed for the development of model–view–controller (MVC) web applications.
@@ -30,6 +31,7 @@ The definitions listed beyond are used inside the document and are summarized ve
 * __REST__: Representational state transfer (REST) is an abstraction of the architecture of the World Wide Web; more precisely, REST is an architectural style consisting of a coordinated set of architectural constraints applied to components, connectors, and data elements, within a distributed hypermedia system.
 * __Yahoo! Finance__: Yahoo! Finance is a web site sponsored by Yahoo! that provides financial information and commentary with a focus on US markets.
 * __CloudeFlare__: CloudFlare is a company which provides a content delivery network and distributed domain name server, sitting between the visitor and the CloudFlare user's hosting provider.
+
 ## References 
 * [Use case diagram]( http://blog.broking.club/documentation/use-case-diagram/)
 ## Overview
