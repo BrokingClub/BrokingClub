@@ -1,0 +1,45 @@
+.documo-toc ol li a{
+    line-height: 250%;
+    padding: 3px;
+}
+
+.documo-toc ol li a.active-heading{
+    font-weight: bold;
+    background-color: #333;
+    color: #eee;
+}
+
+.documo-toc > ol > li > a{
+    font-size: 24px;
+
+}
+
+.documo-toc > ol > li > ol > li > a{
+    font-size: 18px;
+
+}
+
+.documo-toc ol { counter-reset: item; padding-left: 15px;}
+.documo-toc > ol {  padding-left: 0px;}
+.documo-toc li { display: block }
+.documo-toc li:before { content: counters(item, ".") " "; counter-increment: item }
+
+.documo-viewer{
+    position: relative;
+}
+
+.documo-viewer .documo-toc{
+    position: fixed;
+    width: 350px;
+    z-index: 5;
+    height: 100%;
+    overflow: scroll;
+
+
+
+}
+
+.documo-viewer .documo-document{
+    position: relative;
+    padding-left: 370px;
+}
