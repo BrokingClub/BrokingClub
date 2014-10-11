@@ -19,11 +19,12 @@ We will specify how reliable and how fast the application should be and why we d
 ## Scope 
 BrokingClub is a stock-market game, in which a player can easily buy real stocks with virtual money. You can join others in a club and try to manipulate opposing clubs using different actions. The service consists out of two parts: The landing page on which a user can get info about the game, register or contact the team, and the main application, where a user can work with his portfolio and interact with others.
 ## Definitions, Acronyms, and Abbreviations
-The definitions listed beyond are used inside the document and are summarized versions of the respective Wikipedia article. If the reader does not understand the meaning of a special technical term, it is very likely that he will find help in this section. 
+The definitions listed beyond are used inside the document and are summarized versions of the respective Wikipedia article. If the reader does not understand the meaning of a special technical term, it is very likely that he will find help in this section.
+
 
 * __Wikipedia__: Wikipedia is a free-access, free content Internet encyclopedia, supported and hosted by the non-profit Wikimedia Foundation (visit en.wikipedia.org for further information).
 * __PHP__: PHP is a server-side scripting language designed for web development but also used as a general-purpose programming language.
-*__Laravel__: Laravel is a free, open source PHP web application framework, designed for the development of model–view–controller (MVC) web applications.
+* __Laravel__: Laravel is a free, open source PHP web application framework, designed for the development of model–view–controller (MVC) web applications.
 * __MySQL__: MySQL is (as of March 2014) the world's second most widely used open-source relational database management system (see RDBMS).
 * __NodeJS__: Node.js is an open source, cross-platform runtime environment for server-side and networking applications.
 * __Nginx__: Nginx (pronounced "engine-x") is an open source web server.
@@ -31,6 +32,7 @@ The definitions listed beyond are used inside the document and are summarized ve
 * __REST__: Representational state transfer (REST) is an abstraction of the architecture of the World Wide Web; more precisely, REST is an architectural style consisting of a coordinated set of architectural constraints applied to components, connectors, and data elements, within a distributed hypermedia system.
 * __Yahoo! Finance__: Yahoo! Finance is a web site sponsored by Yahoo! that provides financial information and commentary with a focus on US markets.
 * __CloudeFlare__: CloudFlare is a company which provides a content delivery network and distributed domain name server, sitting between the visitor and the CloudFlare user's hosting provider.
+
 
 ## References 
 * [Use case diagram]( http://blog.broking.club/documentation/use-case-diagram/)
@@ -108,8 +110,10 @@ Also the official forum could be used to ask questions. During the open beta, us
 ### User Interfaces
 In this first state we will not provide an Android or iOS Version of the game, because of its browser cross-compatibility. Therefore a responsive design is key to a successful mobile usage experience. 
 The interface will be split up into two different designs:
-* The Landing Page: If a guest visits www.broking.club via a search engine or a recommendation he will see information’s about the game and an area for registration or login in form of a one-page designed Website.
-* The Game Panel: A logged in user can access the game panel. On a sidebar on the left he can jump from one action to another. The main area on the right shows statistics, forms to buy stocks or edit sets of data (like profile, club or the portfolio) and the ranking.
+
+* _The Landing Page_: If a guest visits www.broking.club via a search engine or a recommendation he will see information’s about the game and an area for registration or login in form of a one-page designed Website.
+* _The Game Panel_: A logged in user can access the game panel. On a sidebar on the left he can jump from one action to another. The main area on the right shows statistics, forms to buy stocks or edit sets of data (like profile, club or the portfolio) and the ranking.
+
 ### Hardware Interfaces
 The software runs on a rented server, on which an Nginx-server system manages the traffic. It is possible to access this environment with every free device that is connected to the internet.
 ### Software Interfaces 
@@ -121,10 +125,11 @@ NodeJs Server for communicating with the Yahoo API.
 Our applications source code is available to the public via github.com. This is why we use the “Creative Commons - Attribution-NonCommercial-ShareAlike 4.0 International”-License. 
 For more information about this open license check http://creativecommons.org/licenses/by-nc-sa/4.0. 
 Our dependencies are free and allow commercial usage:
-Laravel: https://github.com/laravel/laravel#license
-jQuery: https://jquery.org/license/
-NodeJs: https://raw.githubusercontent.com/joyent/node/v0.10.32/LICENSE
-Only our free yahoo finance license is restricted to 100.000 requests per day.
+
+* Laravel: https://github.com/laravel/laravel#license
+* jQuery: https://jquery.org/license/
+* NodeJs: https://raw.githubusercontent.com/joyent/node/v0.10.32/LICENSE
+* Only our free yahoo finance license is restricted to 100.000 requests per day.
 
 ### Applicable Standards
 Our Product delivers Websites using the HTML5 standard, which is known for its usability, interoperability, and internationalization. Because of this Web standard every User can easily access the website. We will not use any SEO-unfriendly techniques like Adobe Flash or Java-Applets. 
