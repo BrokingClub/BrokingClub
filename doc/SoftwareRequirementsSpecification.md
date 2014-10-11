@@ -36,7 +36,11 @@ The definitions listed beyond are used inside the document and are summarized ve
 
 ## References 
 * [Use case diagram]( http://blog.broking.club/documentation/use-case-diagram/)
+> TODO: Add the rest
+
 ## Overview
+> TODO
+
 # Overall Description 
 ## Product perspective
 The Product could be monetized with premium coins that a player can spent on special club actions and buy stocks without spending some of his budget. It should always be possible to play this game for free without any strong restrictions.
@@ -134,6 +138,7 @@ Our dependencies are free and allow commercial usage:
 ### Applicable Standards
 Our Product delivers Websites using the HTML5 standard, which is known for its usability, interoperability, and internationalization. Because of this Web standard every User can easily access the website. We will not use any SEO-unfriendly techniques like Adobe Flash or Java-Applets. 
 The routing system is based on a REST-architecture, so users and search engines can travel through the website in a clearly structured, modern and elegant way.
+
 # Supporting Information 
 Our complete documentation can be visited via: [http://blog.broking.club/documentation/ ](http://blog.broking.club/documentation/)
 
