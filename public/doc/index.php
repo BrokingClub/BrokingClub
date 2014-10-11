@@ -6,7 +6,7 @@ error_reporting(-1);
 $dir = '../../doc/';
 
 $f = (isset($_GET['f'])) ? $_GET['f'] : 'srs';
-switch($_GET['f']) {
+switch($f) {
     case 'docs':
         $file = '../../doc/Documentation.md';
         break;

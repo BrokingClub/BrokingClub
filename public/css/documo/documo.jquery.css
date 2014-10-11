@@ -24,9 +24,7 @@
 .documo-toc li { display: block }
 .documo-toc li:before { content: counters(item, ".") " "; counter-increment: item }
 
-.documo-viewer{
-    position: relative;
-}
+
 
 .documo-viewer .documo-toc{
     position: fixed;
@@ -43,4 +41,20 @@
     position: relative;
     padding-left: 370px;
     padding-right: 100px;
+
+}
+
+.documo-viewer{
+    position: relative;
+    margin-left: 220px;
+}
+
+.documentation-navigation{
+    width: 200px;
+    position: fixed;
+    height: 100%;
+    background-color: #222;
+    color: #eee;
+    padding: 10px;
+
 }
