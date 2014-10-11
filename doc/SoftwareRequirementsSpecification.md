@@ -57,7 +57,8 @@ __Use case diagram:__
 ### Messaging system between Users and Clubs
 ### Ranking
 ### Communicate with the real stock market
-### Admin Panel (Edit Users, Add new stocks to update, maintenance mode)
+### Admin Panel
+A panel where special users can edit Users, add new stocks to update and force the maintenance mode.
 ### Forum to give tips 
 
 ## Usability 
