@@ -60,17 +60,23 @@ __Use case diagram:__
 ### Landing Page (Login / Logout)
 The landing page of the game gives a short introduction into the game and the opportunity to login or register an account.
 ### Register
-If you are going to register a new account you just have to put in a few personal informations, an username and a valid e-mail address. 
+If you are going to register a new account you just have to put in a few personal information, an username and a valid e-mail address. 
 ### Profile (Forgot Password, Avatar, enter a Club)
-For your account you can change and add some informations about yourself. You can upload an avatar, which is shown on your profile. Also in your profile settings you can manage your membership in a club or enter an other one.
+For your account you can change and add some information about yourself. You can upload an avatar, which is shown on your profile. Also in your profile settings you can manage your membership in a club or enter an other one.
 ### Create and update Clubs
+An essential part of the game is to found or enter clubs. Clubs are a group of members working together. They can plan their activities and compete against other clubs.
 ### Manipulate other Clubs with Actions
+Clubs are able to manipulate other ones with special actions. For example you can send a thief, who is trying to steal some money of other clubs or players. This action could fail, too. In this case the club sending this thief has to pay a penalty.
 ### Messaging system between Users and Clubs
+Our game will give the function of an own messaging system between single players or clubs. This messaging system is thought for a simple and fast communication.
 ### Ranking
+The ranking depends on the portfolio performance. It is the percentage of the money earned in relation to the seed money.
 ### Communicate with the real stock market
+Our stock exchange system synchronizes itself with the real values of the stocks on the real world. So our stocks are real-timed. 
 ### Admin Panel
 A panel where special users can edit Users, add new stocks to update and force the maintenance mode.
 ### Forum to give tips 
+On top of that there will be a user forum, where you can ask questions or describe problems with the application to the community to gain some help. 
 
 ## Usability 
 ### Using a browser
