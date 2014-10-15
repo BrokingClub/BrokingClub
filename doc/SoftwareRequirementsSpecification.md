@@ -55,7 +55,7 @@ In this first state we will not provide an Android or iOS Version of the game, b
 For an effective and economic development process we will use several free and open-source libraries. These dependencies have to be well-maintained and flexible.
 ## Functionality
 __Use case diagram:__
-![Use case diagram](http://blog.broking.club/wp-content/uploads/2014/10/Uc_diagram.png)
+![Use case diagram](http://blog.broking.club/wp-content/uploads/2014/10/Uc_diagram4.png)
 
 ### Landing Page (Login / Logout)
 ### Register
