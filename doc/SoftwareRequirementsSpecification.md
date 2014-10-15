@@ -85,7 +85,7 @@ The user has to know how to open and work with a modern browser like Chrome, Fir
 Our game is based on the english language. So it is necessary to understand all the content. 
 ### A sense for how to spend money 
 If you want to be successful in this game of course you need to have a sense for spending money. If you have no idea how stock systems work or how to spend your money in the right way, you can play our game either. Then you just need to join a famous club with players they know how to do this.
-## Reliability 
+## Reliability
 ### Server availability 
 Our server-provider “netcup.de” promise a 99% uptime of the server.
 ### Failures during development 
