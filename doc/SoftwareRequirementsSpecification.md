@@ -58,8 +58,11 @@ __Use case diagram:__
 ![Use case diagram](http://blog.broking.club/wp-content/uploads/2014/10/Uc_diagram4.png)
 
 ### Landing Page (Login / Logout)
+The landing page of the game gives a short introduction into the game and the opportunity to login or register an account.
 ### Register
+If you are going to register a new account you just have to put in a few personal informations, an username and a valid e-mail address. 
 ### Profile (Forgot Password, Avatar, enter a Club)
+For your account you can change and add some informations about yourself. You can upload an avatar, which is shown on your profile. Also in your profile settings you can manage your membership in a club or enter an other one.
 ### Create and update Clubs
 ### Manipulate other Clubs with Actions
 ### Messaging system between Users and Clubs
