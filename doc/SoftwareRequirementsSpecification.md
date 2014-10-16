@@ -35,11 +35,13 @@ The definitions listed beyond are used inside the document and are summarized ve
 
 
 ## References 
+
 * [Use case diagram]( http://blog.broking.club/documentation/use-case-diagram/)
+
 > TODO: Add the rest
 
 ## Overview
-> TODO
+> TODO: Write a nice overview about the contents of this srs
 
 # Overall Description 
 ## Product perspective

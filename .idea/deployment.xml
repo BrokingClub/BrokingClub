@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="broking.club">
+  <component name="PublishConfigData" autoUpload="Always" serverName="Broking Club">
     <serverData>
-      <paths name="broking.club">
+      <paths name="Broking Club">
         <serverdata>
           <mappings>
-            <mapping deploy="/laravel" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/brokingclub/laravel" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
     </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
 

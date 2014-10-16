@@ -58,7 +58,6 @@ class Documo {
 
     }
 
-
     private function replaceShortCode($type, $optionsString){
         $options =  $this->readOptions($optionsString);
 
