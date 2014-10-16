@@ -2,6 +2,8 @@
 
 class BaseController extends Controller {
 
+    protected $data = array();
+
 	/**
 	 * Setup the layout used by the controller.
 	 *
@@ -14,5 +16,35 @@ class BaseController extends Controller {
 			$this->layout = View::make($this->layout);
 		}
 	}
+
+    protected function makeView($viewKey){
+        $this->beforeView();
+        $this->data['headTitle'] = 'Hello Head';
+        $this->data['title'] = 'Hello';
+
+        View::share($this->data);
+
+        return View::make($viewKey);
+    }
+
+    protected function setTitle($title){
+        $this->data['title'] = $title;
+    }
+
+    private function beforeView(){
+        //TODO: Outsource this to the config file
+        $projectName = "Broking Club";
+
+        if(!isset($this->data['title'])){
+            $this->data['title'] =  'Welcome';
+        }
+
+        if(!isset($this->data['headTitle'])){
+            $this->data['headTitle'] =  $this->data['title'] . ' | ' . $projectName;
+        }
+
+    }
+
+
 
 }
