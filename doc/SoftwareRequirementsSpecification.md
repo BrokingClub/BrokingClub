@@ -57,26 +57,37 @@ In this first state we will not provide an Android or iOS Version of the game, b
 For an effective and economic development process we will use several free and open-source libraries. These dependencies have to be well-maintained and flexible.
 ## Functionality
 __Use case diagram:__
-![Use case diagram](http://blog.broking.club/wp-content/uploads/2014/10/Uc_diagram.png)
+![Use case diagram](http://blog.broking.club/wp-content/uploads/2014/10/Use-Case-Diagram.png)
 
 ### Landing Page (Login / Logout)
+The landing page of the game gives a short introduction into the game and the opportunity to login or register an account.
 ### Register
+If you are going to register a new account you just have to put in a few personal information, an username and a valid e-mail address. 
 ### Profile (Forgot Password, Avatar, enter a Club)
+For your account you can change and add some information about yourself. You can upload an avatar, which is shown on your profile. Also in your profile settings you can manage your membership in a club or enter an other one.
 ### Create and update Clubs
+An essential part of the game is to found or enter clubs. Clubs are a group of members working together. They can plan their activities and compete against other clubs.
 ### Manipulate other Clubs with Actions
+Clubs are able to manipulate other ones with special actions. For example you can send a thief, who is trying to steal some money of other clubs or players. This action could fail, too. In this case the club sending this thief has to pay a penalty.
 ### Messaging system between Users and Clubs
+Our game will give the function of an own messaging system between single players or clubs. This messaging system is thought for a simple and fast communication.
 ### Ranking
+The ranking depends on the portfolio performance. It is the percentage of the money earned in relation to the seed money.
 ### Communicate with the real stock market
+Our stock exchange system synchronizes itself with the real values of the stocks on the real world. So our stocks are real-timed. 
 ### Admin Panel
 A panel where special users can edit Users, add new stocks to update and force the maintenance mode.
 ### Forum to give tips 
+On top of that there will be a user forum, where you can ask questions or describe problems with the application to the community to gain some help. 
 
 ## Usability 
 ### Using a browser
 The user has to know how to open and work with a modern browser like Chrome, Firefox or Opera.
 ### Speaks English
-### A sense for how to spent money 
-## Reliability 
+Our game is based on the english language. So it is necessary to understand all the content. 
+### A sense for how to spend money 
+If you want to be successful in this game of course you need to have a sense for spending money. If you have no idea how stock systems work or how to spend your money in the right way, you can play our game either. Then you just need to join a famous club with players they know how to do this.
+## Reliability
 ### Server availability 
 Our server-provider “netcup.de” promise a 99% uptime of the server.
 ### Failures during development 
