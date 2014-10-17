@@ -2,7 +2,34 @@
     color: #FFE500;
 }
 
-.brokingclub-color .ul.mainNav li a.active{
-    color: #111;
+.brokingclub-color ul.mainNav li a.active{
+    color: #222;
     background-color: #FFE500;
+}
+
+.brokingclub-color ul.mainNav li a:hover,
+.brokingclub-color .top-navigation ul li a:hover{
+    background-color: #333;
+}
+
+.brokingclub-color .badge-red{
+    background-color: #FFE500;
+    color: #222;
+}
+
+.brokingclub-color ul.mainNav.active li.active a i{
+    color: #222;
+}
+
+.funnydogAvatar {
+    background-image: url('http://media.giphy.com/media/oDLDbBgf0dkis/giphy.gif');
+    width: 100px;
+    height: 100px;
+    background-position: center;
+    background-size: 200px;
+}
+
+.active .funnydogAvatar{
+    height: 40px;
+    background-size: 60px 40px;
 }

@@ -1,12 +1,6 @@
 <section id="left-navigation">
     <div class="user-image">
-        <img style="
-            background-image: url('http://media.giphy.com/media/oDLDbBgf0dkis/giphy.gif');
-            width: 100px;
-            height: 100px;
-            background-position: center;
-            background-size: 200px;
-            "/>
+        <img class="funnydogAvatar"/>
         <div class="user-online-status"><span class="user-status is-online  "></span> </div>
     </div>
 
