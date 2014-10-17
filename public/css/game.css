@@ -1,0 +1,8 @@
+.brokingclub-color #left-navigation .social-icon li a{
+    color: #FFE500;
+}
+
+.brokingclub-color .ul.mainNav li a.active{
+    color: #111;
+    background-color: #FFE500;
+}
