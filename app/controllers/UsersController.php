@@ -8,6 +8,7 @@
 
 class UsersController extends BaseController{
     public function showLogin(){
+        $this->setTitle('Login');
         return $this->makeView('pages.login');
     }
 } 

@@ -17,7 +17,8 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		return View::make('hello');
+        $this->setTitle('Welcome');
+		return $this->makeView('pages.game.dashboard');
 	}
 
 }

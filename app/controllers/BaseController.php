@@ -19,8 +19,6 @@ class BaseController extends Controller {
 
     protected function makeView($viewKey){
         $this->beforeView();
-        $this->data['headTitle'] = 'Hello Head';
-        $this->data['title'] = 'Hello';
 
         View::share($this->data);
 

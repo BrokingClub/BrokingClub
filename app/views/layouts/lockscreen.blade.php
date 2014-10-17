@@ -71,7 +71,7 @@
         </div>
     </div>
     <p class="copy-right big-screen hidden-xs hidden-sm">
-        <span>&#169;</span> Fickle <span class="footer-year">2014</span>
+        <span>&#169;</span> Broking&middotClub <span class="footer-year">2014</span>
     </p>
 </section>
 
