@@ -16,5 +16,6 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+Route::get('login', 'UsersController@showLogin');
 
 Route::controller('debug', 'DebugController');
