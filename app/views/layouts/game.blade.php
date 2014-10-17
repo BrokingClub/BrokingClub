@@ -69,7 +69,7 @@
     <![endif]-->
 </head>
 <body class="">
-    @include('layouts.parts.game.navigation')
+    @include('layouts.parts.game.topbar')
 
     <section id="main-container">
         @include('layouts.parts.game.leftNavigation')
