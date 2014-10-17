@@ -74,7 +74,18 @@
     <section id="main-container">
         @include('layouts.parts.game.leftNavigation')
         <section id="min-wrapper">
-            @yield('content')
+            <div id="main-content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="ls-top-header">{{ $title }}</h3>
+                             @include('layouts.parts.game.breadcrumbs')
+                        </div>
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
+
         </section>
         @include('layouts.parts.game.rightWrapper')
 

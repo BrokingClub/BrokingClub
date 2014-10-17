@@ -3,7 +3,7 @@
 <!--Logo text start-->
 <div class="header-logo">
     <a href="index.html" title="">
-        <h1>Fickle</h1>
+        <h1>Broking&middot;Club</h1>
     </a>
 </div>
 <!--Logo text End-->
