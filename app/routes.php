@@ -17,5 +17,3 @@ Route::get('/', function()
 });
 
 Route::get('login', 'UsersController@showLogin');
-
-Route::controller('debug', 'DebugController');
