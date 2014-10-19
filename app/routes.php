@@ -14,6 +14,6 @@
 Route::get('/', 'HomeController@showWelcome');
 
 Route::get('login', 'UsersController@showLogin');
-Route::get('create', 'UsersController@getCreate');
+Route::get('register', 'UsersController@getCreate');
 
 Route::resource('user', 'UsersController');

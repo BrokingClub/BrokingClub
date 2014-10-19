@@ -10,6 +10,7 @@
 .brokingclub-color ul.mainNav li a:hover,
 .brokingclub-color .top-navigation ul li a:hover{
     background-color: #333;
+    color: #fff !important;
 }
 
 .brokingclub-color .badge-red{

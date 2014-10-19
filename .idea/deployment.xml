@@ -5,7 +5,7 @@
       <paths name="Broking Club">
         <serverdata>
           <mappings>
-            <mapping deploy="/brokingclub/laravel" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
