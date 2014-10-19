@@ -14,5 +14,3 @@
 Route::get('/', 'HomeController@showWelcome');
 
 Route::get('login', 'UsersController@showLogin');
-
-Route::controller('debug', 'DebugController');
