@@ -1,4 +1,4 @@
-@extends('layouts.lockscreen')
+@extends('......layouts.lockscreen')
 
 @section('content')
                 <div class="login-box">

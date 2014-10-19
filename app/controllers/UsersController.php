@@ -9,6 +9,11 @@
 class UsersController extends BaseController{
     public function showLogin(){
         $this->setTitle('Login');
-        return $this->makeView('pages.login');
+        return $this->makeView('pages.game.login');
+    }
+
+    public function getCreate(){
+        $this->setTitle('Register');
+        return $this->makeView('pages.game.register');
     }
 } 
