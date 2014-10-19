@@ -2,6 +2,7 @@
 /vendor
 /.idea
 /public/img
+/public/fickle
 composer.phar
 composer.lock
 .env.*.php
