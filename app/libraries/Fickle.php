@@ -7,6 +7,9 @@
  */
 
 class Fickle {
+
+    private static $lastActivetab;
+
     public static function openPanel($title = "Panel title", $cols = 12, $options = array()){
         $class = (isset($options['class']))? $options['class'] : 'fickle-panel';
 
@@ -38,12 +41,15 @@ class Fickle {
         }
         elseif(isset($tabs[$active])) $activeTab = $active;
 
+        static::$lastActivetab = strtolower($activeTab);
+
         foreach($tabs as $tabKey => $tabName){
             $activeClass = "";
 
             $iconClass = 'fa fa-home';
             switch($tabKey){
                 case 'profile': $iconClass = 'fa fa-user'; break;
+                case 'club': $iconClass = 'fa fa-users'; break;
                 case 'password': $iconClass = 'fa fa-key'; break;
                 case 'delete': $iconClass = 'fa fa-trash'; break;
             }
@@ -68,7 +74,12 @@ class Fickle {
     }
 
     public static function openTabContent($tabKey){
-        $html = '<div class="tab-pane fade" id="'. $tabKey .'">';
+        $tabContentClass = "tab-pane fade";
+        if(strtolower($tabKey) == static::$lastActivetab){
+            $tabContentClass .= ' in active';
+        }
+
+        $html = '<div class="'. $tabContentClass .'" id="'. $tabKey .'">';
         return $html;
     }
 

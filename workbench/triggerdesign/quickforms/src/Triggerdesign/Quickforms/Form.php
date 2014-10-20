@@ -75,9 +75,16 @@ class Form extends \Bootstrapper\Form{
         return $this->element('select', $name, $inputHtml, $labelHtml, $options);
     }
 
-    public function submit($value = false, $options = array()){
+    public function submit($value = false, $options = array())
+    {
         return parent::submit($this->getAutoTranslation('submit'), $options);
     }
+
+    public function warnSubmit($value = false, $options = array()){
+        $options['class'] = 'btn btn-danger';
+        return $this->submit($value, $options);
+    }
+
 
     private function element($type, $name, $inputHtml, $labelHtml = null, $options = array()){
         $errors = $this->getErrors($name);
