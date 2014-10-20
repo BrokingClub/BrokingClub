@@ -78,6 +78,6 @@ class Fickle {
     }
 
     public static function colsCssClass($cols = 12){
-        return "col-md-" + $cols;
+        return "col-md-" . $cols;
     }
 } 

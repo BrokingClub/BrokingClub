@@ -124,6 +124,8 @@ return array(
         'Barryvdh\Debugbar\ServiceProvider',
         'Way\Generators\GeneratorsServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+        'Triggerdesign\Quickforms\QuickformsServiceProvider',
+        'Bootstrapper\BootstrapperServiceProvider',
 
 	),
 
@@ -192,6 +194,8 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
         'Debug'        => 'Barryvdh\Debugbar\Facade',
+        'QForm'           => 'Triggerdesign\Quickforms\QuickFormFacade',
+
 
 	),
 
