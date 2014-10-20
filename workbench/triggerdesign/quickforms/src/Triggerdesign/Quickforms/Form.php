@@ -18,6 +18,8 @@ class Form extends \Bootstrapper\Form{
     private $errorSessionKey;
     private $labelTranslationBase;
 
+    private $bButton;
+
     /**
      * Create a new form builder instance.
      *
@@ -33,6 +35,8 @@ class Form extends \Bootstrapper\Form{
         $this->autoTranslate =  $this->getConfig("autoTranslate");
         $this->errorSessionKey = $this->getConfig("errorSessionKey");
         $this->labelTranslationBase = $this->getConfig("labelTranslationBase");
+
+        $this->bButton = new \Bootstrapper\Button();
 
     }
 
@@ -78,6 +82,39 @@ class Form extends \Bootstrapper\Form{
     public function submit($value = false, $options = array())
     {
         return parent::submit($this->getAutoTranslation('submit'), $options);
+    }
+
+    public function btn($type = "default", $value = false, $icon = false){
+        $value = (!$value) ? $this->getAutoTranslation('submit') : $value;
+
+        $button = null;
+
+
+        switch($type){
+            case 'primary': $button =  $this->bButton->primary($value); break;
+            case 'danger': $button = $this->bButton->danger($value); break;
+            case 'success': $button = $this->bButton->success($value); break;
+            default:
+                $button = $this->bButton->normal($value, array());
+        }
+
+        if($icon){
+            $button = $button->withIcon('<i class="fa fa-' . $icon . '"></i>', false);
+        }
+
+        return $button;
+    }
+
+    public function btnPrimary($value = false, $icon = false){
+        return $this->btn('primary', $value, $icon);
+    }
+
+    public function btnDanger($value = false, $icon = false){
+        return $this->btn('danger', $value, $icon);
+    }
+
+    public function btnSuccess($value = false, $icon = false){
+        return $this->btn('success', $value, $icon);
     }
 
     public function warnSubmit($value = false, $options = array()){

@@ -1,11 +1,8 @@
 @extends('layouts.game')
 
 @section('content')
-     {{ Fickle::openPanel('User', 4) }}
 
-    {{ Fickle::closePanel() }}
-
-    {{ Fickle::openTabbedPanel(8,array('profile' => 'Personal Info', 'password' => 'Change Password',
+    {{ Fickle::openTabbedPanel(12,array('profile' => 'Personal Info', 'password' => 'Change Password',
         'club' => 'My Broking Club', 'delete' => 'Close Account')) }}
         {{ Fickle::openTabContent('profile') }}
             {{ QForm::open() }}
@@ -17,7 +14,7 @@
 
                 {{ QForm::label('email', 'Email-Adress:') }}
                 {{ QForm::text('email', 'simon@broking.club') }}
-                {{ QForm::submit('Submit') }}
+                {{ QForm::btnPrimary('Submit', 'check') }}
             {{ QForm::close() }}
         {{ Fickle::closeTabContent() }}
 
@@ -31,7 +28,7 @@
 
                  {{ QForm::label('new_password_confirmation', 'Re-type New Password:') }}
                  {{ QForm::password('new_password_confirmation', '') }}
-                {{ QForm::submit('Change password') }}
+                {{ QForm::btnPrimary('Change password', 'lock') }}
             {{ QForm::close() }}
         {{ Fickle::closeTabContent() }}
 
@@ -39,13 +36,13 @@
             {{ QForm::open() }}
                 {{ QForm::label('old_password', 'Current Password:') }}
                 {{ QForm::text('my_club', 'Money Club', ['readonly' => 'readonly']) }}
-                {{ QForm::button('Get out of club', array('class' => 'btn btn-danger')) }}
+                {{ QForm::btnDanger( 'Get out of club', 'remove') }}
             {{ QForm::close() }}
 
         {{ Fickle::closeTabContent() }}
 
         {{ Fickle::openTabContent('delete') }}
-            {{ QForm::button('Delete account :(', array('class' => 'btn btn-danger')) }}
+            {{ QForm::btnDanger('Delete account', 'thumbs-down') }}
         {{ Fickle::closeTabContent() }}
 
     {{ Fickle::closeTabbedPanel() }}
