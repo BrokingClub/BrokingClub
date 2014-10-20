@@ -94,6 +94,7 @@ class Form extends \Bootstrapper\Form{
             case 'primary': $button =  $this->bButton->primary($value); break;
             case 'danger': $button = $this->bButton->danger($value); break;
             case 'success': $button = $this->bButton->success($value); break;
+            case 'warning': $button = $this->bButton->warning($value); break;
             default:
                 $button = $this->bButton->normal($value, array());
         }
@@ -117,10 +118,11 @@ class Form extends \Bootstrapper\Form{
         return $this->btn('success', $value, $icon);
     }
 
-    public function warnSubmit($value = false, $options = array()){
-        $options['class'] = 'btn btn-danger';
-        return $this->submit($value, $options);
+    public function btnWarning($value = false, $icon = false){
+        return $this->btn('warning', $value, $icon);
     }
+
+
 
 
     private function element($type, $name, $inputHtml, $labelHtml = null, $options = array()){

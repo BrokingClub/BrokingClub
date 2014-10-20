@@ -28,7 +28,7 @@
 
                  {{ QForm::label('new_password_confirmation', 'Re-type New Password:') }}
                  {{ QForm::password('new_password_confirmation', '') }}
-                {{ QForm::btnPrimary('Change password', 'lock') }}
+                {{ QForm::btnWarning('Change password', 'lock') }}
             {{ QForm::close() }}
         {{ Fickle::closeTabContent() }}
 
