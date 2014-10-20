@@ -17,3 +17,4 @@ Route::get('login', 'UsersController@showLogin');
 Route::get('register', 'UsersController@getCreate');
 
 Route::resource('user', 'UsersController');
+Route::resource('stocks', 'StocksController');
