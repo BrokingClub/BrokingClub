@@ -10,6 +10,9 @@ switch($f) {
     case 'docs':
         $file = 'Documentation.md';
         break;
+    case 'usecases':
+        $file = 'UseCases.md';
+        break;
     case 'srs':
     default:
         $file = 'SoftwareRequirementsSpecification.md';
@@ -56,6 +59,7 @@ $documo->parseMarkdown();
                 <ul>
                     <li><a href="?f=docs">Information about this documentation</a></li>
                     <li><a href="?f=srs">Software Requirements Specification</a></li>
+                    <li><a href="?f=usecases">Use Cases</a></li>
                 </ul>
             </div>
 
