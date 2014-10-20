@@ -1,0 +1,25 @@
+{
+    "name": "triggerdesign/quickforms",
+    "description": "",
+    "authors": [
+        {
+            "name": "Simon",
+            "email": "info@triggerdesign.de"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*",
+        "patricktalmadge/bootstrapper": "~5",
+        "laravel/laravel" : "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Triggerdesign\\Quickforms\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

@@ -38,8 +38,6 @@ class Fickle {
         }
         elseif(isset($tabs[$active])) $activeTab = $active;
 
-        dd($tabs);
-
         foreach($tabs as $tabKey => $tabName){
             $activeClass = "";
 
