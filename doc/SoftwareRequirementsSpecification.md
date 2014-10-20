@@ -37,6 +37,10 @@ The definitions listed beyond are used inside the document and are summarized ve
 ## References 
 
 * [Use case diagram]( http://blog.broking.club/documentation/use-case-diagram/)
+* [Use case: Login](http://broking.club/doc/?f=uc_login)
+* [Use case: Edit profile](http://broking.club/doc/?f=uc_editprofile)
+* [Use case: Manage clubs](http://broking.club/doc/?f=uc_manageclubs)
+* [Use case: Stock exchange system](http://broking.club/doc/?f=uc_stockexchange)
 
 > TODO: Add the rest
 
@@ -60,13 +64,16 @@ __Use case diagram:__
 ![Use case diagram](http://blog.broking.club/wp-content/uploads/2014/10/Use-Case-Diagram.png)
 
 ### Landing Page (Login / Logout)
-The landing page of the game gives a short introduction into the game and the opportunity to login or register an account.
+The landing page of the game gives a short introduction into the game and the opportunity to login or register an account.  
+[Use Case](http://broking.club/doc/?f=uc_login)
 ### Register
-If you are going to register a new account you just have to put in a few personal information, an username and a valid e-mail address. 
+If you are going to register a new account you just have to put in a few personal information, an username and a valid e-mail address.  
 ### Profile (Forgot Password, Avatar, enter a Club)
-For your account you can change and add some information about yourself. You can upload an avatar, which is shown on your profile. Also in your profile settings you can manage your membership in a club or enter an other one.
+For your account you can change and add some information about yourself. You can upload an avatar, which is shown on your profile. Also in your profile settings you can manage your membership in a club or enter an other one.  
+[Use Case](http://broking.club/doc/?f=uc_editprofile)
 ### Create and update Clubs
-An essential part of the game is to found or enter clubs. Clubs are a group of members working together. They can plan their activities and compete against other clubs.
+An essential part of the game is to found or enter clubs. Clubs are a group of members working together. They can plan their activities and compete against other clubs.  
+[Use Case](http://broking.club/doc/?f=uc_manageclubs)
 ### Manipulate other Clubs with Actions
 Clubs are able to manipulate other ones with special actions. For example you can send a thief, who is trying to steal some money of other clubs or players. This action could fail, too. In this case the club sending this thief has to pay a penalty.
 ### Messaging system between Users and Clubs
@@ -74,7 +81,8 @@ Our game will give the function of an own messaging system between single player
 ### Ranking
 The ranking depends on the portfolio performance. It is the percentage of the money earned in relation to the seed money.
 ### Communicate with the real stock market
-Our stock exchange system synchronizes itself with the real values of the stocks on the real world. So our stocks are real-timed. 
+Our stock exchange system synchronizes itself with the real values of the stocks on the real world. So our stocks are real-timed.  
+[Use Case](http://broking.club/doc/?f=uc_stockexchange)
 ### Admin Panel
 A panel where special users can edit Users, add new stocks to update and force the maintenance mode.
 ### Forum to give tips 

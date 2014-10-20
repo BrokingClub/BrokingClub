@@ -22,6 +22,9 @@ switch($f) {
 	case 'uc_editprofile':
 		$file = 'UseCase_EditProfile.md';
 		break;
+	case 'uc_manageclubs':
+		$file = 'UseCase_ManageClubs.md';
+		break;
     case 'srs':
     default:
         $file = 'SoftwareRequirementsSpecification.md';
