@@ -25,7 +25,7 @@ The basic member is able to leave the club.
 Both activities require to be confirmed by the user. Only if this happened the server starts to verify the inputs of the user.
 
 
-![Activity Diagram](http://blog.broking.club/wp-content/uploads/2014/10/Activity-Diagram-Edit-Profile.png)
+![Activity Diagram](http://blog.broking.club/wp-content/uploads/2014/10/ac_manageClubs.png)
 
 ## 	Alternative Flows
 ### No membership of any club
