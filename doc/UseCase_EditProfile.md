@@ -3,9 +3,9 @@
 
 {{{ DOCSTART }}}
 
-# Use-Case Specification: Stock exchange system
+# Use-Case Specification: Edit profile
 
-Version 1.0
+Version 1.2
 
 {{{ STARTCONTENT }}}
 
