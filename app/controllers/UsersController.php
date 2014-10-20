@@ -12,8 +12,22 @@ class UsersController extends BaseController{
         return $this->makeView('pages.game.login');
     }
 
-    public function getCreate(){
+    public function create(){
         $this->setTitle('Register');
         return $this->makeView('pages.game.register');
+        // bla
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     * GET /stocks/{id}/edit
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $this->setTitle('Edit profile');
+        return $this->makeView('pages.game.user.edit');
     }
 } 
