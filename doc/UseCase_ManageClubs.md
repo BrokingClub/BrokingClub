@@ -10,23 +10,20 @@ Version 1.2
 {{{ STARTCONTENT }}}
 
 # Use-Case Name 
-Edit Profile
+Manage Clubs
 ## 	Brief Description
-A user can edit his profile, for the first version it will only be possible to change the password.
+A user can manage his clubs. For the first version it will only be possible to leave a club for a user or a founder can change or dissolve a club.
 
 # Flow of Events
 ## 	Basic Flow
-The user opens the edit profile page.  
-In order to change the password the current password has to be filled.  
-Next up the new password can be entered and confirmed in two separate text boxes.  
-A click on a button will send the action to the server.  
+The user opens the page 'manage clubs'.
+If this user has no membership of any club, a list of the top clubs of the game will be displayed.
+If the user is member of a club, it will be checked whether he is the founder of this club.
+As a founder there is the opportunity to change the description of the club or dissolve the club.
+The basic member is able to leave the club.
 
-The server will verify this action in three steps:  
-1. Current password will be verified  
-2. New password will be checked against the security requirements  
-3. Confirmed password needs to equal the new password  
+Both activities require to be confirmed by the user. Only if this happened the server starts to verify the inputs of the user.
 
-If the entered information is correct the user will receive a confirmation message that the password has been changed.
 
 ![Activity Diagram](http://blog.broking.club/wp-content/uploads/2014/10/Activity-Diagram-Edit-Profile.png)
 

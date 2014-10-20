@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="Broking Club" uploadOnCheckin="dc15b9d2-6745-4920-80a3-894f9572cc4d" filePermissions="504" folderPermissions="493">
-    <option name="myUploadOnCheckinName" value="Broking Club" />
+  <component name="PublishConfigData" autoUpload="Always" serverName="Broking Club" filePermissions="504" folderPermissions="493">
     <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
