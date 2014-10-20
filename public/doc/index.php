@@ -16,6 +16,9 @@ switch($f) {
     case 'uc_login':
         $file = 'UseCase_Login.md';
         break;
+    case 'uc_stockexchange':
+        $file = 'UseCase_StockExchangeSystem.md';
+        break;
     case 'srs':
     default:
         $file = 'SoftwareRequirementsSpecification.md';

@@ -3,7 +3,7 @@
 
 {{{ DOCSTART }}}
 
-# Use-Case Specification: Login
+# Use-Case Specification: Stock exchange system
 
 Version 1.0
 
@@ -18,11 +18,13 @@ To customize automatic fields in Microsoft Word (which display a gray background
 
 {{{ STARTCONTENT }}}
 
-```The following template is provided for a Use-Case Specification, which contains the textual properties of the use case. This document is used with a requirements management tool, such as Rational RequisitePro, for specifying and marking the requirements within the use-case properties.
-The use-case diagrams can be developed in a visual modeling tool, such as Rational Rose. A use-case report, with all properties, may be generated with Rational SoDA. For more information, see the tool mentors in the Rational Unified Process.```
+<!-- The following template is provided for a Use-Case Specification, which contains the textual properties of the use case. This document is used with a requirements management tool, such as Rational RequisitePro, for specifying and marking the requirements within the use-case properties.
+The use-case diagrams can be developed in a visual modeling tool, such as Rational Rose. A use-case report, with all properties, may be generated with Rational SoDA. For more information, see the tool mentors in the Rational Unified Process. -->
 # Use-Case Name 
+Stock exchange system
 ## 	Brief Description
 ```The description briefly conveys the role and purpose of the use case. A single paragraph will suffice for this description.```
+
 # Flow of Events
 ## 	Basic Flow 
 ```This use case starts when the actor does something. An actor always initiates use cases. The use case describes what the actor does and what the system does in response. It is phrased in the form of a dialog between the actor and the system.
