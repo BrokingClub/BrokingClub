@@ -3,14 +3,14 @@
 
 {{{ DOCSTART }}}
 
-# Use-Case Specification: Stock exchange system
+# Use-Case Specification: Exchange stocks
 
 Version 1.0
 
 {{{ STARTCONTENT }}}
 
 # Use-Case Name 
-Stock exchange system
+Exchange stocks
 ## 	Brief Description
 The user can access the stock exchange system in order to buy or sell shares.
 A quick overview can be achieved through the dashboard.
@@ -31,7 +31,7 @@ The liquidity of the user has to be checked against the final price.
 
 If the transaction is successful a summary will be shown.
 
-![Activity Diagram - Stock exchange system](http://blog.broking.club/wp-content/uploads/2014/10/Activity-Diagram-Stock-Exchange-System.png)
+![Activity Diagram - Exchange stocks](http://blog.broking.club/wp-content/uploads/2014/10/Activity-Diagram-Stock-Exchange-System.png)
 
 ## 	Alternative Flows
 ### Outside trading hours
