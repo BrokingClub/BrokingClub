@@ -61,7 +61,7 @@ In this first state we will not provide an Android or iOS Version of the game, b
 For an effective and economic development process we will use several free and open-source libraries. These dependencies have to be well-maintained and flexible.
 ## Functionality
 __Use case diagram:__
-![Use case diagram](http://blog.broking.club/wp-content/uploads/2014/10/Use-Case-Diagram.png)
+![Use case diagram](http://blog.broking.club/wp-content/uploads/2014/10/Use-Case-Diagram1.png)
 
 ### Landing Page (Login / Logout)
 The landing page of the game gives a short introduction into the game and the opportunity to login or register an account.  
