@@ -13,7 +13,7 @@
     {{ Fickle::closeWidget() }}
 
     {{ Fickle::openPanel('Performance', 6, ['controls' => 'minus,refresh,closepanel', 'padding' => false])}}
-
+        <div id="hero-area"></div>
     {{ Fickle::closePanel() }}
 
 @endsection

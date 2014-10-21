@@ -38,9 +38,8 @@
 <!--Layout Script End -->
 
 
-<!--
 {{ HTML::script('fickle/js/countUp.min.js') }}
--->
+
 
 <!-- skycons script start -->
 {{ HTML::script('fickle/js/skycons.js') }}
@@ -54,7 +53,6 @@
 <!--AmaranJS library script Start -->
 {{ HTML::script('fickle/js/jquery.amaran.js') }}
 <!--AmaranJS library script End   -->
-{{ HTML::script('fickle/js/pages/dashboard.js?t=' . time())  }}
 {{ HTML::script('fickle/js/pages/buttonSwitch.js?t=' . time()) }}
 
 {{ HTML::script('js/game.js?t=' . time()) }}

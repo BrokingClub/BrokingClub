@@ -49,6 +49,7 @@ class Fickle {
 
     public static function closeWidget(){
         $html = static::closeDiv(static::$lastWidgetType . '-widget-box');
+        $html .= static::closeDiv(static::$lastWidgetType . '-widget');
         $html .= static::closeDiv('widget-container');
 
         return $html;

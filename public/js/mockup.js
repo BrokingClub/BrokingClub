@@ -4,11 +4,13 @@
 
 jQuery(document).ready(function($) {
     'use strict';
+    return false;
     hero_area_chart();
 });
 
 var resizeIdMorris;
 $(window).resize(function() {
+    return false;
     clearTimeout(resizeIdMorris);
     resizeIdMorris= setTimeout(doneResizingMorris, 600);
 

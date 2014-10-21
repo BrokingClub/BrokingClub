@@ -21,7 +21,7 @@ class ClubsController extends \BaseController {
      */
     public function create()
     {
-        //
+        //hello
     }
 
     /**
@@ -32,7 +32,7 @@ class ClubsController extends \BaseController {
      */
     public function store()
     {
-        //
+        //hello
     }
 
     /**
@@ -45,7 +45,7 @@ class ClubsController extends \BaseController {
     public function show($id)
     {
         $this->setTitle('Some club');
-        return $this->makeView('pages.game.clubs.show');
+        return $this->makeView('pages.game.club.show');
     }
 
     /**

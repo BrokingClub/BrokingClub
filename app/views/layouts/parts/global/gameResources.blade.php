@@ -24,6 +24,7 @@
 {{ HTML::style('fickle/css/bootstrap.min.css') }}
 {{ HTML::style('fickle/css/plugins/bootstrap-progressbar-3.1.1.css') }}
 {{ HTML::style('fickle/css/plugins/jquery-jvectormap.css') }}
+{{ HTML::style('fickle/css/plugins/bootstrap-switch.css') }}
 
 <!--AmaranJS Css Start-->
 {{ HTML::style('fickle/css/plugins/amaranjs/jquery.amaran.css') }}

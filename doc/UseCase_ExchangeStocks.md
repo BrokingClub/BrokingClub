@@ -17,6 +17,7 @@ A quick overview can be achieved through the dashboard.
 
 # Flow of Events
 ## 	Basic Flow
+![Exchange stocks screenshot](http://broking.club/img/doc/screens/uc_exchangestocks.png)
 The user opens the stock exchange dashboard.  
 A company or products share can be selected from a list.  
 Choose from three available types:  
