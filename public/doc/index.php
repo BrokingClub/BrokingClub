@@ -52,36 +52,49 @@ $documo->parseMarkdown();
 
         <link href="/css/documo/documo.jquery.css?v=<?php echo time() ?>" rel="stylesheet" />
         <link href="/css/documo/github-markdown.css" rel="stylesheet" />
+
         <script src="/js/documo/markdown.js"></script>
         <script src="/js/documo/jquery.viewport.js"></script>
         <script src="/js/documo/documo.jquery.js?v=<?php echo time() ?>"></script>
+
+        <link href="/lib/fancybox/jquery.fancybox.css?v=<?php time() ?>" rel="stylesheet" />
+        <script src="/lib/fancybox/jquery.fancybox.js?v=<?php time() ?>"></script>
     </head>
     <body>
         <div class="documentation-container clearfix">
             <div id="markdown-original" style="display: none"><?php $documo->printMarkdown() ?></div>
 
-            <div id="documentation-navigation" class="pull-left">
-                <span style="text-align: center;">
-                    <img src="/img/logo_250.png"/>
-                </span>
-                <br/>
-                <br/>
-                <b>Documentation</b>
-                <br/>
-                <ul>
-                    <li><a href="?f=docs">Information about this documentation</a></li>
-                    <li><a href="?f=srs">Software Requirements Specification</a></li>
-                    <li><a href="?f=usecases">Use Cases</a></li>
-                </ul>
-            </div>
+            <div class="documentation-container-full">
+                <div id="documentation-navigation" class="pull-left">
+                    <span style="text-align: center;">
+                        <img src="/img/logo_250.png"/>
+                    </span>
+                    <br/>
+                    <br/>
+                    <b>Documentation</b>
+                    <br/>
+                    <ul>
+                        <li><a href="?f=docs">Information about this documentation</a></li>
+                        <li><a href="?f=srs">Software Requirements Specification</a></li>
+                        <li><a href="?f=usecases">Use Cases</a></li>
+                    </ul>
+                </div>
 
-            <div id="markdown-viewer" class="documo-viewer pull-left">
-                MarkDown Here 4
+                <div id="markdown-viewer" class="documo-viewer pull-left">
+                    MarkDown Here 4
+                </div>
             </div>
 
             <script>
                  jQuery( document ).ready(function( $ ) {
                     $('#markdown-viewer').documo({'markdownContainer' : '#markdown-original'});
+
+
+
+                     $('a.lightbox-image').fancybox({
+                         theme : 'dark'
+                     });
+
                 });
 
             </script>

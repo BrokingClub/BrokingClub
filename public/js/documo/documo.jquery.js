@@ -76,11 +76,35 @@
 
 
             this.setTriggers();
+
+            this.setWidths();
+            this.linkImages();
+        },
+        setWidths: function(){
+            var totalWidth = $('.documentation-container').width();
+
+             $('#markdown-viewer').width(totalWidth - 310);
+            console.log(totalWidth);
+            console.log(totalWidth);
+
+        },
+        linkImages: function(){
+            $('.documo-content img').each(function(index, image){
+                var src = $(image).attr('src');
+                var alt = $(image).attr('alt');
+               var link = '<a data-src="'+ src +'" rel="gallery" class="lightbox-image" title="'+ alt +'" href="'+ src +'"></a>';
+                $(image).wrap(link);
+
+            });
         },
         setTriggers: function(){
             var base = this;
             $( window ).scroll(function() {
                 base.checkView();
+            });
+
+            $(window).on('resize', function(){
+                base.setWidths();
             });
         },
         checkView: function(){
