@@ -8,17 +8,24 @@
 
 class Fickle {
 
+    private static $closeDivComment = true;
     private static $lastActivetab;
+    private static $lastWidgetType;
 
     public static function openPanel($title = "Panel title", $cols = 12, $options = array()){
         $class = (isset($options['class']))? $options['class'] : 'fickle-panel';
+
+        $panelBodyClass = 'panel-body';
+        if(isset($options['padding']) && $options['padding'] === false)
+            $panelBodyClass .= ' no-padding';
+
 
         $html = '<div class="'. static::colsCssClass($cols)  .'">';
         $html .= '<div class="panel panel-default '. $class .'">';
             $html .= '<div class="panel-heading">';
                 $html .= '<h3 class="panel-title">'. $title .'</h3>';
             $html .= '</div>';
-            $html .= '<div class="panel-body">';
+            $html .= '<div class="'. $panelBodyClass .'">';
 
         return $html;
     }
@@ -26,6 +33,35 @@ class Fickle {
     public static function closePanel(){
         return "</div></div></div>";
     }
+
+    public static function openWidget($cols = 12, $type = "setting", $title = "", $icon = null){
+        $html = '<div class="widget-container col-md-4 col-sm-6">';
+        $html .=  '<div class="'. $type .'-widget">';
+            $html .=  '<div class="'. $type .'-widget-header">';
+            $html .=  '<h5 class="ls-header">'. $title .' <i class="fa fa-'. $icon .'"></i></h5>';
+        $html .=  '</div>';
+        $html .=  '<div class="setting-widget-box">';
+
+        static::$lastWidgetType = $type;
+
+        return $html;
+    }
+
+    public static function closeWidget(){
+        $html = static::closeDiv(static::$lastWidgetType . '-widget-box');
+        $html .= static::closeDiv('widget-container');
+
+        return $html;
+    }
+
+    private static function closeDiv($for = ""){
+        $html = "</div>";
+        if(!empty($for) && static::$closeDivComment)
+            $html .= '<!-- '. $for .' -->';
+
+        return $html;
+    }
+
 
     public static function openTabbedPanel($cols = 12, $tabs = array(), $active = null){
         $html = '<div class="'. static::colsCssClass($cols)  .'">';
