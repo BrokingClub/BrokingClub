@@ -34,3 +34,9 @@
     height: 40px;
     background-size: 60px 40px;
 }
+
+.tab-content {
+    border-left: 1px #e0e0e0 solid;
+    border-bottom: 1px #e0e0e0 solid;
+    border-right: 1px #e0e0e0 solid;
+}

@@ -3,16 +3,16 @@
 
 {{{ DOCSTART }}}
 
-# Use-Case Specification: Edit profile
+# Use-Case Specification: Change password
 
-Version 1.2
+Version 1.3
 
 {{{ STARTCONTENT }}}
 
 # Use-Case Name 
-Edit Profile
+Change password
 ## 	Brief Description
-A user can edit his profile, for the first version it will only be possible to change the password.
+A user can change his password by entering his current one and confirming the new password.
 
 # Flow of Events
 ## 	Basic Flow

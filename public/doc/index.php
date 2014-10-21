@@ -16,11 +16,11 @@ switch($f) {
     case 'uc_login':
         $file = 'UseCase_Login.md';
         break;
-    case 'uc_stockexchange':
-        $file = 'UseCase_StockExchangeSystem.md';
+    case 'uc_exchangestocks':
+        $file = 'UseCase_ExchangeStocks.md';
         break;
-	case 'uc_editprofile':
-		$file = 'UseCase_EditProfile.md';
+	case 'uc_changepassword':
+		$file = 'UseCase_ChangePassword.md';
 		break;
 	case 'uc_manageclubs':
 		$file = 'UseCase_ManageClubs.md';
