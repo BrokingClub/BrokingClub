@@ -6,6 +6,7 @@
         'club' => 'My Broking Club', 'delete' => 'Close Account')) }}
         {{ Fickle::openTabContent('profile') }}
             {{ QForm::open() }}
+
                 {{ QForm::label('first_name', 'First Name:') }}
                 {{ QForm::text('first_name', 'Simon') }}
 
