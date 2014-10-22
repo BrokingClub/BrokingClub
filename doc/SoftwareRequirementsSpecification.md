@@ -68,8 +68,9 @@ The landing page of the game gives a short introduction into the game and the op
 [Use Case](http://broking.club/doc/?f=uc_login)
 ### Register
 If you are going to register a new account you just have to put in a few personal information, an username and a valid e-mail address.  
-### Profile (Forgot Password, Avatar, enter a Club)
-For your account you can change and add some information about yourself. You can upload an avatar, which is shown on your profile. Also in your profile settings you can manage your membership in a club or enter an other one.  
+### Profile (Avatar, enter a Club)
+For your account you can change and add some information about yourself. You can upload an avatar, which is shown on your profile. Also in your profile settings you can manage your membership in a club or enter an other one.
+### Change password
 [Use Case: Change password](http://broking.club/doc/?f=uc_changepassword)
 ### Create and update Clubs
 An essential part of the game is to found or enter clubs. Clubs are a group of members working together. They can plan their activities and compete against other clubs.  

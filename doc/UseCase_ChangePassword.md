@@ -16,6 +16,8 @@ A user can change his password by entering his current one and confirming the ne
 
 # Flow of Events
 ## 	Basic Flow
+![Change password screenshot](http://broking.club/img/doc/screens/uc_changepassword.JPG)
+
 The user opens the edit profile page.  
 In order to change the password the current password has to be filled.  
 Next up the new password can be entered and confirmed in two separate text boxes.  

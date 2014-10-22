@@ -102,3 +102,39 @@
     margin-bottom: 10px;
     border-bottom: 1px solid #444;
 }
+
+.documo-content img{
+    max-width: 600px !important;
+    max-height: 700px !important;
+    display: block;
+    margin: 5px  0px;
+}
+
+.documentation-container{
+    min-width: 1300px!important;
+}
+
+@media (max-width: 1300px) {
+    .documo-toc{
+        display: none;
+    }
+
+    .documo-viewer .documo-document{
+        padding-left: 10px;
+    }
+
+}
+
+#imagelightbox{
+    position: fixed;
+    z-index: 9999;
+    -ms-touch-action: none;
+    touch-action: none;
+    background-color: #fff;
+    padding: 50px;
+    max-width: 1300px !important;
+}
+
+.fancybox-dark-skin img{
+    background-color: #fff;
+}
