@@ -32,7 +32,7 @@ The liquidity of the user has to be checked against the final price.
 
 If the transaction is successful a summary will be shown.
 
-![Activity Diagram - Exchange stocks](http://blog.broking.club/wp-content/uploads/2014/10/Activity-Diagram-Stock-Exchange-System.png)
+![Activity Diagram - Exchange stocks](http://broking.club/img/doc/ac-exchange_stocks.png)
 
 ## 	Alternative Flows
 ### Outside trading hours
@@ -63,7 +63,3 @@ The user needs to be authenticated with the system in order to access the stock 
 {{{ ENDCONTENT }}}
 
 {{{ DOCEND }}}
-
-
-
-
