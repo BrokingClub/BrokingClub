@@ -50,6 +50,10 @@
 {{ HTML::script('fickle/js/jvectormap/jquery-jvectormap-world-mill-en.js') }}
 <!--Vector map library end-->
 
+<!--JS plugins-->
+
+<!--JS plugins-->
+
 <!--AmaranJS library script Start -->
 {{ HTML::script('fickle/js/jquery.amaran.js') }}
 <!--AmaranJS library script End   -->

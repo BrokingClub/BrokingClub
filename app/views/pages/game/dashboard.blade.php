@@ -1,6 +1,7 @@
 @extends('layouts.game')
 
 @section('content')
+
     {{ Fickle::openPanel() }}
         Debug this
 

@@ -4,7 +4,7 @@
 
 jQuery(document).ready(function($) {
     'use strict';
-    return false;
+
     hero_area_chart();
 });
 
