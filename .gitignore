@@ -1,7 +1,6 @@
 /bootstrap/compiled.php
 /vendor
-/.idea
-/public/img
+.idea/
 /public/fickle
 composer.phar
 composer.lock
