@@ -7,7 +7,7 @@
  *
  * Implements actions regarding user management
  */
-class UsersController extends Controller
+class UsersController extends BaseController
 {
 
     /**
@@ -196,4 +196,12 @@ class UsersController extends Controller
 
         return Redirect::to('/');
     }
+
+
+    public function edit(){
+        $this->setTitle('Edit');
+
+        return $this->makeView('pages.game.user.edit');
+    }
+
 }

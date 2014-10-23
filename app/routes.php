@@ -13,10 +13,6 @@
 
 Route::get('/', 'HomeController@showWelcome');
 
-Route::get('login', 'UsersController@showLogin');
-Route::get('register', 'UsersController@create');
-
-Route::resource('users', 'UsersController');
 Route::resource('stocks', 'StocksController');
 Route::resource('clubs', 'ClubsController');
 //

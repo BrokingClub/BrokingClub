@@ -126,6 +126,7 @@ return array(
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Triggerdesign\Quickforms\QuickformsServiceProvider',
         'Bootstrapper\BootstrapperServiceProvider',
+        'Zizaco\Confide\ServiceProvider'
 
 	),
 
@@ -185,16 +186,17 @@ return array(
 		'Response'        => 'Illuminate\Support\Facades\Response',
 		'Route'           => 'Illuminate\Support\Facades\Route',
 		'Schema'          => 'Illuminate\Support\Facades\Schema',
-		'Seeder'          => 'Illuminate\Database\Seeder',
-		'Session'         => 'Illuminate\Support\Facades\Session',
+		'Seeder'            => 'Illuminate\Database\Seeder',
+		'Session'           => 'Illuminate\Support\Facades\Session',
 		'SoftDeletingTrait' => 'Illuminate\Database\Eloquent\SoftDeletingTrait',
-		'SSH'             => 'Illuminate\Support\Facades\SSH',
-		'Str'             => 'Illuminate\Support\Str',
-		'URL'             => 'Illuminate\Support\Facades\URL',
-		'Validator'       => 'Illuminate\Support\Facades\Validator',
-		'View'            => 'Illuminate\Support\Facades\View',
-        'Debug'        => 'Barryvdh\Debugbar\Facade',
-        'QForm'           => 'Triggerdesign\Quickforms\QuickFormFacade',
+		'SSH'               => 'Illuminate\Support\Facades\SSH',
+		'Str'               => 'Illuminate\Support\Str',
+		'URL'               => 'Illuminate\Support\Facades\URL',
+		'Validator'         => 'Illuminate\Support\Facades\Validator',
+		'View'              => 'Illuminate\Support\Facades\View',
+        'Debug'             => 'Barryvdh\Debugbar\Facade',
+        'QForm'             => 'Triggerdesign\Quickforms\QuickFormFacade',
+        'Confide'           => 'Zizaco\Confide\Facade',
 
 
 	),

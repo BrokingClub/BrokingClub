@@ -14,7 +14,7 @@
                 {{ QForm::text('last_name', 'Schneider') }}
 
                 {{ QForm::label('email', 'Email-Adress:') }}
-                {{ QForm::text('email', 'simon@broking.club') }}
+                {{ QForm::text('email', 'simon@broking.club',  array('readonly' => true)) }}
                 {{ QForm::btnPrimary('Submit', 'check') }}
             {{ QForm::close() }}
         {{ Fickle::closeTabContent() }}
