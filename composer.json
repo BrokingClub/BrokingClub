@@ -7,7 +7,9 @@
 		"laravel/framework": "4.2.*",
         "barryvdh/laravel-debugbar": "1.*",
         "barryvdh/laravel-ide-helper": "1.*",
-        "patricktalmadge/bootstrapper": "~5"
+        "patricktalmadge/bootstrapper": "~5",
+        "zizaco/confide": "~4.0@dev",
+        "guzzlehttp/guzzle": "~4.0"
 
 	},
     "require-dev": {

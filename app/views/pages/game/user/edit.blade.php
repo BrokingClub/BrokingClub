@@ -7,14 +7,21 @@
         {{ Fickle::openTabContent('profile') }}
             {{ QForm::open() }}
 
-                {{ QForm::label('first_name', 'First Name:') }}
+                {{ QForm::label('nickname', 'Nickname:') }}
+                {{ QForm::text('nickname', 'SimonSchneider') }}
+
+                {{ QForm::label('first_name', 'First name:') }}
                 {{ QForm::text('first_name', 'Simon') }}
 
-                {{ QForm::label('last_name', 'Last Name:') }}
+                {{ QForm::label('last_name', 'Last name:') }}
                 {{ QForm::text('last_name', 'Schneider') }}
 
+                {{ QForm::label('career', 'Career:') }}
+                {{ QForm::readonly('career', 'Newly rich Snob') }}
+
                 {{ QForm::label('email', 'Email-Adress:') }}
-                {{ QForm::text('email', 'simon@broking.club',  array('readonly' => true)) }}
+                {{ QForm::readonly('email', 'simon@broking.club') }}
+
                 {{ QForm::btnPrimary('Submit', 'check') }}
             {{ QForm::close() }}
         {{ Fickle::closeTabContent() }}

@@ -51,6 +51,11 @@ class Form extends \Bootstrapper\Form{
         return $this->element('text', $name, $inputHtml, $labelHtml, $options);
     }
 
+    public function readonly($name, $value = null, $options = array()){
+        $options['readonly'] = 'readonly';
+        return $this->text($name, $value, $options);
+    }
+
     public function url($name, $value = null, $options = array()){
         $inputHtml = parent::url($name, $this->getValue($name, $value, $options), $this->argsOf($name, $options));
         $labelHtml = $this->getLabelHtml($name, $options);
