@@ -17,7 +17,11 @@ class UsersController extends BaseController
      */
     public function create()
     {
-        return View::make(Config::get('confide::signup_form'));
+       // return View::make(Config::get('confide::signup_form'));
+
+        $this->setTitle('Register');
+
+        return $this->makeView('pages.game.user.register');
     }
 
     /**

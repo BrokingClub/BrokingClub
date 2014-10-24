@@ -37,6 +37,7 @@ class Form extends \Bootstrapper\Form{
         $this->labelTranslationBase = $this->getConfig("labelTranslationBase");
 
         $this->bButton = new \Bootstrapper\Button();
+        $this->bInputGroup = new \Bootstrapper\InputGroup();
 
     }
 
@@ -49,6 +50,24 @@ class Form extends \Bootstrapper\Form{
         $labelHtml = $this->getLabelHtml($name, $options);
 
         return $this->element('text', $name, $inputHtml, $labelHtml, $options);
+    }
+
+    public function iconInput($name, $icon = "user", $type = "text"){
+        $options = array();
+
+        $options['prepend'] = '<div class="input-group ls-group-input">';
+        $options['append'] = '<span class="input-group-addon"><i class="fa fa-'. $icon .'"></i></span></div>';
+        $options['noLabel'] = true;
+        $options['placeholder'] = $this->getLabelText($name, $options);
+
+        switch($type){
+            case 'password':
+                return $this->password($name, $options);
+                break;
+            default:
+                return $this->text($name , null, $options);
+                break;
+        }
     }
 
     public function readonly($name, $value = null, $options = array()){
@@ -84,9 +103,9 @@ class Form extends \Bootstrapper\Form{
         return $this->element('select', $name, $inputHtml, $labelHtml, $options);
     }
 
-    public function submit($value = false, $options = array())
+    public function submit($value = 'submit', $options = array())
     {
-        return parent::submit($this->getAutoTranslation('submit'), $options);
+        return parent::submit($this->getAutoTranslation($value), $options);
     }
 
     public function btn($type = "default", $value = false, $icon = false){
@@ -127,9 +146,6 @@ class Form extends \Bootstrapper\Form{
         return $this->btn('warning', $value, $icon);
     }
 
-
-
-
     private function element($type, $name, $inputHtml, $labelHtml = null, $options = array()){
         $errors = $this->getErrors($name);
 
@@ -141,22 +157,40 @@ class Form extends \Bootstrapper\Form{
             $containerCss .= "has-no-error has-no-feedback ";
         }
 
-        $output = '<div class="'. $containerCss .'">';
+        $container = '<div class="'. $containerCss .'">';
 
-        $output .= $labelHtml;
-        $output .= $inputHtml;
+        $inner = $labelHtml;
+        $inner .= $inputHtml;
 
         if($errors){
             $error = (is_array($errors))? reset($errors) : $errors;
-            $output .= "<b class='text-danger'>". ucfirst($error). "</b>";
+            $inner .= "<b class='text-danger'>". ucfirst($error). "</b>";
         }
 
-        $output .= '</div>';
+
+        if(isset($options['prepend']))
+            $inner = $options['prepend'] . $inner;
+
+        if(isset($options['append']))
+            $inner = $inner . $options['append'];
+
+
+        $output = $container . $inner . '</div>';
 
         return $output;
     }
 
     private function getLabelHtml($name, $options){
+        if(isset($options['noLabel']) && $options['noLabel'])
+            return '';
+
+        $labelText = $this->getLabelText($name, $options);
+        if(empty($labelText)) return null;
+
+        return parent::label($name, $labelText, array());
+    }
+
+    private function getLabelText($name, $options){
         $labelText = (isset($options['label'])) ? $options['label'] : null;
 
         if(!$labelText && isset($options['translation'])){
@@ -167,9 +201,9 @@ class Form extends \Bootstrapper\Form{
             $labelText = $this->getAutoTranslation($name);
         }
 
-        if(!$labelText) return null;
+        if(!$labelText) $labelText = '';
 
-        return parent::label($name, $labelText, array());
+        return $labelText;
     }
 
     private function getAutoTranslation($name){
