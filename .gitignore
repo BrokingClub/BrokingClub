@@ -1,7 +1,7 @@
-/bootstrap/compiled.php
-/vendor
+/laravel/bootstrap/compiled.php
+/laravel/vendor
 .idea/
-/public/fickle
+/laravel/public/fickle
 composer.phar
 composer.lock
 .env.*.php
@@ -9,3 +9,5 @@ composer.lock
 .DS_Store
 Thumbs.db
 _ide_helper.php
+node_modules
+/wordpress
