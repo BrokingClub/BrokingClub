@@ -11,8 +11,6 @@
 
 {{{ STARTCONTENT }}}
 
-hello
-
 # Introduction 
 
 ## Purpose 

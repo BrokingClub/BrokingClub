@@ -9,12 +9,14 @@ $documo = new Triggerdesign\Documo();
 $documo->defaultDirectory = '../../doc/';
 
 $documo->addFile('Documentation'            , 'Documentation.md', 'docs', true);
+
 $documo->addFile('Use cases'                , 'UseCases.md',  'usecases', true);
 $documo->addFile('Use case login'           , 'UseCase_Login.md', 'uc_login', false);
 $documo->addFile('Use case exchangestocks'  , 'UseCase_ExchangeStocks.md', 'uc_exchangestocks', false);
 $documo->addFile('Use case change password' , 'UseCase_ChangePassword.md', 'uc_changepassword', false);
 $documo->addFile('Use case manageclubs'     , 'UseCase_ManageClubs.md', 'uc_manageclubs', false);
-$documo->addFile('Software Requirements Specification',  'srs.md', 'docs', true);
+
+$documo->addFile('Software Requirements Specification',  'SoftwareRequirementsSpecification.md', 'srs', true);
 
 $documo->parseMarkdown();
 

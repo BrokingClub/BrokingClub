@@ -16,7 +16,7 @@ class Documo {
     private $markdown;
     private $variables = array();
     //private static $shortCodePattern = '\[([a-z]{2,15})\s([a-zA-Z="0-9]*)\]';
-    private static $shortCodePattern = '\[\[([a-z0-9]{2,15}) ([\sa-zA-Z="0-9.]*)\]\]';
+    private static $shortCodePattern = '\[\[([a-z0-9]{2,15}) ([\sa-zA-Z="0-9.:\/]*)\]\]';
     private static $varOutputPattern = '\[\[\$([a-zA-Z0-9]*)\]\]';
     private $navigation = array();
     private $loaded = false;
@@ -27,7 +27,7 @@ class Documo {
     }
 
     public function loadFile(){
-        if(!$this->loaded) return false;
+        if($this->loaded) return false;
 
         $this->activeFile = $this->getActiveFile();
         $this->markdownPath = $this->activeFile['path'];
@@ -84,12 +84,12 @@ class Documo {
             case "include":
                 if(!isset($options["url"]))
                     return "_NO_URL_SET";
-                $fileContent = file_get_contents($options['url']);
+                $fileContent = utf8_decode(file_get_contents($options['url']));
 
                 if(!$fileContent)
                     return "_FILE_CONTENTS_NOT_FOUND_";
                 else
-                    return $fileContent;
+                    return trim($fileContent);
             case "printvar":
                 if(isset($this->variables[$options['key']]))
                     return $this->variables[$options['key']];
@@ -123,7 +123,8 @@ class Documo {
 
 
     public function addFile($title, $path, $shortname, $navigation = false){
-        $fileArray = array('title' => $name, 'path' => $this->defaultDirectory . $path, 'shortname' => $shortname, 'navigation' => $navigation);
+        $fileArray = array('title' => $title, 'path' => $this->defaultDirectory . $path, 'shortname' => $shortname, 'navigation' => $navigation);
+
 
         $this->navigation[] = $fileArray;
     }
