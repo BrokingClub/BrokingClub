@@ -137,7 +137,8 @@
             return html;
         },
         markdownToHtml: function (markdownText) {
-            return markdown.toHTML(markdownText);
+            //return markdown.toHTML(markdownText);
+            return marked(markdownText);
         },
         createIndexes: function(html){
             var base = this;

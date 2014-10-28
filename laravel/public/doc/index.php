@@ -24,7 +24,7 @@ $documo->parseMarkdown();
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Broking Club Documentation</title>
+        <title>3 Broking Club Documentation</title>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
@@ -34,7 +34,7 @@ $documo->parseMarkdown();
         <link href="/css/documo/documo.jquery.css?v=<?php echo time() ?>" rel="stylesheet" />
         <link href="/css/documo/github-markdown.css" rel="stylesheet" />
 
-        <script src="/js/documo/markdown.js"></script>
+        <script src="/js/documo/marked.min.js"></script>
         <script src="/js/documo/jquery.viewport.js"></script>
         <script src="/js/documo/documo.jquery.js?v=<?php echo time() ?>"></script>
 
@@ -63,7 +63,7 @@ $documo->parseMarkdown();
             </div>
 
             <script>
-                 jQuery( document ).ready(function( $ ) {
+                 jQuery( document ).ready(function( $ ){
                     $('#markdown-viewer').documo({'markdownContainer' : '#markdown-original'});
 
 
