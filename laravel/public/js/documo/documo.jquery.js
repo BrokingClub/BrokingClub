@@ -79,6 +79,7 @@
 
             this.setWidths();
             this.linkImages();
+            this.highlightCode();
         },
         setWidths: function(){
             var totalWidth = $('.documentation-container').width();
@@ -97,6 +98,11 @@
                 $(image).wrap(link);
 
 
+            });
+        },
+        highlightCode: function(){
+            $('.documo-content code').each(function(i, block) {
+                hljs.highlightBlock(block);
             });
         },
         setTriggers: function(){

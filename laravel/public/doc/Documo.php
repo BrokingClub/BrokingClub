@@ -16,7 +16,7 @@ class Documo {
     private $markdown;
     private $variables = array();
     //private static $shortCodePattern = '\[([a-z]{2,15})\s([a-zA-Z="0-9]*)\]';
-    private static $shortCodePattern = '\[\[([a-z0-9]{2,15}) ([\sa-zA-Z="0-9.:\/]*)\]\]';
+    private static $shortCodePattern = '\[\[([a-z0-9]{2,15}) ([\sa-zA-Z="0-9.:\/_\-]*)\]\]';
     private static $varOutputPattern = '\[\[\$([a-zA-Z0-9]*)\]\]';
     private $navigation = array();
     private $loaded = false;

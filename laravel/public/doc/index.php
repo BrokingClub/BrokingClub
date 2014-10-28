@@ -33,8 +33,10 @@ $documo->parseMarkdown();
 
         <link href="/css/documo/documo.jquery.css?v=<?php echo time() ?>" rel="stylesheet" />
         <link href="/css/documo/github-markdown.css" rel="stylesheet" />
+        <link href="/js/documo/highlight/styles/github.css" rel="stylesheet" />
 
         <script src="/js/documo/marked.min.js"></script>
+        <script src=/js/documo/highlight/highlight.pack.js"></script>
         <script src="/js/documo/jquery.viewport.js"></script>
         <script src="/js/documo/documo.jquery.js?v=<?php echo time() ?>"></script>
 
@@ -65,8 +67,6 @@ $documo->parseMarkdown();
             <script>
                  jQuery( document ).ready(function( $ ){
                     $('#markdown-viewer').documo({'markdownContainer' : '#markdown-original'});
-
-
 
                      $('a.lightbox-image').fancybox({
                          theme : 'dark'
