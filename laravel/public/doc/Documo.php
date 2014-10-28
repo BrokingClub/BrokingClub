@@ -88,8 +88,12 @@ class Documo {
 
                 if(!$fileContent)
                     return "_FILE_CONTENTS_NOT_FOUND_";
-                else
-                    return trim($fileContent);
+                else {
+                    $html = "```" . $this->getFileLanguage($options['url']);
+                    $html .= trim($fileContent);
+                    $html .= "```";
+                    return $html;
+                }
             case "printvar":
                 if(isset($this->variables[$options['key']]))
                     return $this->variables[$options['key']];
@@ -98,6 +102,22 @@ class Documo {
 
         }
     }
+
+    private function getFileLanguage($path){
+        if($this->endsWith($path, '.feature')) return "gherkin";
+        if($this->endsWith($path, '.blade.php')) return "html";
+        if($this->endsWith($path, '.php')) return "php";
+        if($this->endsWith($path, '.js')) return "javascript";
+        if($this->endsWith($path, '.html')) return "html";
+
+        return "";
+    }
+
+    function endsWith($haystack, $needle)
+    {
+        return $needle === "" || substr($haystack, -strlen($needle)) === $needle;
+    }
+
 
     private function readOptions($optionsString){
         $options = array();

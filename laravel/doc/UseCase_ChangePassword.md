@@ -31,9 +31,8 @@ The server will verify this action in three steps:
 If the entered information is correct the user will receive a confirmation message that the password has been changed.
 
 ![Activity Diagram](http://blog.broking.club/wp-content/uploads/2014/10/Activity-Diagram-Edit-Profile.png)
-```gherkin
 [[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/changepassword.feature"]]
-```
+
 ## 	Alternative Flows
 ### Incorrect password
 The current password field will be highlighted and the user receives an error message.
