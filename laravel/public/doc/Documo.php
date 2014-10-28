@@ -89,9 +89,10 @@ class Documo {
                 if(!$fileContent)
                     return "_FILE_CONTENTS_NOT_FOUND_";
                 else {
-                    $html = "```" . $this->getFileLanguage($options['url']);
+                    $html = "```" . $this->getFileLanguage($options['url']) . "\r\n";
                     $html .= trim($fileContent);
-                    $html .= "```";
+                    $html .= "\r\n```";
+
                     return $html;
                 }
             case "printvar":
@@ -104,7 +105,7 @@ class Documo {
     }
 
     private function getFileLanguage($path){
-        if($this->endsWith($path, '.feature')) return "gherkin";
+        if($this->endsWith($path, '.feature')) return "gherkin ";
         if($this->endsWith($path, '.blade.php')) return "html";
         if($this->endsWith($path, '.php')) return "php";
         if($this->endsWith($path, '.js')) return "javascript";
