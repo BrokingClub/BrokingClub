@@ -19,6 +19,11 @@ A user can edit his profile. The user is able to change the passwortd, conform p
 ![Change password screenshot](http://broking.club/img/doc/screens/uc_changepassword.JPG)
 
 ### Change personal information
+The username can be changed by typing in a new one in the right text box. 
+A user is able to change personal information like the first and the last name. Those names are going to be typed in seperated text boxes. 
+If the user confirms the changes with the button, the names have to match the restrictions: 
+- username has to be unique
+- Only allowed signs in the names (e.q. no numbers)
 
 ### Change password
 
