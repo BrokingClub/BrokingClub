@@ -18,16 +18,30 @@ class Documo {
     //private static $shortCodePattern = '\[([a-z]{2,15})\s([a-zA-Z="0-9]*)\]';
     private static $shortCodePattern = '\[\[([a-z0-9]{2,15}) ([\sa-zA-Z="0-9.]*)\]\]';
     private static $varOutputPattern = '\[\[\$([a-zA-Z0-9]*)\]\]';
+    private $navigation = array();
+    private $loaded = false;
+    public $defaultDirectory = '';
 
-    public function __construct($markdownPath){
-        $this->markdownPath = $markdownPath;
+    public function __construct(){
 
-        if(!file_exists($markdownPath)){
-            throw new \Exception($markdownPath . " not found");
+    }
+
+    public function loadFile(){
+        if(!$this->loaded) return false;
+
+        $this->activeFile = $this->getActiveFile();
+        $this->markdownPath = $this->activeFile['path'];
+
+        if(!file_exists($this->markdownPath)){
+            throw new \Exception($this->markdownPath . " not found");
             return false;
         }
 
-        $this->markdownOri = file_get_contents($markdownPath);
+        $this->markdownOri = file_get_contents($this->markdownPath);
+
+        $this->loaded = true;
+
+
     }
 
     public function setVariables($variables){
@@ -35,6 +49,8 @@ class Documo {
     }
 
     public function parseMarkdown(){
+        $this->loadFile();
+
         $markdownOri = $this->markdownOri;
         $shortCodePattern = '|' . static::$shortCodePattern . '|';
         $varOutputPattern = '|' . static::$varOutputPattern . '|';
@@ -65,6 +81,15 @@ class Documo {
             case "setvar":
                 $this->variables[$options["key"]] = $options["value"];
                 return "";
+            case "include":
+                if(!isset($options["url"]))
+                    return "_NO_URL_SET";
+                $fileContent = file_get_contents($options['url']);
+
+                if(!$fileContent)
+                    return "_FILE_CONTENTS_NOT_FOUND_";
+                else
+                    return $fileContent;
             case "printvar":
                 if(isset($this->variables[$options['key']]))
                     return $this->variables[$options['key']];
@@ -93,6 +118,58 @@ class Documo {
 
     public function printMarkdown(){
         echo $this->markdown;
+    }
+
+
+
+    public function addFile($title, $path, $shortname, $navigation = false){
+        $fileArray = array('title' => $name, 'path' => $this->defaultDirectory . $path, 'shortname' => $shortname, 'navigation' => $navigation);
+
+        $this->navigation[] = $fileArray;
+    }
+
+    public function addNavigationFile($title, $path, $shortname){
+        return $this->addFile($title, $path, $shortname, true);
+    }
+
+    public function getActiveFile(){
+        $f = (isset($_GET['f'])) ? $_GET['f'] : null;
+
+        $defaultShortName = strtolower($this->navigation[0]['shortname']);
+
+        $activeShortName = null;
+
+        if((isset($_GET['f'])))
+            $activeShortName = strtolower($_GET['f']);
+        else
+            $activeShortName = $defaultShortName;
+
+        $activeFile = null;
+        foreach($this->navigation as $fileArray){
+            $shortName = strtolower($fileArray['shortname']);
+
+            if($shortName == $activeShortName) $activeFile = $fileArray;
+        }
+
+        return $activeFile;
+
+    }
+
+    public function buildNavigationList(){
+        $html = '<ul class="documo-navigation">';
+
+        foreach($this->navigation as $fileArray){
+            if(!$fileArray['navigation']) continue;
+
+            $title = $fileArray['title'];
+            $link = '?f=' . strtolower($fileArray['shortname']);
+
+            $html .= '<li><a title='. $title. ' href="'. $link .'">' . $title  . '</a></li>';
+        }
+
+        $html .= '</ul>';
+
+        return $html;
     }
 
 } 

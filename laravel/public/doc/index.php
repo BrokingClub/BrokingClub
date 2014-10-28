@@ -3,39 +3,18 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
 
-$dir = '../../doc/';
-
-$f = (isset($_GET['f'])) ? $_GET['f'] : 'srs';
-switch($f) {
-    case 'docs':
-        $file = 'Documentation.md';
-        break;
-    case 'usecases':
-        $file = 'UseCases.md';
-        break;
-    case 'uc_login':
-        $file = 'UseCase_Login.md';
-        break;
-    case 'uc_exchangestocks':
-        $file = 'UseCase_ExchangeStocks.md';
-        break;
-	case 'uc_changepassword':
-		$file = 'UseCase_ChangePassword.md';
-		break;
-	case 'uc_manageclubs':
-		$file = 'UseCase_ManageClubs.md';
-		break;
-    case 'srs':
-    default:
-        $file = 'SoftwareRequirementsSpecification.md';
-        break;
-}
-
-
-$filePath = $dir . $file;
-
 require_once('Documo.php') ;
-$documo = new Triggerdesign\Documo($filePath);
+$documo = new Triggerdesign\Documo();
+
+$documo->defaultDirectory = '../../doc/';
+
+$documo->addFile('Documentation'            , 'Documentation.md', 'docs', true);
+$documo->addFile('Use cases'                , 'UseCases.md',  'usecases', true);
+$documo->addFile('Use case login'           , 'UseCase_Login.md', 'uc_login', false);
+$documo->addFile('Use case exchangestocks'  , 'UseCase_ExchangeStocks.md', 'uc_exchangestocks', false);
+$documo->addFile('Use case change password' , 'UseCase_ChangePassword.md', 'uc_changepassword', false);
+$documo->addFile('Use case manageclubs'     , 'UseCase_ManageClubs.md', 'uc_manageclubs', false);
+$documo->addFile('Software Requirements Specification',  'srs.md', 'docs', true);
 
 $documo->parseMarkdown();
 
@@ -73,11 +52,7 @@ $documo->parseMarkdown();
                     <br/>
                     <b>Documentation</b>
                     <br/>
-                    <ul>
-                        <li><a href="?f=docs">Information about this documentation</a></li>
-                        <li><a href="?f=srs">Software Requirements Specification</a></li>
-                        <li><a href="?f=usecases">Use Cases</a></li>
-                    </ul>
+                   <?php echo $documo->buildNavigationList() ?>
                 </div>
 
                 <div id="markdown-viewer" class="documo-viewer pull-left">
