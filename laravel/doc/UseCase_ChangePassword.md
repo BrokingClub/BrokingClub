@@ -26,8 +26,13 @@ If the user confirms the changes with the button, the names have to match the re
 - Only allowed signs in the names (e.q. no numbers)
 
 ### Change password
+For changing the password the application needs the current password. 
+The user has to type in the new password twice. 
+If those changes are confirmed by the user, it will be checked whether the current password is the right one and the twice typed in new passwort matches together.
 
 ### Delete Account
+Deleting an user account requires the current password.
+After the password is checked the account is successfully deleted from the application. 
 
 ![Activity Diagram](http://blog.broking.club/wp-content/uploads/2014/10/Activity-Diagram-Edit-Profile.png)
 [[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/changepassword.feature"]]
