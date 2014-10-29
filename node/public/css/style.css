@@ -1,3 +1,12 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
 .progress {
 	height: 23px;
 	border-radius: 3px;
@@ -6,4 +15,23 @@
 .hljs {
     border-radius: 3px;
     white-space: pre;
+}
+
+.container {
+    height: 100%;
+}
+
+footer {
+    padding: 20px;
+    color: #fff;
+    background: #23241f;
+    font-size: large;
+}
+
+footer a {
+    color: #fff;   
+}
+
+footer a:hover {
+    color: #ddd;
 }
