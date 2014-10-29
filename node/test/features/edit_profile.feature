@@ -1,4 +1,4 @@
-Feature: change the password of my account
+Feature: change the personal information of my account
 	As a logged in user
 	I want to conform my profile
 	So I can correct my name or change my username
@@ -20,7 +20,7 @@ Feature: change the password of my account
 	Scenario: I do not enter an available username into the username field
 		Given I am logged in as testuser
 		Given a user with the username "Peter" already exists
-		And I enter the following text in first name: first_name 
+		And I enter the following text in first name: first_name
 		And I enter the following text in last name: last_name
 		And I enter the following text in username: "Peter"
 		Then I should see "Username already taken"	
