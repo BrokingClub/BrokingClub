@@ -33,6 +33,12 @@
 		
 		$http.get('/api/cucumber/features/' + feature.name).success(function(featureText){
 			$scope.featureText = featureText;
+            
+            setTimeout(function(){
+                $("div.gherkin").each(function(i, block){
+                    hljs.highlightBlock(block);
+                });
+            }, 1);
 		});
 		
 		$http.get('/api/cucumber/features/' + feature.name + '/test').success(function(data){
