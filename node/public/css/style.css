@@ -1,3 +1,7 @@
+* {
+    margin: 0;
+}
+
 html, body {
     height: 100%;
 }
@@ -17,15 +21,12 @@ body {
     white-space: pre;
 }
 
-.container {
-    height: 100%;
-}
-
 footer {
     padding: 20px;
     color: #fff;
     background: #23241f;
     font-size: large;
+    text-align: center;
 }
 
 footer a {
@@ -34,4 +35,15 @@ footer a {
 
 footer a:hover {
     color: #ddd;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto 0;
+}
+
+footer, .push {
+    height: 70px;
 }
