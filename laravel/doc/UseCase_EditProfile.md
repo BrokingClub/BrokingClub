@@ -44,8 +44,6 @@ After the password is checked the account is successfully deleted from the appli
 
 ![Activity Diagram](http://broking.club/img/doc/ad/ad_deleteAccount.png)
 
-![Activity Diagram](http://blog.broking.club/wp-content/uploads/2014/10/Activity-Diagram-Edit-Profile.png)
-
 
 ## 	Alternative Flows
 ### Incorrect password
