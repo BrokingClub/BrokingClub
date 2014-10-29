@@ -44,6 +44,8 @@ After the password is checked the account is successfully deleted from the appli
 
 ![Activity Diagram](http://broking.club/img/doc/ad/ad_deleteAccount.png)
 
+[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/deleteaccount.feature"]]
+
 
 ## 	Alternative Flows
 ### Incorrect password
