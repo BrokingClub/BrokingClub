@@ -1,6 +1,7 @@
 Feature: delete my user account
   As a logged in user
   I want to delete my user account
+  So I can finish the addiction to the game
 
   Scenario: Enter the correct password
     Given I am logged in as testuser
