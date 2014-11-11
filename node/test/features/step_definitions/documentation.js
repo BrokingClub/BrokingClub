@@ -1,11 +1,7 @@
-var wrapper = function () {
+module.exports = function () {
   this.World = require("../support/world.js").World;
 
-  this.Given(/^I am on the Cucumber.js GitHub repository$/, function(callback) {
-    callback();
-  });
-
-  this.When(/^I go to the README file$/, function(callback) {
+  this.Given(/^I am on the Broking Club documentation page$/, function(callback) {
     this.visit('http://broking.club/doc', callback);
   });
 
@@ -19,5 +15,3 @@ var wrapper = function () {
     }
   });
 };
-
-module.exports = wrapper;

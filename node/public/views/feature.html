@@ -1,5 +1,6 @@
-<blockquote class="feature" ng-bind="featureText"></blockquote>
+<div class="gherkin" ng-bind="featureText"></div>
+<br>
 <div class="progress">
 	<div class="progress-bar progress-bar-striped active" style="width: 100%" ng-class="getProgressClass()" ng-bind="getProgressText()"></div>
 </div>
-<div class="test" ng-show="stdout" ng-bind="stdout"></div>
+<div class="hljs" ng-show="stdout" ng-bind="stdout"></div>

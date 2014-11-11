@@ -1,5 +1,14 @@
-.feature {
-	white-space: pre;
+* {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .progress {
@@ -7,13 +16,34 @@
 	border-radius: 3px;
 }
 
-.test {
-	white-space: pre;
-	padding: 2px 4px;
-	font-size: 90%;
-	color: #fff;
-	background-color: #333;
-	border-radius: 3px;
-	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.25);
-	box-shadow: inset 0 -1px 0 rgba(0,0,0,.25);
+.hljs {
+    border-radius: 3px;
+    white-space: pre;
+}
+
+footer {
+    padding: 20px;
+    color: #fff;
+    background: #23241f;
+    font-size: large;
+    text-align: center;
+}
+
+footer a {
+    color: #fff;   
+}
+
+footer a:hover {
+    color: #ddd;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto 0;
+}
+
+footer, .push {
+    height: 70px;
 }
