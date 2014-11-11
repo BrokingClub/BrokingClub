@@ -4,14 +4,3 @@
 * [Blog](http://blog.broking.club)  
 * [JIRA](http://jira.it.dh-karlsruhe.de:8080/browse/BROKING)  
 * [OpenProject](http://op.it.dh-karlsruhe.de/projects/dhbw_bc)
-a
-sdsdsaasdasdasasdasdasdasd12312asd asodknmadsasd
-asdasdasd
-asdasd
-alksdnaksjd asdasd
-asdasd asdklasnd
-as
-dasdasdas asdasd asdjahbsdjkasd 
-as
-da123123 a6541sda56sd0
-sdasdasda12asdasd3 asdkjasndjka asdkjnasdns
