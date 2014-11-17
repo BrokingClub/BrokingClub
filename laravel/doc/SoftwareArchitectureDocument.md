@@ -26,6 +26,7 @@ This document provides a comprehensive architectural overview of the system, usi
 ```This section defines the purpose of the Software Architecture Document, in the overall project documentation, and briefly describes the structure of the document. The specific audiences for the document should be identified, with an indication of how they are expected to use the document.```
 
 ## Scope
+The scope of this document is to depict the architecture of the online stockmarket game BrokingClub created by Simon Schneider, Philipp Schemel and Marc Vornetran.
 
 ```A brief description of what the Software Architecture Document applies to; what is affected or influenced by this document.```
 
@@ -35,9 +36,16 @@ This document provides a comprehensive architectural overview of the system, usi
 
 ## References
 
+* [Software Requirements Sepcification](?f=srs)
+* [Use Cases](?f=usecases)
+
 ```This subsection should provide a complete list of all documents referenced elsewhere in the Software Architecture Document.  Each document should be identified by title, report number (if applicable), date, and publishing organization.  Specify the sources from which the references can be obtained. This information may be provided by reference to an appendix or to another document.```
 
 ## Overview
+The document covers the architectural overview of a game called BrokingClub. We will analyse the whole sytem from 
+
+Section 1 will describe this
+Section 2 this
 
 ```This subsection should describe what the rest of the Software Architecture Document contains and explain how the Software Architecture Document is organized.```
 
@@ -64,13 +72,15 @@ This document provides a comprehensive architectural overview of the system, usi
 
 ```This subsection names and defines the various layers and their contents, the rules that govern the inclusion to a given layer, and the boundaries between layers. Include a component diagram that shows the relations between layers. ```
 
-## Layers
+## Layers / Deployment view
+![Deployment View](http://broking.club/img/doc/deployment_view.jpg)
 
 ```For each layer, include a subsection with its name, an enumeration of the subsystems located in the layer, and a component diagram.```
 
 # Data View (optional)
 
 ```A description of the persistent data storage perspective of the system. This section is optional if there is little or no persistent data, or the translation between the Design Model and the Data Model is trivial.```
+![Data View](http://broking.club/img/doc/data_view.jpg)
 
 # Size and Performance
 
