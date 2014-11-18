@@ -1,0 +1,13 @@
+php artisan generate:resource player --fields="user_id:integer, avatar_id:integer, career_id:integer, level:integer"
+php artisan generate:resource image --fields="location:string, extension:string, title:string, owner_id:int"
+php artisan generate:resource club --fields="image_id:integer, teaser:string, description:text, slug:string, owner_id:int"
+php artisan generate:resource career --fields="key:string, name:string, description:text, income:integer, exp_speed:integer"
+php artisan generate:resource stock --fields="symbol:string, name:string, stock_category_id:integer"
+php artisan generate:resource stockCategory --fields="name:string"
+php artisan generate:resource stockValue --fields="stock_id:int, value:double"
+php artisan generate:resource purchase --fields="user_id:integer,stock_id:integer, ammount:integer, mode:string"
+
+Changed:
+added value to stockvalue
+symbol in stock is string not int
+purchase table

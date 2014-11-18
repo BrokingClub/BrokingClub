@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>PHP</ID>
+  <OriginalElement>\Zizaco\Confide\ConfideUserInterface</OriginalElement>
+  <nodes>
+    <node x="128.5" y="146.0">\User</node>
+    <node x="0.0" y="226.0">\UsersController</node>
+    <node x="75.0" y="0.0">\Zizaco\Confide\ConfideUserInterface</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="\User" target="\Zizaco\Confide\ConfideUserInterface">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="\UsersController" target="\User">
+      <point x="0.0" y="-136.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="369.0" y="296.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+    <Category>Constants</Category>
+  </Categories>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
