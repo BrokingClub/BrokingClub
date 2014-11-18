@@ -17,6 +17,7 @@ $documo->addFile('Use case edit profile'    , 'UseCase_EditProfile.md', 'uc_edit
 $documo->addFile('Use case manageclubs'     , 'UseCase_ManageClubs.md', 'uc_manageclubs', false);
 
 $documo->addFile('Software Requirements Specification',  'SoftwareRequirementsSpecification.md', 'srs', true);
+$documo->addFile('Software Architecture Document',  'SoftwareArchitectureDocument.md', 'sad', true);
 
 $documo->parseMarkdown();
 

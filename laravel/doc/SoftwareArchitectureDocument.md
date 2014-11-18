@@ -16,7 +16,11 @@
 
 
 # Introduction
+<<<<<<< HEAD
 test
+=======
+
+>>>>>>> origin/bc-3
 ```The introduction of the Software Architecture Document should provide an overview of the entire Software Architecture Document. It should include the purpose, scope, definitions, acronyms, abbreviations, references, and overview of the Software Architecture Document.```
 
 ## Purpose
@@ -67,6 +71,7 @@ Section 2 this
 #  Implementation View
 
 ```This section describes the overall structure of the implementation model, the decomposition of the software into layers and subsystems in the implementation model, and any architecturally significant components.```
+<<<<<<< HEAD
 
 ## Overview
 
@@ -74,6 +79,18 @@ Section 2 this
 
 ## Layers / Deployment view
 ![Deployment View](http://broking.club/img/doc/deployment_view.jpg)
+=======
+# Logical View
+## Overview
+![Architectural Representation](http://broking.club/img/doc/diagrams/laravel_mvc_new.jpg)
+```This subsection names and defines the various layers and their contents, the rules that govern the inclusion to a given layer, and the boundaries between layers. Include a component diagram that shows the relations between layers. ```
+
+## Architecturally Significant Design Packages
+
+
+# Deployment view
+![Deployment View](http://broking.club/img/doc/diagrams/deployment_view.png)
+>>>>>>> origin/bc-3
 
 ```For each layer, include a subsection with its name, an enumeration of the subsystems located in the layer, and a component diagram.```
 
