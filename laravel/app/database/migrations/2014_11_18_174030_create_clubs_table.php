@@ -19,7 +19,7 @@ class CreateClubsTable extends Migration {
 			$table->string('teaser');
 			$table->text('description');
 			$table->string('slug');
-			$table->int('owner_id');
+			$table->integer('owner_id');
 			$table->timestamps();
 		});
 	}

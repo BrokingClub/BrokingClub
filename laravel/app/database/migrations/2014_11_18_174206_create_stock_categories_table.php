@@ -12,7 +12,7 @@ class CreateStockCategoriesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('stockCategories', function(Blueprint $table)
+		Schema::create('stock_categories', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('name');

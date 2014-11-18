@@ -5,3 +5,7 @@ php artisan generate:resource career --fields="key:string, name:string, descript
 php artisan generate:resource stock --fields="symbol:string, name:string, stock_category_id:integer"
 php artisan generate:resource stockCategory --fields="name:string"
 php artisan generate:resource stockValue --fields="stock_id:int, value:double"
+
+Changed:
+added value to stockvalue
+symbol in stock is string not int
