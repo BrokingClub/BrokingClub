@@ -1,9 +1,8 @@
 Feature: Documentation feature
-  As a user of cucumber.js
-  I want to have documentation on cucumber
-  So that I can concentrate on building awesome applications
+  As a user of Broking Club
+  I want to have documentation of the project
+  So that I can understand the features of the game
 
   Scenario: Reading documentation
-    Given I am on the Cucumber.js GitHub repository
-    When I go to the README file
+    Given I am on the Broking Club documentation page
     Then I should see "Broking Club Documentation" as the page title
