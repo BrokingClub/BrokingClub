@@ -67,13 +67,16 @@ Section 2 this
 #  Implementation View
 
 ```This section describes the overall structure of the implementation model, the decomposition of the software into layers and subsystems in the implementation model, and any architecturally significant components.```
-
+# Logical View
 ## Overview
-
+![Architectural Representation](http://broking.club/img/doc/diagrams/laravel_mvc_new.jpg)
 ```This subsection names and defines the various layers and their contents, the rules that govern the inclusion to a given layer, and the boundaries between layers. Include a component diagram that shows the relations between layers. ```
 
-## Layers / Deployment view
-![Deployment View](http://broking.club/img/doc/deployment_view.jpg)
+## Architecturally Significant Design Packages
+
+
+# Deployment view
+![Deployment View](http://broking.club/img/doc/diagrams/deployment_view.png)
 
 ```For each layer, include a subsection with its name, an enumeration of the subsystems located in the layer, and a component diagram.```
 

@@ -7,8 +7,7 @@
         {{ Fickle::openTabContent('profile') }}
             {{ QForm::open() }}
 
-                {{ QForm::label('nickname', 'Nickname:') }}
-                {{ QForm::text('nickname', 'SimonSchneider') }}
+                {{ QForm::text('username', 'SimonSchneider') }}
 
                 {{ QForm::label('first_name', 'First name:') }}
                 {{ QForm::text('first_name', 'Simon') }}
