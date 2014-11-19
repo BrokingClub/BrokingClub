@@ -1,6 +1,6 @@
 <?php
 
-class BaseController extends UsersController
+class BaseController extends Controller
 {
 
     protected $data = array();
