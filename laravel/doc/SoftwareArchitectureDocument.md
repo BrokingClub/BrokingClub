@@ -41,6 +41,7 @@ The scope of this document is to depict the architecture of the online stockmark
 
 * [Software Requirements Sepcification](?f=srs)
 * [Use Cases](?f=usecases)
+* 
 
 ```This subsection should provide a complete list of all documents referenced elsewhere in the Software Architecture Document.  Each document should be identified by title, report number (if applicable), date, and publishing organization.  Specify the sources from which the references can be obtained. This information may be provided by reference to an appendix or to another document.```
 
@@ -89,7 +90,7 @@ __TODO__
 ## Layers / Deployment view
 For our system we need a database, a development environment, a version control, a deployment system and of course a web server for the enduser. 
 This diagram illustrates how these layers work together.
-![Deployment View](http://broking.club/img/doc/deployment_view.jpg)
+![Deployment View](http://broking.club/img/doc/diagrams/deployment_view.png)
 
 # Logical View
 ## Overview
@@ -104,7 +105,7 @@ The PHP Framework Laravel provides a clean implementation of the MVC-Concept. In
 To store the data of our users and the transactions they started we need a good database planning. In this ERM you can see how the data will be structured in our game.
 The stock values table will be filled by our NodeJS Tracker, that received the data from the Yahoo finance API. Persistence is realised via the Laravel ORM Eloquent.
 
-![Data View](http://broking.club/img/doc/data_view.jpg)
+![Data View](http://broking.club/img/doc/diagrams/data_view.png)
 
 # Size and Performance
 The performance of the system is very depended on the system it is running on. High bandwidth and fast page loading is important for a fluent gaming experience. 
