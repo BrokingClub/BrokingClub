@@ -66,6 +66,7 @@ The application BrokingClub will be deployed on a nginx http server with NodeJS 
 ## Security
 The system has to be secured by different methods, so the users can make online payments for example. 
 Those security is provided by our MVC framework Laravel. Laravel provides facilities for strong AES encryption via the mcrypt PHP extension.
+Laravel aims to make implementing authentication very simple. In fact, almost everything is configured for you out of the box.
 
 ```This section describes the software requirements and objectives that have some significant impact on the architecture, for example, safety, security, privacy, use of an off-the-shelf product, portability, distribution, and reuse. It also captures the special constraints that may apply: design and implementation strategy, development tools, team structure, schedule, legacy code, and so on.```
 
