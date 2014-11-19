@@ -16,11 +16,7 @@
 
 
 # Introduction
-<<<<<<< HEAD
-test
-=======
 
->>>>>>> origin/bc-3
 ```The introduction of the Software Architecture Document should provide an overview of the entire Software Architecture Document. It should include the purpose, scope, definitions, acronyms, abbreviations, references, and overview of the Software Architecture Document.```
 
 ## Purpose
