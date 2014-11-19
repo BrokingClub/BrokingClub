@@ -49,7 +49,13 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 
 App::error(function(Exception $exception, $code)
 {
+    $_SERVER['DB_DATABASE'] = "DO NOT";
+    $_SERVER['DB_USERNAME'] = "READ MY";
+    $_SERVER['DB_PASSWORD'] = "FUCKING SECRETS!";
+
+
 	Log::error($exception);
+
 });
 
 /*
