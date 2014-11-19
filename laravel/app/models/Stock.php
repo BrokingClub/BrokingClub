@@ -1,5 +1,6 @@
 <?php
 
-class Stock extends \Eloquent {
+class Stock extends Eloquent
+{
 	protected $fillable = [];
 }

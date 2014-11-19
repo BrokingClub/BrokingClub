@@ -27,7 +27,7 @@ This document provides a comprehensive architectural overview of the system, usi
 
 ## Scope
 The scope of this document is to depict the architecture of the online stockmarket game BrokingClub created by Simon Schneider, Philipp Schemel and Marc Vornetran.
-
+Some parts of this documentation have been automatically created by our IDE PhpStorm. It can automatically convert PHP code into nice diagrams (data, class etc.).
 ```A brief description of what the Software Architecture Document applies to; what is affected or influenced by this document.```
 
 ## Definitions, Acronyms and Abbreviations
@@ -35,6 +35,7 @@ The scope of this document is to depict the architecture of the online stockmark
 * ERM: 
 * MVC: 
 * API: 
+* IDE: 
 ```This subsection should provide the definitions of all terms, acronyms, and abbreviations required to properly interpret the Software Architecture Document.  This information may be provided by reference to the project Glossary.```
 
 ## References
@@ -99,7 +100,7 @@ The PHP Framework Laravel provides a clean implementation of the MVC-Concept. In
 ```This subsection names and defines the various layers and their contents, the rules that govern the inclusion to a given layer, and the boundaries between layers. Include a component diagram that shows the relations between layers. ```
 
 ## Architecturally Significant Design Packages
-
+![Architecture Overview](http://broking.club/img/doc/diagrams/architecture_overview.png)
 
 # Data View (optional)
 To store the data of our users and the transactions they started we need a good database planning. In this ERM you can see how the data will be structured in our game.
