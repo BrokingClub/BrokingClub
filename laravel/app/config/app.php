@@ -126,7 +126,8 @@ return array(
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Triggerdesign\Quickforms\QuickformsServiceProvider',
         'Bootstrapper\BootstrapperServiceProvider',
-        'Zizaco\Confide\ServiceProvider'
+        'Zizaco\Confide\ServiceProvider',
+        'Lavary\Menu\ServiceProvider',
 
 	),
 
@@ -197,6 +198,7 @@ return array(
         'Debug'             => 'Barryvdh\Debugbar\Facade',
         'QForm'             => 'Triggerdesign\Quickforms\QuickFormFacade',
         'Confide'           => 'Zizaco\Confide\Facade',
+        'Menu'              => 'Lavary\Menu\Facade',
 
 
 	),

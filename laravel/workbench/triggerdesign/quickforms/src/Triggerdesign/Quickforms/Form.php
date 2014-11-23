@@ -115,13 +115,14 @@ class Form extends \Bootstrapper\Form{
 
 
         switch($type){
-            case 'primary': $button =  $this->bButton->primary($value); break;
+            case 'primary': $button =  $this->bButton->primary($value)->submit(); break;
             case 'danger': $button = $this->bButton->danger($value); break;
             case 'success': $button = $this->bButton->success($value); break;
             case 'warning': $button = $this->bButton->warning($value); break;
             default:
                 $button = $this->bButton->normal($value, array());
         }
+
 
         if($icon){
             $button = $button->withIcon('<i class="fa fa-' . $icon . '"></i>', false);

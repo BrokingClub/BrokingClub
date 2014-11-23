@@ -68,7 +68,14 @@ class PlayersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+        $player = Player::findOrFail($id);
+        $user = $player->user;
+
+        $player->firstname = Input::get('firstname');
+        $player->lastname = Input::get('lastname');
+        $player->save();
+
+		return Redirect::route('profile', ['id' => $user->id])->withMessage('Profile has been updated');
 	}
 
 	/**

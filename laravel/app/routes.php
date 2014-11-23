@@ -19,10 +19,13 @@ Route::group(array('before' => 'auth'), function(){
     Route::get('/', 'HomeController@showWelcome');
     Route::resource('stocks', 'StocksController');
     Route::resource('clubs', 'ClubsController');
+    Route::resource('players', 'PlayersController');
+    Route::resource('images', 'ImagesController');
 
-    Route::get('profile', 'UsersController@edit');
+    Route::get('profile', ['as' => 'profile', 'uses' => 'UsersController@edit']);
     Route::post('profile', 'UsersController@update');
     Route::post('changePassword', 'UsersController@changepassword');
+    Route::post('users/{id}', ['as' => 'user.update', 'uses' => 'UsersController@update']);
 });
 
 // Confide routes
@@ -42,6 +45,7 @@ Route::get('login', ['as' => 'login', 'uses' => 'UsersController@login']);
 Route::post('login', ['as' => 'doLogin', 'uses' => 'UsersController@doLogin']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'UsersController@logout']);
 
+include('menu.php');
 
 
 

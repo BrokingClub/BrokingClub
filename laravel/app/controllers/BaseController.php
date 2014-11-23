@@ -47,6 +47,12 @@ class BaseController extends Controller
             $this->data['headTitle'] =  $this->data['title'] . ' | ' . $projectName;
         }
 
+        $this->data['mainMenu'] =  Menu::get('MainMenu');
+
+        if(Confide::user())
+            $this->data['theplayer'] = Confide::user()->player;
+        else
+            $this->data['theplayer'] = null;
     }
 
 

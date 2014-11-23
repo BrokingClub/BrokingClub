@@ -5,21 +5,20 @@
     {{ Fickle::openTabbedPanel(12,array('profile' => 'Personal Info', 'password' => 'Change Password',
         'club' => 'My Broking Club', 'delete' => 'Close Account')) }}
         {{ Fickle::openTabContent('profile') }}
-            {{ QForm::open() }}
+            {{ QForm::model($player, array('route' => array('players.update', $player->id), 'method' => 'PUT')) }}
 
-                {{ QForm::text('username', 'SimonSchneider') }}
+                {{ QForm::label('firstname', 'First name:') }}
+                {{ QForm::text('firstname') }}
 
-                {{ QForm::label('first_name', 'First name:') }}
-                {{ QForm::text('first_name', 'Simon') }}
-
-                {{ QForm::label('last_name', 'Last name:') }}
-                {{ QForm::text('last_name', 'Schneider') }}
+                {{ QForm::label('lastname', 'Last name:') }}
+                {{ QForm::text('lastname') }}
 
                 {{ QForm::label('career', 'Career:') }}
-                {{ QForm::readonly('career', 'Newly rich Snob') }}
+                {{ QForm::readonly('career', $player->career) }}
 
-                {{ QForm::label('email', 'Email-Adress:') }}
-                {{ QForm::readonly('email', 'simon@broking.club') }}
+                {{ QForm::readonly('email', $user->email) }}
+
+                {{ QForm::readonly('username', $user->username) }}
 
                 {{ QForm::btnPrimary('Submit', 'check') }}
             {{ QForm::close() }}

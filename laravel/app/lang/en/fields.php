@@ -4,7 +4,7 @@ return array(
     'username' => 'Username',
     'password' => 'Password',
     'password_confirmation' => 'Repeat password',
-    'email' => 'someone@email.com',
+    'email' => 'E-Mail',
     'submit_register' => 'Register now for free!',
     'submit_login' => 'Login',
     'login' => 'Login'

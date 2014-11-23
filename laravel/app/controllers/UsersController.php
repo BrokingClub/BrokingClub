@@ -57,6 +57,11 @@ class UsersController extends BaseController
                 );
             }
 
+            $newPlayer = new Player();
+            $newPlayer->user_id = $user->id;
+            $newPlayer->level = 1;
+            $newPlayer->save();
+
             return Redirect::action('UsersController@login')
                 ->with('notice', Lang::get('confide::confide.alerts.account_created'));
         } else {
@@ -218,7 +223,22 @@ class UsersController extends BaseController
     public function edit(){
         $this->setTitle('Edit');
 
+        $this->data['user'] = Confide::user();
+        $this->data['player'] = $this->data['user']->player;
+
         return $this->makeView('pages.game.user.edit');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     * PUT /users/{id}
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        //
     }
 
 }
