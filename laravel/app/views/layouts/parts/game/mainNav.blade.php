@@ -25,4 +25,9 @@
             </li>
         </ul>
     </li>
+    <li class="active">
+        <a class="active" href="index.html">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+        </a>
+    </li>
 </ul>

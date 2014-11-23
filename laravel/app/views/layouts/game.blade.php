@@ -32,7 +32,7 @@
                         @yield('content')
                     </div>
                 </div>
-            </div>test 123
+            </div>
 
         </section>
         @include('layouts.parts.game.rightWrapper')

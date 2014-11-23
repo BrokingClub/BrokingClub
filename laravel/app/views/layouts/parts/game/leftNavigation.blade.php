@@ -13,7 +13,7 @@
 
     <div class="phone-nav-box visible-xs">
         <a class="phone-logo" href="index.html" title="">
-            <h1>Fickle</h1>
+            <h1>Broking Club</h1>
         </a>
         <a class="phone-nav-control" href="javascript:void(0)">
             <span class="fa fa-bars"></span>
