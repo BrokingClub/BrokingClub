@@ -5,6 +5,11 @@ class BaseController extends Controller
 
     protected $data = array();
 
+    public function __construct()
+    {
+
+    }
+
 	/**
 	 * Setup the layout used by the controller.
 	 *

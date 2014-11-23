@@ -1,4 +1,4 @@
-@extends('layouts.lockscreen')
+@extends('......layouts.lockscreen')
 
 @section('content')
                 <div class="login-box">
@@ -8,6 +8,7 @@
 
                         </div>
                         <h3>login &middot get rich</h3>
+                        {{--
                         <div class="social-btn-login">
                             <ul>
                                 <li><a href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
@@ -18,37 +19,30 @@
                                 <li><a href="javascript:void(0)"><i class="fa fa-bitbucket"></i></a></li>
                             </ul>
                         </div>
+                        --}}
                     </div>
 
-                    <div class="login-form">
-                        <form id="form-login" action="#" class="form-horizontal ls_form">
-                            <div class="input-group ls-group-input">
-                                <input class="form-control" type="text" placeholder="Username">
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            </div>
+                    <div class="login-form clearfix">
 
+                            @include('partials.confide-flashmessages')
+                            {{ QForm::open(['url' => 'login', 'method' => 'POST']) }}
+                                {{ QForm::iconInput('email', 'envelope') }}
+                                {{ QForm::iconInput('password', 'lock', 'password') }}
+                                <div class="remember-me">
+                                    <input class="switchCheckBox" name="remember" type="checkbox" checked data-size="mini"
+                                           data-on-text="<i class='fa fa-check'><i>"
+                                           data-off-text="<i class='fa fa-times'><i>">
+                                    <span>Remember me</span>
+                                </div>
+                                <div class="input-group ls-group-input login-btn-box">
+                                    <button class="btn ls-dark-btn ladda-button col-md-12 col-sm-12 col-xs-12" data-style="slide-down">
+                                        <span class="ladda-label"><i class="fa fa-key"></i></span>
+                                    </button>
+                                    {{ HTML::link('users/forgot_password', 'Forget password', ['class' => 'forgot-password']) }}
+                                 </div>
 
-                            <div class="input-group ls-group-input">
+                            {{ QForm::close() }}
 
-                                <input type="password" placeholder="Password" name="password"
-                                       class="form-control" value="">
-                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                            </div>
-
-                            <div class="remember-me">
-                                <input class="switchCheckBox" type="checkbox" checked data-size="mini"
-                                       data-on-text="<i class='fa fa-check'><i>"
-                                       data-off-text="<i class='fa fa-times'><i>">
-                                <span>Remember me</span>
-                            </div>
-                            <div class="input-group ls-group-input login-btn-box">
-                                <button class="btn ls-dark-btn ladda-button col-md-12 col-sm-12 col-xs-12" data-style="slide-down">
-                                    <span class="ladda-label"><i class="fa fa-key"></i></span>
-                                </button>
-
-                                <a class="forgot-password" href="javascript:void(0)">Forgot password</a>
-                            </div>
-                        </form>
                     </div>
                     <div class="forgot-pass-box">
                         <form action="#" class="form-horizontal ls_form">
@@ -72,5 +66,7 @@
 @endsection
 
 @section('beforeFooter')
-{{ HTML::script('fickle/js/pages/login.js') }}
+{{-- HTML::script('fickle/js/pages/login.js') --}}
 @endsection
+
+

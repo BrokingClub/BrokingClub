@@ -25,6 +25,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
+                            @include('partials.flashmessages')
                             <h3 class="ls-top-header">{{ $title }}</h3>
                              @include('layouts.parts.game.breadcrumbs')
                         </div>

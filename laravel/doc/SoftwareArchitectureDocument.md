@@ -42,7 +42,8 @@ Some parts of this documentation have been automatically created by our IDE PhpS
 
 * [Software Requirements Sepcification](?f=srs)
 * [Use Cases](?f=usecases)
-* 
+* [Architecture of Laravel by laravelbook.com](http://laravelbook.com/laravel-architecture/)
+
 
 ```This subsection should provide a complete list of all documents referenced elsewhere in the Software Architecture Document.  Each document should be identified by title, report number (if applicable), date, and publishing organization.  Specify the sources from which the references can be obtained. This information may be provided by reference to an appendix or to another document.```
 
@@ -73,16 +74,17 @@ We will not write the authentication system completely by hand, instead we will 
 ```This section describes the software requirements and objectives that have some significant impact on the architecture, for example, safety, security, privacy, use of an off-the-shelf product, portability, distribution, and reuse. It also captures the special constraints that may apply: design and implementation strategy, development tools, team structure, schedule, legacy code, and so on.```
  
 # Use-Case View
-__TODO__
-```This section lists use cases or scenarios from the use-case model if they represent some significant, central functionality of the final system, or if they have a large architectural coverage - they exercise many architectural elements, or if they stress or illustrate a specific, delicate point of the architecture.```
+To see all of our use-cases you can check out the use case diagram: [Use case diagram](http://broking.club/img/doc/uc_diagram.png)
 
-
-```This section describes one or more physical network (hardware) configurations on which the software is deployed and run. It is a view of the Deployment Model. At a minimum for each configuration it should indicate the physical nodes (computers, CPUs) that execute the software, and their interconnections (bus, LAN, point-to-point, and so on.) Also include a mapping of the processes of the Process View onto the physical nodes.```
+Our most significant use cases are:
+* [Use Case: Login](?f=uc_login)
+* [Use Case: Edit Profile](?f=uc_editprofile)
+* [Use Case: Manage clubs](?f=uc_manageclubs)
+* [Use Case: Exchange stocks](?f=uc_exchangestocks)
 
 #  Implementation View
 __TODO__
 ```This section describes the overall structure of the implementation model, the decomposition of the software into layers and subsystems in the implementation model, and any architecturally significant components.```
-
 
 
 

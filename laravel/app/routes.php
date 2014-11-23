@@ -11,11 +11,19 @@
 |
 */
 
-Route::get('/', 'HomeController@showWelcome');
 
-Route::resource('stocks', 'StocksController');
-Route::resource('clubs', 'ClubsController');
-//
+
+
+
+Route::group(array('before' => 'auth'), function(){
+    Route::get('/', 'HomeController@showWelcome');
+    Route::resource('stocks', 'StocksController');
+    Route::resource('clubs', 'ClubsController');
+
+    Route::get('profile', 'UsersController@edit');
+    Route::post('profile', 'UsersController@update');
+    Route::post('changePassword', 'UsersController@changepassword');
+});
 
 // Confide routes
 Route::get('users/create', 'UsersController@create');
@@ -31,9 +39,9 @@ Route::get('users/logout', 'UsersController@logout');
 
 Route::get('register', ['as' => 'register', 'uses' => 'UsersController@create']);
 Route::get('login', ['as' => 'login', 'uses' => 'UsersController@login']);
+Route::post('login', ['as' => 'doLogin', 'uses' => 'UsersController@doLogin']);
+Route::get('logout', ['as' => 'logout', 'uses' => 'UsersController@logout']);
 
-Route::get('profile', 'UsersController@edit');
-Route::post('profile', 'UsersController@update');
-Route::post('changePassword', 'UsersController@changepassword');
+
 
 

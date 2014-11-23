@@ -10,6 +10,12 @@
 class UsersController extends BaseController
 {
 
+    public function __construct()
+    {
+       /*$this->beforeFilter('auth', ['except' => 'create', 'store', 'login', 'doLogin', 'confirm',
+                                        'forgotPassword', 'doForgotPassword']);*/
+    }
+
     /**
      * Displays the form for account creation
      *
@@ -18,10 +24,13 @@ class UsersController extends BaseController
     public function create()
     {
        // return View::make(Config::get('confide::signup_form'));
+        if (Confide::user()) {
+            return Redirect::to('/')->withError('You are already logged in.');
+        }
 
         $this->setTitle('Register');
 
-        return $this->makeView('pages.game.user.register');
+        return $this->makeView('pages.lockscreen.register');
     }
 
     /**
@@ -66,10 +75,12 @@ class UsersController extends BaseController
      */
     public function login()
     {
+
         if (Confide::user()) {
             return Redirect::to('/');
         } else {
-            return View::make(Config::get('confide::login_form'));
+            //return View::make(Config::get('confide::login_form'));
+            return $this->makeView('pages.lockscreen.login');
         }
     }
 
@@ -83,8 +94,10 @@ class UsersController extends BaseController
         $repo = App::make('UserRepository');
         $input = Input::all();
 
-        if ($repo->login($input)) {
-            return Redirect::intended('/');
+        $login = $repo->login($input);
+
+        if ($login) {
+            return Redirect::intended('/')->withMessage('You are now logged in.');
         } else {
             if ($repo->isThrottled($input)) {
                 $err_msg = Lang::get('confide::confide.alerts.too_many_attempts');
@@ -198,7 +211,7 @@ class UsersController extends BaseController
     {
         Confide::logout();
 
-        return Redirect::to('/');
+        return Redirect::to('/')->withInfo('You are now logged out.');
     }
 
 

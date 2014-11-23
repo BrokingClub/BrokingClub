@@ -225,7 +225,7 @@
         </a>
     </li>
     <li>
-        <a href="login.html">
+        <a href="logout">
             <i class="fa fa-power-off"></i>
         </a>
     </li>
