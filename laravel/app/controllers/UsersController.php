@@ -241,4 +241,30 @@ class UsersController extends BaseController
         //
     }
 
+    public function changePassword($id){
+        $rules = array(
+            'old_password'              => 'required',
+            'new_password'                  => 'required|confirmed|different:old_password',
+            'new_password_confirmation'     => 'required|different:old_password|same:new_password'
+        );
+
+        $user = Confide::user();
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails()) {
+            Session::flash('validationErrors', $validator->messages());
+            return Redirect::back()->withInput();
+        }
+
+        if(!Hash::check(Input::get('old_password'), $user->password)){
+            return Redirect::back()->withInput()->withError('Password is not correct.');
+        }
+
+        $user->password = Input::get('new_password');
+        $user->save();
+
+        return Redirect::back()->withMessage('Password has been changed.');
+
+    }
+
 }

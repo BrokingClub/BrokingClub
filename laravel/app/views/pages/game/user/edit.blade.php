@@ -24,7 +24,7 @@
         {{ Fickle::closeTabContent() }}
 
         {{ Fickle::openTabContent('password') }}
-            {{ QForm::open() }}
+            {{ QForm::open(['route' => 'user.changepassword']) }}
                 {{ QForm::label('old_password', 'Current Password:') }}
                 {{ QForm::password('old_password', '') }}
 
