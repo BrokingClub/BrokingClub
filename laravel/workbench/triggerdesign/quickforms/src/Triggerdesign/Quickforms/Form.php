@@ -232,6 +232,12 @@ class Form extends \Bootstrapper\Form{
     private function getErrors($name){
         $errors = \Session::get($this->errorSessionKey);
 
+        if(!$errors)
+            $errors = \Session::get(strtolower($this->errorSessionKey));
+
+        if(!$errors)
+            $errors = \Session::get('validationErrors');
+
         if(is_array($errors))
             return $this->getErrorsArray($name, $errors);
 

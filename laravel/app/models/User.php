@@ -8,6 +8,6 @@ class User extends BaseModel implements ConfideUserInterface
     use ConfideUser;
 
     public function player(){
-        return $this->belongsTo('Player');
+        return $this->hasOne('Player');
     }
 }

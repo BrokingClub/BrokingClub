@@ -1,3 +1,4 @@
+{{ debug(Session::all()) }}
 @if (Session::get('error'))
     <div class="alert alert-error alert-danger">
         @if (is_array(Session::get('error')))
@@ -6,6 +7,15 @@
             {{ Session::get('error') }}
         @endif
     </div>
+@endif
+@if (Session::has('validationErrors'))
+     <div class="alert alert-error alert-danger">
+        <ul>
+            @foreach(Session::get('validationErrors')->all() as $error)
+                <li>{{ $error }}</li>
+             @endforeach
+         </ul>
+     </div>
 @endif
 
 @if (Session::get('notice'))

@@ -4,11 +4,11 @@ class Player extends BaseModel {
 	protected $fillable = ['firstname', 'lastname'];
 
     public static $rules = array(
-        'firstname' => 'Min:3|Max:80|Alpha',
-        'lastname' => 'Min:3|Max:80|Alpha'
+        'firstname' => 'Min:3|Max:80|alpha_spaces',
+        'lastname' => 'Min:3|Max:80|alpha_spaces'
     );
 
     public function user(){
-        return $this->hasOne('User');
+        return $this->belongsTo('User');
     }
 }

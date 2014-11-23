@@ -21,19 +21,26 @@ class BaseModel extends \Eloquent{
         } else {
             // save the input to the current session
             Input::flash();
-            self::$validationMessages = $v->getMessages();
+
+            self::$validationMessages = $v->messages();
+            Session::flash('validationErrors',  self::$validationMessages);
             return false;
         }
     }
 
     public function validateAndSave($input = null){
+        if (is_null($input)) {
+            $input = Input::all();
+        }
+
         $validate = static::validate($input);
 
-        if(!$validate){
+        if($validate){
             $this->fill($input);
             $this->save();
-            return $this;
+            return true;
         } else {
+
             return false;
         }
 
