@@ -1,6 +1,6 @@
 <?php
 
-class Stock extends Eloquent
+class Stock extends BaseModel
 {
 	protected $fillable = [];
 }

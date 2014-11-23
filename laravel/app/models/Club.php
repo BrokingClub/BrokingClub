@@ -1,5 +1,5 @@
 <?php
 
-class Club extends \Eloquent {
+class Club extends \BaseModel {
 	protected $fillable = [];
 }

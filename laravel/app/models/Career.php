@@ -1,5 +1,5 @@
 <?php
 
-class Career extends \Eloquent {
+class Career extends \BaseModel {
 	protected $fillable = [];
 }

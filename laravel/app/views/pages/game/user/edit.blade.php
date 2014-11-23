@@ -1,7 +1,7 @@
 @extends('layouts.game')
 
 @section('content')
-
+    {{ dd($user->player()) }}
     {{ Fickle::openTabbedPanel(12,array('profile' => 'Personal Info', 'password' => 'Change Password',
         'club' => 'My Broking Club', 'delete' => 'Close Account')) }}
         {{ Fickle::openTabContent('profile') }}

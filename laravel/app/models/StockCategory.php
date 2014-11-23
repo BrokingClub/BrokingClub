@@ -1,6 +1,6 @@
 <?php
 
-class StockCategory extends \Eloquent {
+class StockCategory extends BaseModel {
 	protected $fillable = [];
     protected $table = "stock_categories";
 }
