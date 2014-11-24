@@ -1,1 +1,1 @@
-screen -S node forever /usr/bin/nodemon --exitcrash app.js
+screen -S node nodemon app.js
