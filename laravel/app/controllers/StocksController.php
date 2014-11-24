@@ -10,7 +10,13 @@ class StocksController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$stocks = Stock::all();
+
+        $this->data['stocks'] = $stocks;
+
+        $this->setTitle('Stocks');
+
+        return $this->makeView('pages.game.stock.index');
 	}
 
 	/**
