@@ -47,7 +47,10 @@
         {{ Fickle::closeTabContent() }}
 
         {{ Fickle::openTabContent('delete') }}
-            {{ QForm::btnDanger('Delete account', 'thumbs-down') }}
+            <a href="{{ URL::action('UsersController@delete', ['id' => $user->id]) }}" class="btn btn-danger">
+                <i class="fa fa-thumbs-down"></i> Delete account
+            </a>
+
         {{ Fickle::closeTabContent() }}
 
     {{ Fickle::closeTabbedPanel() }}

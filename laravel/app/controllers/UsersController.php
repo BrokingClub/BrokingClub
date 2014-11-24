@@ -221,6 +221,7 @@ class UsersController extends BaseController
 
 
     public function edit(){
+
         $this->setTitle('Edit');
 
         $this->data['user'] = Confide::user();
@@ -241,30 +242,60 @@ class UsersController extends BaseController
         //
     }
 
-    public function changePassword($id){
+    public function changePassword(){
+
         $rules = array(
-            'old_password'              => 'required',
+            'old_password'                  => 'required',
             'new_password'                  => 'required|confirmed|different:old_password',
             'new_password_confirmation'     => 'required|different:old_password|same:new_password'
         );
 
-        $user = Confide::user();
+        $user = User::find(Auth::user()->id);
         $validator = Validator::make(Input::all(), $rules);
 
+        //Is the input valid? new_password confirmed and meets requirements
         if ($validator->fails()) {
             Session::flash('validationErrors', $validator->messages());
             return Redirect::back()->withInput();
         }
 
+        //Is the old password correct?
         if(!Hash::check(Input::get('old_password'), $user->password)){
             return Redirect::back()->withInput()->withError('Password is not correct.');
         }
 
+        //Set new password to user
         $user->password = Input::get('new_password');
-        $user->save();
+        $user->password_confirmation = Input::get('new_password_confirmation');
 
-        return Redirect::back()->withMessage('Password has been changed.');
+        $user->touch();
+        $save = $user->save();
 
+        return Redirect::to('logout')->withMessage('Password has been changed.');
+
+    }
+
+    public function delete($id){
+        User::canEditOrFail($id);
+
+        $this->setTitle('Delete your account');
+
+        $this->data['user'] = User::find($id);
+
+        return $this->makeView('pages.lockscreen.delete');
+    }
+
+    public function doDelete($id){
+        User::canEditOrFail($id);
+
+
+        $user = User::find(Confide::user()->id);
+
+        Confide::logout();
+
+        $user->delete();
+
+        return Redirect::to('register')->withMessage('Your account was removed.');
     }
 
 }

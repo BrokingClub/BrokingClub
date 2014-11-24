@@ -108,7 +108,7 @@ class Form extends \Bootstrapper\Form{
         return parent::submit($this->getAutoTranslation($value), $options);
     }
 
-    public function btn($type = "default", $value = false, $icon = false){
+    public function btn($type = "default", $value = false, $icon = false, $attributes = array()){
         $value = (!$value) ? $this->getAutoTranslation('submit') : $value;
 
         $button = null;
@@ -116,9 +116,9 @@ class Form extends \Bootstrapper\Form{
 
         switch($type){
             case 'primary': $button =  $this->bButton->primary($value)->submit(); break;
-            case 'danger': $button = $this->bButton->danger($value); break;
-            case 'success': $button = $this->bButton->success($value); break;
-            case 'warning': $button = $this->bButton->warning($value); break;
+            case 'danger': $button = $this->bButton->danger($value)->submit();; break;
+            case 'success': $button = $this->bButton->success($value)->submit();; break;
+            case 'warning': $button = $this->bButton->warning($value)->submit();; break;
             default:
                 $button = $this->bButton->normal($value, array());
         }
@@ -127,6 +127,8 @@ class Form extends \Bootstrapper\Form{
         if($icon){
             $button = $button->withIcon('<i class="fa fa-' . $icon . '"></i>', false);
         }
+
+        $button->addAttributes($attributes);
 
         return $button;
     }

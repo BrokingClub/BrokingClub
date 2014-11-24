@@ -27,6 +27,9 @@ Route::group(array('before' => 'auth'), function(){
     Route::post('changePassword', 'UsersController@changepassword');
     Route::post('users/{id}', ['as' => 'user.update', 'uses' => 'UsersController@update']);
     Route::post('users/{id}/changepassword', ['as' => 'user.changepassword', 'uses' => 'UsersController@changePassword']);
+
+    Route::get('users/{id}/delete', 'UsersController@delete');
+    Route::post('users/{id}/delete', 'UsersController@doDelete');
 });
 
 // Confide routes
