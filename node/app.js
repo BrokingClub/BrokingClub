@@ -14,7 +14,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 require('./routes/cucumber')(app);
-require('./stocks/stocks');
+require('./modules/stocks/stocks');
 
 app.listen(3000);
 
