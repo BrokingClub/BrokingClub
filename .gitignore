@@ -11,4 +11,4 @@ Thumbs.db
 _ide_helper.php
 node_modules
 /wordpress
-config.js
+start.sh
