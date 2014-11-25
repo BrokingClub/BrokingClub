@@ -1,23 +1,15 @@
-var mysql = require('./mysql');
+var sql = require('./sql');
 var request = require('request');
 var config = require('./config');
+var ok = require('../ok');
 
+deleteOldStocks();
 setInterval(deleteOldStocks, 60 * 60 * 1000);
 
-mysql.getConnection(function(err, connection){
-	if(err){
-		console.log(err);
-	}else{
-		connection.query('SELECT id, symbol FROM stocks', function(err, result){
-			if(err){
-				console.log(err);
-			}else{
-				startFetchInterval(result);
-			}
-		});
-	}
-	
-	connection.release();
+sql.query('SELECT id, symbol FROM stocks', function(err, result){
+    if(ok(err)){
+        startFetchInterval(result);
+    }
 });
 
 function startFetchInterval(symbols){
