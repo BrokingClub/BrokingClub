@@ -24,7 +24,7 @@
                                 @if($stock->changeRate() > 1)
                                     <div style="color: green">
                                 @elseif($stock->changeRate() < 1)
-                                    <div style="color: red">.
+                                    <div style="color: red">
 
                                 @endif
 
