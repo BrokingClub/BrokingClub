@@ -6,7 +6,7 @@
         <div class="table-responsive ls-table">
             <table class="table">
                 <thead>
-                    <th>NameX</th>
+                    <th>Name</th>
                     <th>Symbol</th>
                     <th>Category</th>
                     <th>Values</th>
@@ -19,7 +19,16 @@
                             <td>{{ $stock->symbol }}</td>
                             <td>{{ $stock->category }}</td>
                             <td>{{ $stock->values->count() }}</td>
-                            <td>{{ $stock->newestValue()->value }} ({{ $stock->changeRate() }})</td>
+                            <td>
+
+                                @if($stock->changeRate() > 1)
+                                    <div style="color: green">
+                                @elseif($stock->changeRate() < 1)
+                                    <div style="color: red">
+
+                                @endif
+
+                                {{ $stock->newestValue()->value }} ({{ $stock->changeRate() }})</div></td>
                         </tr>
                     @endforeach
                 </tbody>
