@@ -4,5 +4,6 @@ module.exports = {
 		password: 'A8XZrP^atr7$2Pd',
 		database: 'brokingclub'
 	},
-	fetchDelaySec: 60
+	fetchDelaySec: 60,
+    deleteOldStocksDelayHours: 1
 };
