@@ -1,7 +1,7 @@
 @extends('layouts.game')
 
 @section('content')
-
+    {{-- --}}
     {{ Fickle::openPanel('Stocks', 12) }}
         <div class="table-responsive ls-table">
             <table class="table">

@@ -11,16 +11,20 @@ class Stock extends BaseModel
     }
 
     public function newestValue(){
-        if(!is_null($this->newestValue))  return $this->newestValue;
+        if(!empty($this->newestValues))
+            return $this->newestValues->first();
 
-        return $this->newestValues(1)->first();
+        return $this->newestValues()->first();
     }
 
-    public function newestValues($limit = 5){
+    public function newestValues($limit = 20){
+        if(count($this->newestValues) == $limit)
+            return $this->newestValues;
+
         $newestValues = StockValue::where('stock_id', $this->id)->orderby('created_at', 'desc')
             ->limit($limit)->get();
 
-        $this->newestValue = $newestValues->first();
+        $this->newestValues = $newestValues;
 
         return $newestValues;
 
