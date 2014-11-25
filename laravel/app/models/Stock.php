@@ -4,17 +4,26 @@ class Stock extends BaseModel
 {
 	protected $fillable = [];
 
+    protected $newestValues = array();
+
     public function values(){
         return $this->hasMany('StockValue')->orderBy('created_at', 'DESC');
     }
 
     public function newestValue(){
+        if(!is_null($this->newestValue))  return $this->newestValue;
+
         return $this->newestValues(1)->first();
     }
 
     public function newestValues($limit = 5){
-        return StockValue::where('stock_id', $this->id)->orderby('created_at', 'desc')
+        $newestValues = StockValue::where('stock_id', $this->id)->orderby('created_at', 'desc')
             ->limit($limit)->get();
+
+        $this->newestValue = $newestValues->first();
+
+        return $newestValues;
+
     }
 
     public function changeRate(){

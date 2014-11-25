@@ -14,7 +14,6 @@
                 </thead>
                 <tbody>
                     @foreach($stocks as $stock)
-                    {{ debug($stock->values) }}
                         <tr>
                             <td>{{ $stock->name }}</td>
                             <td>{{ $stock->symbol }}</td>
