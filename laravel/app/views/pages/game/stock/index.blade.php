@@ -6,7 +6,7 @@
         <div class="table-responsive ls-table">
             <table class="table">
                 <thead>
-                    <th>Name</th>
+                    <th>NameX</th>
                     <th>Symbol</th>
                     <th>Category</th>
                     <th>Values</th>
