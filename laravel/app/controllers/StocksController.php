@@ -50,7 +50,12 @@ class StocksController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$this->setTitle('Apple');
+        $stock = Stock::findOrFail($id);
+
+        $this->setTitle($stock->name);
+
+        $this->data['stock'] = $stock;
+
         return $this->makeView('pages.game.stock.show');
 	}
 
