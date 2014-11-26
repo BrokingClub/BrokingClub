@@ -26,7 +26,7 @@
         </div>
 
     {{ Fickle::closePanel() }}
-        asdasd2
+
     {{ Fickle::openPanel('News about '.$stock->name, 12) }}
         <div style="text-align: center">
         <iframe src="http://www.google.com/uds/modules/elements/newsshow/iframe.html?q=Apple&rsz=9&hl=en"
