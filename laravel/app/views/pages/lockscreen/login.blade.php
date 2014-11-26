@@ -38,6 +38,8 @@
                                     <button class="btn ls-dark-btn ladda-button col-md-12 col-sm-12 col-xs-12" data-style="slide-down">
                                         <span class="ladda-label"><i class="fa fa-key"></i></span>
                                     </button>
+                                    {{ link_to_route('register', trans('fields.register')) }}
+                                      ·
                                     {{ HTML::link('users/forgot_password', 'Forget password', ['class' => 'forgot-password']) }}
                                  </div>
 

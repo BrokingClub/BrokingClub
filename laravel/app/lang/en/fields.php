@@ -7,6 +7,7 @@ return array(
     'email' => 'E-Mail',
     'submit_register' => 'Register now for free!',
     'submit_login' => 'Login',
-    'login' => 'Login'
+    'login' => 'Login',
+    'register' => 'Register'
 );
 ?>

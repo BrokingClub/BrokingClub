@@ -1,14 +1,14 @@
 @extends('layouts.game')
 
 @section('content')
-    {{ Fickle::openPanel('Apple', 12) }}
+    {{ Fickle::openPanel($stock->name, 12) }}
         <div style="height: 550px">
             <!-- TradingView Widget BEGIN -->
             <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
             <script type="text/javascript">
             new TradingView.widget({
               "autosize": true,
-              "symbol": "NASDAQ:AAPL",
+              "symbol": "NASDAQ:{{ $stock->symbol }}",
               "interval": "D",
               "timezone": "exchange",
               "theme": "White",
@@ -26,8 +26,9 @@
         </div>
 
     {{ Fickle::closePanel() }}
+     asdasd2
 
-    {{ Fickle::openPanel('News about Apple', 12) }}
+    {{ Fickle::openPanel('News about '.$stock->name, 12) }}
         <div style="text-align: center">
         <iframe src="http://www.google.com/uds/modules/elements/newsshow/iframe.html?q=Apple&rsz=9&hl=en"
                 frameborder="0" width="728" height="90" marginwidth="0" marginheight="0"></iframe>
@@ -48,7 +49,7 @@
                     Product
                 </th>
                 <th>
-                   Money
+                   Value
                  </th>
                   <th>
                      Strategy
@@ -68,10 +69,10 @@
             </tr>
             <tr>
                 <td>
-                    AAPL stock
+                    {{ $stock->symbol }} stock
                 </td>
                 <td>
-                    96,02$
+                    {{ $stock->newestValue()->value }}
                 </td>
                 <td>
                      <input class="switchCheckBox" type="checkbox" checked data-size="large"
