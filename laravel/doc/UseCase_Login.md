@@ -29,14 +29,8 @@ If this is not the case and the password is typed in correctly the user will be 
 
 
 ## 	Alternative Flows
-### Incorrect password
-The current password field will be highlighted and the user receives an error message.
-
-### New password does not meet security requirements
-The user will be told about the necessary security requirements for passwords.
-
-### Confirmed password does not equal the new password
-New and confirm password field will be highlighted.
+### Incorrect password or account is not active
+user receives an error message.
 
 # Special Requirements
 *n.a.*
