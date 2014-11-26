@@ -34,17 +34,19 @@ class Stock extends BaseModel
         $range = 20;
         $newestValues = $this->newestValues($range);
         $newestValueNum = $newestValues->first()->value;
+        $oldestValueNum = $newestValues->last()->value;
 
-        $newestSum = 0;
-        foreach($newestValues as $newestValue){
-            $newestSum += $newestValue->value;
-        }
-
-        $average = $newestSum / $range;
-        $change = $newestValueNum / $average;
+        $change = $newestValueNum / $oldestValueNum;
 
         return $change;
     }
 
+    public function changeRatePercent(){
+        $changeRate = $this->changeRate();
+
+        $changeRatePercent = round(($changeRate - 1)*100,3);
+
+        return $changeRatePercent;
+    }
 
 }

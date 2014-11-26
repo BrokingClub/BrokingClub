@@ -45,4 +45,8 @@ class BaseModel extends \Eloquent{
         }
 
     }
+
+    protected function urlId(){
+        return $this->id;
+    }
 } 

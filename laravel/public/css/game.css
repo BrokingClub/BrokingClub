@@ -40,3 +40,15 @@
     border-bottom: 1px #e0e0e0 solid;
     border-right: 1px #e0e0e0 solid;
 }
+
+.label-neutral {
+    background-color: #aaa;
+}
+
+.label-as-badge {
+    border-radius: 1em;
+}
+
+.bigger-label{
+    font-size: 90%;
+}

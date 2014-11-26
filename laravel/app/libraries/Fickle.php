@@ -128,4 +128,30 @@ class Fickle {
     public static function colsCssClass($cols = 12){
         return "col-md-" . $cols;
     }
-} 
+
+    public static function stockValue($stock, $options = array()){
+        $stockValue = $stock->newestValue()->value;
+        $changeRatePercent = $stock->changeRatePercent();
+
+        $mode = "neutral";
+        if($changeRatePercent > 0) $mode = "positive";
+        else if($changeRatePercent < 0) $mode = "negative";
+
+        $cssClasses = [
+            'change-rate' => [
+                'neutral' => 'label label-as-badge bigger-label label-neutral',
+                'positive' => 'label label-as-badge bigger-label label-success',
+                'negative' => 'label label-as-badge bigger-label label-danger'
+            ]
+        ];
+
+        $rateCss = $cssClasses['change-rate'][$mode];
+
+        $html = "<div class='stock-value stock-value-". $mode ."'>";
+        $html .= "<span class='value'>". $stockValue ."</span> ";
+        $html .= "<span class='change-rate ". $rateCss ."'>". $changeRatePercent ."%</span>";
+        $html .= "</div>";
+
+        return $html;
+    }
+}

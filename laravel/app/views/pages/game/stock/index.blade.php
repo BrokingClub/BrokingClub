@@ -15,20 +15,16 @@
                 <tbody>
                     @foreach($stocks as $stock)
                         <tr>
-                            <td>{{ $stock->name }}</td>
+
+                            <td><a href="{{ URL::route('stocks.show', $stock->id)  }}">{{ $stock->name }}</a></td>
                             <td>{{ $stock->symbol }}</td>
                             <td>{{ $stock->category }}</td>
-                            <td>{{ $stock->values->count() }}</td>
+                            <td></td>
                             <td>
+                                {{ Fickle::stockValue($stock) }}
+                             </td>
 
-                                @if($stock->changeRate() > 1)
-                                    <div style="color: green">
-                                @elseif($stock->changeRate() < 1)
-                                    <div style="color: red">
 
-                                @endif
-
-                                {{ $stock->newestValue()->value }} ({{ $stock->changeRate() }})</div></td>
                         </tr>
                     @endforeach
                 </tbody>
