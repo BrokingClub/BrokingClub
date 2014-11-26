@@ -1,37 +1,33 @@
-Feature: change the personal information of my account
-  As a logged in user
-  I want to conform my profile
-  So I can correct my name or change my username
+Feature: Login to the system
+  As a registered user
+  I want to login to the game
+  So I can play game or update my profile
 
-  Scenario: Enter valid first name and last name and an available username
-    Given I am logged in as testuser
-    And I enter the following text in first name: first_name
-    And I enter the following text in last name: last_name
-    And I enter the following text in username: new_username
-    Then I should see "Profile has been updated"
+  Scenario: Enter valid username or email and password
+    Given I am not logged in
+    And I enter the following text in username: username
+    And I enter the following text in password: password
+    Then I should be redirected to the dashboard
 
-  Scenario: I do not enter a valid first name or/and last name or/and username into the firstname field, the lastname field or the username field
-    Given I am logged in as testuser
-    And I enter the following text in first name: "%/&_not_a_valid_firstname:)"
-    And I enter the following text in last name: "&%not_a_valid_lastname(/"
-    And I enter the following text in username: "!$§_not:a:valid:username"
-    Then I should see "Non valid input!"
+  Scenario: I do not enter a username with the correct password
+    Given I am not logged in
+    And I enter the following text in username: not_my_username
+    And I enter the following text in password: not_my_password
+    Then I should see "Incorrect username, email or password."
 
-  Scenario: I do not enter an available username into the username field
-    Given I am logged in as testuser
-    Given a user with the username "Peter" already exists
-    And I enter the following text in first name: first_name
-    And I enter the following text in last name: last_name
-    And I enter the following text in username: "Peter"
-    Then I should see "Username already taken"
+  Scenario: I do enter a valid username with the correct passwort, but the account is not activated or blocked
+    Given I am not logged in and the account is not activated or blocked
+    And I enter the following text in username: username
+    And I enter the following text in password: password
+    Then I should see "Account is not activated or blocked"
 
 
 
 
-  Background: testuser has been added to the database
+  Background: username has been added to the database
     Given the following users exist:
       |usename		| email					| 	password		|	firstname		| lastname
-      |testuser		| test@broking.club		|	old_password	|	Test			| User
+      |username		| user@broking.club		|	password	    |	Test			| User
 
 
-    And I am on the BrokingClub edit profile page
+    And I am on the BrokingClub login page
