@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-6">
+        {{ QForm::label('stock_name', 'Stock:') }}
+        {{ QForm::readonly('stock_name', $stock->name) }}
+    </div>
+    <div class="col-md-6">
+        {{ QForm::label('stock_value', 'Value:') }}
+        {{ QForm::readonly('stock_value', $stock->newestValue()->value . " $") }}
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        {{ QForm::label('ammount', 'Ammount:') }}
+        {{ QForm::text('ammount') }}
+    </div>
+    <div class="col-md-6">
+        {{ QForm::label('betOnRise', 'Mode:') }}<br/>
+        <input class="switchCheckBox" name="betOnRise" type="checkbox" checked data-size="large"
+            data-label-text="<span class='fa fa-line-chart'></span>"
+            data-on-text="<span class='fa fa-thumbs-o-up'></span>"
+            data-off-text="<span class='fa fa-thumbs-o-down'></span>"
+        />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        {{ QForm::label('purchase_price', 'Total price:') }}
+        {{ QForm::readonly('purchase_price', "0.00 $") }}
+    </div>
+    <div class="col-md-6">
+        {{ QForm::label('purchase_fees', 'Fees:') }}
+        {{ QForm::readonly('purchase_fees', "0.00 $") }}
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

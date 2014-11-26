@@ -1,7 +1,23 @@
 @extends('layouts.game')
 
 @section('content')
-    {{ Fickle::openPanel($stock->name, 12) }}
+    {{ Fickle::openPanel('Purchase this stock') }}
+        {{ QForm::open(['route' => 'purchases.store', 'method' => 'POST']) }}
+            @include('partials.forms.purchase')
+
+            <hr/>
+            <div class="clearfix">
+                <div class="pull-right">
+                     {{ QForm::btnPrimary('Purchase', 'shopping-cart') }}
+                </div>
+            </div>
+
+        {{ QForm::close() }}
+    {{ Fickle::closePanel() }}
+
+    {{ Fickle::openPanel($stock->name . ' graph', 12) }}
+
+
         <div style="height: 550px">
             <!-- TradingView Widget BEGIN -->
             <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>

@@ -32,7 +32,11 @@ class PurchasesController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+        $purchase = new Purchase();
+
+
+
+		dd(Input::all());
 	}
 
 	/**
