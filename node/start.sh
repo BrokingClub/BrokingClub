@@ -1,1 +1,0 @@
-screen -S node nodemon app.js

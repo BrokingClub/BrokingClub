@@ -2,9 +2,7 @@ var sql = require('./sql');
 var request = require('request');
 var config = require('./config');
 var no = require('../no');
-
-deleteOldStocks();
-setInterval(deleteOldStocks, config.deleteOldStocksDelayHours * 60 * 1000);
+var logger = require('../logger');
 
 sql.query('SELECT id, symbol FROM stocks', function(err, result){
     if(no(err)){
@@ -12,9 +10,14 @@ sql.query('SELECT id, symbol FROM stocks', function(err, result){
     }
 });
 
+startDeleteOldStocksInterval();
+
 function startFetchInterval(symbols){
 	var callback = function(){
+        var start = Date.now();
+        
 		fetchStocks(symbols);
+        logger.log('Fetched stocks in ' + (Date.now() - start) + ' ms');
 	};
 	
 	callback();
@@ -57,6 +60,18 @@ function saveQuotes(symbols, quotes){
 	var query = 'INSERT INTO stock_values (stock_id, value, created_at, updated_at) VALUES ' + values.join(',');
 	
     sql.query(query, no);
+}
+
+function startDeleteOldStocksInterval(){
+    var callback = function(){
+        var start = Date.now();
+        
+        deleteOldStocks();
+        logger.log('Deleted old stocks in ' + (Date.now() - start) + ' ms');
+    };
+    
+    callback();
+    setInterval(callback, config.deleteOldStocksDelayHours * 60 * 60 * 1000);
 }
 
 function deleteOldStocks(){
