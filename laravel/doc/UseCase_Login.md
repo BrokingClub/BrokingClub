@@ -36,8 +36,8 @@ user receives an error message.
 *n.a.*
 
 # Preconditions
-## User is logged in
-The user has to be authenticated in order to change his password.
+## User registered to the system
+To gain access to the game the user has tobe registered to the system 
 
 ## Postconditions
 *n.a.*
