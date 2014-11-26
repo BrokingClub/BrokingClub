@@ -15,6 +15,7 @@
                 <tbody>
                     @foreach($stocks as $stock)
                         <tr>
+                        asdasdda
 
                             <td><a href="{{ URL::route('stocks.show', $stock->id)  }}">{{ $stock->name }}</a></td>
                             <td>{{ $stock->symbol }}</td>
