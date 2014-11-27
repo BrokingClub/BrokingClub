@@ -53,6 +53,7 @@ App::error(function(Exception $exception, $code)
     $_SERVER['DB_USERNAME'] = "READ MY";
     $_SERVER['DB_PASSWORD'] = "FUCKING SECRETS!";
 
+    $_ENV = [];
 
 	Log::error($exception);
 

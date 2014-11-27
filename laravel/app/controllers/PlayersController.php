@@ -10,7 +10,13 @@ class PlayersController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+        $players = Player::orderBy('balance', 'desc')->with('user')->get();
+
+        $this->data['players'] = $players;
+
+        $this->setTitle('Ranking');
+
+        return $this->makeView('pages.game.player.index');
 	}
 
 	/**
@@ -21,7 +27,7 @@ class PlayersController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+
 	}
 
 	/**

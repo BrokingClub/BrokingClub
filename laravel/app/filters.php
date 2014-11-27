@@ -13,7 +13,17 @@
 
 App::before(function($request)
 {
-	//
+    // Clear view cache in sandbox (only) with every request
+
+    if (App::environment() == 'staging') {
+        $cachedViewsDirectory=app('path.storage').'/views/';
+        $files = glob($cachedViewsDirectory.'*');
+        foreach($files as $file) {
+            if(is_file($file)) {
+                @unlink($file);
+            }
+        }
+    }
 });
 
 
