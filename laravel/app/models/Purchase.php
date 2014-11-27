@@ -4,7 +4,7 @@ class Purchase extends BaseModel {
 	protected $fillable = [];
 
     protected static $feeBase = 0.1;
-    protected static $globalLeverage = 2;
+    protected static $globalLeverage = 1;
 
     public function stock() {
         return $this->belongsTo('Stock');
@@ -94,6 +94,6 @@ class Purchase extends BaseModel {
     }
 
     public function sellOffer(){
-        return $this->value * $this->amount + $this->earned();
+        return $this->totalPaid() + $this->earned();
     }
 }

@@ -71,7 +71,7 @@
                 <td class="hidden-sm">{{ $purchase->amount }}</td>
                 <td class="hidden-sm">{{ Format::money($purchase->paidPerStock()) }}</td>
                 <td>
-                {{ Format::money($purchase->totalPaid()) }}</td>
+                <span title="Fee: {{ $purchase->fee  }}">{{ Format::money($purchase->totalPaid()) }}</span></td>
                 <td>{{ Fickle::purchaseMode($purchase->mode) }}</td>
 
                 <td>
@@ -84,7 +84,7 @@
                  @if($player->editAllowed())
                 {{ QForm::open(['route' => ['purchases.update', $purchase->id], 'method' => 'PUT']) }}
                     {{ QForm::hidden('action', 'sell') }}
-                    {{ QForm::btnPrimary('Sell', 'usd') }}
+                    {{ QForm::btnPrimary(' Sell', 'legal') }}
                 {{ QForm::close() }}
                 @endif
                 </td>
@@ -96,7 +96,11 @@
 
         </tbody>
     {{ Fickle::closeTable() }}
-
+    <hr/>
+    <div class="clearfix">
+        <a class="pull-right btn btn-success" href="{{ URL::route('stocks.index') }}">
+            <i class="fa fa-list"></i> Buy more stocks</a>
+    </div>
     {{ Fickle::closePanel() }}
 
 @endsection

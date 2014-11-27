@@ -189,8 +189,8 @@ class Fickle {
     }
 
     public static function purchaseMode($mode){
-        $icon = ($mode == "rising")? 'thumbs-up' : 'thumbs-down';
-        return '<i class="fa fa-'. $icon .'"></i>';
+        $icon = ($mode == "rising")? 'sort-amount-asc' : 'sort-amount-desc';
+        return '<i class="fa fa-'. $icon .' fa-rotate-270"></i>';
 
 
     }
