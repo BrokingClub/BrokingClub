@@ -32,11 +32,37 @@ class PurchasesController extends \BaseController {
 	 */
 	public function store()
 	{
+        $thePlayer = Player::auth();
+        if(!$thePlayer)
+            return Redirect::back()->withError('You are not logged in as a real player.');
+
+        $stock = Stock::findOrFail(Input::get('stock_id'));
+
         $purchase = new Purchase();
 
+        $mode = "falling";
+        if(Input::get('betOnRise'))
+            $mode = "rising";
 
+        $purchase->amount = Input::get('amount');
+        $purchase->mode = $mode;
+        $purchase->stock_id = $stock->id;
+        $purchase->player_id = $thePlayer->id;
 
-		dd(Input::all());
+        $bill = $purchase->calculateBill();
+        $purchase->paid = $bill['perStock'];
+
+        $charge = $thePlayer->charge($bill['total']);
+
+        if(!$charge)
+            return Redirect::back()->withError('You do not have enough money for this purchase.');
+        else{
+            $purchase->save();
+            return Redirect::back()->withMessage('You have just bought '. $purchase->amount . 'x '
+                . $stock->name . ' stocks, for ' . $bill['total'] . '$.'  );
+
+        }
+
 	}
 
 	/**

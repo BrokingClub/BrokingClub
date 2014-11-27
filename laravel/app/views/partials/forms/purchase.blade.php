@@ -1,3 +1,5 @@
+{{ QForm::hidden('stock_id', $stock->id) }}
+
 <div class="row">
     <div class="col-md-6">
         {{ QForm::label('stock_name', 'Stock:') }}
@@ -12,8 +14,8 @@
 
 <div class="row">
     <div class="col-md-6">
-        {{ QForm::label('ammount', 'Ammount:') }}
-        {{ QForm::text('ammount') }}
+        {{ QForm::label('amount', 'Amount:') }}
+        {{ QForm::text('amount') }}
     </div>
     <div class="col-md-6">
         {{ QForm::label('betOnRise', 'Mode:') }}<br/>
