@@ -9,6 +9,7 @@ composer.lock
 .DS_Store
 Thumbs.db
 _ide_helper.php
-node_modules
+node_modules/*
+!node_modules/app
 /wordpress
 start.sh
