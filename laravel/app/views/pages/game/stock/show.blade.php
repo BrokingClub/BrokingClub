@@ -42,7 +42,6 @@
         </div>
 
     {{ Fickle::closePanel() }}
-     asdasd2
 
     {{ Fickle::openPanel('News about '.$stock->name, 12) }}
         <div style="text-align: center">
