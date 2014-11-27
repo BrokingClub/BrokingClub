@@ -52,3 +52,7 @@
 .bigger-label{
     font-size: 90%;
 }
+
+.panel .form-control[readonly]{
+    background-color: #eee;
+}

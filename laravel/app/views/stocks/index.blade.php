@@ -1,1 +1,0 @@
-/brokingclub/laravel/app/views/stocks/index.blade.php
