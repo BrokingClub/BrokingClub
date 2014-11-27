@@ -47,44 +47,48 @@
 
     {{ Fickle::openPanel('Users stocks', 8) }}
 
-    <table class="table">
+    {{ Fickle::openTable() }}
         <thead>
             <th>Stock</th>
-            <th>Amount</th>
-            <th>Paid</th>
-            <th>Total paid</th>
+            <th class="hidden-sm" >Amount</th>
+            <th class="hidden-sm">Paid</th>
+            <th >Total paid</th>
             <th>Mode</th>
-            <th>Value</th>
-            <th>Total</th>
-            <th>Earning</th>
+            <th>Offer</th>
             <th>Actions</th>
         </thead>
         <tbody>
 
         @foreach($player->purchases->all() as $purchase)
             <tr>
-                <td>{{ $purchase->stock->name }}</td>
-                <td>{{ $purchase->amount }}</td>
-                <td>{{ Format::money($purchase->paidPerStock()) }}</td>
+                <td>{{ $purchase->stock->name }}<br/><small>{{ Fickle::stockValue($purchase->stock, ['big' => false])  }}</small></td>
+                <td class="hidden-sm">{{ $purchase->amount }}</td>
+                <td class="hidden-sm">{{ Format::money($purchase->paidPerStock()) }}</td>
                 <td>{{ Format::money($purchase->totalPaid()) }}</td>
                 <td>{{ Fickle::purchaseMode($purchase->mode) }}</td>
-                <td>{{ Format::money($purchase->newestValue()) }}</td>
-                <td>{{ Format::money($purchase->price()) }}</td>
-                <td>{{ Fickle::earnings($purchase) }}</td>
+
                 <td>
+                {{ Format::money($purchase->sellOffer()) }}
+                {{ Fickle::earnings($purchase) }}
+
+                </td>
+
+                <td>
+                 @if($player->editAllowed())
                 {{ QForm::open(['route' => ['purchases.update', $purchase->id], 'method' => 'PUT']) }}
                     {{ QForm::hidden('action', 'sell') }}
                     {{ QForm::btnPrimary('Sell', 'usd') }}
                 {{ QForm::close() }}
-
+                @endif
                 </td>
+
 
 
             </tr>
         @endforeach
 
         </tbody>
-    </table>
+    {{ Fickle::closeTable() }}
 
     {{ Fickle::closePanel() }}
 

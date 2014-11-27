@@ -13,7 +13,7 @@ class Player extends BaseModel {
     }
 
     public function purchases(){
-        return $this->hasMany('Purchase')->orderBy('created_at', 'DESC');
+        return $this->hasMany('Purchase')->orderBy('created_at', 'DESC')->where('mode', '<>', 'sold');
     }
 
     public function charge($price){

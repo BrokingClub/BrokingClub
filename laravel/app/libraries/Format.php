@@ -15,4 +15,8 @@ class Format {
         return static::num($number) . "$";
     }
 
+    public static function value($stockValue){
+        return number_format($stockValue, 3, '.', '');
+    }
+
 }

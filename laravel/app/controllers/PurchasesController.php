@@ -106,6 +106,19 @@ class PurchasesController extends \BaseController {
 	}
 
     public function sell($purchase){
+        $player = $purchase->player;
+        $player->editAllowedOrFail();
+
+        $sellOffer = $purchase->sellOffer();
+        $player->balance += $sellOffer;
+
+        $purchase->mode = "sold";
+
+        $player->save();
+        $purchase->save();
+
+        return Redirect::back()->withMessage('Stocks sold for ' . Format::money($sellOffer) . '.');
+
 
     }
 

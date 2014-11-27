@@ -105,6 +105,19 @@ class Fickle {
         return $html;
     }
 
+    public static function openTable(){
+        $html = '<div class="table-responsive ls-table">';
+        $html .= '<table class="table table-striped table-responsive">';
+
+        return $html;
+    }
+
+    public static function closeTable(){
+        $html = '</table>';
+        $html .= static::closeDiv('table-responsive');
+        return $html;
+    }
+
     public static function closeTabbedPanel(){
         $html = "</div></div>";
         return $html;
@@ -144,7 +157,8 @@ class Fickle {
         }
     }
 
-    public static function stockValue($stock, $options = array()){
+    public static function stockValue($stock, $options = array('big' => true)){
+        $labelSizeClass = ($options['big']) ? 'bigger-label' : 'normal-label';
         $stockValue = $stock->newestValue();
         $changeRatePercent = $stock->changeRatePercent();
 
@@ -154,9 +168,9 @@ class Fickle {
 
         $cssClasses = [
             'change-rate' => [
-                'neutral' => 'label label-as-badge bigger-label label-neutral',
-                'positive' => 'label label-as-badge bigger-label label-success',
-                'negative' => 'label label-as-badge bigger-label label-danger'
+                'neutral' => 'label label-as-badge '. $labelSizeClass . ' label-neutral',
+                'positive' => 'label label-as-badge '. $labelSizeClass . ' label-success',
+                'negative' => 'label label-as-badge '. $labelSizeClass . ' label-danger'
             ]
         ];
 
