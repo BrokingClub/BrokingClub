@@ -177,7 +177,7 @@ class Fickle {
         $rateCss = $cssClasses['change-rate'][$mode];
 
         $html = "<div class='stock-value stock-value-". $mode ."'>";
-        $html .= "<span class='value'>". $stockValue ."</span> ";
+        $html .= "<span class='value'>". Format::value($stockValue) ."</span> ";
         $html .= "<span class='change-rate ". $rateCss ."'>". $changeRatePercent ."%</span>";
         $html .= "</div>";
 

@@ -61,10 +61,17 @@
 
         @foreach($player->purchases->all() as $purchase)
             <tr>
-                <td>{{ $purchase->stock->name }}<br/><small>{{ Fickle::stockValue($purchase->stock, ['big' => false])  }}</small></td>
+                <td>
+                    <a href="{{ URL::route('stocks.show', $purchase->stock->id) }}">
+                    {{ $purchase->stock->name }}
+                    </a>
+                    <br/><small>{{ Fickle::stockValue($purchase->stock, ['big' => false])  }}</small>
+
+                </td>
                 <td class="hidden-sm">{{ $purchase->amount }}</td>
                 <td class="hidden-sm">{{ Format::money($purchase->paidPerStock()) }}</td>
-                <td>{{ Format::money($purchase->totalPaid()) }}</td>
+                <td>
+                {{ Format::money($purchase->totalPaid()) }}</td>
                 <td>{{ Fickle::purchaseMode($purchase->mode) }}</td>
 
                 <td>
