@@ -53,7 +53,7 @@
                 <td>{{ $purchase->mode }}</td>
                 <td>{{ $purchase->stock->newestValue()->value }}</td>
                 <td>{{ $purchase->price() }}</td>
-                <td>{{ Fickle::earnings($purchase->total(), $purchase->price()) }}$</td>
+                <td>{{ Fickle::earnings($purchase->total(), $purchase->price()) }}</td>
                 <td>{{ QForm::btnPrimary('Sell', 'usd') }}</td>
             </tr>
         @endforeach

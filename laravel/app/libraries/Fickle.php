@@ -133,13 +133,13 @@ class Fickle {
         $difference = round($price - $total, 4);
 
         if($difference < 0) {
-            return '<div class="label label-as-badge bigger-label label-danger">'.$difference.'</div>';
+            return '<div class="label label-as-badge bigger-label label-danger">'.$difference.'$</div>';
         }
         elseif($difference > 0) {
-            return '<div class="label label-as-badge bigger-label label-success">+'.$difference.'</div>';
+            return '<div class="label label-as-badge bigger-label label-success">+'.$difference.'$</div>';
         }
         else {
-            return '<div class="label label-as-badge bigger-label label-neutral">'.$difference.'</div>';
+            return '<div class="label label-as-badge bigger-label label-neutral">'.$difference.'$</div>';
         }
     }
 
