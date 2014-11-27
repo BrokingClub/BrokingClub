@@ -42,10 +42,16 @@ class PlayersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
-		//
-	}
+    public function show($id)
+    {
+        $player = Player::findOrFail($id);
+
+        $this->setTitle($player->user->username);
+
+        $this->data['player'] = $player;
+
+        return $this->makeView('pages.game.player.show');
+    }
 
 	/**
 	 * Show the form for editing the specified resource.
