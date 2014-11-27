@@ -10,7 +10,13 @@ class ClubsController extends \BaseController {
      */
     public function index()
     {
-        //
+        $clubs = Club::all();
+
+        $this->data['clubs'] = $clubs;
+
+        $this->setTitle('Clubs');
+
+        return $this->makeView('pages.game.club.index');
     }
 
     /**
