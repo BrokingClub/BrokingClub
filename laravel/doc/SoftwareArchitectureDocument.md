@@ -83,7 +83,7 @@ Laravel aims to make implementing authentication very simple. In fact, almost ev
 ```This subsection names and defines the various layers and their contents, the rules that govern the inclusion to a given layer, and the boundaries between layers. Include a component diagram that shows the relations between layers. ```
 
 ## Layers / Deployment view
-![Deployment View](http://broking.club/img/doc/deployment_view.jpg)
+![Deployment View](http://broking.club/img/doc/deployment_view.png)
 =======
 # Logical View
 ## Overview
