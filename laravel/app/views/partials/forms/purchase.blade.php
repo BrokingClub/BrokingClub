@@ -7,7 +7,7 @@
     </div>
     <div class="col-md-6">
         {{ QForm::label('stock_value', 'Value:') }}
-        {{ QForm::readonly('stock_value', $stock->newestValue()->value . " $") }}
+        {{ QForm::readonly('stock_value', $stock->newestValueObject()->value . " $") }}
 
     </div>
 </div>

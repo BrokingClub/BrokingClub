@@ -56,3 +56,30 @@
 .panel .form-control[readonly]{
     background-color: #eee;
 }
+
+.player-worth-panel h3{
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0px 0px 5px 0px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+
+}
+
+.player-worth-panel b{
+    display: block;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: right;
+}
+
+.player-worth-panel .total-worth b{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.player-worth-panel .col-md-1{
+    font-size: 3em;
+    font-weight: bold;
+    line-height: 46px;
+}

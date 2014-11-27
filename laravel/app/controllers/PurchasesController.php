@@ -47,11 +47,11 @@ class PurchasesController extends \BaseController {
         $purchase->mode = $mode;
         $purchase->stock_id = $stock->id;
         $purchase->player_id = $thePlayer->id;
-        $purchase->value = $stock->newestValue()->value;
+        $purchase->value = $stock->newestValue();
 
 
         $bill = $purchase->calculateBill();
-        $purchase->paid = $bill['perStock'];
+        $purchase->fee = $bill['fee'];
 
         $charge = $thePlayer->charge($bill['total']);
 
@@ -99,8 +99,15 @@ class PurchasesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$purchase = Purchase::findOrFail($id);
+
+        if(Input::get('action') == 'sell')
+            return $this->sell($purchase);
 	}
+
+    public function sell($purchase){
+
+    }
 
 	/**
 	 * Remove the specified resource from storage.

@@ -129,22 +129,23 @@ class Fickle {
         return "col-md-" . $cols;
     }
 
-    public static function earnings($total, $price) {
-        $difference = round($price - $total, 4);
+    public static function earnings($purchase) {
+        $earned = $purchase->earned();
+        $earnedFormatted = Format::money($earned);
 
-        if($difference < 0) {
-            return '<div class="label label-as-badge bigger-label label-danger">'.$difference.'$</div>';
+        if($earned < 0) {
+            return '<div class="label label-as-badge bigger-label label-danger">'.$earnedFormatted.'</div>';
         }
-        elseif($difference > 0) {
-            return '<div class="label label-as-badge bigger-label label-success">+'.$difference.'$</div>';
+        elseif($earned > 0) {
+            return '<div class="label label-as-badge bigger-label label-success">+'.$earnedFormatted.'</div>';
         }
         else {
-            return '<div class="label label-as-badge bigger-label label-neutral">'.$difference.'$</div>';
+            return '<div class="label label-as-badge bigger-label label-neutral">'.$earnedFormatted.'</div>';
         }
     }
 
     public static function stockValue($stock, $options = array()){
-        $stockValue = $stock->newestValue()->value;
+        $stockValue = $stock->newestValue();
         $changeRatePercent = $stock->changeRatePercent();
 
         $mode = "neutral";
@@ -172,4 +173,12 @@ class Fickle {
     public static function iconBtn($icon, $mode) {
         return '<button class="btn btn-'.$mode.'"><i class="fa fa-'.$icon.'"></i></button>';
     }
+
+    public static function purchaseMode($mode){
+        $icon = ($mode == "rising")? 'thumbs-up' : 'thumbs-down';
+        return '<i class="fa fa-'. $icon .'"></i>';
+
+
+    }
 }
+

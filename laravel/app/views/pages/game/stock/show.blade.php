@@ -87,7 +87,7 @@
                     {{ $stock->symbol }} stock
                 </td>
                 <td>
-                    {{ $stock->newestValue()->value }}
+                    {{ $stock->newestValueObject()->value }}
                 </td>
                 <td>
                      <input class="switchCheckBox" type="checkbox" checked data-size="large"

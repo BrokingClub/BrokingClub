@@ -37,4 +37,33 @@ class Player extends BaseModel {
 
         return $thePlayer;
     }
+
+    public function totalWorth(){
+        return $this->purchasesWorth() + $this->balance;
+    }
+
+    public function purchasesWorth(){
+        $worth = 0;
+        foreach($this->purchases as $purchase){
+            $worth += $purchase->sellOffer();
+        }
+
+        return $worth;
+
+    }
+
+    public function editAllowed(){
+        return User::canEdit($this->user->id);
+    }
+
+    public function editAllowedOrFail(){
+        $canEdit = $this->editAllowed();
+
+        if(!$canEdit){
+            App::abort(403, 'Unauthorized action. You cannot edit this player.');
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

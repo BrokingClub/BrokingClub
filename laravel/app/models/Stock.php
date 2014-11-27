@@ -10,11 +10,15 @@ class Stock extends BaseModel
         return $this->hasMany('StockValue')->orderBy('created_at', 'DESC');
     }
 
-    public function newestValue(){
+    public function newestValueObject(){
         if(!empty($this->newestValues))
             return $this->newestValues->first();
 
         return $this->newestValues()->first();
+    }
+
+    public function newestValue(){
+       return $this->newestValueObject()->value;
     }
 
     public function newestValues($limit = 20){
@@ -31,7 +35,7 @@ class Stock extends BaseModel
     }
 
     public function price($amount) {
-        return $this->newestValue()->value * $amount;
+        return $this->newestValueObject()->value * $amount;
     }
 
     public function changeRate(){
