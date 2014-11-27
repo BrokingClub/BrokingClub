@@ -2,6 +2,8 @@ var sql = require('./sql');
 var request = require('request');
 var config = require('./config');
 var no = require('app/no');
+var _ = require('lodash');
+var cache = {};
 
 sql.query('SELECT id, symbol FROM stocks', function(err, result){
     if(no(err)){
@@ -32,7 +34,21 @@ function fetchStocks(symbols){
 			body = JSON.parse(body);
 			
             if(body.query && body.query.results){
-                saveQuotes(symbols, body.query.results.quote);
+                var quotes = body.query.results.quote;
+                
+                for(var i = 0; i < quotes.length; i++){
+                    symbols[i].quote = quotes[i].LastTradePriceOnly;
+                }
+                
+                symbols = checkForUnchangedQuotes(symbols);
+                
+                if(symbols.length){
+                    cache.symbols = symbols;
+                    
+                    saveQuotes(symbols);
+                }else{
+                    console.log('Unchanged quotes');   
+                }
             }else{
                 throw new Error('Invalid JSON response from Yahoo API: ' + body);
             }
@@ -50,15 +66,12 @@ function buildYqlQuery(symbols){
 	return 'select LastTradePriceOnly from yahoo.finance.quote where symbol in ("' + symbolNames.join('","') + '")';
 }
 
-function saveQuotes(symbols, quotes){
+function saveQuotes(symbols){
 	var values = [];
 
-	for(var i = 0; i < quotes.length; i++){
-		var symbol = symbols[i];
-		var quote = quotes[i];
-		
-		values.push('(' + symbol.id + ',' + quote.LastTradePriceOnly + ',now(),now())');
-	}
+	symbols.forEach(function(symbol){
+		values.push('(' + symbol.id + ',' + symbol.quote + ',now(),now())');
+	});
 	
 	var query = 'INSERT INTO stock_values (stock_id, value, created_at, updated_at) VALUES ' + values.join(',');
 	
@@ -79,4 +92,23 @@ function startDeleteOldStocksInterval(){
 
 function deleteOldStocks(){
     sql.query('DELETE FROM stock_values WHERE created_at < DATE_SUB(NOW(), INTERVAL 30 DAY)', no);
+}
+
+function checkForUnchangedQuotes(symbols){
+    if(cache.symbols){
+        cache.symbols.forEach(function(cacheSymbol){
+            var symbol = _.find(symbols, cacheSymbol.id);
+            
+            if(symbol){
+                if(symbol.quote === cacheSymbol.quote){
+                    console.log('Unchanged quote found for symbol ' + symbol.symbol);
+                    _.remove(symbols, symbol.id);   
+                }
+            }
+        });
+        
+        return symbols;
+    }else{
+        return symbols; 
+    }
 }
