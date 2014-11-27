@@ -26,9 +26,11 @@
     <table class="table">
         <thead>
             <th>Stock</th>
-            <th>Paid</th>
             <th>Amount</th>
-            <th>Total</th>
+            <th>Paid</th>
+            <th>Total paid</th>
+            <th>Actual value</th>
+            <th>Actual total</th>
         </thead>
         <tbody>
 
@@ -36,10 +38,12 @@
             <tr>
                 <td>{{ $purchase->stock->name }}</td>
                 <td>{{ $purchase->amount }}</td>
-                <td>{{ $purchase->amount }}</td>
-                <td>{{ $purchase->amount }}</td>
-            </tr>
+                <td>{{ $purchase->paid }} US$</td>
+                <td>{{ $purchase->total() }}</td>
+                <td>{{ $purchase->stock->newestValue()->value }}</td>
+                <td>{{ $purchase->price() }}</td>
 
+            </tr>
 
         @endforeach
 

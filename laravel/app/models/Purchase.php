@@ -9,6 +9,13 @@ class Purchase extends BaseModel {
         return $this->belongsTo('Stock');
     }
 
+    public function total() {
+        $paid = $this->paid;
+        $amount = $this->amount;
+        $total = $paid*$amount;
+        return $total;
+    }
+
     public function calculateBill(){
         $stock = Stock::findOrFail($this->stock_id);
 
@@ -42,5 +49,10 @@ class Purchase extends BaseModel {
         $newestValue = $stock->newestValue()->value;
 
         return ($newestValue * $this->amount)* static::$feeBase;
+    }
+
+    public function price(){
+
+        return $this->stock->price($this->amount);
     }
 }

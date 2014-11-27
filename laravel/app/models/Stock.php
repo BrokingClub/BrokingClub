@@ -30,6 +30,10 @@ class Stock extends BaseModel
 
     }
 
+    public function price($amount) {
+        return $this->newestValue()->value * $amount;
+    }
+
     public function changeRate(){
         $range = 20;
         $newestValues = $this->newestValues($range);
