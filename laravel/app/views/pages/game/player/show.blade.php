@@ -2,31 +2,24 @@
 
 @section('content')
 
-    {{ Fickle::openPanel('User information', 4) }}
-        <div class="userHead" style="text-align: center;">
-            <img class="img-circle" src="http://fc05.deviantart.net/fs71/f/2011/019/1/9/spongebob_avatar_by_me969-d37kddc.jpg"/>
-            <div class="userActions" style="margin: 10px;">
-                {{ Fickle::iconBtn('envelope', 'default') }}
-                {{ Fickle::iconBtn('plus-square', 'primary') }}
-                {{ Fickle::iconBtn('mortar-board', 'warning') }}
-                {{ Fickle::iconBtn('exclamation-triangle', 'success') }}
-            </div>
-        </div>
-        <table class="table">
-            <tr>
-                <td>Username:</td>
-                <td>{{ $player->user->username }}</td>
-            </tr>
-            <tr>
-                <td>Name:</td>
-                <td>{{ $player->firstname }} {{ $player->lastname }}</td>
-            <tr>
-            <tr>
-                <td>E-Mail:</td>
-                <td>{{ $player->user->email }}</td>
-            </tr>
-        </table>
-    {{Fickle::closePanel()}}
+        {{ Fickle::openWidget(4, 'setting', $player->user->username, 'user') }}
+                <ul>
+                    <li><div class="userHead" style="text-align: center;">
+                                    <img class="img-circle" src="http://fc05.deviantart.net/fs71/f/2011/019/1/9/spongebob_avatar_by_me969-d37kddc.jpg"/>
+                                    <div class="userActions" style="margin: 10px;">
+                                        {{ Fickle::iconBtn('envelope', 'default') }}
+                                        {{ Fickle::iconBtn('plus-square', 'primary') }}
+                                        {{ Fickle::iconBtn('mortar-board', 'warning') }}
+                                        {{ Fickle::iconBtn('exclamation-triangle', 'success') }}
+                                    </div>
+                                </div></li>
+                    <li>Username: <div class="setting-switch">{{ $player->user->username }}</div></li>
+                    <li>E-Mail: <div class="setting-switch">{{ $player->user->email }}</div></li>
+                    <li>Balance: <div class="setting-switch">{{ $player->balance }}$</div></li>
+                    <li>Club: <div class="setting-switch">{{ $player->club_id }}</div></li>
+                    <li>Club role: <div class="setting-switch">{{ $player->club_role }}</div></li>
+                </ul>
+            {{ Fickle::closeWidget() }}
 
     {{ Fickle::openPanel('Users stocks', 8) }}
 

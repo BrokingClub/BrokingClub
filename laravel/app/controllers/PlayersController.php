@@ -52,7 +52,7 @@ class PlayersController extends \BaseController {
     {
         $player = Player::findOrFail($id);
 
-        $this->setTitle($player->user->username);
+        $this->setTitle('User information: '.$player->user->username);
 
         $this->data['player'] = $player;
 
