@@ -129,6 +129,20 @@ class Fickle {
         return "col-md-" . $cols;
     }
 
+    public static function earnings($total, $price) {
+        $difference = round($price - $total, 4);
+
+        if($difference < 0) {
+            return '<div class="label label-as-badge bigger-label label-danger">'.$difference.'</div>';
+        }
+        elseif($difference > 0) {
+            return '<div class="label label-as-badge bigger-label label-success">+'.$difference.'</div>';
+        }
+        else {
+            return '<div class="label label-as-badge bigger-label label-neutral">'.$difference.'</div>';
+        }
+    }
+
     public static function stockValue($stock, $options = array()){
         $stockValue = $stock->newestValue()->value;
         $changeRatePercent = $stock->changeRatePercent();
@@ -153,5 +167,9 @@ class Fickle {
         $html .= "</div>";
 
         return $html;
+    }
+
+    public static function iconBtn($icon, $mode) {
+        return '<button class="btn btn-'.$mode.'"><i class="fa fa-'.$icon.'"></i></button>';
     }
 }

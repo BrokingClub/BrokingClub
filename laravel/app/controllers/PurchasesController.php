@@ -41,13 +41,14 @@ class PurchasesController extends \BaseController {
         $purchase = new Purchase();
 
         $mode = "falling";
-        if(Input::get('betOnRise'))
-            $mode = "rising";
+        if(Input::get('betOnRise')) $mode = "rising";
 
         $purchase->amount = Input::get('amount');
         $purchase->mode = $mode;
         $purchase->stock_id = $stock->id;
         $purchase->player_id = $thePlayer->id;
+        $purchase->value = $stock->newestValue()->value;
+
 
         $bill = $purchase->calculateBill();
         $purchase->paid = $bill['perStock'];

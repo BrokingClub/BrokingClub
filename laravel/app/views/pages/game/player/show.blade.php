@@ -3,8 +3,15 @@
 @section('content')
 
     {{ Fickle::openPanel('User information', 4) }}
-            <img class="img-circle" style="margin-bottom: 10px;"
-                        src="http://fc05.deviantart.net/fs71/f/2011/019/1/9/spongebob_avatar_by_me969-d37kddc.jpg"/>
+        <div class="userHead" style="text-align: center;">
+            <img class="img-circle" src="http://fc05.deviantart.net/fs71/f/2011/019/1/9/spongebob_avatar_by_me969-d37kddc.jpg"/>
+            <div class="userActions" style="margin: 10px;">
+                {{ Fickle::iconBtn('envelope', 'default') }}
+                {{ Fickle::iconBtn('plus-square', 'primary') }}
+                {{ Fickle::iconBtn('users', 'warning') }}
+                {{ Fickle::iconBtn('exclamation-triangle', 'success') }}
+            </div>
+        </div>
         <table class="table">
             <tr>
                 <td>Username:</td>
@@ -29,8 +36,11 @@
             <th>Amount</th>
             <th>Paid</th>
             <th>Total paid</th>
-            <th>Actual value</th>
-            <th>Actual total</th>
+            <th>Mode</th>
+            <th>Value</th>
+            <th>Total</th>
+            <th>Rate</th>
+            <th>Actions</th>
         </thead>
         <tbody>
 
@@ -40,16 +50,16 @@
                 <td>{{ $purchase->amount }}</td>
                 <td>{{ $purchase->paid }} US$</td>
                 <td>{{ $purchase->total() }}</td>
+                <td>{{ $purchase->mode }}</td>
                 <td>{{ $purchase->stock->newestValue()->value }}</td>
                 <td>{{ $purchase->price() }}</td>
-
+                <td>{{ Fickle::earnings($purchase->total(), $purchase->price()) }}</td>
+                <td>{{ QForm::btnPrimary('Sell', 'usd') }}</td>
             </tr>
-
         @endforeach
 
         </tbody>
     </table>
-
 
     {{ Fickle::closePanel() }}
 

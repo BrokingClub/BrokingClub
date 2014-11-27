@@ -3,7 +3,7 @@
 class Purchase extends BaseModel {
 	protected $fillable = [];
 
-    protected static $feeBase = 0.01;
+    protected static $feeBase = 0.1;
 
     public function stock() {
         return $this->belongsTo('Stock');
@@ -22,7 +22,7 @@ class Purchase extends BaseModel {
         $fee =      $this->calculateFee($stock);
         $price =    $this->calculatePrice($stock);
         $total =    intval($price + $fee);
-        $perStock = $price / $this->amount;
+        $perStock = $total / $this->amount;
 
         $bill = [
             "calculateFee" => $fee,
