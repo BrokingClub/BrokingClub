@@ -1,8 +1,7 @@
 var sql = require('./sql');
 var request = require('request');
 var config = require('./config');
-var no = require('../no');
-var logger = require('../logger');
+var no = require('app/no');
 
 sql.query('SELECT id, symbol FROM stocks', function(err, result){
     if(no(err)){
@@ -17,7 +16,7 @@ function startFetchInterval(symbols){
         var start = Date.now();
         
 		fetchStocks(symbols);
-        logger.log('Fetched stocks in ' + (Date.now() - start) + ' ms');
+        console.log('Fetched stocks in ' + (Date.now() - start) + ' ms');
 	};
 	
 	callback();
@@ -32,7 +31,11 @@ function fetchStocks(symbols){
 		if(no(err)){
 			body = JSON.parse(body);
 			
-			saveQuotes(symbols, body.query.results.quote);
+            if(body.query && body.query.results){
+                saveQuotes(symbols, body.query.results.quote);
+            }else{
+                throw new Error('Invalid JSON response from Yahoo API: ' + body);
+            }
 		}
 	});
 }
@@ -67,7 +70,7 @@ function startDeleteOldStocksInterval(){
         var start = Date.now();
         
         deleteOldStocks();
-        logger.log('Deleted old stocks in ' + (Date.now() - start) + ' ms');
+        console.log('Deleted old stocks in ' + (Date.now() - start) + ' ms');
     };
     
     callback();
