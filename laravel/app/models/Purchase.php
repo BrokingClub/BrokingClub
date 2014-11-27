@@ -5,6 +5,10 @@ class Purchase extends BaseModel {
 
     protected static $feeBase = 0.01;
 
+    public function stock() {
+        return $this->belongsTo('Stock');
+    }
+
     public function calculateBill(){
         $stock = Stock::findOrFail($this->stock_id);
 
