@@ -27,7 +27,17 @@ class ClubsController extends \BaseController {
      */
     public function create()
     {
-        //hello
+        $thePlayer = Player::auth();
+        if($thePlayer->club)
+            return Redirect::route('clubs.index')->withError('You are already in a club!');
+
+            $clubs = Club::all();
+
+            $this->data['clubs'] = $clubs;
+
+            $this->setTitle('Clubs');
+
+            return $this->makeView('pages.game.club.create');
     }
 
     /**
@@ -38,7 +48,29 @@ class ClubsController extends \BaseController {
      */
     public function store()
     {
-        //hello
+    $thePlayer = Player::auth();
+
+        if($thePlayer->club)
+            return Redirect::route('clubs.index')->withError('You are already in a club!');
+
+        if(!$thePlayer)
+            return Redirect::back()->withError('You are not logged in as a real player.');
+
+        $club = new Club();
+
+        $club->slug = Input::get('club_name');
+        $club->teaser = Input::get('teaser');
+        $club->description = Input::get('description');
+        $club->owner_id = $thePlayer->id;
+
+        $club->save();
+
+        $thePlayer->club_id = $club->id;
+        $thePlayer->club_role = 'founder';
+        $thePlayer->save();
+
+        return Redirect::route('clubs.show', $club->id);
+
     }
 
     /**
