@@ -12,6 +12,10 @@ class Player extends BaseModel {
         return $this->belongsTo('User');
     }
 
+    public function club() {
+        return $this->belongsTo('Club');
+    }
+
     public function purchases(){
         return $this->hasMany('Purchase')->orderBy('created_at', 'DESC')->where('mode', '<>', 'sold');
     }

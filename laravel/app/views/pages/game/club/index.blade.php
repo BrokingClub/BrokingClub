@@ -2,6 +2,15 @@
 
 @section('content')
 
+    {{ Fickle::openPanel('Your Club <button class="btn ls-light-blue-btn btn-round"><i class="fa fa-plus"></i></button>', 12) }}
+        @if($theplayer->club)
+            <a href="{{ URL::route('clubs.show', $theplayer->club->id)  }}">{{ $theplayer->club->slug }}</a>
+        @else
+            You´re not a member of a club
+        @endif
+
+    {{ Fickle::closePanel() }}
+
     {{ Fickle::openPanel('Clubs', 12) }}
                 <div class="table-responsive ls-table">
                     <table class="table">
