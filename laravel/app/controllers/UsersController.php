@@ -60,6 +60,7 @@ class UsersController extends BaseController
             $newPlayer = new Player();
             $newPlayer->user_id = $user->id;
             $newPlayer->level = 1;
+            $newPlayer->balance = 50000;
             $newPlayer->save();
 
             return Redirect::action('UsersController@login')

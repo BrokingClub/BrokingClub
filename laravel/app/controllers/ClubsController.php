@@ -49,12 +49,11 @@ class ClubsController extends \BaseController {
     public function store()
     {
     $thePlayer = Player::auth();
+        if(!$thePlayer)
+            return Redirect::back()->withError('You are not logged in as a real player.');
 
         if($thePlayer->club)
             return Redirect::route('clubs.index')->withError('You are already in a club!');
-
-        if(!$thePlayer)
-            return Redirect::back()->withError('You are not logged in as a real player.');
 
         $club = new Club();
 
