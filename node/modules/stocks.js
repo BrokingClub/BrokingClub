@@ -2,6 +2,9 @@ var sql = require('./sql');
 var request = require('request');
 var config = require('./config');
 var no = require('app/no');
+var timer = require('app/timer');
+var fetchTimer = timer.create();
+var deleteTimer = timer.create();
 var _ = require('lodash');
 var cache = {};
 var symbols;
@@ -83,10 +86,8 @@ function saveQuotes(symbols){
 
 function startDeleteOldStocksInterval(){
     var callback = function(){
-        var start = Date.now();
-        
+        deleteTimer.start();
         deleteOldStocks();
-        console.log('Deleted old stocks in ' + (Date.now() - start) + ' ms');
     };
     
     callback();
@@ -94,7 +95,11 @@ function startDeleteOldStocksInterval(){
 }
 
 function deleteOldStocks(){
-    sql.query('DELETE FROM stock_values WHERE created_at < DATE_SUB(NOW(), INTERVAL 30 DAY)', no);
+    sql.query('DELETE FROM stock_values WHERE created_at < DATE_SUB(NOW(), INTERVAL 30 DAY)', function(err, result){
+        if(no(err)){
+            deleteTimer.stop('Deleted ' + result.affectedRows + ' old rows');   
+        }
+    });
 }
 
 function checkForUnchangedQuotes(symbols){
