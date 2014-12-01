@@ -20,6 +20,7 @@ Route::group(array('before' => 'auth'), function(){
     Route::resource('stocks', 'StocksController');
     Route::resource('clubs', 'ClubsController');
     Route::resource('players', 'PlayersController');
+    Route::get('clubs/{id}/join', 'PlayersController@joinClub');
     Route::resource('images', 'ImagesController');
     Route::resource('purchases', 'PurchasesController');
 

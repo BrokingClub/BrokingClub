@@ -58,7 +58,7 @@
             <th>Actions</th>
         </thead>
         <tbody>
-
+.
         @foreach($player->purchases->all() as $purchase)
             <tr>
                 <td>

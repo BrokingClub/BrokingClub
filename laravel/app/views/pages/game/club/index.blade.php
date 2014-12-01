@@ -14,11 +14,12 @@
 
     {{ Fickle::openPanel('Clubs', 12) }}
                 <div class="table-responsive ls-table">
-                    <table class="table">
+                    {{ Fickle::openTable() }}
                         <thead>
                             <th>Rank</th>
                             <th>Name</th>
                             <th>Members</th>
+                            <td>Worth</td>
                             <th>Become a Member</th>
                         </thead>
                         <tbody>
@@ -26,15 +27,19 @@
                             @foreach($clubs as $i => $club)
                                 <tr>
                                     <td>{{ $i + 1 }}</td>
-                                    <td>{{ $club->slug }}</td>
-                                    <td></td>
-                                    <td>{{ QForm::btnPrimary('Join', 'users') }}</td>
+                                    <td><a href="{{ URL::route('clubs.show', $club->id)  }}">{{ $club->slug }}</a></td>
+                                    <td>{{ $club->countMembers() }}</td>
+                                    <td>{{ $club->worth() }}$ <small>(Ø {{ $club->avgWorth() }}$ pp.)</small></td>
 
+                                    @if(!($club->id == $theplayer->club_id))
+                                        <td><a href="{{ URL::action('PlayersController@joinClub', $club->id) }}">Join</a></td>
+                                    @else <td></td>
+                                    @endif
 
                                 </tr>
                             @endforeach
                         </tbody>
-                    </table>
+                    {{ Fickle::closeTable() }}
                 </div>
             {{ Fickle::closePanel() }}
 

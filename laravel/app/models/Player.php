@@ -70,4 +70,8 @@ class Player extends BaseModel {
             return true;
         }
     }
+
+    public function name() {
+        return implode(' ', [$this->firstname, $this->lastname]);
+    }
 }

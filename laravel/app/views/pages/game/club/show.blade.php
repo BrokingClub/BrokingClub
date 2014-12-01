@@ -15,16 +15,31 @@
                 </div>
             </li>
             <li>Clubname: <div class="setting-switch">{{ $club->slug }}</div></li>
-            <li>Owner: <div class="setting-switch">{{ $club->owner->firstname }} {{ $club->owner->lastname }}</div></li>
+            <li>Owner: <div class="setting-switch">{{ $club->owner->user->username }}</div></li>
             <li>Teaser: <div class="setting-switch">{{ $club->teaser }}</div></li>
             <li>Description: <div class="setting-switch">{{ $club->description }}</div></li>
             <li>Members: <div class="setting-switch">{{ $club->countMembers() }}</div></li>
-            <li>Balance: <div class="setting-switch">{{ $club->worth() }} <small>(Ø {{ $club->avgWorth() }} pp.)</small></div></li>
+            <li>Balance: <div class="setting-switch">{{ $club->worth() }}$ <small>(Ø {{ $club->avgWorth() }}$ pp.)</small></div></li>
         </ul>
     {{ Fickle::closeWidget() }}
 
     {{ Fickle::openPanel('Performance', 8, ['controls' => 'minus,refresh,closepanel', 'padding' => false])}}
-        <div id="hero-area"></div>
+        {{ Fickle::openTable() }}
+            <thead>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>Worth</th>
+            </thead>
+            <tbody>
+                @foreach($club->members as $i => $member)
+                    <tr>
+                        <td>{{ $i + 1 }}</td>
+                        <td>{{ $member->user->username }}</td>
+                        <td>{{ $member->totalWorth() }}$</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        {{ Fickle::closeTable() }}
     {{ Fickle::closePanel() }}
 
 @endsection

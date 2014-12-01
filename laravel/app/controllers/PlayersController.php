@@ -104,4 +104,17 @@ class PlayersController extends \BaseController {
 		//
 	}
 
+    public function joinClub($id) {
+        $thePlayer = Player::auth();
+        if(!$thePlayer)
+            return Redirect::back()->withError('You are not logged in as a real player.');
+
+        $thePlayer->club_id = $id;
+        $thePlayer->club_role = 'member';
+
+        $thePlayer->save();
+
+        return Redirect::route('clubs.show', $id);
+    }
+
 }

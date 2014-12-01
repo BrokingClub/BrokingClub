@@ -69,7 +69,6 @@ class ClubsController extends \BaseController {
         $thePlayer->save();
 
         return Redirect::route('clubs.show', $club->id);
-
     }
 
     /**
