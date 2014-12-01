@@ -38,16 +38,6 @@ function fetchStocks(symbols){
     });
 }
 
-function buildYqlQuery(symbols){
-	var symbolNames = [];
-	
-	symbols.forEach(function(symbol){
-		symbolNames.push(symbol.symbol);
-	});
-	
-	return 'select LastTradePriceOnly from yahoo.finance.quote where symbol in ("' + symbolNames.join('","') + '")';
-}
-
 function saveQuotes(symbols){
 	var values = [];
 
