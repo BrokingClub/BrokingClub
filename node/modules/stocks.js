@@ -2,33 +2,39 @@ var sql = require('./sql');
 var request = require('request');
 var config = require('./config');
 var no = require('app/no');
+var timer = require('app/timer');
+var fetchTimer = timer.create();
+var deleteTimer = timer.create();
 var _ = require('lodash');
 var cache = {};
+var symbols;
 
 sql.query('SELECT id, symbol FROM stocks', function(err, result){
     if(no(err)){
-        startFetchInterval(result);
+        symbols = result;
+        
+        startFetchInterval();
     }
 });
 
 startDeleteOldStocksInterval();
 
-function startFetchInterval(symbols){
+function startFetchInterval(){
 	var callback = function(){
         var start = Date.now();
         
-		fetchStocks(symbols);
+		fetchStocks(_.clone(symbols));
         console.log('Fetched stocks in ' + (Date.now() - start) + ' ms');
 	};
 	
 	callback();
-	setInterval(callback, config.fetchDelaySec * 1000);
+	setInterval(callback, 10000);//config.fetchDelaySec * 1000);
 }
 
 function fetchStocks(symbols){
 	var yql = buildYqlQuery(symbols);
 	var apiUrl = 'https://query.yahooapis.com/v1/public/yql?q=' + yql + '&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=';
-	
+    
 	request.get(apiUrl, function(err, res, body){
 		if(no(err)){
 			body = JSON.parse(body);
@@ -40,17 +46,17 @@ function fetchStocks(symbols){
                     symbols[i].quote = quotes[i].LastTradePriceOnly;
                 }
                 
-                symbols = checkForUnchangedQuotes(symbols);
+                var changedSymbols = checkForUnchangedQuotes(symbols);
+                cache.symbols = symbols;
                 
-                if(symbols.length){
-                    cache.symbols = symbols;
-                    
+                if(changedSymbols.length){
+                    console.log('Saving ' + changedSymbols.length + ' of ' + symbols.length + ' quotes');
                     saveQuotes(symbols);
                 }else{
                     console.log('Unchanged quotes');   
                 }
             }else{
-                throw new Error('Invalid JSON response from Yahoo API: ' + body);
+                throw new Error('Invalid JSON response from Yahoo API');
             }
 		}
 	});
@@ -80,10 +86,8 @@ function saveQuotes(symbols){
 
 function startDeleteOldStocksInterval(){
     var callback = function(){
-        var start = Date.now();
-        
+        deleteTimer.start();
         deleteOldStocks();
-        console.log('Deleted old stocks in ' + (Date.now() - start) + ' ms');
     };
     
     callback();
@@ -91,18 +95,22 @@ function startDeleteOldStocksInterval(){
 }
 
 function deleteOldStocks(){
-    sql.query('DELETE FROM stock_values WHERE created_at < DATE_SUB(NOW(), INTERVAL 30 DAY)', no);
+    sql.query('DELETE FROM stock_values WHERE created_at < DATE_SUB(NOW(), INTERVAL 30 DAY)', function(err, result){
+        if(no(err)){
+            deleteTimer.stop('Deleted ' + result.affectedRows + ' old rows');   
+        }
+    });
 }
 
 function checkForUnchangedQuotes(symbols){
     if(cache.symbols){
         cache.symbols.forEach(function(cacheSymbol){
-            var symbol = _.find(symbols, cacheSymbol.id);
+            var symbol = _.find(symbols, { id: cacheSymbol.id });
             
             if(symbol){
                 if(symbol.quote === cacheSymbol.quote){
                     console.log('Unchanged quote found for symbol ' + symbol.symbol);
-                    _.remove(symbols, symbol.id);   
+                    _.remove(symbols, { id: symbol.id });   
                 }
             }
         });
