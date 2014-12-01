@@ -1,5 +1,5 @@
 var sql = require('./sql');
-var request = require('request');
+var yahoo = require('./stocks-yahoo');
 var no = require('app/no');
 var timer = require('app/timer').create();
 var _ = require('lodash');
@@ -24,33 +24,18 @@ exports.fetchStocks = function(){
 };
 
 function fetchStocks(symbols){
-	var yql = buildYqlQuery(symbols);
-	var apiUrl = 'https://query.yahooapis.com/v1/public/yql?q=' + yql + '&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=';
-    
-	request.get(apiUrl, function(err, res, body){
-		if(no(err)){
-			body = JSON.parse(body);
-			
-            if(body.query && body.query.results){
-                var quotes = body.query.results.quote;
-                
-                for(var i = 0; i < quotes.length; i++){
-                    symbols[i].quote = quotes[i].LastTradePriceOnly;
-                }
-                
-                var changed = getChangedQuotes(symbols);
-                cache.symbols = symbols;
-                
-                if(changed.length){
-                    saveQuotes(changed);
-                }else{
-                    timer.stop('Unchanged quotes');
-                }
+	yahoo.queryStocks(symbols, function(err, symbols){
+        if(no(err)){
+            var changed = getChangedQuotes(symbols);
+            cache.symbols = symbols;
+
+            if(changed.length){
+                saveQuotes(changed);
             }else{
-                throw new Error('Invalid JSON response from Yahoo API');
-            }
-		}
-	});
+                timer.stop('Unchanged quotes');
+            }   
+        }
+    });
 }
 
 function buildYqlQuery(symbols){
