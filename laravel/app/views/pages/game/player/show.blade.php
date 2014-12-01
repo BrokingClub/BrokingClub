@@ -4,9 +4,9 @@
 
         {{ Fickle::openWidget(4, 'setting', $player->user->username, 'user') }}
                 <ul>
-                    <li><div class="userHead" style="text-align: center;">
+                    <li><div class="userHead">
                                     <img class="img-circle" src="http://fc05.deviantart.net/fs71/f/2011/019/1/9/spongebob_avatar_by_me969-d37kddc.jpg"/>
-                                    <div class="userActions" style="margin: 10px;">
+                                    <div class="actions" style="margin: 10px;">
                                         {{ Fickle::iconBtn('envelope', 'default') }}
                                         {{ Fickle::iconBtn('plus-square', 'primary') }}
                                         {{ Fickle::iconBtn('mortar-board', 'warning') }}

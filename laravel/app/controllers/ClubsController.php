@@ -81,7 +81,13 @@ class ClubsController extends \BaseController {
      */
     public function show($id)
     {
-        $this->setTitle('Some club');
+
+        $club = Club::findOrFail($id);
+
+        $this->setTitle('Club information: '.$club->slug);
+
+        $this->data['club'] = $club;
+
         return $this->makeView('pages.game.club.show');
     }
 

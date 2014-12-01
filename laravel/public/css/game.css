@@ -83,3 +83,15 @@
     font-weight: bold;
     line-height: 46px;
 }
+
+.userHead {
+    text-align: center;
+}
+
+.clubAvatar {
+    width: 200px;
+}
+
+.actions {
+    margin: 10px;
+}
