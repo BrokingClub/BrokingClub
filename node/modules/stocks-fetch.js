@@ -49,7 +49,7 @@ function saveQuotes(symbols){
 	
     sql.query(query, function(err){
         if(no(err)){
-            timer.stop('Fetched stocks');   
+            timer.stop('Fetched ' + symbols.length + ' stocks');   
         }
     });
 }
@@ -57,6 +57,7 @@ function saveQuotes(symbols){
 function getChangedQuotes(symbols){
     if(cache.symbols){
         var changed = [];
+        var unchanged = [];
         
         symbols.forEach(function(symbol){
             var cached = _.find(cache.symbols, { id: symbol.id });
@@ -64,9 +65,17 @@ function getChangedQuotes(symbols){
             if(!cached || symbol.quote !== cached.quote){
                 changed.push(symbol);
             }else{
-                console.log('Unchanged quote found for symbol ' + symbol.symbol);
+                unchanged.push(symbol.symbol);
             }
         });
+        
+        if(changed.length){
+            console.log('Changed symbols: ' + changed.join(', '));   
+        }
+        
+        if(unchanged.length){
+            console.log('Unchanged symbols: ' + unchanged.join(', '));   
+        }
         
         return changed;
     }else{
