@@ -24,6 +24,7 @@ Route::group(array('before' => 'auth'), function(){
     Route::resource('images', 'ImagesController');
     Route::resource('purchases', 'PurchasesController');
 
+    Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'PlayersController@dashboard']);
     Route::get('profile', ['as' => 'profile', 'uses' => 'UsersController@edit']);
     Route::post('profile', 'UsersController@update');
     Route::post('changePassword', 'UsersController@changepassword');

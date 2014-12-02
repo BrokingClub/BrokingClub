@@ -5,7 +5,7 @@
 jQuery(document).ready(function($) {
     'use strict';
 
-    hero_area_chart();
+    //hero_area_chart();
 });
 
 var resizeIdMorris;

@@ -117,4 +117,8 @@ class PlayersController extends \BaseController {
         return Redirect::route('clubs.show', $id);
     }
 
+
+    public function dashboard(){
+        return Redirect::to('players/' . Player::auth()->id);
+    }
 }

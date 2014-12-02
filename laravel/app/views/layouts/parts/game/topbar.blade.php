@@ -47,7 +47,7 @@
                 <li>
                     <a href="javascript:void(0)">
                         <div class="goal-user-image">
-                            <img class="rounded" src="assets/images/demo/avatar-80.png" alt="user image">
+                            <img class="rounded" src="img/spongebob-avatar.jpg" alt="user image">
                         </div>
                         <div class="goal-content">
                             Wordpress Theme
@@ -60,7 +60,7 @@
                 <li>
                     <a href="javascript:void(0)">
                         <div class="goal-user-image">
-                            <img class="rounded" src="assets/images/demo/avatar-80.png" alt="user image">
+                            <img class="rounded" src="img/spongebob-avatar.jpg" alt="user image">
                         </div>
                         <div class="goal-content">
                             PSD Designe
@@ -73,7 +73,7 @@
                 <li>
                     <a href="javascript:void(0)">
                         <div class="goal-user-image">
-                            <img class="rounded" src="assets/images/demo/avatar-80.png" alt="user image">
+                            <img class="rounded" src="img/spongebob-avatar.jpg" alt="user image">
                         </div>
                         <div class="goal-content">
                             Wordpress PLugin
@@ -175,7 +175,7 @@
                 <li>
                     <a href="javascript:void(0)">
                         <div class="email-top-image">
-                            <img class="rounded" src="assets/images/demo/avatar-80.png" alt="user image">
+                            <img class="rounded" src="img/spongebob-avatar.jpg" alt="user image">
                         </div>
                         <div class="email-top-content">
                             John Doe <div>Sample Mail 1</div>
@@ -185,7 +185,7 @@
                 <li>
                     <a href="javascript:void(0)">
                         <div class="email-top-image">
-                            <img class="rounded" src="assets/images/demo/avatar-80.png" alt="user image">
+                            <img class="rounded" src="img/spongebob-avatar.jpg" alt="user image">
                         </div>
                         <div class="email-top-content">
                             John Doe <div>Sample Mail 2</div>
@@ -195,7 +195,7 @@
                 <li>
                     <a href="javascript:void(0)">
                         <div class="email-top-image">
-                            <img class="rounded" src="assets/images/demo/avatar-80.png" alt="user image">
+                            <img class="rounded" src="img/spongebob-avatar.jpg" alt="user image">
                         </div>
                         <div class="email-top-content">
                             John Doe <div> Sample Mail 4</div>

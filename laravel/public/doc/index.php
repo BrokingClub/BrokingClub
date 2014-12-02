@@ -18,6 +18,7 @@ $documo->addFile('Use case manageclubs'     , 'UseCase_ManageClubs.md', 'uc_mana
 
 $documo->addFile('Software Requirements Specification',  'SoftwareRequirementsSpecification.md', 'srs', true);
 $documo->addFile('Software Architecture Document',  'SoftwareArchitectureDocument.md', 'sad', true);
+$documo->addFile('Change Management',  'ChangeManagement.md', 'changemanagement', true);
 
 $documo->parseMarkdown();
 
