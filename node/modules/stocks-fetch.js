@@ -79,6 +79,8 @@ function getChangedQuotes(symbols){
         
         return changed;
     }else{
+        console.log('Skipped stocks cache');
+        
         return symbols; 
     }
 }

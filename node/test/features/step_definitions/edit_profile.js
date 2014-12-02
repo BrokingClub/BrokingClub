@@ -7,7 +7,7 @@ module.exports = function(){
     this.Given('I am logged in as a test user', function(callback){
         var browser = this.browser;
         
-        this.visit('http://node.broking.club/test/login.html', function(err){
+        this.visit('http://broking.club/login', function(err){
             if(no(err)){
                 browser
                     .fill('email', 'test@broking.club')
