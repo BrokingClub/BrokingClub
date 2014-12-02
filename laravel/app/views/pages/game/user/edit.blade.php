@@ -40,9 +40,14 @@
 
         {{ Fickle::openTabContent('club') }}
             {{ QForm::open() }}
-                {{ QForm::label('old_password', 'Current Password:') }}
-                {{ QForm::text('my_club', 'Money Club', ['readonly' => 'readonly']) }}
-                {{ QForm::btnDanger( 'Get out of club', 'remove') }}
+                {{ QForm::label('your_club', 'Your club:') }}
+                @if($theplayer->club)
+                    {{ QForm::readOnly('your_club', $theplayer->club->slug) }}
+                    {{ QForm::btnDanger( 'Get out of club', 'remove') }}
+                    <a href="{{ URL::action('PlayersController@leaveClub') }}">Leave club</a>
+                @else
+                    {{ QForm::readOnly('no_club', 'You are not a member of any club') }}
+                @endif
             {{ QForm::close() }}
 
         {{ Fickle::closeTabContent() }}

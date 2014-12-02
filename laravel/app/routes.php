@@ -21,6 +21,7 @@ Route::group(array('before' => 'auth'), function(){
     Route::resource('clubs', 'ClubsController');
     Route::resource('players', 'PlayersController');
     Route::get('clubs/{id}/join', 'PlayersController@joinClub');
+    Route::get('profile/leaveclub', 'PlayersController@leaveClub');
     Route::resource('images', 'ImagesController');
     Route::resource('purchases', 'PurchasesController');
 
