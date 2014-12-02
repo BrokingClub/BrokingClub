@@ -27,6 +27,9 @@ Route::group(array('before' => 'auth'), function(){
     Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'PlayersController@dashboard']);
     Route::get('profile', ['as' => 'profile', 'uses' => 'UsersController@edit']);
     Route::post('profile', 'UsersController@update');
+
+    Route::post('profile/leaveclub', 'PlayersController@leaveClub');
+
     Route::post('changePassword', 'UsersController@changepassword');
     Route::post('users/{id}', ['as' => 'user.update', 'uses' => 'UsersController@update']);
     Route::post('users/{id}/changepassword', ['as' => 'user.changepassword', 'uses' => 'UsersController@changePassword']);
