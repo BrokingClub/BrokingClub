@@ -7,15 +7,12 @@ module.exports = function(){
     this.Given('I am logged in as a test user', function(callback){
         var browser = this.browser;
         
-        this.visit('http://broking.club/login', function(err){
+        this.visit('http://node.broking.club/test/login.html', function(err){
             if(no(err)){
-                callback.pending();
                 browser
                     .fill('email', 'test@broking.club')
-                    .fill('password', 'test');
-                    /*.pressButton('button', function(err){
-                        callback.pending();
-                    });*/
+                    .fill('password', 'test')
+                    .pressButton('button', callback);
             }else{
                 callback.fail(err);
             }
@@ -23,6 +20,7 @@ module.exports = function(){
     });
     
     this.Given('I am on the profile page', function(callback){
+        //this.visit('http://broking.club/profile', callback);
         callback.pending();
     });
     /* Background */
