@@ -1,4 +1,7 @@
 var express = require('express');
+var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 var path = require('path');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
@@ -6,7 +9,6 @@ var bodyParser = require('body-parser');
 var domain = require('domain');
 var logger = require('app/logger');
 var no = require('app/no');
-var app = express();
 
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger);
@@ -25,5 +27,7 @@ stocksDomain.run(function(){
 });
 
 app.listen(3000);
+server.listen(3001);
 
-module.exports = app;
+exports.app = app;
+exports.io = io;
