@@ -17,7 +17,7 @@ A guest can register an user account to login to the system.
 
 # Flow of Events
 ## 	Basic Flow
-![Login screenshot](http://broking.club/img/doc/screens/reg_screen.png)
+![Login screenshot](http://broking.club/img/doc/screens/reg_screen.PNG)
 
 By typing in an available username, a valid e-mail address and a password two times, a guest can register himself to the broking.club.
 After completing the registration process the user will be redirected to the login page. 

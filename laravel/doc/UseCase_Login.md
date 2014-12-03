@@ -17,7 +17,7 @@ The user can login to the system
 
 # Flow of Events
 ## 	Basic Flow
-![Login screenshot](http://broking.club/img/doc/screens/login.png)
+![Login screenshot](http://broking.club/img/doc/screens/login.PNG)
 
 By typing in the registered username with the correct password a user can login himself to the system.
 The server checks whether the user is already activated and not blocked from the game. 
