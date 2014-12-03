@@ -127,7 +127,7 @@ class PlayersController extends \BaseController {
 
         $thePlayer->save();
 
-        return Redirect::back();
+        return Redirect::back()->withMessage('You left the club successfully');
     }
 
 

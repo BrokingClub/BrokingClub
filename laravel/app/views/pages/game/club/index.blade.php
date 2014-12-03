@@ -32,7 +32,7 @@
                                     <td>{{ $club->worth() }}$ <small>(Ø {{ $club->avgWorth() }}$ pp.)</small></td>
 
                                     @if(!($club->id == $theplayer->club_id))
-                                        <td><a href="{{ URL::action('PlayersController@joinClub', $club->id) }}">Join</a></td>
+                                        <td><a class="btn btn-primary" href="{{ URL::action('PlayersController@joinClub', $club->id) }}">Join</a></td>
                                     @else <td></td>
                                     @endif
 

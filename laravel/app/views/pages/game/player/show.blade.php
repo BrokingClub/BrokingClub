@@ -20,14 +20,15 @@
                     <li>Worth: <div class="setting-switch"><b>{{ Format::money($player->totalWorth()) }}</b></div></li>
                     <li>Club:
                         @if($player->club)
-                            <div class="setting-switch"><a href="{{ URL::route('clubs.show', $player->club->id)  }}">{{ $player->club->slug }}</a></div>
+                            <div class="setting-switch"><a href="{{ URL::route('clubs.show', $player->club->id)  }}">{{ $player->club->slug }}</a>
+                                @if($player->club_role == 'founder')
+                                    <i class="fa fa-star-o"></i>
+                                @endif
+                            </div>
                         @else
                             <div class="setting-switch">-</div>
                         @endif
                     </li>
-                    @if($player->club)
-                    <li>Club role: <div class="setting-switch">{{ $player->club_role }}</div></li>
-                    @endif
                 </ul>
             {{ Fickle::closeWidget() }}
     {{ Fickle::openPanel('Worth', 8, ['class' => 'fickle-panel hidden-sm']) }}
