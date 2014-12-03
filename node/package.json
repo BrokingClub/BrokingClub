@@ -17,6 +17,7 @@
 	"shell-escape": "*",
 	"request": "*",
 	"mysql": "*",
-    "moment": "*"
+    "moment": "*",
+    "socket.io": "*"
   }
 }
