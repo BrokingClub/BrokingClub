@@ -62,6 +62,8 @@ function getChangedQuotes(symbols){
         symbols.forEach(function(symbol){
             var cached = _.find(cache.symbols, { id: symbol.id });
             
+            console.log('[DEBUG] Cache compare: ' + (cached ? symbol.quote + ' !== ' + cached.quote : 'not cached'));
+            
             if(!cached || symbol.quote !== cached.quote){
                 changed.push(symbol);
             }else{
