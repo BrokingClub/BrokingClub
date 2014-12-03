@@ -1,7 +1,6 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
-var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var domain = require('domain');
@@ -10,7 +9,6 @@ var no = require('app/no');
 var app = express();
 
 app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(morgan('dev'));
 app.use(logger);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -10,7 +10,7 @@
     "express": "*",
     "body-parser": "*",
     "cookie-parser": "*",
-    "morgan": "*",
+    "log4js": "*",
     "serve-favicon": "*",
 	"lodash": "*",
 	"strip-ansi": "*",
