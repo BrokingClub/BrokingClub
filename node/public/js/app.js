@@ -67,5 +67,12 @@
 		function isTesting(){
 			return !$scope.stdout;
 		}
+        
+        var socket = io.connect('http://localhost');
+        
+        socket.emit('feature', feature.name);
+        socket.on('data', function(data){
+            console.log(data); 
+        });
 	});
 }());

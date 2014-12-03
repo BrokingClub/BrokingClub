@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var server = require('http').createServer(app);
+var server = app.listen(3000);
 var io = require('socket.io')(server);
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-require('./routes/cucumber')(app);
+require('./routes/cucumber')(app, io);
 
 var stocksDomain = domain.create();
 
@@ -25,9 +25,6 @@ stocksDomain.on('error', no)
 stocksDomain.run(function(){
     require('./modules/stocks');
 });
-
-app.listen(3000);
-server.listen(3001);
 
 exports.app = app;
 exports.io = io;

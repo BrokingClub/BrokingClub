@@ -3,12 +3,14 @@ var exec = require('child_process').exec;
 var stripAnsi = require('strip-ansi');
 var shellEscape = require('shell-escape');
 var _ = require('lodash');
+var no = require('app/no');
 var fakeItUntilYouMakeIt = false;
 
-module.exports = function(app){
+module.exports = function(app, io){
 	app.get('/api/cucumber/features', getFeatures);
 	app.get('/api/cucumber/features/:feature', getFeature);
 	app.get('/api/cucumber/features/:feature/test', testFeature);
+    listenForConnections(io);
 };
 
 function getFeatures(req, res){
@@ -87,4 +89,24 @@ function countMatches(str, regexp){
     }else{
         return 0;   
     }
+}
+
+function listenForConnections(io){
+    io.on('connection', function(socket){
+        handleConnection(socket); 
+    });
+}
+
+function handleConnection(socket){
+    socket.on('feature', function(feature){
+        var feature = shellEscape(feature);
+        var cmd = 'cd test && ../node_modules/.bin/cucumber.js features/' + feature + '.feature';
+        var process = exec(cmd, no);
+        var stdout = process.stdout;
+        
+        stdout.setEncoding('utf8');
+        stdout.on('data', function(data){
+            socket.emit('data', data);
+        })
+    });
 }
