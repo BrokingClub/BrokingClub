@@ -13,7 +13,7 @@ Version 1.3
 # Use-Case Name 
 Register
 ## 	Brief Description
-A guest can register an user account to login to the system
+A guest can register an user account to login to the system.
 
 # Flow of Events
 ## 	Basic Flow
