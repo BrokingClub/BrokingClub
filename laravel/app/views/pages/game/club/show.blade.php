@@ -15,7 +15,7 @@
                 </div>
             </li>
             <li>Clubname: <div class="setting-switch">{{ $club->slug }}</div></li>
-            <li>Owner: <div class="setting-switch">{{ $club->owner->user->username }}</div></li>
+            <li>Owner: <div class="setting-switch"><a href="{{ URL::route('players.show', $club->owner->id)  }}">{{ $club->owner->user->username }}</a></div></li>
             <li>Teaser: <div class="setting-switch">{{ $club->teaser }}</div></li>
             <li>Description: <div class="setting-switch">{{ $club->description }}</div></li>
             <li>Members: <div class="setting-switch">{{ $club->countMembers() }}</div></li>
