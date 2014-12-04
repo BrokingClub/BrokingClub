@@ -4,33 +4,33 @@ var no = require('app/no');
 var timer = require('app/timer').create();
 var _ = require('lodash');
 var cache = {};
-var symbols;
+var allSymbols;
 
 sql.query('SELECT id, symbol FROM stocks', function(err, result){
     if(no(err)){
-        symbols = result;
+        allSymbols = result;
         
         exports.fetchStocks();
     }
 });
 
 exports.fetchStocks = function(){
-    if(symbols){
+    if(allSymbols){
         timer.start();
-        fetchStocks(_.clone(symbols));
+        fetchStocks(_.clone(allSymbols));
     }else{
         console.error('Symbols not loaded!');   
     }
 };
 
 function fetchStocks(symbols){
-	yahoo.queryStocks(symbols, function(err, symbols){
+	yahoo.queryStocks(symbols, function(err, stocks){
         if(no(err)){
-            var changed = getChangedQuotes(symbols);
-            cache.symbols = symbols;
+            var changed = getChangedStocks(stocks);
+            cache.stocks = stocks;
 
             if(changed.length){
-                saveQuotes(changed);
+                saveStocks(changed);
             }else{
                 timer.stop('Unchanged quotes');
             }   
@@ -38,51 +38,51 @@ function fetchStocks(symbols){
     });
 }
 
-function saveQuotes(symbols){
+function saveStocks(stocks){
 	var values = [];
 
-	symbols.forEach(function(symbol){
-		values.push('(' + symbol.id + ',' + symbol.quote + ',now(),now())');
+	stocks.forEach(function(stock){
+		values.push('(' + stock.id + ',' + stock.quote + ',now(),now())');
 	});
 	
 	var query = 'INSERT INTO stock_values (stock_id, value, created_at, updated_at) VALUES ' + values.join(',');
 	
     sql.query(query, function(err){
         if(no(err)){
-            timer.stop('Fetched ' + symbols.length + ' stocks');   
+            timer.stop('Saved ' + stocks.length + ' stocks');   
         }
     });
 }
 
-function getChangedQuotes(symbols){
-    if(cache.symbols){
+function getChangedStocks(stocks){
+    if(cache.stocks){
         var changed = [];
         var unchanged = [];
         
-        symbols.forEach(function(symbol){
-            var cached = _.find(cache.symbols, { id: symbol.id });
+        stocks.forEach(function(stock){
+            var cached = _.find(cache.stocks, { id: stock.id });
             
-            console.log('[DEBUG] Cache compare: ' + (cached ? symbol.quote + ' !== ' + cached.quote : 'not cached'));
+            console.log('[DEBUG] Cache compare: ' + (cached ? stock.quote + ' !== ' + cached.quote : 'not cached'));
             
-            if(!cached || symbol.quote !== cached.quote){
-                changed.push(symbol);
+            if(!cached || stock.quote !== cached.quote){
+                changed.push(stock);
             }else{
-                unchanged.push(symbol.symbol);
+                unchanged.push(stock.symbol);
             }
         });
         
         if(changed.length){
-            console.log('Changed symbols: ' + changed.join(', '));   
+            console.log('Changed stocks: ' + changed.join(', '));   
         }
         
         if(unchanged.length){
-            console.log('Unchanged symbols: ' + unchanged.join(', '));   
+            console.log('Unchanged stocks: ' + unchanged.join(', '));   
         }
         
         return changed;
     }else{
         console.log('Skipped stocks cache');
         
-        return symbols; 
+        return stocks;
     }
 }
