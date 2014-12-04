@@ -104,10 +104,16 @@ class PlayersController extends \BaseController {
 		//
 	}
 
-    public function joinClub($id) {
+    public function joinClub($id)
+    {
         $thePlayer = Player::auth();
-        if(!$thePlayer)
+        if (!$thePlayer)
             return Redirect::back()->withError('You are not logged in as a real player.');
+
+        if ($thePlayer->club_role == 'founder') {
+            $club = Club::findOrFail($thePlayer->club->id);
+            $club->delete();
+        }
 
         $thePlayer->club_id = $id;
         $thePlayer->club_role = 'member';
@@ -121,6 +127,11 @@ class PlayersController extends \BaseController {
         $thePlayer = Player::auth();
         if(!$thePlayer)
             return Redirect::back()->withError('You are not logged in as a real player.');
+
+        if ($thePlayer->club_role == 'founder') {
+            $club = Club::findOrFail($thePlayer->club->id);
+            $club->delete();
+        }
 
         $thePlayer->club_id = 0;
         $thePlayer->club_role = '';

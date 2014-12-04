@@ -38,4 +38,13 @@ class Club extends \BaseModel {
         return $this->worth()/$this->countMembers();
     }
 
+    public function delete(){
+        foreach($this->members as $member){
+            $member->club_id = 0;
+            $member->club_role = "";
+        }
+
+        parent::delete();
+    }
+
 }
