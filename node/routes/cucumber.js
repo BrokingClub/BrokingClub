@@ -4,7 +4,7 @@ var stripAnsi = require('strip-ansi');
 var shellEscape = require('shell-escape');
 var _ = require('lodash');
 var no = require('app/no');
-var fakeItUntilYouMakeIt = false;
+var fakeItUntilYouMakeIt = true;
 
 module.exports = function(app, io){
 	app.get('/api/cucumber/features', getFeatures);
@@ -71,7 +71,7 @@ function fakeTestFeature(feature, res){
         steps += countMatches(data, /Then/g);
         steps += countMatches(data, /And/g);
         var stdout = scenarios + ' scenarios (' + scenarios + ' passed)\r\n' + steps + ' steps (' + steps + ' passed)';
-        var delay = (scenarios + steps) * 300;
+        var delay = (scenarios + steps) * 500;
 
         setTimeout(function(){
             res.json({
