@@ -71,14 +71,39 @@ class Player extends BaseModel {
         }
     }
 
-    public function name() {
-        return implode(' ', [$this->firstname, $this->lastname]);
+    public function name($hide_username = true) {
+        $name = $this->user->username;
+        $fullname = trim(implode(' ', [$this->firstname, $this->lastname]));
+
+        if($fullname != ""){
+            if(!$hide_username)
+                $name = "[" . $name . "] " . $fullname;
+            else
+                $name = $fullname;
+        }
+
+        return $name;
     }
 
-    public function ownsClub($club){
-        $inclub = $this->club_id == $club->id;
+    public function link(){
+        return "<a href=". URL::to('players.show', $this->id) .">". $this->name() ."</a>";
+    }
+
+    public function role(){
+        return trans('roles.' . $this->club_role);
+    }
+
+    public function ownsClub($club = null){
+
         $isowner = $this->club_role == "founder";
 
-        return $inclub && $isowner;
+        if(is_null($club))
+            return $isowner;
+        else{
+            $inclub = $this->club_id == $club->id;
+            return $inclub && $isowner;
+        }
     }
+
+
 }

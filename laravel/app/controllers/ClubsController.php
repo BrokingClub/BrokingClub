@@ -120,6 +120,23 @@ class ClubsController extends \BaseController {
      */
     public function update($id)
     {
+        $club = Club::findOrFail($id);
+
+        if(!Player::auth()->ownsClub($club))
+            return Redirect::route('clubs.show', $id)->withError('You can not edit this club.');
+
+
+
+        $club->teaser = Input::get('teaser');
+        $club->description = Input::get('description');
+
+        if(!$club->validate(Input::all(), 'teaser,description'))
+            return Redirect::route('clubs.edit', $id);
+
+        $club->save();
+
+        return Redirect::route('clubs.show', $club->id);
+
 
     }
 

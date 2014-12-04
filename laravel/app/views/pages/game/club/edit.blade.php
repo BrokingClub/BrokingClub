@@ -1,26 +1,44 @@
 @extends('layouts.game')
 
 @section('content')
-    {{ Fickle::openPanel("Edit club", 12) }}
+    {{ Fickle::openPanel("Edit club", 6) }}
         {{ QForm::model($club, array('route' => array('clubs.update', $club->id), 'method' => 'PUT')) }}
 
-                {{ QForm::readonly('username', $user->username) }}
+                {{ QForm::readonly('owner', $club->owner->name(false)) }}
+                {{ QForm::readonly('name', $club->name) }}
+                {{ QForm::readonly('slug', $club->slug) }}
 
-                {{ QForm::label('firstname', 'First name:') }}
-                {{ QForm::hidden('firstname') }}
+                {{ QForm::label('teaser', 'Teaser:') }}
+                {{ QForm::text('teaser') }}
 
-                {{ QForm::label('lastname', 'Last name:') }}
-                {{ QForm::text('lastname') }}
+                {{ QForm::label('description', 'Description:') }}
+                {{ QForm::textarea('description') }}
 
-                {{ QForm::label('career', 'Career:') }}
-                {{ QForm::readonly('career', $player->career) }}
-
-                {{ QForm::readonly('email', $user->email) }}
-
-                {{ QForm::readonly('username', $user->username) }}
-
-                {{ QForm::btnPrimary('Submit', 'check') }}
+                {{ QForm::btnPrimary('Update', 'check') }}
             {{ QForm::close() }}
+    {{ Fickle::closePanel() }}
+
+    {{ Fickle::openPanel('Members', 6) }}
+        {{ Fickle::openTable() }}
+            <tr>
+                <th>User</th>
+                <th>Role</th>
+                <th></th>
+            </tr>
+            @foreach($club->members as $member)
+                <tr>
+                    <th>{{ $member->link() }}</th>
+                    <td>{{ $member->role() }}</td>
+                    <td>
+                        @if(!$member->ownsClub($club))
+                        <a class="btn btn-warning" href="{{ URL::action('PlayersController@kickPlayer', $member->id) }}">
+                            <i class="fa fa-plane"></i> Kick Player
+                        </a>
+                        @endif
+                    </td>
+                </tr>
+            @endforeach
+        {{ Fickle::closeTable() }}
     {{ Fickle::closePanel() }}
 
 

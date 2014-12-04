@@ -9,12 +9,24 @@
 class BaseModel extends \Eloquent{
     public static $validationMessages = null;
 
-    public static function validate($input = null) {
+    public static function validate($input = null, $useRules = "all") {
         if (is_null($input)) {
             $input = Input::all();
         }
 
-        $v = Validator::make($input, static::$rules);
+        $rules = static::$rules;
+
+        if($useRules != "all"){
+            $useRules = explode(',', $useRules);
+            $filteredRules = array();
+            foreach($useRules as $useRule){
+                $filteredRules[$useRule] = $rules[$useRule];
+            }
+
+            $rules = $filteredRules;
+        }
+
+        $v = Validator::make($input, $rules);
 
         if ($v->passes()) {
             return true;
