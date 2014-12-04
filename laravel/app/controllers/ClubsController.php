@@ -31,13 +31,13 @@ class ClubsController extends \BaseController {
         if($thePlayer->club)
             return Redirect::route('clubs.index')->withError('You are already in a club!');
 
-            $clubs = Club::all();
+        $clubs = Club::all();
 
-            $this->data['clubs'] = $clubs;
+        $this->data['clubs'] = $clubs;
 
-            $this->setTitle('Clubs');
+        $this->setTitle('Create a new club');
 
-            return $this->makeView('pages.game.club.create');
+        return $this->makeView('pages.game.club.create');
     }
 
     /**
@@ -48,7 +48,7 @@ class ClubsController extends \BaseController {
      */
     public function store()
     {
-    $thePlayer = Player::auth();
+        $thePlayer = Player::auth();
         if(!$thePlayer)
             return Redirect::back()->withError('You are not logged in as a real player.');
 
@@ -57,18 +57,18 @@ class ClubsController extends \BaseController {
 
         $club = new Club();
 
-        $club->slug = Input::get('club_name');
-        $club->teaser = Input::get('teaser');
-        $club->description = Input::get('description');
+        $club->fill(Input::all());
         $club->owner_id = $thePlayer->id;
 
-        $club->save();
+        $save = $club->validateAndSave();
+        if(!$save)
+            return Redirect::back();
 
         $thePlayer->club_id = $club->id;
         $thePlayer->club_role = 'founder';
         $thePlayer->save();
 
-        return Redirect::route('clubs.show', $club->id);
+        return Redirect::route('clubs.show', $club->id)->withMessage('Club created successfully.');
     }
 
     /**
@@ -83,7 +83,7 @@ class ClubsController extends \BaseController {
 
         $club = Club::findOrFail($id);
 
-        $this->setTitle('Club information: '.$club->slug);
+        $this->setTitle('Club information: '.$club->name);
 
         $this->data['club'] = $club;
 
@@ -120,7 +120,7 @@ class ClubsController extends \BaseController {
      */
     public function update($id)
     {
-        //
+
     }
 
     /**

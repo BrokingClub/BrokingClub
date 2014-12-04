@@ -4,7 +4,7 @@
 
     {{ Fickle::openPanel('Your Club', 12) }}
         @if($theplayer->club)
-            <a href="{{ URL::route('clubs.show', $theplayer->club->id)  }}">{{ $theplayer->club->slug }}</a>
+            <a href="{{ URL::route('clubs.show', $theplayer->club->id)  }}">{{ $theplayer->club->name }}</a>
         @else
             You´re not a member of a club
             <a href="clubs/create"><button class="btn ls-light-blue-btn btn-round"><i class="fa fa-plus"></i></button></a>
@@ -27,7 +27,7 @@
                             @foreach($clubs as $i => $club)
                                 <tr>
                                     <td>{{ $i + 1 }}</td>
-                                    <td><a href="{{ URL::route('clubs.show', $club->id)  }}">{{ $club->slug }}</a></td>
+                                    <td><a href="{{ URL::route('clubs.show', $club->id)  }}">{{ $club->name }}</a></td>
                                     <td>{{ $club->countMembers() }}</td>
                                     <td>{{ $club->worth() }}$ <small>(Ø {{ $club->avgWorth() }}$ pp.)</small></td>
 

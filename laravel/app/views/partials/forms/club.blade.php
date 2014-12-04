@@ -1,16 +1,22 @@
 <div class="row">
-    <div class="col-md-6">
-        {{ QForm::label('club_name', 'Clubname:') }}
-        {{ QForm::text('club_name') }}
+    <div class="col-md-8">
+        {{ QForm::label('name', 'Clubname:') }}
+        {{ QForm::text('name') }}
 
-        {{ QForm::label('teaser', 'Teaser:') }}
-        {{ QForm::textarea('teaser') }}
+
     </div>
 
-    <div class="col-md-6">
-        {{ QForm::label('owner', 'Owner:') }}
-        {{ QForm::readOnly('owner', $theplayer->user->username) }}
+    <div class="col-md-4">
+        {{ QForm::label('slug', 'Short Name:') }}
+        {{ QForm::text('slug') }}
+    </div>
 
+    <div class="col-md-12">
+        {{ QForm::label('teaser', 'Teaser:') }}
+        {{ QForm::textarea('teaser', null, ['size' => '50x2']) }}
+    </div>
+
+    <div class="col-md-12">
         {{ QForm::label('description', 'Description') }}
         {{ QForm::textarea('description') }}
     </div>

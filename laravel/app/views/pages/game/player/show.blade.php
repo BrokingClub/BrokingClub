@@ -20,7 +20,7 @@
                     <li>Worth: <div class="setting-switch"><b>{{ Format::money($player->totalWorth()) }}</b></div></li>
                     <li>Club:
                         @if($player->club)
-                            <div class="setting-switch"><a href="{{ URL::route('clubs.show', $player->club->id)  }}">{{ $player->club->slug }}</a>
+                            <div class="setting-switch"><a href="{{ URL::route('clubs.show', $player->club->id)  }}">{{ $player->club->name }}</a>
                                 @if($player->club_role == 'founder')
                                     <i class="fa fa-star-o"></i>
                                 @endif

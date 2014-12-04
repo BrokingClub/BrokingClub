@@ -269,7 +269,7 @@ class Form extends \Bootstrapper\Form{
     private function argsOf($name, $options){
         $arguments = (isset($options['arguments']))? $options['arguments'] : array();
 
-        $argumentKeys = array('class', 'id', 'placeholder', 'readonly');
+        $argumentKeys = array('class', 'id', 'placeholder', 'readonly', 'size');
         foreach($argumentKeys as $argumentKey){
             if(!isset($options[$argumentKey])) continue;
 

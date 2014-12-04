@@ -1,8 +1,10 @@
 @extends('layouts.game')
 
 @section('buttons')
+    @if($theplayer->ownsClub($club))
     <a class="btn btn-info" href="{{ URL::route('clubs.edit', $club->id) }}">
-    <i class="fa fa-edit"></i> Edit this club</a>
+        <i class="fa fa-edit"></i> Edit this club</a>
+    @endif
 @endsection
 
 @section('content')
@@ -19,7 +21,7 @@
                     </div>
                 </div>
             </li>
-            <li>Clubname: <div class="setting-switch">{{ $club->slug }}</div></li>
+            <li>Clubname: <div class="setting-switch">{{ $club->name }}</div></li>
             <li>Owner: <div class="setting-switch"><a href="{{ URL::route('players.show', $club->owner->id)  }}">{{ $club->owner->user->username }}</a></div></li>
             <li>Teaser: <div class="setting-switch">{{ $club->teaser }}</div></li>
             <li>Description: <div class="setting-switch">{{ $club->description }}</div></li>
