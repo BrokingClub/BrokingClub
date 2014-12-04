@@ -35,11 +35,21 @@
 			$scope.featureText = featureText;
             
             setTimeout(function(){
-                $("div.gherkin").each(function(i, block){
+                $('div.gherkin').each(function(i, block){
                     hljs.highlightBlock(block);
                 });
             }, 1);
 		});
+        
+        $http.get('/api/cucumber/source/' + feature.name).success(function(source){
+            $scope.source = source;
+            
+            setTimeout(function(){
+                $('div.javascript').each(function(i, block){
+                    hljs.highlightBlock(block); 
+                });
+            }, 1);
+        });
 		
 		$http.get('/api/cucumber/features/' + feature.name + '/test').success(function(data){
 			$scope.stdout = data.stdout;
@@ -67,12 +77,12 @@
 		function isTesting(){
 			return !$scope.stdout;
 		}
-        
+        /*
         var socket = io.connect('http://localhost');
         
         socket.emit('feature', feature.name);
         socket.on('data', function(data){
             console.log(data); 
-        });
+        });*/
 	});
 }());

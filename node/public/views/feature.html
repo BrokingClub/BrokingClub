@@ -1,5 +1,14 @@
+<div class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body javascript" ng-bind="source"></div>
+        </div>
+    </div>
+</div>
 <div class="gherkin" ng-bind="featureText"></div>
 <br>
+<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="div.modal">Show source</button>
+<br><br>
 <div class="progress">
 	<div class="progress-bar progress-bar-striped active" style="width: 100%" ng-class="getProgressClass()" ng-bind="getProgressText()"></div>
 </div>

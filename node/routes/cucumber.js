@@ -10,6 +10,7 @@ module.exports = function(app, io){
 	app.get('/api/cucumber/features', getFeatures);
 	app.get('/api/cucumber/features/:feature', getFeature);
 	app.get('/api/cucumber/features/:feature/test', testFeature);
+    app.get('/api/cucumber/source/:feature', getSource);
     listenForConnections(io);
 };
 
@@ -39,6 +40,16 @@ function getFeature(req, res){
 		
 		res.json(data.toString());
 	});
+}
+
+function getSource(req, res){
+    var feature = req.params.feature;
+    
+    fs.readFile('./test/features/step_definitions/' + feature + '.js', function(err, data){
+        if(no(err)){
+            res.json(data.toString());   
+        }
+    });
 }
 
 function testFeature(req, res){
