@@ -141,7 +141,7 @@ class PlayersController extends \BaseController {
         return Redirect::back()->withMessage('You left the club successfully');
     }
 
-    public function kickUser($id) {
+    public function kickPlayer($id) {
         $thePlayer = Player::auth();
         if(!$thePlayer)
             return Redirect::back()->withError('You are not logged in as a real player.');
