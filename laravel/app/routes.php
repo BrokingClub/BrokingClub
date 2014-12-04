@@ -35,6 +35,8 @@ Route::group(array('before' => 'auth'), function(){
     Route::post('users/{id}', ['as' => 'user.update', 'uses' => 'UsersController@update']);
     Route::post('users/{id}/changepassword', ['as' => 'user.changepassword', 'uses' => 'UsersController@changePassword']);
 
+    Route::post('clubs/kick/{id}', 'ClubsController@kickUser');
+
     Route::get('users/{id}/delete', 'UsersController@delete');
     Route::post('users/{id}/delete', 'UsersController@doDelete');
 });

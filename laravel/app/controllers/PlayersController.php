@@ -141,6 +141,25 @@ class PlayersController extends \BaseController {
         return Redirect::back()->withMessage('You left the club successfully');
     }
 
+    public function kickUser($id) {
+        $thePlayer = Player::auth();
+        if(!$thePlayer)
+            return Redirect::back()->withError('You are not logged in as a real player.');
+
+        if($thePlayer->club_role != "founder") {
+            return Redirect::back()->withError('You are not the owner of the club!');
+        }
+
+        $player = Player::findOrFail($id);
+
+        if($thePlayer->club_id != $player->club_id) {
+            return Redirect::back()->withError('You are not in this club');
+        }
+                $player->club_id = 0;
+                $player->club_role = "";
+                $player->save();
+    }
+
 
     public function dashboard(){
         return Redirect::to('players/' . Player::auth()->id);
