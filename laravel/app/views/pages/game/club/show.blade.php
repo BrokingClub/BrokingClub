@@ -1,5 +1,10 @@
 @extends('layouts.game')
 
+@section('buttons')
+    <a class="btn btn-info" href="{{ URL::route('clubs.edit', $club->id) }}">
+    <i class="fa fa-edit"></i> Edit this club</a>
+@endsection
+
 @section('content')
 
     {{ Fickle::openWidget(4, 'setting', 'Club info', 'users') }}

@@ -26,7 +26,11 @@
                     <div class="row">
                         <div class="col-md-12">
                             @include('partials.flashmessages')
-                            <h3 class="ls-top-header">{{ $title }}</h3>
+                            <div class="row">
+                                <div class="col-md-8"><h3 class="ls-top-header">{{ $title }}</h3></div>
+                                <div class="col-md-4" style="text-align: right">@yield('buttons')</div>
+                            </div>
+
                              @include('layouts.parts.game.breadcrumbs')
                         </div>
                         @yield('content')

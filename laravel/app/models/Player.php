@@ -74,4 +74,11 @@ class Player extends BaseModel {
     public function name() {
         return implode(' ', [$this->firstname, $this->lastname]);
     }
+
+    public function ownsClub($club){
+        $inclub = $this->club_id == $club->id;
+        $isowner = $this->club_role == "founder";
+
+        return $inclub && $isowner;
+    }
 }

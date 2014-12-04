@@ -56,65 +56,6 @@
         </div>
     {{ Fickle::closePanel() }}
 
-    {{ Fickle::openPanel('Trade', 12) }}
-        <table class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th>
-                    Product
-                </th>
-                <th>
-                   Value
-                 </th>
-                  <th>
-                     Strategy
-                  </th>
-                 <th>
-                    Number of stocks
-                 </th>
-                 <th>
-                    Price
-                 </th>
-                  <th>
-                     Fees
-                  </th>
-                <th>
-                   Actions
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    {{ $stock->symbol }} stock
-                </td>
-                <td>
-                    {{ $stock->newestValueObject()->value }}
-                </td>
-                <td>
-                     <input class="switchCheckBox" type="checkbox" checked data-size="large"
-                       data-label-text="<span class='fa fa-line-chart'></span>"
-                       data-on-text="<span class='fa fa-thumbs-o-up'></span>"
-                       data-off-text="<span class='fa fa-thumbs-o-down'></span>"
-                       />
-                </td>
-                <td>
-                    <input type="number" class="form-control" />
-                </td>
-                <td>
-                    <input type="number" readonly="readonly" class="form-control" />
-                </td>
-
-                <td>
-                    <input type="number" readonly="readonly" class="form-control" />
-                </td>
-                <td class="text-center">
-                    <button class="btn btn-lg btn-success"><i class="fa fa-shopping-cart"></i></button>
-                    <button class="btn btn-lg btn-info"><i class="fa fa-eye"></i></button>
-                </td>
-
-            </tr>
-            </table>
-        </table>
-    {{ Fickle::closePanel() }}
 
 
 

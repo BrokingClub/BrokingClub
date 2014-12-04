@@ -3,6 +3,10 @@
 class Purchase extends BaseModel {
 	protected $fillable = [];
 
+    public static $rules = array(
+        'amount' => 'required|integer|between:1,9999',
+    );
+
     protected static $feeBase = 0.1;
     protected static $globalLeverage = 1;
 

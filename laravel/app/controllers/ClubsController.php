@@ -99,7 +99,16 @@ class ClubsController extends \BaseController {
      */
     public function edit($id)
     {
-        //
+        $club = Club::findOrFail($id);
+
+        if(!Player::auth()->ownsClub($club))
+            return Redirect::route('clubs.show', $id)->withError('You can not edit this club.');
+
+        $this->setTitle("Edit " . $club->name);
+
+        $this->data['club'] = $club;
+
+        return $this->makeView('pages.game.club.edit');
     }
 
     /**

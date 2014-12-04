@@ -39,6 +39,8 @@ class PurchasesController extends \BaseController {
         $stock = Stock::findOrFail(Input::get('stock_id'));
 
         $purchase = new Purchase();
+        if(!$purchase->validate(Input::all()))
+            return Redirect::back();
 
         $mode = "falling";
         if(Input::get('betOnRise')) $mode = "rising";
@@ -115,6 +117,8 @@ class PurchasesController extends \BaseController {
         $purchase->mode = "sold";
 
         $player->save();
+
+
         $purchase->save();
 
         return Redirect::back()->withMessage('Stocks sold for ' . Format::money($sellOffer) . '.');
