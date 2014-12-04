@@ -7,7 +7,7 @@ class Purchase extends BaseModel {
         'amount' => 'required|integer|between:1,9999',
     );
 
-    protected static $feeBase = 0.1;
+    protected static $feeBase = 0.05;
     protected static $globalLeverage = 1;
 
     public function stock() {

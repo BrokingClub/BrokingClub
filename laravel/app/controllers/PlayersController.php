@@ -138,7 +138,7 @@ class PlayersController extends \BaseController {
 
         $thePlayer->save();
 
-        return Redirect::back()->withMessage('You left the club successfully');
+        return Redirect::route('clubs.index')->withMessage('You left the club successfully');
     }
 
     public function kickPlayer($id) {
@@ -155,9 +155,14 @@ class PlayersController extends \BaseController {
         if($thePlayer->club_id != $player->club_id) {
             return Redirect::back()->withError('You are not in this club');
         }
-                $player->club_id = 0;
-                $player->club_role = "";
-                $player->save();
+
+        $club_id = $thePlayer->club_id;
+
+        $player->club_id = 0;
+        $player->club_role = "";
+        $player->save();
+
+        return Redirect::route('clubs.edit', ['id' => $club_id])->withMessage('Member got kicked.');
     }
 
 
