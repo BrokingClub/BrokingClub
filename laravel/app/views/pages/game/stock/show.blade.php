@@ -24,7 +24,7 @@
             <script type="text/javascript">
             new TradingView.widget({
               "autosize": true,
-              "symbol": "NASDAQ:{{ $stock->symbol }}",
+              "symbol": "{{ $stock->symbol }}",
               "interval": "D",
               "timezone": "exchange",
               "theme": "White",
@@ -45,14 +45,8 @@
 
     {{ Fickle::openPanel('News about '.$stock->name, 12) }}
         <div style="text-align: center">
-        <iframe src="http://www.google.com/uds/modules/elements/newsshow/iframe.html?q=Apple&rsz=9&hl=en"
+        <iframe src="http://www.google.com/uds/modules/elements/newsshow/iframe.html?q={{ $stock->name }}&rsz=9&hl=en"
                 frameborder="0" width="728" height="90" marginwidth="0" marginheight="0"></iframe>
-        <iframe src="http://www.google.com/uds/modules/elements/newsshow/iframe.html?q=Apple&rsz=9&hl=en"
-                        frameborder="0" width="728" height="90" marginwidth="0" marginheight="0"></iframe>
-        <iframe src="http://www.google.com/uds/modules/elements/newsshow/iframe.html?q=Apple&rsz=9&hl=en"
-                      frameborder="0" width="728" height="90" marginwidth="0" marginheight="0"></iframe>
-        <iframe src="http://www.google.com/uds/modules/elements/newsshow/iframe.html?q=Apple&rsz=9&hl=en"
-                            frameborder="0" width="728" height="90" marginwidth="0" marginheight="0"></iframe>
         </div>
     {{ Fickle::closePanel() }}
 

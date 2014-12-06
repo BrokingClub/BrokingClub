@@ -7,7 +7,10 @@
             <a href="{{ URL::route('clubs.show', $theplayer->club->id)  }}">{{ $theplayer->club->name }}</a>
         @else
             You´re not a member of a club
-            <a href="clubs/create"><button class="btn ls-light-blue-btn btn-round"><i class="fa fa-plus"></i></button></a>
+            <hr/>
+            <div class="text-right">
+                <a href="clubs/create" class="btn btn-info"><i class="fa fa-plus"></i> Create a new Club</a>
+            </div>
         @endif
 
     {{ Fickle::closePanel() }}
@@ -32,7 +35,7 @@
                                     <td>{{ $club->worth() }}$ <small>(Ø {{ $club->avgWorth() }}$ pp.)</small></td>
 
                                     @if(!($club->id == $theplayer->club_id))
-                                        <td><a class="btn btn-primary" href="{{ URL::action('PlayersController@joinClub', $club->id) }}">Join</a></td>
+                                        <td><a class="btn btn-success" href="{{ URL::action('PlayersController@joinClub', $club->id) }}"><i class="fa fa-mortar-board"></i> Join</a></td>
                                     @else <td></td>
                                     @endif
 

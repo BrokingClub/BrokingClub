@@ -15,7 +15,7 @@
                         @foreach($players as $i => $player)
                             <tr>
                                 <td>{{ $i + 1 }}</td>
-                                <td><a href="{{ URL::route('players.show', $player->id)  }}">{{ $player->user->username }}</a></td>
+                                <td><a href="{{ URL::route('players.show', $player->id)  }}">{{ $player->name() }}</a></td>
                                 <td>{{ $player->balance }} $</td>
                             </tr>
                         @endforeach

@@ -2,7 +2,7 @@
 <div class="container-fluid">
 <!--Logo text start-->
 <div class="header-logo">
-    <a href="index.html" title="">
+    <a href="{{ URL::route('dashboard') }}" title="">
         <h1>Broking&middot;Club</h1>
     </a>
 </div>
@@ -217,11 +217,6 @@
     <li class="hidden-xs">
         <a class="right-sidebar-setting" href="javascript:void(0)">
             <i class="fa fa-cogs"></i>
-        </a>
-    </li>
-    <li>
-        <a href="lock-screen.html">
-            <i class="fa fa-lock"></i>
         </a>
     </li>
     <li>

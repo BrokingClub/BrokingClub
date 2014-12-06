@@ -1,5 +1,13 @@
 @extends('.........layouts.game')
 
+@section('buttons')
+@if($theplayer->editAllowed($player->user_id))
+    <a class="btn btn-info" href="{{ URL::route('users.edit', $theplayer->user_id) }}">
+        <i class="fa fa-edit"></i> Edit profile</a>
+@endif
+@endsection
+
+
 @section('content')
 
         {{ Fickle::openWidget(4, 'setting', $player->user->username, 'user') }}

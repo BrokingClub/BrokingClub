@@ -45,6 +45,16 @@
                 <a class="btn btn-danger" href="{{ URL::action('PlayersController@leaveClub') }}">Leave this club</a>
             @else
                 {{ QForm::readOnly('no_club', 'You are not a member of any club') }}
+
+                <br/>
+                <div class="text-right">
+                <div class="btn-group" role="group">
+
+                    <a href="{{ URL::route('clubs.create') }}" class="btn btn-info"><i class="fa fa-plus"></i> Create a new Club</a>
+                     <a href="{{ URL::route('clubs.index') }}" class="btn btn-success"><i class="fa fa-mortar-board"></i> Find a club</a>
+                </div>
+                </div>
+
             @endif
         {{ Fickle::closeTabContent() }}
 

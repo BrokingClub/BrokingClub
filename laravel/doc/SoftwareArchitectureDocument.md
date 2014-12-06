@@ -81,7 +81,7 @@ This diagram illustrates how these layers work together.
 ## Overview
 The PHP Framework Laravel provides a clean implementation of the MVC-Concept. In the graphic below you can see how the controller, model and view parts are connected.
 ![Architectural Representation](http://broking.club/img/doc/diagrams/laravel_mvc_new.jpg)
-```This subsection names and defines the various layers and their contents, the rules that govern the inclusion to a given layer, and the boundaries between layers. Include a component diagram that shows the relations between layers. ```
+
 
 ## Architecturally Significant Design Packages
 ![Architecture Overview](http://broking.club/img/doc/diagrams/architecture_overview.png)

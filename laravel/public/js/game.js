@@ -3,6 +3,8 @@ jQuery(document).ready(function($) {
 
     bootstrap_switch_call();
     ladda_call();
+
+    price_calculate_call();
 });
 
 /*** bootstrapSwitch Call ***/
@@ -16,4 +18,8 @@ function bootstrap_switch_call(){
 function ladda_call(){
     'use strict';
     Ladda.bind('button.ladda-button', { timeout: 2000 });
+}
+
+function price_calculate_call(){
+
 }
