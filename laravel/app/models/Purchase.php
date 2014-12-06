@@ -100,4 +100,8 @@ class Purchase extends BaseModel {
     public function sellOffer(){
         return $this->totalPaid() + $this->earned();
     }
+
+    public static function feeRate(){
+        return static::$feeBase;
+    }
 }

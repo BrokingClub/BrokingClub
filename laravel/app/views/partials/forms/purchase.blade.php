@@ -29,10 +29,15 @@
 
 <div class="row">
     <div class="col-md-6">
+        <div style="display: none">
+            {{ QForm::hidden('value', $stock->newestValue()) }}
+            {{ QForm::hidden('feerate', Purchase::feeRate()) }}
+        </div>
         {{ QForm::label('purchase_price', 'Total price:') }}
         {{ QForm::readonly('purchase_price', "0.00 $") }}
     </div>
     <div class="col-md-6">
+
         {{ QForm::label('purchase_fees', 'Fees:') }}
         {{ QForm::readonly('purchase_fees', "0.00 $") }}
 

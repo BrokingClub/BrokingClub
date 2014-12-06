@@ -10,7 +10,7 @@
 
 
 <!-- TODO: Add a favicon -->
-<link rel="shortcut icon" href="favicon.png">
+<link rel="shortcut icon" href="/favicon.png">
 
 <title>{{ $headTitle }}</title>
 

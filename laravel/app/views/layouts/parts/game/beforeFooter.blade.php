@@ -63,5 +63,5 @@
 {{ HTML::script('fickle/js/loader/ladda.js') }}
 <!-- loader Button Script -->
 
-{{ HTML::script('js/game.js?t=' . time()) }}
+{{ HTML::script('js/game.js') }}
 {{ HTML::script('js/mockup.js?t=' . time()) }}
