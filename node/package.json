@@ -18,6 +18,7 @@
 	"request": "*",
 	"mysql": "*",
     "moment": "*",
-    "socket.io": "*"
+    "socket.io": "*",
+    "async": "*"
   }
 }

@@ -2,15 +2,14 @@ var fs = require('fs');
 var exec = require('child_process').exec;
 var stripAnsi = require('strip-ansi');
 var shellEscape = require('shell-escape');
+var async = require('async');
 var _ = require('lodash');
 var no = require('app/no');
-var fakeItUntilYouMakeIt = true;
+var debug = false;
 
 module.exports = function(app, io){
 	app.get('/api/cucumber/features', getFeatures);
 	app.get('/api/cucumber/features/:feature', getFeature);
-	app.get('/api/cucumber/features/:feature/test', testFeature);
-    app.get('/api/cucumber/source/:feature', getSource);
     listenForConnections(io);
 };
 
@@ -34,61 +33,68 @@ function getFeatures(req, res){
 
 function getFeature(req, res){
 	var feature = req.params.feature;
-	
-	fs.readFile('./test/features/' + feature + '.feature', function(err, data){
-		if (err) throw err;
-		
-		res.json(data.toString());
-	});
-}
-
-function getSource(req, res){
-    var feature = req.params.feature;
     
-    fs.readFile('./test/features/step_definitions/' + feature + '.js', function(err, data){
-        if(no(err)){
-            res.json(data.toString());   
+    async.parallel({
+        feature: function(callback){
+            fs.readFile('./test/features/' + feature + '.feature', { encoding: 'utf8' }, callback);
+        },
+        source: function(callback){
+             fs.readFile('./test/features/step_definitions/' + feature + '.js', { encoding: 'utf8' }, callback);
+        }
+    }, function(err, results){
+        if(no(err, res)){
+            res.json(results);
         }
     });
 }
 
-function testFeature(req, res){
-	var feature = shellEscape([req.params.feature]);
-
-    if(fakeItUntilYouMakeIt){
-        fakeTestFeature(feature, res);
-    }else{
-        var cmd = 'cd test && ../node_modules/.bin/cucumber.js features/' + feature + '.feature';
-    
-        exec(cmd, function(err, stdout, stderr){
-            if(!stdout && err){
-                stdout = err.message;
-            }
-
-            res.json({
-                stdout: stripAnsi(stdout),
-            });
-        }); 
-    }
+function listenForConnections(io){
+    io.on('connection', function(socket){
+        handleConnection(socket); 
+    });
 }
 
-function fakeTestFeature(feature, res){
-    fs.readFile('./test/features/' + feature + '.feature', { encoding: 'utf-8' }, function(err, data){
-        if(err) throw err;
-
-        var scenarios = countMatches(data, /Scenario:/g);
-        var steps = countMatches(data, /Given/g);
-        steps += countMatches(data, /When/g);
-        steps += countMatches(data, /Then/g);
-        steps += countMatches(data, /And/g);
-        var stdout = scenarios + ' scenarios (' + scenarios + ' passed)\r\n' + steps + ' steps (' + steps + ' passed)';
-        var delay = (scenarios + steps) * 500;
-
-        setTimeout(function(){
-            res.json({
-                stdout: stdout
+function handleConnection(socket){
+    socket.on('feature', function(feature){
+        feature = shellEscape([feature]);
+        
+        if(debug){
+            testFeature(feature, function(err, stdout){
+                socket.emit('data', stdout);
             });
-        }, delay);
+        }else{
+            var cmd = 'cd test && ../node_modules/.bin/cucumber.js features/' + feature + '.feature';
+            var process = exec(cmd, no);
+            var stdout = process.stdout;
+
+            stdout.setEncoding('utf8');
+            stdout.on('data', function(data){
+                socket.emit('data', stripAnsi(data));
+            });
+            stdout.on('end', function(){
+                socket.emit('end');
+            });
+        }
+    });
+}
+
+function testFeature(feature, callback){
+    fs.readFile('./test/features/' + feature + '.feature', { encoding: 'utf-8' }, function(err, data){
+        if(err){
+            callback(err);
+        }else{
+            var scenarios = countMatches(data, /Scenario:/g);
+            var steps = countMatches(data, /Given/g);
+            steps += countMatches(data, /When/g);
+            steps += countMatches(data, /Then/g);
+            steps += countMatches(data, /And/g);
+            var stdout = scenarios + ' scenarios (' + scenarios + ' passed)\r\n' + steps + ' steps (' + steps + ' passed)';
+            var delay = (scenarios + steps) * 500;
+
+            setTimeout(function(){
+                callback(null, stdout);
+            }, delay);
+        }
     });
 }
 
@@ -100,24 +106,4 @@ function countMatches(str, regexp){
     }else{
         return 0;   
     }
-}
-
-function listenForConnections(io){
-    io.on('connection', function(socket){
-        handleConnection(socket); 
-    });
-}
-
-function handleConnection(socket){
-    socket.on('feature', function(feature){
-        var feature = shellEscape(feature);
-        var cmd = 'cd test && ../node_modules/.bin/cucumber.js features/' + feature + '.feature';
-        var process = exec(cmd, no);
-        var stdout = process.stdout;
-        
-        stdout.setEncoding('utf8');
-        stdout.on('data', function(data){
-            socket.emit('data', data);
-        })
-    });
 }

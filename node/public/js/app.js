@@ -28,61 +28,44 @@
 		};
 	});
 	
-	app.controller('feature', function($routeParams, $scope, $http, feature){
+	app.controller('feature', function($routeParams, $scope, $http, $interval, feature){
 		feature.name = $routeParams.feature;
-		
-		$http.get('/api/cucumber/features/' + feature.name).success(function(featureText){
-			$scope.featureText = featureText;
-            
-            setTimeout(function(){
-                $('div.gherkin').each(function(i, block){
-                    hljs.highlightBlock(block);
-                });
-            }, 1);
-		});
+        $scope.output = '';
+        $scope.testing = true;
         
-        $http.get('/api/cucumber/source/' + feature.name).success(function(source){
-            $scope.source = source;
+        $http.get('/api/cucumber/features/' + feature.name).success(function(data){
+            $scope.featureText = data.feature;
+            $scope.source = data.source;
             
             setTimeout(function(){
-                $('div.javascript').each(function(i, block){
+                $('div.gherkin, div.javascript').each(function(i, block){
                     hljs.highlightBlock(block); 
                 });
             }, 1);
-        });
-		
-		$http.get('/api/cucumber/features/' + feature.name + '/test').success(function(data){
-			$scope.stdout = data.stdout;
-			$scope.stderr = data.stderr;
-		});
-		
-		$scope.getProgressClass = function(){
-			if(isTesting()){
-				return 'progress-bar-striped active';
-			}else{
-				var failed = $scope.stdout.toLowerCase().indexOf('failed') > -1;
-			
-				if(failed){
-					return 'progress-bar-danger';
-				}else{
-					return 'progress-bar-success';
-				}
-			}
-		};
-		
-		$scope.getProgressText = function(){
-			return isTesting() ? 'Crunching the latest data, just for you. Hang tight...' : '';
-		};
-		
-		function isTesting(){
-			return !$scope.stdout;
-		}
-        /*
-        var socket = io.connect('http://localhost');
+        });  
+        
+        var socket = io.connect();
         
         socket.emit('feature', feature.name);
         socket.on('data', function(data){
-            console.log(data); 
-        });*/
+            $scope.$apply(function(){
+                $scope.output += data; 
+            });
+        });
+        socket.on('end', function(){
+            $scope.testing = false; 
+        });
+        
+        $scope.progressText = function(){
+            return $scope.testing ? 'Crunching the latest data, just for you. Hang tight...' : '';
+        };
+        
+        $scope.progressClass = function(){
+            return $scope.testing ? 'progress-bar-striped active' : 'progress-bar-success';
+        };
+        
+        $interval(function(){
+            $scope.cursor = !$scope.cursor;   
+        }, 500);
 	});
 }());

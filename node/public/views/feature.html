@@ -10,6 +10,6 @@
 <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="div.modal">Show source</button>
 <br><br>
 <div class="progress">
-	<div class="progress-bar progress-bar-striped active" style="width: 100%" ng-class="getProgressClass()" ng-bind="getProgressText()"></div>
+	<div class="progress-bar" style="width: 100%" ng-class="progressClass()" ng-bind="progressText()"></div>
 </div>
-<div class="hljs" ng-show="stdout" ng-bind="stdout"></div>
+<div class="hljs">{{output}}<span ng-show="cursor">|</span></div>

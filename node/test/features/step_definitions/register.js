@@ -61,7 +61,7 @@ module.exports = function(){
         callback(); 
     });
     
-    this.whenen('I click on register', function(callback){
+    this.When('I click on register', function(callback){
         this.browser.pressButton('button', callback);  
     });
     
