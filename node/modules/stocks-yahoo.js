@@ -5,7 +5,7 @@ exports.queryStocks = queryStocks;
 
 function queryStocks(symbols, callback){
     var url = buildApiUrl(symbols);
-    console.log('[DEBUG] YQL: ' + url);
+    
 	request.get(url, function(err, res, body){
 		if(no(err)){
 			body = JSON.parse(body);
