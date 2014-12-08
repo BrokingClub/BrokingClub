@@ -17,7 +17,7 @@ sql.query('SELECT id, symbol FROM stocks', function(err, result){
 exports.fetchStocks = function(){
     if(allSymbols){
         timer.start();
-        fetchStocks(_.clone(allSymbols));
+        fetchStocks(_.cloneDeep(allSymbols));
     }else{
         console.error('Symbols not loaded!');   
     }
