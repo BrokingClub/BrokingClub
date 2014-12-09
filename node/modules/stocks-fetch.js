@@ -32,7 +32,7 @@ function fetchStocks(symbols){
             if(changed.length){
                 saveStocks(changed);
             }else{
-                timer.stop('Unchanged quotes');
+                timer.stop('Unchanged stocks');
             }   
         }
     });
@@ -62,8 +62,6 @@ function getChangedStocks(stocks){
         stocks.forEach(function(stock){
             var cached = _.find(cache.stocks, { id: stock.id });
             
-            console.log('[DEBUG] Cache compare: ' + (cached ? stock.quote + ' !== ' + cached.quote : 'not cached'));
-            
             if(!cached || stock.quote !== cached.quote){
                 changed.push(stock);
             }else{
@@ -72,11 +70,11 @@ function getChangedStocks(stocks){
         });
         
         if(changed.length){
-            console.log('Changed stocks: ' + changed.join(', '));   
+            console.log('Changed stocks: ' + changed.length);   
         }
         
         if(unchanged.length){
-            console.log('Unchanged stocks: ' + unchanged.join(', '));   
+            console.log('Unchanged stocks: ' + unchanged.length);   
         }
         
         return changed;
