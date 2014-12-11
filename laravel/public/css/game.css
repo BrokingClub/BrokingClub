@@ -2,7 +2,9 @@
     color: #FFE500;
 }
 
-.brokingclub-color ul.mainNav li a.active{
+.brokingclub-color ul.mainNav li a.active,
+.brokingclub-color .dropdown-menu.top-notification h4,
+.brokingclub-color .top-navigation .dropdown-menu h4{
     color: #222;
     background-color: #FFE500;
 }
@@ -21,6 +23,7 @@
 .brokingclub-color ul.mainNav.active li.active a i{
     color: #222;
 }
+
 
 .funnydogAvatar {
     background-image: url('http://media.giphy.com/media/oDLDbBgf0dkis/giphy.gif');
@@ -88,9 +91,10 @@
     text-align: center;
 }
 
-.clubAvatar {
-    width: 200px;
+.userHead img{
+    max-width: 150px;
 }
+
 
 .actions {
     margin: 10px;

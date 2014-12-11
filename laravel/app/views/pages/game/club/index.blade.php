@@ -4,7 +4,7 @@
 
     {{ Fickle::openPanel('Your Club', 12) }}
         @if($theplayer->club)
-            <a href="{{ URL::route('clubs.show', $theplayer->club->id)  }}">{{ $theplayer->club->name }}</a>
+            <a class="btn btn-default" href="{{ URL::route('clubs.show', $theplayer->club->id)  }}"><i class="fa fa-mortar-board"></i> {{ $theplayer->club->name }}</a>
         @else
             You´re not a member of a club
             <hr/>
@@ -33,11 +33,14 @@
                                     <td><a href="{{ URL::route('clubs.show', $club->id)  }}">{{ $club->name }}</a></td>
                                     <td>{{ $club->countMembers() }}</td>
                                     <td>{{ $club->worth() }}$ <small>(Ø {{ $club->avgWorth() }}$ pp.)</small></td>
+                                    <td>
+                                     <a class="btn btn-info" href="{{ URL::action('PlayersController@show', $club->id) }}"><i class="fa fa-eye"></i> Show</a>
 
                                     @if(!($club->id == $theplayer->club_id))
-                                        <td><a class="btn btn-success" href="{{ URL::action('PlayersController@joinClub', $club->id) }}"><i class="fa fa-mortar-board"></i> Join</a></td>
-                                    @else <td></td>
+                                        <a class="btn btn-success" href="{{ URL::action('PlayersController@joinClub', $club->id) }}"><i class="fa fa-mortar-board"></i> Join</a>
+
                                     @endif
+                                    </td>
 
                                 </tr>
                             @endforeach

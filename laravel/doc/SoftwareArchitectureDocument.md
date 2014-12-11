@@ -14,7 +14,7 @@
 
 
 # Introduction
-__TODO__
+
 
 ## Purpose
 
@@ -25,12 +25,12 @@ The scope of this document is to depict the architecture of the online stockmark
 Some parts of this documentation have been automatically created by our IDE PhpStorm. It can automatically convert PHP code into nice diagrams (data, class etc.).
 
 ## Definitions, Acronyms and Abbreviations
-__TODO__
-* ORM:
-* ERM: 
-* MVC: 
-* API: 
-* IDE: 
+
+* ORM: object-relational mapping
+* ERM: enterprise relationship mapping
+* MVC: Model View Controller
+* API: application programming interface 
+* IDE:  integrated development environment
 
 ## References
 
@@ -46,7 +46,6 @@ This document includes information about various aspects of the architecture of 
 * Data view: How persistence is organized and realised in our project.
 
 # Architectural Representation
-__TODO__
 
 # Architectural Goals and Constraints
 This section describes the software requirements and objectives of the game BrokingClub. 
@@ -70,7 +69,6 @@ Our most significant use cases are:
 * [Use Case: Exchange stocks](?f=uc_exchangestocks)
 
 #  Implementation View
-__TODO__
 
 ## Layers / Deployment view
 For our system we need a database, a development environment, a version control, a deployment system and of course a web server for the enduser. 

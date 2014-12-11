@@ -13,7 +13,7 @@
         {{ Fickle::openWidget(4, 'setting', $player->user->username, 'user') }}
                 <ul>
                     <li><div class="userHead">
-                                    <img class="img-circle" src="http://fc05.deviantart.net/fs71/f/2011/019/1/9/spongebob_avatar_by_me969-d37kddc.jpg"/>
+                                    <img class="img-circle" src="/img/testavatar.png"/>
                                     <div class="actions" style="margin: 10px;">
                                         {{ Fickle::iconBtn('envelope', 'default') }}
                                         {{ Fickle::iconBtn('plus-square', 'primary') }}
@@ -27,15 +27,10 @@
                     <li>Purchases Worth: <div class="setting-switch">{{ Format::money($player->purchasesWorth()) }}</div></li>
                     <li>Worth: <div class="setting-switch"><b>{{ Format::money($player->totalWorth()) }}</b></div></li>
                     <li>Club:
-                        @if($player->club)
-                            <div class="setting-switch"><a href="{{ URL::route('clubs.show', $player->club->id)  }}">{{ $player->club->name }}</a>
-                                @if($player->club_role == 'founder')
-                                    <i class="fa fa-star-o"></i>
-                                @endif
-                            </div>
-                        @else
-                            <div class="setting-switch">-</div>
-                        @endif
+                        <div class="setting-switch">
+                            {{ $theplayer->clubLink() }}
+                        </div>
+
                     </li>
                 </ul>
             {{ Fickle::closeWidget() }}

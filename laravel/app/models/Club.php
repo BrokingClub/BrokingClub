@@ -47,4 +47,6 @@ class Club extends \BaseModel {
         parent::delete();
     }
 
+
+
 }

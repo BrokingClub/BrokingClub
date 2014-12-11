@@ -12,7 +12,7 @@
     {{ Fickle::openWidget(4, 'setting', 'Club info', 'users') }}
         <ul>
             <li><div class="userHead">
-                    <img class="clubAvatar" src="http://stuffpoint.com/spongebob-square-pants/image/164725-spongebob-square-pants-spongebobs-family.jpg"/>
+                    <img class="clubAvatar" src="/img/testavatar.png"/>
                     <div class="actions">
                           {{ Fickle::iconBtn('envelope', 'default') }}
                           {{ Fickle::iconBtn('plus-square', 'primary') }}

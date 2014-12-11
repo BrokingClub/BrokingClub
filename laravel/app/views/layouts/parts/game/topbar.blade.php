@@ -35,6 +35,14 @@
 <!--Top Navigation Start-->
 
 <ul>
+    <li>
+        <a href="{{ URL::route('dashboard') }}">
+            <i class="fa fa-money"></i>
+            <small>
+            {{ Format::money($theplayer->balance) }}
+            </small>
+        </a>
+    </li>
     <li class="dropdown">
         <!--All task drop down start-->
         <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
@@ -47,7 +55,7 @@
                 <li>
                     <a href="javascript:void(0)">
                         <div class="goal-user-image">
-                            <img class="rounded" src="/img/spongebob-avatar.jpg" alt="user image">
+                            <img class="rounded" src="/img/testavatar.png" alt="user image">
                         </div>
                         <div class="goal-content">
                             Wordpress Theme
@@ -60,7 +68,7 @@
                 <li>
                     <a href="javascript:void(0)">
                         <div class="goal-user-image">
-                            <img class="rounded" src="/img/spongebob-avatar.jpg" alt="user image">
+                            <img class="rounded" src="/img/testavatar.png" alt="user image">
                         </div>
                         <div class="goal-content">
                             PSD Designe
@@ -73,7 +81,7 @@
                 <li>
                     <a href="javascript:void(0)">
                         <div class="goal-user-image">
-                            <img class="rounded" src="/img/spongebob-avatar.jpg" alt="user image">
+                            <img class="rounded" src="/img/testavatar.png" alt="user image">
                         </div>
                         <div class="goal-content">
                             Wordpress PLugin
@@ -175,7 +183,7 @@
                 <li>
                     <a href="javascript:void(0)">
                         <div class="email-top-image">
-                            <img class="rounded" src="/img/spongebob-avatar.jpg" alt="user image">
+                            <img class="rounded" src="/img/testavatar.png" alt="user image">
                         </div>
                         <div class="email-top-content">
                             John Doe <div>Sample Mail 1</div>
@@ -185,7 +193,7 @@
                 <li>
                     <a href="javascript:void(0)">
                         <div class="email-top-image">
-                            <img class="rounded" src="/img/spongebob-avatar.jpg" alt="user image">
+                            <img class="rounded" src="/img/testavatar.png" alt="user image">
                         </div>
                         <div class="email-top-content">
                             John Doe <div>Sample Mail 2</div>
@@ -195,7 +203,7 @@
                 <li>
                     <a href="javascript:void(0)">
                         <div class="email-top-image">
-                            <img class="rounded" src="/img/spongebob-avatar.jpg" alt="user image">
+                            <img class="rounded" src="/img/testavatar.png" alt="user image">
                         </div>
                         <div class="email-top-content">
                             John Doe <div> Sample Mail 4</div>
@@ -209,6 +217,7 @@
         </div>
         <!--Email drop down end-->
     </li>
+    {{--
     <li class="hidden-xs">
         <a class="right-sidebar" href="javascript:void(0)">
             <i class="fa fa-comment-o"></i>
@@ -219,6 +228,7 @@
             <i class="fa fa-cogs"></i>
         </a>
     </li>
+    --}}
     <li>
         <a href="/logout">
             <i class="fa fa-power-off"></i>

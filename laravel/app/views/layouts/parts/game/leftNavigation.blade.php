@@ -1,8 +1,11 @@
 <section id="left-navigation">
+    <a href="{{ URL::route('dashboard') }}">
     <div class="user-image">
-        <img class="funnydogAvatar"/>
+        <img src="/img/testavatar-80.png" />
+
         <div class="user-online-status"><span class="user-status is-online  "></span> </div>
     </div>
+    </a>
 
     <ul class="social-icon">
         <li><a href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>

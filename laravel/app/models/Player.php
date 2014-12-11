@@ -105,5 +105,16 @@ class Player extends BaseModel {
         }
     }
 
+    public function clubLink(){
+        $club_name = "[no club]";
+        $club_link = URL::route('clubs.index');
+        if($this->club_id != 0){
+            $club_name = $this->club->name;
+            $club_link = URL::route('clubs.show', $this->club_id);
+        }
+
+        return "<a href='". $club_link ."'>". $club_name ."</a>";
+    }
+
 
 }
