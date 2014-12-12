@@ -16,7 +16,8 @@
 
 
 Route::group(array('before' => 'auth'), function(){
-    Route::get('/', 'HomeController@showWelcome');
+
+
     Route::resource('stocks', 'StocksController');
     Route::resource('clubs', 'ClubsController');
     Route::resource('players', 'PlayersController');
@@ -41,6 +42,9 @@ Route::group(array('before' => 'auth'), function(){
     Route::get('users/{id}/delete', 'UsersController@delete');
     Route::post('users/{id}/delete', 'UsersController@doDelete');
 });
+
+Route::get('/', 'HomeController@showWelcome');
+Route::get('start', 'HomeController@showLanding');
 
 // Confide routes
 Route::get('users/create', 'UsersController@create');

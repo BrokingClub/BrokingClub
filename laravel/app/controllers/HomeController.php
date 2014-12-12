@@ -17,7 +17,15 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-        return Redirect::to('dashboard');
+        if(Auth::user())
+            return Redirect::to('dashboard');
+        else
+            return Redirect::to('start');
 	}
+
+    public function showLanding()
+    {
+        return View::make('layouts.landing');
+    }
 
 }

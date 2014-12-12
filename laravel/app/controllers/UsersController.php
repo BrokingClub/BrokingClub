@@ -103,7 +103,7 @@ class UsersController extends BaseController
         $login = $repo->login($input);
 
         if ($login) {
-            return Redirect::intended('/')->withMessage('You are now logged in.');
+            return Redirect::to('dashboard')->withMessage('You are now logged in.');
         } else {
             if ($repo->isThrottled($input)) {
                 $err_msg = Lang::get('confide::confide.alerts.too_many_attempts');
@@ -217,7 +217,7 @@ class UsersController extends BaseController
     {
         Confide::logout();
 
-        return Redirect::to('/')->withInfo('You are now logged out.');
+        return Redirect::route('login')->withInfo('You are now logged out.');
     }
 
 
