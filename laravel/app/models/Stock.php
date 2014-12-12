@@ -49,12 +49,23 @@ class Stock extends BaseModel
         return $change;
     }
 
-    public function changeRatePercent(){
+    public function changeRatePercent($asString = false){
         $changeRate = $this->changeRate();
 
         $changeRatePercent = round(($changeRate - 1)*100,3);
 
-        return $changeRatePercent;
+        if(!$asString)
+            return $changeRatePercent;
+        else
+            return ($changeRatePercent > 0)? '+' . $changeRatePercent . '%' : $changeRatePercent . "%";
+    }
+
+    public function changeRateMode(){
+        $percent = $this->changeRatePercent();
+
+        if($percent == 0) return "neurtral";
+
+        return ($percent > 0)? "rising" : "falling";
     }
 
 }

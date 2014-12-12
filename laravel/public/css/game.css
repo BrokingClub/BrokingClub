@@ -99,3 +99,74 @@
 .actions {
     margin: 10px;
 }
+
+.stocks-list .stock-panel{
+    float: left;
+    background-color: #888;
+    width: 250px;
+    color: #fff;
+    margin: 0px 10px 10px 0px;
+    transition: ease all 0.2s;
+}
+
+.stocks-list .stock-panel:hover{
+    opacity: 0.9;
+}
+
+.stocks-list .stock-panel h3{
+    margin:  0px;
+    font-wight: 26px;
+}
+
+.stocks-list .stock-panel .name,
+.stocks-list .stock-panel .value{
+    padding: 15px;
+}
+
+.stocks-list .stock-panel .value{
+    text-align: right;
+}
+
+
+
+.stocks-list .stock-panel .value b{
+    font-size: 18px;
+    font-weight: normal;
+    display: block;
+
+}
+
+.stocks-list .stock-panel table{
+    width: 100%;
+    height: 85px;
+}
+
+.stocks-list .stock-panel .value span{
+    background-color: rgba(0,0,0,0.2);
+    padding: 0px 3px;
+    border-radius: 3px;
+}
+
+.stocks-list .name-container{
+    width: 100%;
+}
+
+.stocks-list .value-container{
+    min-width: 100px;
+}
+
+.stocks-list .stock-mode-falling .name-container{
+    background-color: #D84A38;
+}
+
+.stocks-list .stock-mode-falling .value-container{
+    background-color: #D33F2D;
+}
+
+.stocks-list .stock-mode-rising .name-container{
+    background-color: #35AA47;
+}
+
+.stocks-list .stock-mode-rising .value-container{
+    background-color: #319E42;
+}

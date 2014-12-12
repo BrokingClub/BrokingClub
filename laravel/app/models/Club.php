@@ -35,7 +35,7 @@ class Club extends \BaseModel {
     }
 
     public function avgWorth() {
-        return $this->worth()/$this->countMembers();
+        return round($this->worth()/$this->countMembers(),0);
     }
 
     public function delete(){
