@@ -3,8 +3,7 @@
 @section('content')
 
     {{ Fickle::openPanel('Players', 12) }}
-            <div class="table-responsive ls-table">
-                <table class="table">
+            {{ Fickle::openTable() }}
                     <thead>
                         <th>Rank</th>
                         <th>Username</th>
@@ -20,8 +19,7 @@
                             </tr>
                         @endforeach
                     </tbody>
-                </table>
-            </div>
+            {{ Fickle::closeTable() }}
         {{ Fickle::closePanel() }}
 
 @endsection

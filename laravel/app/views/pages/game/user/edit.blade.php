@@ -14,7 +14,7 @@
                 {{ QForm::text('lastname') }}
 
                 {{ QForm::label('career', 'Career:') }}
-                {{ QForm::readonly('career', $player->career) }}
+                {{ QForm::readonly('career', $player->careerName()) }}
 
                 {{ QForm::readonly('email', $user->email) }}
 

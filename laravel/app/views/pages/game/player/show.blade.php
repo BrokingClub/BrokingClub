@@ -10,7 +10,7 @@
 
 @section('content')
 
-        {{ Fickle::openWidget(4, 'setting', $player->user->username, 'user') }}
+        {{ Fickle::openWidget(4, 'setting', $player->name(), 'user') }}
                 <ul>
                     <li><div class="userHead">
                                     <img class="img-circle" src="/img/testavatar.png"/>
@@ -21,11 +21,11 @@
                                         {{ Fickle::iconBtn('exclamation-triangle', 'success') }}
                                     </div>
                                 </div></li>
-                    <li>Username: <div class="setting-switch">{{ $player->user->username }}</div></li>
-                    <li>E-Mail: <div class="setting-switch">{{ $player->user->email }}</div></li>
+                    <li>Name: <div class="setting-switch">{{ $player->name(false) }}</div></li>
                     <li>Balance: <div class="setting-switch">{{ Format::money($player->balance) }}</div></li>
                     <li>Purchases Worth: <div class="setting-switch">{{ Format::money($player->purchasesWorth()) }}</div></li>
                     <li>Worth: <div class="setting-switch"><b>{{ Format::money($player->totalWorth()) }}</b></div></li>
+                    <li>Career: <div class="setting-switch">{{ $player->careerName() }}</div></li>
                     <li>Club:
                         <div class="setting-switch">
                             {{ $theplayer->clubLink() }}

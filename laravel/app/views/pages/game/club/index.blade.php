@@ -2,28 +2,32 @@
 
 @section('content')
 
-    {{ Fickle::openPanel('Your Club', 12) }}
+    {{ Fickle::openPanel('Your Club', 4) }}
         @if($theplayer->club)
-            <a class="btn btn-default" href="{{ URL::route('clubs.show', $theplayer->club->id)  }}"><i class="fa fa-mortar-board"></i> {{ $theplayer->club->name }}</a>
-        @else
-            You´re not a member of a club
-            <hr/>
-            <div class="text-right">
-                <a href="clubs/create" class="btn btn-info"><i class="fa fa-plus"></i> Create a new Club</a>
+            <p>You are Member of <b>"{{ $theplayer->club->name }}".</b></p>
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="btn btn-default btn-block" href="{{ URL::route('clubs.show', $theplayer->club->id)  }}"><i class="fa fa-close"></i> Leave</a>
+                </div>
+                <div class="col-md-6">
+                    <a class="btn btn-default btn-block" href="{{ URL::route('clubs.show', $theplayer->club->id)  }}"><i class="fa fa-eye"></i> Show club page</a>
+                </div>
             </div>
+        @else
+            <p>You´re not a member of a club.</p>
+            <a href="clubs/create" class="btn btn-info btn-block"><i class="fa fa-plus"></i> Create a new Club</a>
         @endif
 
     {{ Fickle::closePanel() }}
 
-    {{ Fickle::openPanel('Clubs', 12) }}
+    {{ Fickle::openPanel('Clubs', 8) }}
                 <div class="table-responsive ls-table">
                     {{ Fickle::openTable() }}
                         <thead>
                             <th>Rank</th>
                             <th>Name</th>
                             <th>Members</th>
-                            <td>Worth</td>
-                            <th>Become a Member</th>
+                            <th>Average Worth</th>
                         </thead>
                         <tbody>
 
@@ -32,15 +36,7 @@
                                     <td>{{ $i + 1 }}</td>
                                     <td><a href="{{ URL::route('clubs.show', $club->id)  }}">{{ $club->name }}</a></td>
                                     <td>{{ $club->countMembers() }}</td>
-                                    <td>{{ $club->worth() }}$ <small>(Ø {{ $club->avgWorth() }}$ pp.)</small></td>
-                                    <td>
-                                     <a class="btn btn-info" href="{{ URL::action('PlayersController@show', $club->id) }}"><i class="fa fa-eye"></i> Show</a>
-
-                                    @if(!($club->id == $theplayer->club_id))
-                                        <a class="btn btn-success" href="{{ URL::action('PlayersController@joinClub', $club->id) }}"><i class="fa fa-mortar-board"></i> Join</a>
-
-                                    @endif
-                                    </td>
+                                    <td>Ø {{ Format::money($club->avgWorth()) }} pp.</td>
 
                                 </tr>
                             @endforeach

@@ -1,0 +1,63 @@
+.career-box{
+    width: 852px;
+}
+
+.career-box .career-image{
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+}
+
+.career-box p{
+    font-size: 12px;
+    line-height: 15px;
+    height: 120px;
+    margin-bottom: 5px;
+}
+
+
+
+.career-box ul,
+.career-box ul li{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.career-box ul{
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #555;
+}
+
+.career-box ul li{
+    margin-bottom: 5px;
+}
+
+.career-box h3{
+    text-align: center;
+}
+
+.career-box form{
+    margin-top: 15px;
+}
+
+.career-box .btn-primary:hover{
+    background-color: #FFE500;
+    color: #333;
+}
+
+.career-box .login-form{
+    padding-top: 0px;
+}
+
+@media (max-width: 992px) {
+    .career-box{
+        width: 100%;
+    }
+
+    .career-box p{
+        height: auto;
+    }
+}

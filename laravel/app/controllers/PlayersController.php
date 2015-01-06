@@ -52,7 +52,7 @@ class PlayersController extends \BaseController {
     {
         $player = Player::findOrFail($id);
 
-        $this->setTitle('User information: '.$player->user->username);
+        $this->setTitle('User information: '. $player->name());
 
         $this->data['player'] = $player;
 
@@ -165,8 +165,37 @@ class PlayersController extends \BaseController {
         return Redirect::route('clubs.edit', ['id' => $club_id])->withMessage('Member got kicked.');
     }
 
+    public function setCareer(){
+        $theplayer = Player::auth();
+
+        if($theplayer->career_id != 0)
+            return Redirect::to('players/' . Player::auth()->id)->withError('Career is already set.');
+
+        return $this->makeView('pages.lockscreen.setcareer');
+    }
+
+    public function doSetCareer(){
+        $theplayer = Player::auth();
+
+        if($theplayer->career_id != 0)
+            return Redirect::to('players/' . Player::auth()->id)->withError('Career is already set.');
+
+        $career = Career::findOrFail(intval(Input::get('career_id')));
+        $theplayer->career_id = $career->id;
+
+        $theplayer->balance = $career->startmoney;
+        $theplayer->level = 1;
+
+        $theplayer->save();
+
+        return Redirect::to('players/' . Player::auth()->id)->withMessage('Welcome on board,  ' . $career->name . '.');
+    }
+
 
     public function dashboard(){
-        return Redirect::to('players/' . Player::auth()->id);
+        if(Player::auth()->career_id == 0)
+            return Redirect::action('PlayersController@setCareer');
+        else
+            return Redirect::to('players/' . Player::auth()->id);
     }
 }

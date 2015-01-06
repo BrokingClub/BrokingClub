@@ -21,6 +21,10 @@ Route::group(array('before' => 'auth'), function(){
     Route::resource('stocks', 'StocksController');
     Route::resource('clubs', 'ClubsController');
     Route::resource('players', 'PlayersController');
+
+    Route::get('setcarreer', 'PlayersController@setCareer');
+    Route::post('setcarreer', 'PlayersController@doSetCareer');
+
     Route::get('clubs/{id}/join', 'PlayersController@joinClub');
     Route::get('profile/leaveclub', 'PlayersController@leaveClub');
     Route::resource('images', 'ImagesController');

@@ -27,6 +27,10 @@
             <li>Description: <div class="setting-switch">{{ $club->description }}</div></li>
             <li>Members: <div class="setting-switch">{{ $club->countMembers() }}</div></li>
             <li>Balance: <div class="setting-switch">{{ $club->worth() }}$ <small>(Ø {{ $club->avgWorth() }}$ pp.)</small></div></li>
+            @if($theplayer->canJoin($club->id))
+                <li class="clearfix">Join: <div class="setting-switch">
+                    <a class="btn btn-success" href="{{ URL::action('PlayersController@joinClub', $club->id) }}"><i class="fa fa-mortar-board"></i> Join</a></div></li>
+            @endif
         </ul>
     {{ Fickle::closeWidget() }}
 
@@ -41,8 +45,8 @@
                 @foreach($club->members as $i => $member)
                     <tr>
                         <td>{{ $i + 1 }}</td>
-                        <td>{{ $member->user->username }}</td>
-                        <td>{{ $member->totalWorth() }}$</td>
+                        <td>{{ $member->link() }}</td>
+                        <td>{{ Format::money($member->totalWorth()) }}</td>
                     </tr>
                 @endforeach
             </tbody>

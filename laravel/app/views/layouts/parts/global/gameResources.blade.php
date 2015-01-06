@@ -47,6 +47,7 @@
 {{ HTML::style('fickle/css/responsive.css') }}
 <!-- Responsive Style For-->
 
+{{ HTML::style('lib/fontawesome/css/font-awesome.min.css') }}
 {{ HTML::style('css/game.css?t=' . time()) }}
 
 <!-- Custom styles for this template -->

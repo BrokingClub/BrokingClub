@@ -12,6 +12,10 @@ class Player extends BaseModel {
         return $this->belongsTo('User');
     }
 
+    public function career(){
+        return $this->belongsTo('Career');
+    }
+
     public function club() {
         return $this->belongsTo('Club');
     }
@@ -56,8 +60,10 @@ class Player extends BaseModel {
 
     }
 
-    public function editAllowed(){
-        return User::canEdit($this->user->id);
+    public function editAllowed($userId = 0){
+        if($userId == 0) $userId = $this->user->id;
+
+        return User::canEdit($userId);
     }
 
     public function editAllowedOrFail(){
@@ -86,12 +92,14 @@ class Player extends BaseModel {
     }
 
     public function link(){
-        return "<a href=". URL::to('players.show', $this->id) .">". $this->name() ."</a>";
+        return "<a href=". URL::route('players.show', $this->id) .">". $this->name() ."</a>";
     }
 
     public function role(){
         return trans('roles.' . $this->club_role);
     }
+
+
 
     public function ownsClub($club = null){
 
@@ -105,15 +113,29 @@ class Player extends BaseModel {
         }
     }
 
-    public function clubLink(){
+    public function clubLink($attributes = array()){
         $club_name = "[no club]";
+        $htmlAttributes = HTML::attributes($attributes);
         $club_link = URL::route('clubs.index');
         if($this->club_id != 0){
             $club_name = $this->club->name;
             $club_link = URL::route('clubs.show', $this->club_id);
         }
 
-        return "<a href='". $club_link ."'>". $club_name ."</a>";
+        return "<a ". $htmlAttributes ." href='". $club_link ."'>". $club_name ."</a>";
+    }
+
+    public function careerName(){
+        $career = $this->career;
+
+        if(!$career) return '---';
+        else {
+            return $career->name . " - Lvl ". intval($this->level);
+        }
+    }
+
+    public function canJoin($club_id){
+        return $club_id != Player::auth()->club_id;
     }
 
 

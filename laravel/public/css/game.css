@@ -2,6 +2,25 @@
     color: #FFE500;
 }
 
+a{
+    color: #333;
+    font-weight: bold;
+}
+
+a:hover{
+    color: #F5B025;
+    text-decoration: none;
+}
+
+.nav-tabs a span, .nav-tabs a i{
+    color: #666;
+    font-weight: normal;
+}
+
+ul.mainNav li a, .navigation a{
+    font-weight: normal;
+}
+
 .brokingclub-color ul.mainNav li a.active,
 .brokingclub-color .dropdown-menu.top-notification h4,
 .brokingclub-color .top-navigation .dropdown-menu h4{
@@ -24,6 +43,9 @@
     color: #222;
 }
 
+table.table-striped tr:nth-child(even){
+    background: #fafafa !important;
+}
 
 .funnydogAvatar {
     background-image: url('http://media.giphy.com/media/oDLDbBgf0dkis/giphy.gif');
@@ -107,6 +129,7 @@
     color: #fff;
     margin: 0px 10px 10px 0px;
     transition: ease all 0.2s;
+    font-weight: normal;
 }
 
 .stocks-list .stock-panel:hover{
