@@ -146,15 +146,9 @@ class Fickle {
         $earned = $purchase->earned();
         $earnedFormatted = Format::money($earned);
 
-        if($earned < 0) {
-            return '<div class="label label-as-badge bigger-label label-danger">'.$earnedFormatted.'</div>';
-        }
-        elseif($earned > 0) {
-            return '<div class="label label-as-badge bigger-label label-success">+'.$earnedFormatted.'</div>';
-        }
-        else {
-            return '<div class="label label-as-badge bigger-label label-neutral">'.$earnedFormatted.'</div>';
-        }
+
+
+        return $earnedFormatted;
     }
 
     public static function stockValue($stock, $options = array('big' => true)){

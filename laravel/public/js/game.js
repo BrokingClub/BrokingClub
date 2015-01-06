@@ -5,6 +5,18 @@ jQuery(document).ready(function($) {
     ladda_call();
 
     price_calculate_call();
+
+    $('.btn-confirm').confirmation();
+    $('[data-toggle="tooltip"]').tooltip({
+        html: true
+    });
+
+    $('[data-toggle="popover"]').popover({
+        html: true,
+        trigger: 'focus',
+        placement: 'bottom'
+    });
+
 });
 
 /*** bootstrapSwitch Call ***/

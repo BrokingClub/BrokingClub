@@ -7,7 +7,7 @@ class Purchase extends BaseModel {
         'amount' => 'required|integer|between:1,9999',
     );
 
-    protected static $feeBase = 0.05;
+    protected static $feeBase = 0.01;
     protected static $globalLeverage = 1;
 
     public function stock() {
@@ -104,4 +104,22 @@ class Purchase extends BaseModel {
     public static function feeRate(){
         return static::$feeBase;
     }
+
+    public function earnedIcon(){
+        switch($this->earnedMode()){
+            case "rising": return "<i class='fa fa-caret-up'></i>";
+            case "falling": return "<i class='fa fa-caret-down'></i>";
+            default: return "<i class='fa fa-sort'></i>";
+
+        }
+    }
+
+    public function earnedMode(){
+        $earned = $this->earned();
+
+        if($earned == 0) return "neutral";
+
+        return ($earned > 0)? "rising" : "falling";
+    }
+
 }

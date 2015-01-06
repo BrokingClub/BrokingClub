@@ -83,7 +83,7 @@ class ClubsController extends \BaseController {
 
         $club = Club::findOrFail($id);
 
-        $this->setTitle('Club information: '.$club->name);
+        $this->setTitle($club->name . ' - ' . $club->teaser);
 
         $this->data['club'] = $club;
 

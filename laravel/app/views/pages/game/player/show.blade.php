@@ -28,7 +28,7 @@
                     <li>Career: <div class="setting-switch">{{ $player->careerName() }}</div></li>
                     <li>Club:
                         <div class="setting-switch">
-                            {{ $theplayer->clubLink() }}
+                            {{ $player->clubLink() }}
                         </div>
 
                     </li>
@@ -64,13 +64,12 @@
             <th>Stock</th>
             <th class="hidden-sm" >Amount</th>
             <th class="hidden-sm">Paid</th>
-            <th >Total paid</th>
+            {{-- <th >Total paid</th> --}}
             <th>Mode</th>
-            <th>Offer</th>
-            <th>Actions</th>
+            <th>Profit</th>
+            <th></th>
         </thead>
         <tbody>
-.
         @foreach($player->purchases->all() as $purchase)
             <tr>
                 <td>
@@ -81,14 +80,22 @@
 
                 </td>
                 <td class="hidden-sm">{{ $purchase->amount }}</td>
-                <td class="hidden-sm">{{ Format::money($purchase->paidPerStock()) }}</td>
-                <td>
-                <span title="Fee: {{ $purchase->fee  }}">{{ Format::money($purchase->totalPaid()) }}</span></td>
+                <td class="hidden-sm">
+                    <a tabindex="0" data-toggle="popover" title="Purchase price" href="#" data-content="Fee: {{ Format::money($purchase->fee)  }} <br/> Total paid: {{ Format::money($purchase->totalPaid()) }}">
+                        {{ Format::money($purchase->paidPerStock()) }}
+                    </a>
+                </td>
+                {{-- <td>
+                <span title=""></span></td>
+                --}}
                 <td>{{ Fickle::purchaseMode($purchase->mode) }}</td>
 
                 <td>
-                {{ Format::money($purchase->sellOffer()) }}
-                {{ Fickle::earnings($purchase) }}
+                    <span class="mode-{{ $purchase->earnedMode() }}">
+                        {{ $purchase->earnedIcon() }}
+                        {{ Fickle::earnings($purchase) }}
+                    </span>
+
 
                 </td>
 
@@ -96,7 +103,7 @@
                  @if($player->editAllowed())
                 {{ QForm::open(['route' => ['purchases.update', $purchase->id], 'method' => 'PUT']) }}
                     {{ QForm::hidden('action', 'sell') }}
-                    {{ QForm::btnPrimary(' Sell', 'legal') }}
+                    {{ QForm::btnPrimary(' ', 'legal') }}
                 {{ QForm::close() }}
                 @endif
                 </td>
@@ -108,11 +115,14 @@
 
         </tbody>
     {{ Fickle::closeTable() }}
+
+    @if($theplayer->id == $player->id)
     <hr/>
     <div class="clearfix">
         <a class="pull-right btn btn-success" href="{{ URL::route('stocks.index') }}">
             <i class="fa fa-list"></i> Buy more stocks</a>
     </div>
+    @endif
     {{ Fickle::closePanel() }}
 
 @endsection

@@ -35,7 +35,7 @@
                             <i class="fa fa-plane"></i> Kick Player
                         </a>
                         @else
-                        <a class="btn btn-danger" href="{{ URL::action('PlayersController@leaveClub') }}">
+                        <a class="btn btn-danger btn-confirm" href="{{ URL::action('PlayersController@leaveClub') }}">
                             <i class="fa fa-trash"></i> Destroy Club
                         </a>
                         @endif

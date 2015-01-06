@@ -111,16 +111,18 @@ class PlayersController extends \BaseController {
             return Redirect::back()->withError('You are not logged in as a real player.');
 
         if ($thePlayer->club_role == 'founder') {
-            $club = Club::findOrFail($thePlayer->club->id);
-            $club->delete();
+            $oldclub = $thePlayer->club;
+            $oldclub->delete();
         }
 
-        $thePlayer->club_id = $id;
+        $club = Club::findOrFail($id);
+
+        $thePlayer->club_id = $club->id;
         $thePlayer->club_role = 'member';
 
         $thePlayer->save();
 
-        return Redirect::route('clubs.show', $id);
+        return Redirect::route('clubs.show', $id)->withMessage('Welcome to ' . $club->name);
     }
 
     public function leaveClub() {

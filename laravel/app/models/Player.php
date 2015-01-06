@@ -91,8 +91,13 @@ class Player extends BaseModel {
         return $name;
     }
 
-    public function link(){
-        return "<a href=". URL::route('players.show', $this->id) .">". $this->name() ."</a>";
+    public function link($options = []){
+        $string = $this->name();
+
+        if(isset($options['showRole']))
+            $string .= " [" . $this->role() . ']';
+
+        return "<a href=". URL::route('players.show', $this->id) .">". $string ."</a>";
     }
 
     public function role(){

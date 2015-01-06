@@ -23,18 +23,21 @@
             </li>
             <li>Clubname: <div class="setting-switch">{{ $club->name }}</div></li>
             <li>Owner: <div class="setting-switch"><a href="{{ URL::route('players.show', $club->owner->id)  }}">{{ $club->owner->user->username }}</a></div></li>
-            <li>Teaser: <div class="setting-switch">{{ $club->teaser }}</div></li>
             <li>Description: <div class="setting-switch">{{ $club->description }}</div></li>
             <li>Members: <div class="setting-switch">{{ $club->countMembers() }}</div></li>
-            <li>Balance: <div class="setting-switch">{{ $club->worth() }}$ <small>(Ø {{ $club->avgWorth() }}$ pp.)</small></div></li>
+            <li>Playsers Average: <div class="setting-switch">Ø {{ Format::money($club->avgWorth()) }}</div></li>
+            <li>Worth: <div class="setting-switch">{{ Format::money($club->worth()) }}</div></li>
             @if($theplayer->canJoin($club->id))
                 <li class="clearfix">Join: <div class="setting-switch">
-                    <a class="btn btn-success" href="{{ URL::action('PlayersController@joinClub', $club->id) }}"><i class="fa fa-mortar-board"></i> Join</a></div></li>
+                    <a class="btn btn-success" href="{{ URL::action('PlayersController@joinClub', $club->id) }}"><i class="fa fa-mortar-board"></i> Join this club</a></div></li>
+            @elseif($theplayer->club_id == $club->id)
+                <li class="clearfix">Leave: <div class="setting-switch">
+                    <a class="btn btn-danger btn-confirm" href="{{ URL::action('PlayersController@leaveClub') }}"><i class="fa fa-close"></i> Leave this club</a>
             @endif
         </ul>
     {{ Fickle::closeWidget() }}
 
-    {{ Fickle::openPanel('Performance', 8, ['controls' => 'minus,refresh,closepanel', 'padding' => false])}}
+    {{ Fickle::openPanel('Players', 8, ['controls' => 'minus,refresh,closepanel', 'padding' => false])}}
         {{ Fickle::openTable() }}
             <thead>
                 <th>Rank</th>
@@ -45,7 +48,7 @@
                 @foreach($club->members as $i => $member)
                     <tr>
                         <td>{{ $i + 1 }}</td>
-                        <td>{{ $member->link() }}</td>
+                        <td>{{ $member->link(['showRole' => true]) }}</td>
                         <td>{{ Format::money($member->totalWorth()) }}</td>
                     </tr>
                 @endforeach

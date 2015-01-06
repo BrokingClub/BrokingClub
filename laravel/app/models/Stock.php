@@ -57,13 +57,22 @@ class Stock extends BaseModel
         if(!$asString)
             return $changeRatePercent;
         else
-            return ($changeRatePercent > 0)? '+' . $changeRatePercent . '%' : $changeRatePercent . "%";
+            return $changeRatePercent . '%';
+    }
+
+    public function changeRateIcon(){
+        switch($this->changeRateMode()){
+            case "rising": return "<i class='fa fa-caret-up'></i>";
+            case "falling": return "<i class='fa fa-caret-down'></i>";
+            default: return "<i class='fa fa-sort'></i>";
+
+        }
     }
 
     public function changeRateMode(){
         $percent = $this->changeRatePercent();
 
-        if($percent == 0) return "neurtral";
+        if($percent == 0) return "neutral";
 
         return ($percent > 0)? "rising" : "falling";
     }

@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- --}}
-    {{ Fickle::openPanel('Stocks', 12) }}
+    <div class="col-md-12">
             {{--
             {{ Fickle::openTable() }}
                 <thead>
@@ -46,7 +46,7 @@
                                         <td class="value-container">
                                             <div class="value">
                                                 <b>{{ Format::value($stock->newestValue()) }}</b>
-                                                <span>{{ $stock->changeRatePercent(true) }}</span>
+                                                <span>{{ $stock->changeRateIcon() }} {{ $stock->changeRatePercent(true) }}</span>
                                             </div>
                                         </td>
                                     </tr>
@@ -59,6 +59,6 @@
                     </a>
                 @endforeach
             </div>
-    {{ Fickle::closePanel() }}
+    </div>
 
 @endsection

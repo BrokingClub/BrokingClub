@@ -42,7 +42,7 @@
            {{ QForm::label('your_club', 'Your club:') }}
             @if($theplayer->club)
                 {{ QForm::readOnly('your_club', $theplayer->club->name) }}
-                <a class="btn btn-danger" href="{{ URL::action('PlayersController@leaveClub') }}">Leave this club</a>
+                <a class="btn btn-danger btn-confirm" href="{{ URL::action('PlayersController@leaveClub') }}">Leave this club</a>
             @else
                 {{ QForm::readOnly('no_club', 'You are not a member of any club') }}
 
@@ -59,7 +59,7 @@
         {{ Fickle::closeTabContent() }}
 
         {{ Fickle::openTabContent('delete') }}
-            <a href="{{ URL::action('UsersController@delete', ['id' => $user->id]) }}" class="btn btn-danger">
+            <a href="{{ URL::action('UsersController@delete', ['id' => $user->id]) }}" class="btn btn-danger btn-confirm">
                 <i class="fa fa-thumbs-down"></i> Delete account
             </a>
 

@@ -7,7 +7,7 @@
             <p>You are Member of <b>"{{ $theplayer->club->name }}".</b></p>
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-default btn-block" href="{{ URL::route('clubs.show', $theplayer->club->id)  }}"><i class="fa fa-close"></i> Leave</a>
+                    <a class="btn btn-danger btn-confirm btn-block" href="{{ URL::action('PlayersController@leaveClub') }}"><i class="fa fa-close"></i> Leave this club</a>
                 </div>
                 <div class="col-md-6">
                     <a class="btn btn-default btn-block" href="{{ URL::route('clubs.show', $theplayer->club->id)  }}"><i class="fa fa-eye"></i> Show club page</a>

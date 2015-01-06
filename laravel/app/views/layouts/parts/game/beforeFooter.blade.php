@@ -61,6 +61,8 @@
 <!-- loader Button Script -->
 {{ HTML::script('fickle/js/loader/spin.js') }}
 {{ HTML::script('fickle/js/loader/ladda.js') }}
+
+{{ HTML::script('lib/bootstrapPlugins/bootstrap-confirmation.js') }}
 <!-- loader Button Script -->
 
 {{ HTML::script('js/game.js') }}
