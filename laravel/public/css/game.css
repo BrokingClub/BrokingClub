@@ -2,12 +2,13 @@
     color: #FFE500;
 }
 
-a{
+a, a label{
     color: #333;
     font-weight: bold;
+    cursor: pointer;
 }
 
-a:hover{
+a:hover, a:hover label{
     color: #F5B025;
     text-decoration: none;
 }
@@ -20,7 +21,9 @@ span.mode-rising{
     color: #319E42;
 }
 
-
+.popover.bottom>.arrow{
+    top: -11px !important;
+}
 
 .nav-tabs a span, .nav-tabs a i{
     color: #666;
@@ -202,4 +205,75 @@ table.table-striped tr:nth-child(even){
 
 .stocks-list .stock-mode-rising .value-container{
     background-color: #319E42;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #3BAFDA;
+    border-color: #27A2CF;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary{
+    color: #fff;
+    background-color: #27A2CF;
+    border-color: #27A2CF;
+}
+
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary, .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary{
+    background: #27A2CF;
+    color: #fff;
+}
+
+
+
+/** ION SLIDER **/
+.irs-from, .irs-to, .irs-single{
+    background: #27A2CF;
+}
+
+.irs-from:after, .irs-to:after, .irs-single:after{
+    border-color: #27A2CF rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+
+}
+
+.gnews{
+    height: 302px;
+    overflow-y: scroll;
+}
+
+.gnews .gn-result{
+    margin-bottom: 20px;
+}
+
+.gnews .gn-result h3{
+    margin-top: 0px;
+    margin-bottom: 5px;
+
+}
+
+.gnews .gn-result h3 a{
+    font-size: 14px;
+}
+
+.gnews .gn-result p{
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.gnews .gn-result .gn-image-wrap{
+
+}
+
+.gnews .gn-result .gn-image{
+    height: 90px;
+    background-position: center;
+    background-size: cover;
+}
+
+.gnews .gn-result .gn-image.image-empty{
+    background-color: #eee;
+}
+
+.gnews .gn-result .gn-content{
+    float: left;
 }

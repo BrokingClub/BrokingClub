@@ -85,7 +85,7 @@ class Purchase extends BaseModel {
         $oldValue = $this->value;
         $newValue = $this->newestValue();
 
-        $nettoEarned = ($newValue - $oldValue) * static::$globalLeverage  * $this->amount;
+        $nettoEarned = ($newValue - $oldValue) * (static::$globalLeverage * ($this->leverage/100))  * $this->amount;
 
 
         if($this->mode == "falling"){

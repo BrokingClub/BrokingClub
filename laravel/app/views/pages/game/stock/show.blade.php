@@ -1,7 +1,7 @@
 @extends('layouts.game')
 
 @section('content')
-    {{ Fickle::openPanel('Purchase this stock') }}
+    {{ Fickle::openPanel('Purchase this stock', 6) }}
         {{ QForm::open(['route' => 'purchases.store', 'method' => 'POST']) }}
             @include('partials.forms.purchase')
 
@@ -14,6 +14,12 @@
 
         {{ QForm::close() }}
     {{ Fickle::closePanel() }}
+
+    {{ Fickle::openPanel('News about '.$stock->name, 6) }}
+            <div class="gnews" data-topic="{{ $stock->name }}" >
+                <b>Loading news from Google...</b>
+            </div>
+        {{ Fickle::closePanel() }}
 
     {{ Fickle::openPanel($stock->name . ' graph', 12) }}
 
@@ -43,12 +49,8 @@
 
     {{ Fickle::closePanel() }}
 
-    {{ Fickle::openPanel('News about '.$stock->name, 12) }}
-        <div style="text-align: center">
-        <iframe src="http://www.google.com/uds/modules/elements/newsshow/iframe.html?q={{ $stock->name }}&rsz=9&hl=en"
-                frameborder="0" width="728" height="90" marginwidth="0" marginheight="0"></iframe>
-        </div>
-    {{ Fickle::closePanel() }}
+
+
 
 
 

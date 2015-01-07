@@ -39,6 +39,7 @@
 
 
 {{ HTML::script('fickle/js/countUp.min.js') }}
+{{ HTML::script('fickle/js/ion.rangeSlider.js') }}
 
 
 <!-- skycons script start -->
@@ -52,7 +53,6 @@
 
 <!--JS plugins-->
 
-<!--JS plugins-->
 
 <!--AmaranJS library script Start -->
 {{ HTML::script('fickle/js/jquery.amaran.js') }}
@@ -64,6 +64,9 @@
 
 {{ HTML::script('lib/bootstrapPlugins/bootstrap-confirmation.js') }}
 <!-- loader Button Script -->
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+{{ HTML::script('js/jquery.gnews.js') }}
 
 {{ HTML::script('js/game.js') }}
 {{ HTML::script('js/mockup.js?t=' . time()) }}

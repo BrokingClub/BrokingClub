@@ -38,6 +38,9 @@
 {{ HTML::style('fickle/css/plugins/amaranjs/theme/metro.css') }}
 <!--AmaranJS Css End -->
 
+{{ HTML::style('fickle/css/plugins/rangeSlider/ion.rangeSlider.css') }}
+{{ HTML::style('fickle/css/plugins/rangeSlider/ion.rangeSlider.skinModern.css') }}
+
 <!-- Plugin Css End -->
 <!-- Custom styles Style -->
 {{ HTML::style('fickle/css/style.css') }}

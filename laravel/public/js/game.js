@@ -17,6 +17,20 @@ jQuery(document).ready(function($) {
         placement: 'bottom'
     });
 
+    $('input[name=leverage]').ionRangeSlider({
+        type: "single",
+        min: 100,
+        max: 500,
+        step: 50,
+        grid: false,
+        grid_snap: true,
+
+        postfix: '%'
+    });
+
+    $('.gnews').gnews();
+
+
 });
 
 /*** bootstrapSwitch Call ***/

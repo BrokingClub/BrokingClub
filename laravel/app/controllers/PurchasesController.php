@@ -45,8 +45,11 @@ class PurchasesController extends \BaseController {
         $mode = "falling";
         if(Input::get('betOnRise')) $mode = "rising";
 
+        $leverage = min(500, max(100, intval(Input::get('leverage'))));
+
         $purchase->amount = Input::get('amount');
         $purchase->mode = $mode;
+        $purchase->leverage = $leverage;
         $purchase->stock_id = $stock->id;
         $purchase->player_id = $thePlayer->id;
         $purchase->value = $stock->newestValue();

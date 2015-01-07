@@ -81,14 +81,14 @@
                 </td>
                 <td class="hidden-sm">{{ $purchase->amount }}</td>
                 <td class="hidden-sm">
-                    <a tabindex="0" data-toggle="popover" title="Purchase price" href="#" data-content="Fee: {{ Format::money($purchase->fee)  }} <br/> Total paid: {{ Format::money($purchase->totalPaid()) }}">
+                    <a tabindex="0" data-toggle="popover" title="Purchase price" href="#" data-content="Old price: {{ Format::money($purchase->value)  }} <br/> Fee: {{ Format::money($purchase->fee)  }} <br/> Total paid: {{ Format::money($purchase->totalPaid()) }}">
                         {{ Format::money($purchase->paidPerStock()) }}
                     </a>
                 </td>
                 {{-- <td>
                 <span title=""></span></td>
                 --}}
-                <td>{{ Fickle::purchaseMode($purchase->mode) }}</td>
+                <td>{{ Fickle::purchaseMode($purchase->mode) }} {{ $purchase->leverage }}%</td>
 
                 <td>
                     <span class="mode-{{ $purchase->earnedMode() }}">
