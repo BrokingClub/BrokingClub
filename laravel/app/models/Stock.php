@@ -34,6 +34,40 @@ class Stock extends BaseModel
 
     }
 
+    public function newestValuesArray($limit = 3000, $step = 250, $valuesOnly = true){
+        $newestValues = $this->newestValues($limit);
+        $steppedValues = array();
+        $i = 0;
+        foreach($newestValues as $newestValue){
+
+            if($i % $step == 0)
+                $steppedValues[] = ($valuesOnly)? $newestValue->value : $newestValue;
+            $i++;
+        }
+
+        return $steppedValues;
+    }
+
+    public function newestVariationsArray($limit = 3000, $step = 250){
+        $newestValues = $this->newestValuesArray($limit, $step);
+        $min = min($newestValues);
+        $max = max($newestValues);
+        $maxVariation = $max - $min;
+
+        $variations = array();
+        foreach($newestValues as $newestValue){
+            $variation = $newestValue - $min;
+
+            $percent = ($variation / $maxVariation) * 100;
+            $variations[] = $percent;
+        }
+
+        return $variations;
+
+
+    }
+
+
     public function price($amount) {
         return $this->newestValueObject()->value * $amount;
     }

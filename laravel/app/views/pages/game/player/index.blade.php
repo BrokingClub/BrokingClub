@@ -17,7 +17,11 @@
                                 <td>{{ $i + 1 }}</td>
                                 <td><a href="{{ URL::route('players.show', $player->id)  }}">{{ $player->name() }}</a></td>
                                 <td>{{ $player->balance }} $</td>
-                                <td>-</td>
+                                <td>
+
+                                     <span class="mini-stockchart">100,85.125040597596,91.349139330952,87.690808704124,76.583306268269,72.718415069828,41.474504709321,12.439103605067,8.9314712569016,0.35725885027611,50.097434231893383,80</span>
+
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

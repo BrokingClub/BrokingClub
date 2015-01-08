@@ -28,6 +28,7 @@
                             <th>Name</th>
                             <th>Members</th>
                             <th>Average Worth</th>
+                            <th>Performance</th>
                         </thead>
                         <tbody>
 
@@ -37,7 +38,11 @@
                                     <td><a href="{{ URL::route('clubs.show', $club->id)  }}">{{ $club->name }}</a></td>
                                     <td>{{ $club->countMembers() }}</td>
                                     <td>Ø {{ Format::money($club->avgWorth()) }} pp.</td>
+                                    <td>
 
+                                                                         <span class="mini-stockchart">100,85.125040597596,91.349139330952,87.690808704124,76.583306268269,72.718415069828,41.474504709321,12.439103605067,8.9314712569016,0.35725885027611,50.097434231893383,80</span>
+
+                                                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

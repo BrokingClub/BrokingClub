@@ -65,7 +65,10 @@
 {{ HTML::script('lib/bootstrapPlugins/bootstrap-confirmation.js') }}
 <!-- loader Button Script -->
 
+{{ HTML::script('lib/jquery.peity.js') }}
+
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
 {{ HTML::script('js/jquery.gnews.js') }}
 
 {{ HTML::script('js/game.js') }}

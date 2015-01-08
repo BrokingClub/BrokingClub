@@ -33,7 +33,7 @@
             <div class="stocks-list clear">
                  @foreach($stocks as $stock)
                     <a href="{{ URL::route('stocks.show', $stock->id)  }}">
-                        <div class="stock-panel stock-mode-{{ $stock->changeRateMode() }}">
+                        <div class="stock-panel col-lg-3 col-md-6 col-xs-12 stock-mode-{{ $stock->changeRateMode() }}">
                             <div class="stock-panel-inner clearfix">
                                 <table>
                                     <tr>

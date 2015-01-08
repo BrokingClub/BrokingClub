@@ -35,7 +35,7 @@ class Fickle {
     }
 
     public static function openWidget($cols = 12, $type = "setting", $title = "", $icon = null){
-        $html = '<div class="widget-container col-md-4 col-sm-6">';
+        $html = '<div class="widget-container col-md-4">';
         $html .=  '<div class="'. $type .'-widget">';
             $html .=  '<div class="'. $type .'-widget-header">';
             $html .=  '<h5 class="ls-header">'. $title .' <i class="fa fa-'. $icon .'"></i></h5>';
@@ -105,9 +105,9 @@ class Fickle {
         return $html;
     }
 
-    public static function openTable(){
+    public static function openTable($class = ""){
         $html = '<div class="table-responsive ls-table">';
-        $html .= '<table class="table table-striped table-responsive">';
+        $html .= '<table class="'. $class .' table table-striped table-responsive">';
 
         return $html;
     }
