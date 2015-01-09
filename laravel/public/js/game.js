@@ -30,6 +30,13 @@ jQuery(document).ready(function($) {
 
     $('.gnews').gnews();
 
+    $(".mini-stockchart").peity("line", {
+        'height': 30,
+        'width': 100,
+        'fill': '#eeeeee',
+        'stroke': '#cccccc'
+    })
+
 
 });
 

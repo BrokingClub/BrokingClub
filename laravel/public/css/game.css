@@ -137,13 +137,32 @@ table.table-striped tr:nth-child(even){
 
 .stocks-list .stock-panel{
     float: left;
-    background-color: #888;
-    width: 250px;
+    background-color: transparent;
     color: #fff;
-    margin: 0px 10px 10px 0px;
     transition: ease all 0.2s;
     font-weight: normal;
+    padding-right: 0px;
+    padding-left: 0px;
+
 }
+
+.stocks-list .stock-panel-inner{
+    padding: 0px 5px 5px 0px;
+
+}
+
+@media (max-width: 1250px){
+    .stocks-list .stock-panel{
+        width: 50%;
+    }
+}
+
+@media(max-width:767px){
+    .stocks-list .stock-panel{
+        width: 100%;
+    }
+}
+
 
 .stocks-list .stock-panel:hover{
     opacity: 0.9;
@@ -276,4 +295,28 @@ table.table-striped tr:nth-child(even){
 
 .gnews .gn-result .gn-content{
     float: left;
+}
+
+.tooltip img.yf-chart{
+    width: 175px;
+}
+
+.tooltip-inner{
+    background-color: #FFFFFF;
+}
+
+.tooltip.top .tooltip-arrow{
+    border-top-color: #FFFFFF;
+}
+
+.yf-chart-mini{
+    width: 100px;
+}
+
+.purchase-table .stock-link-wrap{
+    min-width: 100px;
+}
+
+.mini-stockchart{
+    display: none;
 }

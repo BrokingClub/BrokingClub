@@ -28,6 +28,7 @@
                             <th>Name</th>
                             <th>Members</th>
                             <th>Average Worth</th>
+                            <th>Performance</th>
                         </thead>
                         <tbody>
 
@@ -37,7 +38,11 @@
                                     <td><a href="{{ URL::route('clubs.show', $club->id)  }}">{{ $club->name }}</a></td>
                                     <td>{{ $club->countMembers() }}</td>
                                     <td>Ø {{ Format::money($club->avgWorth()) }} pp.</td>
+                                    <td>
 
+                                         <span class="mini-stockchart">{{ Fickle::randomChartValues() }}</span>
+
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

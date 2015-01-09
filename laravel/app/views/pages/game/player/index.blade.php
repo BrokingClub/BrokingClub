@@ -17,7 +17,11 @@
                                 <td>{{ $i + 1 }}</td>
                                 <td><a href="{{ URL::route('players.show', $player->id)  }}">{{ $player->name() }}</a></td>
                                 <td>{{ $player->balance }} $</td>
-                                <td>-</td>
+                                <td>
+
+                                         <span class="mini-stockchart">{{ Fickle::randomChartValues() }}</span>
+
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

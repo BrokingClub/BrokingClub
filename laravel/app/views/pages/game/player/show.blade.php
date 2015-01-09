@@ -59,10 +59,11 @@
 
     {{ Fickle::openPanel('Users stocks', 8) }}
 
-    {{ Fickle::openTable() }}
+    {{ Fickle::openTable('purchase-table') }}
         <thead>
             <th>Stock</th>
             <th class="hidden-sm" >Amount</th>
+
             <th class="hidden-sm">Paid</th>
             {{-- <th >Total paid</th> --}}
             <th>Mode</th>
@@ -73,10 +74,20 @@
         @foreach($player->purchases->all() as $purchase)
             <tr>
                 <td>
-                    <a href="{{ URL::route('stocks.show', $purchase->stock->id) }}">
+                    <div class="clearfix">
+                    <div class="pull-left stock-link-wrap">
+                    <a  href="{{ URL::route('stocks.show', $purchase->stock->id) }}">
+
                     {{ $purchase->stock->name }}
+
                     </a>
+
                     <br/><small>{{ Fickle::stockValue($purchase->stock, ['big' => false])  }}</small>
+                    </div>
+                    <div class="pull-left">
+                        <span class="mini-stockchart">{{ implode(',', array_reverse($purchase->stock->newestVariationsArray())) }}</span>
+                    </div>
+                    </div>
 
                 </td>
                 <td class="hidden-sm">{{ $purchase->amount }}</td>
