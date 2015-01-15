@@ -45,10 +45,10 @@ function saveStocks(stocks){
 	var values = [];
 
 	stocks.forEach(function(stock){
-		values.push('(' + stock.id + ',' + daily.getNextDailyId(stock.id) + ',' + stock.quote + ',now(),now())');
+		values.push('(' + stock.id + ',' + daily.getNextDailyId(stock.id) + ',' + stock.quote + ',' + stock.change + ',now(),now())');
 	});
 	
-	var query = 'INSERT INTO stock_values (stock_id, daily_id, value, created_at, updated_at) VALUES ' + values.join(',');
+	var query = 'INSERT INTO stock_values (stock_id, daily_id, value, percent, created_at, updated_at) VALUES ' + values.join(',');
 	
     sql.query(query, function(err){
         if(no(err)){
