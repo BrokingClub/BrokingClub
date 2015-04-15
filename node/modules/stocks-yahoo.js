@@ -15,6 +15,7 @@ function queryStocks(symbols, callback){
                 
                 for(var i = 0; i < quotes.length; i++){
                     symbols[i].quote = quotes[i].LastTradePriceOnly;
+                    symbols[i].change = parseFloat(quotes[i].Change);
                 }
                 
                 callback(null, symbols);
@@ -40,5 +41,5 @@ function buildYqlQuery(symbols){
 		symbolNames.push(symbol.symbol);
 	});
 	
-	return 'select LastTradePriceOnly from yahoo.finance.quote where symbol in ("' + symbolNames.join('","') + '")';
+	return 'select LastTradePriceOnly, Change from yahoo.finance.quote where symbol in ("' + symbolNames.join('","') + '")';
 }

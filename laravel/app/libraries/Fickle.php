@@ -188,5 +188,17 @@ class Fickle {
 
 
     }
+
+    public static function randomChartValues($num = 20){
+        $values = [];
+        $values[] = rand(0,100);
+        for($i = 0; $i != $num; $i++){
+            $oldValue = $values[$i];
+
+            $values[] = abs($oldValue + (rand(0,100) - 50));
+        }
+
+        return implode(',', $values);
+    }
 }
 

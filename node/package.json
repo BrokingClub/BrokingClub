@@ -19,6 +19,11 @@
 	"mysql": "*",
     "moment": "*",
     "socket.io": "*",
-    "async": "*"
+    "async": "*",
+    "dotenv": "*"
+  },
+  "scripts": {
+    "start": "screen -dmS node nodemon app.js",
+    "test": "cd test && cucumber"
   }
 }
