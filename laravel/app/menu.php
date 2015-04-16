@@ -10,7 +10,7 @@ Menu::make('MainMenu', function($menu){
     $menu->add('Ranking', 'players')->data('icon', 'globe');
 
     if(Player::auth() && Player::auth()->user->role == 'admin') {
-        $menu->add('Manage', 'manage')->data('icon', 'users');
+        $menu->add('Administrate', 'administrate')->data('icon', 'gavel');
     }
 
 
