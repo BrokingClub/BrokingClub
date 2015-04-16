@@ -9,7 +9,7 @@ Menu::make('MainMenu', function($menu){
     $menu->add('Clubs', 'clubs')->data('icon', 'mortar-board');
     $menu->add('Ranking', 'players')->data('icon', 'globe');
 
-    if(Player::auth()->user->role == 'admin') {
+    if(Player::auth() && Player::auth()->user->role == 'admin') {
         $menu->add('Manage', 'manage')->data('icon', 'users');
     }
 
