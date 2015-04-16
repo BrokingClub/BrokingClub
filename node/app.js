@@ -9,7 +9,7 @@ var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var domain = require('domain');
-var logger = require('app/logger');
+var logger = require('./modules/logger');
 var no = require('app/no');
 
 app.use(favicon(__dirname + '/public/favicon.ico'));

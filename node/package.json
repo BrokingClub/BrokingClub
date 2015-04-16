@@ -10,7 +10,6 @@
     "express": "*",
     "body-parser": "*",
     "cookie-parser": "*",
-    "log4js": "*",
     "serve-favicon": "*",
 	"lodash": "*",
 	"strip-ansi": "*",
@@ -20,10 +19,9 @@
     "moment": "*",
     "socket.io": "*",
     "async": "*",
-    "dotenv": "*"
+    "dotenv": "*",
   },
   "scripts": {
-    "start": "screen -dmS node nodemon app.js",
     "test": "cd test && cucumber"
   }
 }
