@@ -45,6 +45,6 @@ footer a:hover {
 }
 
 footer, .push {
-    height: 70px;
+    min-height: 70px;
 }
 

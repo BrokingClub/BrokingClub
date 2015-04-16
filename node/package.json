@@ -10,7 +10,6 @@
     "express": "*",
     "body-parser": "*",
     "cookie-parser": "*",
-    "log4js": "*",
     "serve-favicon": "*",
 	"lodash": "*",
 	"strip-ansi": "*",
@@ -20,10 +19,11 @@
     "moment": "*",
     "socket.io": "*",
     "async": "*",
-    "dotenv": "*"
+    "dotenv": "*",
+    "log4js": "*"
   },
   "scripts": {
-    "start": "screen -dmS node nodemon app.js",
+    "start": "screen -dmS node forever -v --minUptime 3000 --spinSleepTime 1000 -c \"nodemon --exitcrash\" app.js",
     "test": "cd test && cucumber"
   }
 }

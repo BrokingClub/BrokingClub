@@ -4,7 +4,7 @@ var format = ':method :url :status - :res[content-length] - :response-time ms';
 log4js.configure({
     appenders: [
         { type: 'console' },
-        { 
+        {
             type: 'file',
             filename: 'logs/server.log',
             maxLogSize: 1000000,
