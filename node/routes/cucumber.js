@@ -3,7 +3,6 @@ var exec = require('child_process').exec;
 var stripAnsi = require('strip-ansi');
 var shellEscape = require('shell-escape');
 var async = require('async');
-var _ = require('lodash');
 var no = require('app/no');
 var debug = false;
 
@@ -18,11 +17,11 @@ function getFeatures(req, res){
 		if (err) throw err;
 		
 		var features = [];
-		
-		_(files).forEach(function(file){
+
+		files.forEach(function(file){
 			if(fs.statSync('./test/features/' + file).isFile()){
 				var feature = file.split('.')[0];
-			
+
 				features.push(feature);
 			}
 		});
