@@ -45,6 +45,7 @@ Route::group(array('before' => 'auth'), function(){
 
     Route::get('users/{id}/delete', 'UsersController@delete');
     Route::post('users/{id}/delete', 'UsersController@doDelete');
+
 });
 
 Route::get('/', 'HomeController@showWelcome');
