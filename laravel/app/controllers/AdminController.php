@@ -14,6 +14,10 @@ class AdminController extends \BaseController {
      */
     public function getIndex()
     {
+        $users = User::all();
+
+        $this->data['users'] = $users;
+
         return $this->makeView('pages.admin.index');
     }
 
