@@ -18,31 +18,32 @@ function getLinesOfCode(req, res){
             return console.error(err);
         }
 
-        populateCommitStats(commits, function (err, commitStats) {
+        populateCommitInfo(commits, function (err, commitInfo) {
             if (err) {
                 return console.error(err);
             }
 
-            cache.commits = commitStats;
+            cache.commits = commitInfo;
 
-            res.json(commitStats);
+            res.json(commitInfo);
         })
     });
 }
 
-function populateCommitStats(commits, cb){
+function populateCommitInfo(commits, cb){
     async.mapLimit(commits, 10, populateCommit, cb);
 }
 
 function populateCommit(commit, cb){
-    getCommitStats(commit, function(err, stats){
+    getCommitInfo(commit, function(err, info){
         if(err){
             return cb(err);
         }
 
         cb(null, {
             sha: commit,
-            stats: stats
+            message: info.message,
+            stats: info.stats
         });
     });
 }
@@ -79,14 +80,15 @@ function getCommits(sha, cb){
     gitHubApi(apiUrl + '?sha=' + sha, cb);
 }
 
-function getCommitStats(sha, cb){
+function getCommitInfo(sha, cb){
     console.log(apiUrl + '/' + sha);
     gitHubApi(apiUrl + '/' + sha, function(err, data){
         if(err) return cb(err);
 
-        var stats = data.stats.additions - data.stats.deletions;
-
-        cb(null, stats);
+        cb(null, {
+            message: data.commit.message,
+            stats: data.stats.additions - data.stats.deletions
+        });
     });
 }
 
