@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="verification" content="30d856089f3626582db94587d5c5101b" />
+
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 

@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="verification" content="30d856089f3626582db94587d5c5101b" />
+
 
     <title>Broking Club</title>
     <link rel="shortcut icon" href="/favicon.png">
