@@ -2,8 +2,6 @@
     <div class="col-md-8">
         {{ QForm::label('name', 'Clubname:') }}
         {{ QForm::text('name') }}
-
-
     </div>
 
     <div class="col-md-4">

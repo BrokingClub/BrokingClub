@@ -258,7 +258,7 @@ class Form extends \Bootstrapper\Form{
 
 
     private function getLabelTranslationKey($name){
-        $translationKey = $this->labelTranslationBase . $name;
+        $translationKey = $this->labelTranslationBase . strtolower($name);
 
         if(\Lang::has($translationKey))
             return $translationKey;
