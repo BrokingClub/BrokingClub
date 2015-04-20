@@ -2,70 +2,69 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| application routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
+| here is where you can register all of the routes for an application.
+| it's a breeze. simply tell laravel the uris it should respond to
+| and give it the closure to execute when that uri is requested.
 |
 */
 
+route::group(array('before' => 'auth'), function(){
 
-Route::group(array('before' => 'auth'), function(){
 
+    route::resource('stocks', 'stockscontroller');
+    route::resource('clubs', 'clubscontroller');
+    route::resource('players', 'playerscontroller');
 
-    Route::resource('stocks', 'StocksController');
-    Route::resource('clubs', 'ClubsController');
-    Route::resource('players', 'PlayersController');
+    route::get('setcarreer', 'playerscontroller@setcareer');
+    route::post('setcarreer', 'playerscontroller@dosetcareer');
 
-    Route::get('setcarreer', 'PlayersController@setCareer');
-    Route::post('setcarreer', 'PlayersController@doSetCareer');
+    route::get('clubs/{id}/join', 'playerscontroller@joinclub');
+    route::get('profile/leaveclub', 'playerscontroller@leaveclub');
+    route::resource('images', 'imagescontroller');
+    route::resource('purchases', 'purchasescontroller');
 
-    Route::get('clubs/{id}/join', 'PlayersController@joinClub');
-    Route::get('profile/leaveclub', 'PlayersController@leaveClub');
-    Route::resource('images', 'ImagesController');
-    Route::resource('purchases', 'PurchasesController');
+    route::get('dashboard', ['as' => 'dashboard', 'uses' => 'playerscontroller@dashboard']);
+    route::get('profile', ['as' => 'profile', 'uses' => 'userscontroller@edit']);
+    route::get('users/{id}/edit', ['as' => 'users.edit', 'uses' => 'userscontroller@edit']);
+    route::post('profile', 'userscontroller@update');
 
-    Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'PlayersController@dashboard']);
-    Route::get('profile', ['as' => 'profile', 'uses' => 'UsersController@edit']);
-    Route::get('users/{id}/edit', ['as' => 'users.edit', 'uses' => 'UsersController@edit']);
-    Route::post('profile', 'UsersController@update');
+    route::post('profile/leaveclub', 'playerscontroller@leaveclub');
 
-    Route::post('profile/leaveclub', 'PlayersController@leaveClub');
+    route::post('changepassword', 'userscontroller@changepassword');
+    route::post('users/{id}', ['as' => 'user.update', 'uses' => 'userscontroller@update']);
+    route::post('users/{id}/changepassword', ['as' => 'user.changepassword', 'uses' => 'userscontroller@changepassword']);
 
-    Route::post('changePassword', 'UsersController@changepassword');
-    Route::post('users/{id}', ['as' => 'user.update', 'uses' => 'UsersController@update']);
-    Route::post('users/{id}/changepassword', ['as' => 'user.changepassword', 'uses' => 'UsersController@changePassword']);
+    route::get('clubs/kick/{id}', 'playerscontroller@kickplayer');
 
-    Route::get('clubs/kick/{id}', 'PlayersController@kickPlayer');
+    route::get('users/{id}/delete', 'userscontroller@delete');
+    route::post('users/{id}/delete', 'userscontroller@dodelete');
 
-    Route::get('users/{id}/delete', 'UsersController@delete');
-    Route::post('users/{id}/delete', 'UsersController@doDelete');
-
-    Route::get('administrate', 'AdminController@index');
+    route::get('administrate', 'admincontroller@index');
 
 });
 
-Route::get('/', 'HomeController@showWelcome');
-Route::get('start', 'HomeController@showLanding');
+route::get('/', 'homecontroller@showwelcome');
+route::get('start', 'homecontroller@showlanding');
 
-// Confide routes
-Route::get('users/create', 'UsersController@create');
-Route::post('users', 'UsersController@store');
-Route::get('users/login', 'UsersController@login');
-Route::post('users/login', 'UsersController@doLogin');
-Route::get('users/confirm/{code}', 'UsersController@confirm');
-Route::get('users/forgot_password', 'UsersController@forgotPassword');
-Route::post('users/forgot_password', 'UsersController@doForgotPassword');
-Route::get('users/reset_password/{token}', 'UsersController@resetPassword');
-Route::post('users/reset_password', 'UsersController@doResetPassword');
-Route::get('users/logout', 'UsersController@logout');
+// confide routes
+route::get('users/create', 'userscontroller@create');
+route::post('users', 'userscontroller@store');
+route::get('users/login', 'userscontroller@login');
+route::post('users/login', 'userscontroller@dologin');
+route::get('users/confirm/{code}', 'userscontroller@confirm');
+route::get('users/forgot_password', 'userscontroller@forgotpassword');
+route::post('users/forgot_password', 'userscontroller@doforgotpassword');
+route::get('users/reset_password/{token}', 'userscontroller@resetpassword');
+route::post('users/reset_password', 'userscontroller@doresetpassword');
+route::get('users/logout', 'userscontroller@logout');
 
-Route::get('register', ['as' => 'register', 'uses' => 'UsersController@create']);
-Route::get('login', ['as' => 'login', 'uses' => 'UsersController@login']);
-Route::post('login', ['as' => 'doLogin', 'uses' => 'UsersController@doLogin']);
-Route::get('logout', ['as' => 'logout', 'uses' => 'UsersController@logout']);
+route::get('register', ['as' => 'register', 'uses' => 'userscontroller@create']);
+route::get('login', ['as' => 'login', 'uses' => 'userscontroller@login']);
+route::post('login', ['as' => 'dologin', 'uses' => 'userscontroller@dologin']);
+route::get('logout', ['as' => 'logout', 'uses' => 'userscontroller@logout']);
 
 include('menu.php');
 
