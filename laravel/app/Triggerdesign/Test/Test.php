@@ -8,11 +8,11 @@
 
 namespace Triggerdesign\Test;
 
-dd('test triggerdesign included');
+echo('test triggerdesign included');
 
 class Test {
     function __construct(){
-        //dd('loaded test');
+        dd('loaded test');
     }
 
 } 
