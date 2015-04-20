@@ -11,16 +11,13 @@
 |
 */
 
-
-
-
-
-Route::group(array('before' => 'auth'), function(){
+Route::group(array('before' => 'auth'), function () {
 
 
     Route::resource('stocks', 'StocksController');
     Route::resource('clubs', 'ClubsController');
     Route::resource('players', 'PlayersController');
+    Route::resource('users', 'UsersController');
 
     Route::get('setcarreer', 'PlayersController@setCareer');
     Route::post('setcarreer', 'PlayersController@doSetCareer');
@@ -46,9 +43,19 @@ Route::group(array('before' => 'auth'), function(){
     Route::get('users/{id}/delete', 'UsersController@delete');
     Route::post('users/{id}/delete', 'UsersController@doDelete');
 
-    Route::get('administrate', 'AdminController@index');
+    Route::controller('admin', 'AdminController');
 
 });
+
+Route::filter('adminOnly', function () {
+
+    if (!Auth::user())
+        return Redirect::to('login')->withMessage('No admin rights');
+    else if(Auth::user()->role != "admin")
+        return Redirect::to('/')->withError('No admin rights');
+
+});
+
 
 Route::get('/', 'HomeController@showWelcome');
 Route::get('start', 'HomeController@showLanding');

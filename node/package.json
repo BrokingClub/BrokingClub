@@ -4,7 +4,14 @@
   "private": true,
   "devDependencies": {
     "cucumber": "*",
-	"zombie": "*"
+	"zombie": "*",
+    "gulp": "*",
+    "vinyl-source-stream": "*",
+    "gulp-ng-annotate": "*",
+    "gulp-uglify": "*",
+    "gulp-sourcemaps": "*",
+    "browserify": "*",
+    "vinyl-buffer": "*"
   },
   "dependencies": {
     "express": "*",

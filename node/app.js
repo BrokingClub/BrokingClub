@@ -20,6 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 require('./routes/cucumber')(app, io);
+require('./routes/lines-of-code')(app);
 
 var stocksDomain = domain.create();
 

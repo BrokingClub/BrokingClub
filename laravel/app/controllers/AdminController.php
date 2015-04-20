@@ -2,15 +2,33 @@
 
 class AdminController extends \BaseController {
 
+    public function __construct(){
+        $this->beforeFilter('adminOnly');
+    }
+
     /**
      * Display a listing of the resource.
      * GET /players
      *
      * @return Response
      */
-    public function index()
+    public function getIndex()
     {
+        $users = User::all();
+
+        $this->data['users'] = $users;
+
         return $this->makeView('pages.admin.index');
+    }
+
+    public function getUser($id){
+        $user = User::findOrFail($id);
+        $player = $user->player;
+        $data = [];
+        $data['user'] = $user;
+        $data['player'] = $player;
+
+        return $this->makeView('pages.admin.user')->with($data);
     }
 
     /**
