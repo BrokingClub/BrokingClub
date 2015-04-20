@@ -3,7 +3,7 @@ var exec = require('child_process').exec;
 var stripAnsi = require('strip-ansi');
 var shellEscape = require('shell-escape');
 var async = require('async');
-var no = require('app/no');
+var no = require.main.require('./modules/util/no');
 var debug = false;
 
 module.exports = function(app, io){

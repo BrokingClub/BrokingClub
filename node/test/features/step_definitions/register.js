@@ -1,4 +1,4 @@
-var no = require('app/no');
+var no = require('no.js');
 
 module.exports = function(){
     this.World = require('../support/world.js').World;

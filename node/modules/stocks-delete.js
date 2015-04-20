@@ -1,6 +1,6 @@
-var sql = require('./sql');
-var timer = require('app/timer').create();
-var no = require('app/no');
+var sql = require.main.require('./modules/sql');
+var timer = require.main.require('./modules/util/timer').create();
+var no = require.main.require('./modules/util/no.js');
 
 exports.deleteOldStocks = function(){
     timer.start();
@@ -9,4 +9,4 @@ exports.deleteOldStocks = function(){
             timer.stop('Deleted ' + result.affectedRows + ' old stocks');   
         }
     });
-}
+};

@@ -1,5 +1,5 @@
 var request = require('request');
-var no = require('app/no');
+var no = require.main.require('./modules/util/no');
 
 exports.queryStocks = queryStocks;
 

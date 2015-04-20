@@ -30,7 +30,7 @@
     "log4js": "*"
   },
   "scripts": {
-    "start": "screen -dmS node forever -v --minUptime 3000 --spinSleepTime 1000 -c \"nodemon --exitcrash\" app.js",
+    "start": "screen -dmS node forever -v --minUptime 3000 --spinSleepTime 5000 -c \"nodemon --exitcrash\" app.js",
     "test": "cd test && cucumber"
   }
 }
