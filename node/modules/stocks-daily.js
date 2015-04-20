@@ -1,5 +1,5 @@
-var sql = require('./sql');
-var no = require('app/no');
+var sql = require.main.require('./modules/sql');
+var no = require.main.require('./modules/util/no.js');
 var async = require('async');
 var _ = require('lodash');
 var minuteLimit = 120;
