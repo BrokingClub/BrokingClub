@@ -85,7 +85,6 @@ class PlayersController extends \BaseController {
 
         $save = $player->validateAndSave();
 
-
         if($save)
 		    return Redirect::route('profile', ['id' => $user->id])->withMessage('Profile has been updated');
         else
