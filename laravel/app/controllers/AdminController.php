@@ -21,8 +21,14 @@ class AdminController extends \BaseController {
         return $this->makeView('pages.admin.index');
     }
 
-    public function getStocks(){
-        return "hi";
+    public function getUser($id){
+        $user = User::findOrFail($id);
+        $player = $user->player;
+        $data = [];
+        $data['user'] = $user;
+        $data['player'] = $player;
+
+        return $this->makeView('pages.admin.user')->with($data);
     }
 
     /**

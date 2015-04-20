@@ -9,6 +9,7 @@
             <td>Username</td>
             <td>E-Mail</td>
             <td>Role</td>
+            <td>Manage</td>
             </tr>
             @foreach($users AS $user)
             <tr>
@@ -16,6 +17,7 @@
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->role }}</td>
+                <td><a href="/admin/user/{{ $user->id }}"><i class="fa fa-pencil-square-o"></i></a></td>
             </tr>
             @endforeach
         {{Fickle::closeTable()}}
