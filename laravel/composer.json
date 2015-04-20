@@ -25,11 +25,8 @@
 			"app/database/migrations",
 			"app/database/seeds",
 			"app/tests/TestCase.php"
-		],
-        "psr-4": {
-            "Triggerdesign\\": "app/Triggerdesign"
-        }
-	},
+		]
+    },
 	"scripts": {
 		"post-install-cmd": [
 			"php artisan clear-compiled",
