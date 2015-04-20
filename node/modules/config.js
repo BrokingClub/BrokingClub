@@ -5,5 +5,6 @@ module.exports = {
 		database: process.env.DB_DATABASE
 	},
 	fetchDelaySec: 60,
-    deleteOldStocksDelayHours: 1
+    deleteOldStocksDelayHours: 1,
+	githubToken: process.env.GITHUB_TOKEN
 };
