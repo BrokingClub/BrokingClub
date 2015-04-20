@@ -8,6 +8,7 @@
 
 namespace Triggerdesign\Test;
 
+dd('test triggerdesign included');
 
 class Test {
     function __construct(){

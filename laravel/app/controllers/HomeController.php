@@ -1,5 +1,7 @@
 <?php
 
+dd('im home');
+
 class HomeController extends BaseController {
 
 	/*

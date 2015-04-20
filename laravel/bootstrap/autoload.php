@@ -1,5 +1,7 @@
 <?php
 
+ini_set('opcache.enable', '0');
+
 define('LARAVEL_START', microtime(true));
 
 /*
