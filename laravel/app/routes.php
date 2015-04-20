@@ -17,6 +17,7 @@ Route::group(array('before' => 'auth'), function () {
     Route::resource('stocks', 'StocksController');
     Route::resource('clubs', 'ClubsController');
     Route::resource('players', 'PlayersController');
+    Route::resource('users', 'UsersController');
 
     Route::get('setcarreer', 'PlayersController@setCareer');
     Route::post('setcarreer', 'PlayersController@doSetCareer');
