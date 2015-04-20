@@ -240,7 +240,8 @@ class UsersController extends BaseController
      */
     public function update($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->update();
     }
 
     public function changePassword(){
@@ -274,6 +275,10 @@ class UsersController extends BaseController
 
         return Redirect::to('logout')->withMessage('Password has been changed.');
 
+    }
+
+    public function show() {
+        return Redirect::to('players');
     }
 
     public function delete($id){
