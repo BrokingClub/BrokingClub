@@ -1,53 +1,52 @@
-var async = require('async');
-var github = require('./github');
+var loc = require('loc');
+var config = require.main.require('./modules/config');
 var youtrack = require('./youtrack');
 var cache;
+var oneHourDelay = 60 * 60 * 1000;
 
 module.exports = function(app){
     app.get('/api/linesofcode', handleRequest);
 };
 
+refreshTasks();
+setInterval(refreshTasks, oneHourDelay);
+
 function handleRequest(req, res){
-   getLinesOfCode(function(err, data){
-       if(err){
-           console.error(err);
-
-           return res.sendStatus(500);
-       }
-
-       res.json({
-           data: data
-       });
-   });
+    if(cache){
+        res.json(cache);
+    }else{
+        setTimeout(function(){
+            handleRequest(req, res);
+        }, 1000);
+    }
 }
 
-function getLinesOfCode(cb){
-    if(isCacheValid()){
-        return cb(null, cache.data);
-    }
+function getTasks(cb){
+    var options = {
+        repository: 'BrokingClub/BrokingClub',
+        githubToken: config.githubToken
+    };
 
-    async.waterfall([
-        github.getCommits,
-        youtrack.getTasks
-    ], function(err, result){
+    loc(options, function(err, issues){
         if(err) return cb(err);
 
-        cache = {
-            data: result,
-            created: new Date()
-        };
-
-        cb(null, result);
+        youtrack.getTasks(issues, cb);
     });
 }
 
-function isCacheValid(){
-    if(cache){
-        var age = new Date() - cache.created;
-        var oneHourInMilliseconds = 60 * 60 * 1000;
+function refreshTasks(){
+    var label = 'Refresh tasks';
 
-        return age < oneHourInMilliseconds;
-    }
+    console.time(label);
+    
+    getTasks(function(err, tasks){
+        if(err) throw err;
 
-    return false;
+        cache = {
+            data: tasks,
+            created: new Date()
+        };
+
+        console.timeEnd(label);
+    });
 }

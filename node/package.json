@@ -27,7 +27,8 @@
     "socket.io": "*",
     "async": "*",
     "dotenv": "*",
-    "log4js": "*"
+    "log4js": "*",
+    "loc": "marc1404/LinesOfCode"
   },
   "scripts": {
     "start": "screen -dmS node forever -v --minUptime 3000 --spinSleepTime 5000 -c \"nodemon --exitcrash\" app.js",
