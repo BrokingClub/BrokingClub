@@ -38,7 +38,7 @@ function refreshTasks(){
     var label = 'Refresh tasks';
 
     console.time(label);
-    
+
     getTasks(function(err, tasks){
         if(err) throw err;
 

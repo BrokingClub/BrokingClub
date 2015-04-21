@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<h5>Data created <span class="label label-primary" ng-bind="moment(data.created)"></span></h5>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Task</th>
+            <th>Lines</th>
+            <th>Spent time</th>
+            <th>Lines per hour</th>
+            <th>Created</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="task in data.data">
+            <td>
+                <a target="_blank" ng-href="http://brokingclub.myjetbrains.com/youtrack/issue/{{task.id}}" ng-bind="task.summary"></a>
+            </td>
+            <td ng-bind="task.lines"></td>
+            <td ng-bind="spentTime(task.spentTime)"></td>
+            <td ng-bind="task.lph"></td>
+            <td ng-bind="moment(task.created)" title="{{task.created.toString()}}"></td>
+        </tr>
+    </tbody>
+</table>
