@@ -24,8 +24,9 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(function(){
-    return 'staging';
+
+$env = $app->detectEnvironment(function() use ($app){
+    return (isset($_SERVER['LARAVEL_ENV']))? $_SERVER['LARAVEL_ENV'] : 'staging';
 });
 
 /*

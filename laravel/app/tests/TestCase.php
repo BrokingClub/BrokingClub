@@ -6,7 +6,6 @@
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
 
-
     /**
      * @return mixed
      */
@@ -14,6 +13,8 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
     {
         $unitTesting = true;
         $testEnvironment = 'testing';
+
+        $_SERVER['LARAVEL_ENV'] = $testEnvironment;
 
         return require __DIR__ . '/../../bootstrap/start.php';
     }

@@ -1,8 +1,13 @@
 <?php
 
+use Laracasts\TestDummy\Factory as LFaker;
+
 class ExampleTest extends TestCase {
 
-	/**
+
+
+
+    /**
 	 * A basic functional test example.
 	 *
 	 * @return void
@@ -13,7 +18,11 @@ class ExampleTest extends TestCase {
 
         $users = User::all();
 
-		$this->assertTrue($users->count() < 1);
+        $fakeUser = LFaker::build('User');
+
+        dd($fakeUser);
+
+        $this->assertEquals(5, $users->count());
 	}
 
 }
