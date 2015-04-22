@@ -4,4 +4,5 @@ php:
 before_script:
   - cd laravel
   - composer self-update
+  - composer dump-autoload
   - composer install --prefer-source --no-interaction

@@ -1,30 +1,21 @@
 var request = require('request');
 var async = require('async');
-var objectToArray = require.main.require('./modules/util/objectToArray');
 var apiUrl = 'http://brokingclub.myjetbrains.com/youtrack/rest/issue/';
 
 exports.getTasks = getTasks;
 
-function getTasks(commits, cb){
-    var tasks = extractTasks(commits);
-
-    getTaskSummaries(tasks, cb);
-}
-
-function getTaskSummaries(tasks, cb){
-    async.mapLimit(tasks, 100, getTaskSummary, function(err, summaries){
+function getTasks(issues, cb){
+    async.mapLimit(issues, 100, getTask, function(err, tasks){
         if(err) return cb(err);
 
-        summaries = summaries.filter(function(summary){
-            return summary !== null;
-        });
+        tasks = filterNulls(tasks);
 
-        cb(null, summaries);
+        cb(null, tasks);
     });
 }
 
-function getTaskSummary(task, cb){
-    sendApiRequest(apiUrl + task.id, function(err, xml){
+function getTask(issue, cb){
+    sendApiRequest(apiUrl + issue.id, function(err, xml){
         if(err){
             console.error(err);
 
@@ -32,50 +23,18 @@ function getTaskSummary(task, cb){
         }
 
         cb(null, {
-            id: task.id,
-            summary: extractTaskSummary(xml),
-            lines: task.lines
+            id: issue.id,
+            lines: issue.lines,
+            summary: extractTaskValue(xml, 'summary'),
+            created: extractTaskValue(xml, 'created'),
+            spentTime: extractTaskValue(xml, 'Spent time')
         });
     });
 }
 
-function extractTaskSummary(xml){
-    var regex = /name="summary"><value>(.+?)<\/value>/;
+function extractTaskValue(xml, name){
+    var regex = new RegExp('name="' + name + '"><value>(.+?)<\/value>');
     var result = xml.match(regex);
-
-    if(result){
-        return result[1];
-    }
-
-    return null;
-}
-
-function extractTasks(commits){
-    var tasks = {};
-
-    commits.forEach(function(commit){
-        var id = matchTaskId(commit.message);
-
-        if(id) {
-            var task = tasks[id];
-
-            if (!task) {
-                tasks[id] = task = {
-                    id: id,
-                    lines: 0
-                };
-            }
-
-            task.lines += commit.stats;
-        }
-    });
-
-    return objectToArray(tasks);
-}
-
-function matchTaskId(commitMessage){
-    var regex = /#(bc-[0-9]+)\s/;
-    var result = commitMessage.match(regex);
 
     if(result){
         return result[1];
@@ -91,4 +50,10 @@ function sendApiRequest(url, cb){
 
         cb(null, body);
     });
+}
+
+function filterNulls(arr){
+    return arr.filter(function(value){
+        return value !== null;
+    })
 }
