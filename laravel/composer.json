@@ -14,7 +14,8 @@
         "lavary/laravel-menu": "dev-master"
     },
     "require-dev": {
-        "way/generators": "~2.0"
+        "way/generators": "~2.0",
+        "phpunit/phpunit": "4.6.4"
     },
     "autoload": {
         "classmap": [

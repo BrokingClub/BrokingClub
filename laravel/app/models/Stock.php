@@ -56,9 +56,14 @@ class Stock extends BaseModel
 
         $variations = array();
         foreach($newestValues as $newestValue){
+            if($maxVariation == 0){
+                $variations[] = 1; continue;
+            }
+
             $variation = $newestValue - $min;
 
             $percent = ($variation / $maxVariation) * 100;
+
             $variations[] = $percent;
         }
 

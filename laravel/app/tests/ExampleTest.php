@@ -11,7 +11,9 @@ class ExampleTest extends TestCase {
 	{
 		$crawler = $this->client->request('GET', '/login');
 
-		$this->assertTrue($this->client->getResponse()->isOk());
+        $users = User::all();
+
+		$this->assertTrue($users->count() < 1);
 	}
 
 }
