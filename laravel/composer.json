@@ -16,7 +16,8 @@
     "require-dev": {
         "way/generators": "~2.0",
         "phpunit/phpunit": "4.6.4",
-        "laracasts/testdummy": "1.1.3"
+        "laracasts/testdummy": "1.1.3",
+		"codeclimate/php-test-reporter": "dev-master"
     },
     "autoload": {
         "classmap": [
