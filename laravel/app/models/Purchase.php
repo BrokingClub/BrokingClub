@@ -3,6 +3,12 @@
 class Purchase extends BaseModel {
 	protected $fillable = [];
 
+    private $calculation;
+
+    public function __construct(){
+        $this->calculation = new CalculationService();
+    }
+
     public static $rules = array(
         'amount' => 'required|integer|between:1,9999',
     );

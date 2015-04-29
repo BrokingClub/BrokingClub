@@ -1,5 +1,7 @@
 <?php
 
+dd($_ENV);
+
 return array(
 
 	/*
