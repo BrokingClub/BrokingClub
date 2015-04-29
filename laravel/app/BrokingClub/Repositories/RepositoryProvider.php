@@ -27,5 +27,7 @@ class RepositoryProvider extends ServiceProvider{
         {
             return new StockRepository();
         });
+
+
     }
 }

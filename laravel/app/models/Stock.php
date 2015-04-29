@@ -2,31 +2,45 @@
 
 class Stock extends BaseModel
 {
-	protected $fillable = [];
+    protected $fillable = [];
 
     protected $newestValues = array();
 
-    public function values(){
+    /**
+     * @var BrokingClub\Repositories\StockValueRepository
+     */
+    protected $stockValueRepository;
+
+    public function __construct()
+    {
+        $this->stockValueRepository = App::make('BrokingClub\Repositories\StockValueRepository');
+    }
+
+    public function values()
+    {
         return $this->hasMany('StockValue')->orderBy('created_at', 'DESC');
     }
 
-    public function newestValueObject(){
-        if(!empty($this->newestValues))
+    public function newestValueObject()
+    {
+        if (!empty($this->newestValues))
             return $this->newestValues->first();
 
         return $this->newestValues()->first();
     }
 
-    public function newestValue(){
-       return $this->newestValueObject()->value;
+    public function newestValue()
+    {
+
+        return $this->newestValueObject()->value;
     }
 
-    public function newestValues($limit = 20){
-        if(count($this->newestValues) == $limit)
+    public function newestValues($limit = 20)
+    {
+        if (count($this->newestValues) == $limit)
             return $this->newestValues;
 
-        $newestValues = StockValue::where('stock_id', $this->id)->orderby('created_at', 'desc')
-            ->limit($limit)->get();
+        $newestValues = $this->stockValueRepository->newest($this, $limit);
 
         $this->newestValues = $newestValues;
 
@@ -34,30 +48,33 @@ class Stock extends BaseModel
 
     }
 
-    public function newestValuesArray($limit = 3000, $step = 250, $valuesOnly = true){
+    public function newestValuesArray($limit = 3000, $step = 250, $valuesOnly = true)
+    {
         $newestValues = $this->newestValues($limit);
         $steppedValues = array();
         $i = 0;
-        foreach($newestValues as $newestValue){
+        foreach ($newestValues as $newestValue) {
 
-            if($i % $step == 0)
-                $steppedValues[] = ($valuesOnly)? $newestValue->value : $newestValue;
+            if ($i % $step == 0)
+                $steppedValues[] = ($valuesOnly) ? $newestValue->value : $newestValue;
             $i++;
         }
 
         return $steppedValues;
     }
 
-    public function newestVariationsArray($limit = 3000, $step = 250){
+    public function newestVariationsArray($limit = 3000, $step = 250)
+    {
         $newestValues = $this->newestValuesArray($limit, $step);
         $min = min($newestValues);
         $max = max($newestValues);
         $maxVariation = $max - $min;
 
         $variations = array();
-        foreach($newestValues as $newestValue){
-            if($maxVariation == 0){
-                $variations[] = 1; continue;
+        foreach ($newestValues as $newestValue) {
+            if ($maxVariation == 0) {
+                $variations[] = 1;
+                continue;
             }
 
             $variation = $newestValue - $min;
@@ -73,11 +90,13 @@ class Stock extends BaseModel
     }
 
 
-    public function price($amount) {
+    public function price($amount)
+    {
         return $this->newestValueObject()->value * $amount;
     }
 
-    public function changeRate(){
+    public function changeRate()
+    {
         $range = 20;
         $newestValues = $this->newestValues($range);
         $newestValueNum = $newestValues->first()->value;
@@ -88,32 +107,38 @@ class Stock extends BaseModel
         return $change;
     }
 
-    public function changeRatePercent($asString = false){
+    public function changeRatePercent($asString = false)
+    {
         $changeRate = $this->changeRate();
 
-        $changeRatePercent = round(($changeRate - 1)*100,3);
+        $changeRatePercent = round(($changeRate - 1) * 100, 3);
 
-        if(!$asString)
+        if (!$asString)
             return $changeRatePercent;
         else
             return $changeRatePercent . '%';
     }
 
-    public function changeRateIcon(){
-        switch($this->changeRateMode()){
-            case "rising": return "<i class='fa fa-caret-up'></i>";
-            case "falling": return "<i class='fa fa-caret-down'></i>";
-            default: return "<i class='fa fa-sort'></i>";
+    public function changeRateIcon()
+    {
+        switch ($this->changeRateMode()) {
+            case "rising":
+                return "<i class='fa fa-caret-up'></i>";
+            case "falling":
+                return "<i class='fa fa-caret-down'></i>";
+            default:
+                return "<i class='fa fa-sort'></i>";
 
         }
     }
 
-    public function changeRateMode(){
+    public function changeRateMode()
+    {
         $percent = $this->changeRatePercent();
 
-        if($percent == 0) return "neutral";
+        if ($percent == 0) return "neutral";
 
-        return ($percent > 0)? "rising" : "falling";
+        return ($percent > 0) ? "rising" : "falling";
     }
 
 }
