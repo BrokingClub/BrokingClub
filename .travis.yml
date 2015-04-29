@@ -1,13 +1,22 @@
 language: php
 php:
   - 5.5
+
 before_script:
   - cd laravel
   - composer self-update
   - composer dump-autoload
   - composer install --prefer-source --no-interaction
+
 after_script:
   - vendor/bin/test-reporter
+
 addons:
   code_climate:
-    repo_token: 88ec59325c62a7fb432bbb024670614c69bc9cedb1ef1d015aaaabc237f02ce8
+    repo_token:
+      secure: PkQd41b3CUDNLCL96COnll/ZXG1aYgQ1jjd1w0+5cgsANVnhfzi/9sOfUru6Xd7i4DSriDAqvkPlql0I1SB/Ec4pog+DzOLeYtwyngpsTaWkYHerlbP5Cb+e4JS3LVz5cQy3QftZeGA6FNY8j5or56N5aYnoyyworX5qz5tCpg4=
+
+notifications:
+  hipchat:
+    rooms:
+      secure: ncNkjaZKUQsKdXKrKsRPUEiaumWeH9vRl2Y7IPwWIxxvh2qVDpPu2D24Nkjgn+DjR1VO3Oh2ABiX2ATaI+OKhGY7X9IG8aHeePBxcahnwKyqJQ8oP8crhf3ZwMLNf8iSNCm2p/4ngrSFBOwlFDjXwN14dqO4w7ZXcxZPSouJnd0=
