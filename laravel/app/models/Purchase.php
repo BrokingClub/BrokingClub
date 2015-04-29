@@ -3,10 +3,15 @@
 class Purchase extends BaseModel {
 	protected $fillable = [];
 
+    /**
+     * @var BrokingClub\Service\CalculationService
+     */
     private $calculator;
 
-    public function __construct(){
-        $this->calculator = App::make('CalculationService');
+
+    public function __construct($calculator){
+        //$this->calculator = App::make('CalculationService');
+        $this->calculator = $calculator;
     }
 
     public static $rules = array(
