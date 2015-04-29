@@ -3,10 +3,10 @@
 class Purchase extends BaseModel {
 	protected $fillable = [];
 
-    private $calculation;
+    private $calculator;
 
     public function __construct(){
-        $this->calculation = new CalculationService();
+        $this->calculator = App::make('CalculationService');
     }
 
     public static $rules = array(
@@ -36,6 +36,9 @@ class Purchase extends BaseModel {
     }
 
     public function calculateBill(){
+
+        $this->calculator->bill($this->stock_id);
+
         $stock = Stock::findOrFail($this->stock_id);
 
         $fee =      $this->calculateFee($stock);

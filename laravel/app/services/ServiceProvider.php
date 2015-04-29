@@ -21,6 +21,9 @@ class Services extends ServiceProvider{
         {
             return new CalculationService();
         });
+    }
+
+    public function bill($stock_id){
 
     }
 }

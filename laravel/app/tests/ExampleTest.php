@@ -5,8 +5,6 @@ use Laracasts\TestDummy\Factory as LFaker;
 class ExampleTest extends TestCase {
 
 
-
-
     /**
 	 * A basic functional test example.
 	 *

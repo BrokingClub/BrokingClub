@@ -1,6 +1,13 @@
 <?php
 
-dd($_ENV);
+dd( getenv('DB_DATABASE'));
+
+if(empty($_ENV)){
+
+    echo "NO ENV VARIABLES... Oh nein!";
+    dd($_ENV);
+}
+
 
 return array(
 
