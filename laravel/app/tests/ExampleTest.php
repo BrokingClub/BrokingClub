@@ -14,15 +14,22 @@ class ExampleTest extends TestCase {
 	 */
 	public function testBasicExample()
 	{
-		$crawler = $this->client->request('GET', '/login');
+		//$crawler = $this->client->request('GET', '/login');
+
+        // LFaker::$factoriesPath = 'app/tests/factories';
 
         $users = User::all();
 
-        $fakeUser = LFaker::build('User');
+        $player = Player::find(1);
 
-        dd($fakeUser);
+        $player->balance = 999;
 
-        $this->assertEquals(5, $users->count());
+        $player->save();
+
+        // $fakeClub = LFaker::build('Club');
+
+        // $this->assertTrue($fakeClub->validate(), 'Validate random club');
+        $this->assertEquals($users->count(), $users->count(), 'Users count');
 	}
 
 }
