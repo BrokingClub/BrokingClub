@@ -6,3 +6,6 @@ before_script:
   - composer self-update
   - composer dump-autoload
   - composer install --prefer-source --no-interaction
+addons:
+  code_climate:
+    repo_token: 88ec59325c62a7fb432bbb024670614c69bc9cedb1ef1d015aaaabc237f02ce8
