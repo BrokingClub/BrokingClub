@@ -2,8 +2,8 @@
 
 if(empty($_ENV)){
     $_ENV['DB_DATABASE'] = getenv('DB_DATABASE');
-	$_ENV['DB_USERNAME'] = getenv('DB_DATABASE');
-	$_ENV['DB_PASSWORD'] = getenv('DB_DATABASE');
+	$_ENV['DB_USERNAME'] = getenv('DB_USERNAME');
+	$_ENV['DB_PASSWORD'] = getenv('DB_PASSWORD');
 }
 
 
