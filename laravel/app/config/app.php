@@ -130,6 +130,9 @@ return array(
         'Bootstrapper\BootstrapperServiceProvider',
         'Zizaco\Confide\ServiceProvider',
         'Lavary\Menu\ServiceProvider',
+        'BrokingClub\Service\ServiceProvider',
+        'BrokingClub\Repository\RepositoryProvider'
+
 	),
 
 	/*

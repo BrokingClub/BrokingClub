@@ -1,4 +1,5 @@
 <?php
+namespace BrokingClub\Service;
 /**
  * Project: BrokingClub | TestService.php
  * Author: Simon - www.triggerdesign.de

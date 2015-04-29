@@ -1,4 +1,6 @@
 <?php
+namespace BrokingClub\Service;
+
 /**
  * Project: BrokingClub | CalculationService.php
  * Author: Simon - www.triggerdesign.de

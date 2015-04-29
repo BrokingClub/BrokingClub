@@ -1,4 +1,7 @@
 <?php
+namespace BrokingClub\Repository;
+use Illuminate\Support\ServiceProvider;
+
 /**
  * Project: BrokingClub | RepositoryProvider.php
  * Author: Simon - www.triggerdesign.de
@@ -6,6 +9,18 @@
  * Time: 13:47
  */
 
-class RepositoryProvider {
+class RepositoryProvider extends ServiceProvider{
 
-} 
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->bind('PurchaseRepository', function()
+        {
+            return new PurchaseRepository();
+        });
+    }
+}

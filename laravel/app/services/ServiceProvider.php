@@ -1,5 +1,7 @@
 <?php
-use Illuminate\Support\ServiceProvider;
+namespace BrokingClub\Service;
+
+use Illuminate\Support\ServiceProvider as IlluminateProvider;
 
 /**
  * Project: BrokingClub | Services.php
@@ -8,7 +10,7 @@ use Illuminate\Support\ServiceProvider;
  * Time: 13:12
  */
 
-class Services extends ServiceProvider{
+class ServiceProvider extends IlluminateProvider{
 
     /**
      * Register the service provider.
