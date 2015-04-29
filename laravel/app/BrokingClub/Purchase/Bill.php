@@ -9,6 +9,45 @@
 namespace BrokingClub\Purchase;
 
 
-class Bill {
+use \Purchase;
+use \Stock;
+
+class Bill
+{
+    private $fee;
+
+    private $price;
+
+    private $perStock;
+
+    private $total;
+
+    public function __construct()
+    {
+
+    }
+
+    /**
+     * @param Purchase $purchase
+     * @param Stock $stock
+     */
+    public function calculate($purchase, $stock)
+    {
+        $this->fee = $purchase->calculateFee($stock);
+        $this->price = $purchase->calculatePrice($stock);
+        $this->total = intval($this->price + $this->fee);
+        $this->perStock = $this->total / $this->amount;
+    }
+
+    public function toArray()
+    {
+        return [
+            "fee" => $this->fee,
+            "price" => $this->price,
+            "perStock" => $this->perStock,
+            "total" => $this->total
+        ];
+    }
+
 
 } 

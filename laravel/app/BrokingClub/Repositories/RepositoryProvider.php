@@ -1,5 +1,5 @@
 <?php
-namespace BrokingClub\Repository;
+namespace BrokingClub\Repositories;
 use Illuminate\Support\ServiceProvider;
 
 /**

@@ -68,8 +68,6 @@ class Purchase extends BaseModel {
     }
 
     public function calculateFee($stock){
-        $user = Auth::user();
-
         $newestValue = $stock->newestValue();
 
         return ($newestValue * $this->amount)* static::$feeBase;

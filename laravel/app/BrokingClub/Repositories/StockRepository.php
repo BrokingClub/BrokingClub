@@ -1,5 +1,5 @@
 <?php
-namespace BrokingClub\Repository;
+namespace BrokingClub\Repositories;
 /**
  * Project: BrokingClub | PurchaseRepository.php
  * Author: Simon - www.triggerdesign.de
