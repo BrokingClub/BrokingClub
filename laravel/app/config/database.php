@@ -1,11 +1,9 @@
 <?php
 
-dd( getenv('DB_DATABASE'));
-
 if(empty($_ENV)){
-
-    echo "NO ENV VARIABLES... Oh nein!";
-    dd($_ENV);
+    $_ENV['DB_DATABASE'] = getenv('DB_DATABASE');
+	$_ENV['DB_USERNAME'] = getenv('DB_DATABASE');
+	$_ENV['DB_PASSWORD'] = getenv('DB_DATABASE');
 }
 
 
