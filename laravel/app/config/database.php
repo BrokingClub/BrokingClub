@@ -1,7 +1,7 @@
 <?php
 
 if(empty($_ENV)){
-    $_ENV['DB_HOST'] = getenv('DB_HOST');
+    $_ENV['DB_HOST']     = getenv('DB_HOST');
     $_ENV['DB_DATABASE'] = getenv('DB_DATABASE');
 	$_ENV['DB_USERNAME'] = getenv('DB_USERNAME');
 	$_ENV['DB_PASSWORD'] = getenv('DB_PASSWORD');

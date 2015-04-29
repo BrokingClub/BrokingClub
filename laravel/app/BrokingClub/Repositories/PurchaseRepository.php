@@ -8,5 +8,8 @@ namespace BrokingClub\Repository;
  */
 
 class PurchaseRepository {
+    public function findById($id){
+        return Purchase::find($id);
+    }
 
-} 
+}

@@ -4,14 +4,13 @@ class Purchase extends BaseModel {
 	protected $fillable = [];
 
     /**
-     * @var BrokingClub\Service\CalculationService
+     * @var BrokingClub\Services\CalculationService
      */
     private $calculator;
 
 
-    public function __construct($calculator){
-        //$this->calculator = App::make('CalculationService');
-        $this->calculator = $calculator;
+    public function __construct(){
+        $this->calculator = App::make('CalculationService');
     }
 
     public static $rules = array(
@@ -70,8 +69,6 @@ class Purchase extends BaseModel {
 
     public function calculateFee($stock){
         $user = Auth::user();
-
-        //TODO: More complex fee calculation logic here
 
         $newestValue = $stock->newestValue();
 

@@ -22,5 +22,10 @@ class RepositoryProvider extends ServiceProvider{
         {
             return new PurchaseRepository();
         });
+
+        $this->app->bind('StockRepository', function()
+        {
+            return new StockRepository();
+        });
     }
 }
