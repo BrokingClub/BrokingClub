@@ -1,6 +1,13 @@
 <?php
 
+use BrokingClub\Purchase\Bill;
+
 class Purchase extends BaseModel {
+    /**
+     * @var Bill
+     */
+    protected $bill;
+
 	protected $fillable = [];
 
     /**
@@ -40,9 +47,9 @@ class Purchase extends BaseModel {
     }
 
     public function calculateBill(){
+        return $this->calculator->bill($this->stock_id);
 
-        $this->calculator->bill($this->stock_id);
-
+        /*
         $stock = Stock::findOrFail($this->stock_id);
 
         $fee =      $this->calculateFee($stock);
@@ -60,6 +67,7 @@ class Purchase extends BaseModel {
         $bill = array_map(function($double){ return round($double, 4); }, $bill);
 
         return $bill;
+        */
     }
 
     public function calculatePrice($stock){

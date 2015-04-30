@@ -6,7 +6,7 @@
  * Time: 11:45
  */
 
-class Purchase extends TestCase{
+class PurchaseTest extends TestCase{
     public function testPaidIsPositive(){
         $purchase = new Purchase();
 

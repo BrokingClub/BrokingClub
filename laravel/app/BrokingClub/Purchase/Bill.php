@@ -22,7 +22,17 @@ class Bill
 
     private $total;
 
-    public function __construct()
+    /**
+     * @var Purchase
+     */
+    public $purchase;
+
+    /**
+     * @var Stock
+     */
+    public $stock;
+
+    public function __construct($purchase, $stock)
     {
 
     }
