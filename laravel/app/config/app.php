@@ -131,8 +131,8 @@ return array(
         'Zizaco\Confide\ServiceProvider',
         'Lavary\Menu\ServiceProvider',
         'BrokingClub\Services\ServiceProvider',
-        'BrokingClub\Repositories\RepositoryProvider'
-
+        'BrokingClub\Repositories\RepositoryProvider',
+        'BrokingClub\Cache\CacheServiceProvider'
 	),
 
 	/*

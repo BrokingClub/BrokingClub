@@ -12,14 +12,29 @@ abstract class ObjectCache {
 
     protected $values = [];
 
+    public function getOrStore($id, $closure){
+        if($this->has($id)) return $this->get($id);
+
+        $value = $closure();
+        $this->store($id, $value);
+
+        return $value;
+    }
+
     public function store($id, $value){
         $this->values[$id] = $value;
+
+        return $value;
     }
 
     public function get($id){
         if(!$this->has($id)) return null;
 
         return $this->values[$id];
+    }
+
+    public function remove($id){
+        unset($this->values[$id]);
     }
 
     public function has($id){

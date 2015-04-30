@@ -1,5 +1,8 @@
 <?php
 
+use BrokingClub\Cache\CacheManager;
+use BrokingClub\Html\FontAwesome;
+
 class Stock extends BaseModel
 {
     protected $fillable = [];
@@ -7,13 +10,26 @@ class Stock extends BaseModel
     protected $newestValues = array();
 
     /**
-     * @var BrokingClub\Repositories\StockValueRepository
+     * @var BrokingClub\Cache\StockValuesCache
      */
-    protected $stockValueRepository;
+    protected $newestValuesCache;
+
+    /**
+     * @var BrokingClub\Statistics\ArrayGenerator
+     */
+    protected $arrayGenerator;
+
+    /**
+     * @var BrokingClub\Statistics\MarketLogic
+     */
+    protected $marketLogic;
+
 
     public function __construct()
     {
-        $this->stockValueRepository = App::make('BrokingClub\Repositories\StockValueRepository');
+        $this->newestValuesCache = CacheManager::add('newestStockValues', 'StockValuesCache');
+        $this->arrayGenerator = App::make('BrokingClub\\Statistics\\ArrayGenerator');
+        $this->marketLogic = App::make('BrokingClub\\Statistics\\MarketLogic');
     }
 
     public function values()
@@ -23,70 +39,31 @@ class Stock extends BaseModel
 
     public function newestValueObject()
     {
-        if (!empty($this->newestValues))
-            return $this->newestValues->first();
-
         return $this->newestValues()->first();
     }
 
     public function newestValue()
     {
-
         return $this->newestValueObject()->value;
     }
 
     public function newestValues($limit = 20)
     {
-        if (count($this->newestValues) == $limit)
-            return $this->newestValues;
-
-        $newestValues = $this->stockValueRepository->newest($this, $limit);
-
-        $this->newestValues = $newestValues;
-
-        return $newestValues;
-
+        return $this->newestValuesCache->newest($this, $limit);
     }
 
     public function newestValuesArray($limit = 3000, $step = 250, $valuesOnly = true)
     {
         $newestValues = $this->newestValues($limit);
-        $steppedValues = array();
-        $i = 0;
-        foreach ($newestValues as $newestValue) {
+        $attribute = ($valuesOnly)? "value" : false;
 
-            if ($i % $step == 0)
-                $steppedValues[] = ($valuesOnly) ? $newestValue->value : $newestValue;
-            $i++;
-        }
-
-        return $steppedValues;
+        return $this->arrayGenerator->steppedArray($newestValues, $step, $attribute);
     }
 
     public function newestVariationsArray($limit = 3000, $step = 250)
     {
         $newestValues = $this->newestValuesArray($limit, $step);
-        $min = min($newestValues);
-        $max = max($newestValues);
-        $maxVariation = $max - $min;
-
-        $variations = array();
-        foreach ($newestValues as $newestValue) {
-            if ($maxVariation == 0) {
-                $variations[] = 1;
-                continue;
-            }
-
-            $variation = $newestValue - $min;
-
-            $percent = ($variation / $maxVariation) * 100;
-
-            $variations[] = $percent;
-        }
-
-        return $variations;
-
-
+        return $this->arrayGenerator->variationArray($newestValues);
     }
 
 
@@ -95,50 +72,28 @@ class Stock extends BaseModel
         return $this->newestValueObject()->value * $amount;
     }
 
-    public function changeRate()
+    public function changeRate($range = 20)
     {
-        $range = 20;
         $newestValues = $this->newestValues($range);
-        $newestValueNum = $newestValues->first()->value;
-        $oldestValueNum = $newestValues->last()->value;
-
-        $change = $newestValueNum / $oldestValueNum;
-
-        return $change;
+        return $this->marketLogic->changeRate($newestValues);
     }
 
-    public function changeRatePercent($asString = false)
+    public function changeRatePercent($asString = false, $range = 20)
     {
-        $changeRate = $this->changeRate();
-
-        $changeRatePercent = round(($changeRate - 1) * 100, 3);
-
-        if (!$asString)
-            return $changeRatePercent;
-        else
-            return $changeRatePercent . '%';
+        $newestValues = $this->newestValues($range);
+        return $this->marketLogic->changeRatePercent($newestValues, $asString);
     }
 
     public function changeRateIcon()
     {
-        switch ($this->changeRateMode()) {
-            case "rising":
-                return "<i class='fa fa-caret-up'></i>";
-            case "falling":
-                return "<i class='fa fa-caret-down'></i>";
-            default:
-                return "<i class='fa fa-sort'></i>";
-
-        }
+        return FontAwesome::changeRateIcon($this->changeRateMode());
     }
 
-    public function changeRateMode()
+    public function changeRateMode($range = 20)
     {
-        $percent = $this->changeRatePercent();
 
-        if ($percent == 0) return "neutral";
-
-        return ($percent > 0) ? "rising" : "falling";
+        $newestValues = $this->newestValues($range);
+        return $this->marketLogic->changeRateMode($newestValues);
     }
 
 }

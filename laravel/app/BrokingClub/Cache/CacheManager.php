@@ -9,7 +9,10 @@
 namespace BrokingClub\Cache;
 
 
-class CacheManager {
+use App;
+
+class CacheManager{
+
     /**
      * @var array[ObjectCache]
      */
@@ -19,9 +22,10 @@ class CacheManager {
         if($this->has($id))
             return $this->get($id);
 
-        $fullClass = "BrokingClub\\Cache\\" + $class;
+        $fullClass = "BrokingClub\\Cache\\" . $class;
 
-        $newCache = \App::make($fullClass);
+
+        $newCache = App::make($fullClass);
 
         $this->caches[$id] = $newCache;
 
@@ -40,5 +44,9 @@ class CacheManager {
             return true;
 
         return false;
+    }
+
+    public static function add($id, $class){
+        return App::make('CacheManager')->addCache($id, $class);
     }
 }
