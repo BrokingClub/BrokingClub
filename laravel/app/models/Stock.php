@@ -7,8 +7,6 @@ class Stock extends BaseModel
 {
     protected $fillable = [];
 
-    protected $newestValues = array();
-
     /**
      * @var BrokingClub\Cache\StockValuesCache
      */
