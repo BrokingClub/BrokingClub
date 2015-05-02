@@ -1,12 +1,12 @@
 <?php
 
-use BrokingClub\View\ViewInjector;
+use BrokingClub\View\Injector;
 use BrokingClub\Purchase\Bank;
 
 class BaseController extends Controller
 {
     /**
-     * @var ViewInjector
+     * @var Injector
      */
     protected $viewInjector;
 

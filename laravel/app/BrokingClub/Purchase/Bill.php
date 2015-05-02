@@ -27,6 +27,7 @@ class Bill
 
     private $total;
 
+
     /**
      * @var Purchase
      */
@@ -90,6 +91,8 @@ class Bill
     {
         return $this->total / $this->amount;
     }
+
+
 
     public function toArray()
     {

@@ -1,5 +1,6 @@
 <?php
 
+use BrokingClub\Purchase\Resale;
 use BrokingClub\View\FontAwesome;
 use BrokingClub\Purchase\Bill;
 
@@ -7,7 +8,12 @@ class Purchase extends BaseModel {
     /**
      * @var Bill
      */
-    protected $bill;
+    public $bill;
+
+    /**
+     * @var Resale
+     */
+    public $resale;
 
 	protected $fillable = [];
 
@@ -18,14 +24,18 @@ class Purchase extends BaseModel {
 
 
     public function __construct(){
+        debug($this);
+        debug($this->id);
+        debug($this->stock_id);
+
         $this->calculator = App::make('CalculationService');
+        $this->bill = $this->bill();
+        $this->resale = $this->resale();
     }
 
     public static $rules = array(
         'amount' => 'required|integer|between:1,9999',
     );
-
-
 
     public function stock() {
         return $this->belongsTo('Stock');
@@ -50,7 +60,14 @@ class Purchase extends BaseModel {
      * @return Bill
      */
     public function bill(){
-        return $this->calculator->bill($this->stock_id);
+        return $this->calculator->bill($this);
+    }
+
+    /**
+     * @return Bill
+     */
+    public function resale(){
+        return $this->calculator->resale($this);
     }
 
     public function price(){
@@ -71,19 +88,7 @@ class Purchase extends BaseModel {
 
 
     public function earned(){
-        $oldValue = $this->value;
-        $newValue = $this->newestValue();
 
-        $nettoEarned = ($newValue - $oldValue) * (static::$globalLeverage * ($this->leverage/100))  * $this->amount;
-
-
-        if($this->mode == "falling"){
-            $nettoEarned *= -1;
-        }
-
-        $bruttoEarned = $nettoEarned - $this->fee;
-
-        return $bruttoEarned;
     }
 
     public function sellOffer(){

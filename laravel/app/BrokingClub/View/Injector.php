@@ -8,9 +8,11 @@
 
 namespace BrokingClub\View;
 
+use App;
 use Confide;
+use Menu;
 
-class ViewInjector {
+class Injector {
 
     /**
      * @var Bank
@@ -29,6 +31,8 @@ class ViewInjector {
 
         $data['mainMenu'] =  Menu::get('MainMenu');
         $data['theplayer'] = $this->thePlayer();
+
+        return $data;
     }
 
 

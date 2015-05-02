@@ -42,7 +42,7 @@
     <div class="col-md-4">
         <div style="display: none">
             {{ QForm::hidden('value', $stock->newestValue()) }}
-            {{ QForm::hidden('feerate', Purchase::feeRate()) }}
+            {{ QForm::hidden('feerate', $bank->feeRate()) }}
         </div>
         {{ QForm::label('purchase_price', 'Total price:') }}
         {{ QForm::readonly('purchase_price', "0.00 $") }}

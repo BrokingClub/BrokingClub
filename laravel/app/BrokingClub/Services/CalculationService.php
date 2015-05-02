@@ -1,6 +1,7 @@
 <?php
 namespace BrokingClub\Services;
 use BrokingClub\Purchase\Bill;
+use BrokingClub\Purchase\Resale;
 use BrokingClub\Repositories\StockRepository;
 
 /**
@@ -35,6 +36,19 @@ class CalculationService {
 
         return $bill;
     }
+
+
+    /**
+     * @param Purchase $purchase
+     * @return array
+     */
+    public function resale($purchase){
+        $stock = $this->stockRepository->findByPurchase($purchase);
+        $resale = new Resale($purchase, $stock);
+
+        return $resale;
+    }
+
 
 
 
