@@ -3,6 +3,7 @@ namespace BrokingClub\Services;
 use BrokingClub\Purchase\Bill;
 use BrokingClub\Purchase\Resale;
 use BrokingClub\Repositories\StockRepository;
+use Purchase;
 
 /**
  * Project: BrokingClub | CalculationService.php

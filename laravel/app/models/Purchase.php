@@ -15,27 +15,22 @@ class Purchase extends BaseModel {
      */
     public $resale;
 
-	protected $fillable = [];
-
     /**
      * @var BrokingClub\Services\CalculationService
      */
     private $calculator;
 
-
-    public function __construct(){
-        debug($this);
-        debug($this->id);
-        debug($this->stock_id);
-
-        $this->calculator = App::make('CalculationService');
-        $this->bill = $this->bill();
-        $this->resale = $this->resale();
-    }
+	protected $fillable = [];
 
     public static $rules = array(
         'amount' => 'required|integer|between:1,9999',
     );
+
+    public function __construct(array $attributes = array()){
+        $this->calculator = App::make('CalculationService');
+
+        parent::__construct($attributes);
+    }
 
     public function stock() {
         return $this->belongsTo('Stock');
@@ -46,58 +41,40 @@ class Purchase extends BaseModel {
     }
 
     public function totalPaid() {
-        $amount = $this->amount;
-        $total = $this->value * $amount + $this->fee;
-        return $total;
-    }
-
-    public function paidPerStock(){
-        $feePerStock = $this->fee / $this->amount;
-        return $this->value + $feePerStock;
+        return $this->value * $this->amount + $this->fee;
     }
 
     /**
      * @return Bill
      */
     public function bill(){
-        return $this->calculator->bill($this);
+        $this->bill = $this->calculator->bill($this);
+
+        return $this->bill;
     }
 
     /**
-     * @return Bill
+     * @return Resale
      */
     public function resale(){
-        return $this->calculator->resale($this);
+        $this->resale = $this->calculator->resale($this);
+
+        return $this->resale;
     }
 
     public function price(){
         return $this->stock->price($this->amount);
     }
 
-    public function newestValue(){
-        return $this->stock->newestValue();
-    }
-
-    public function changeRatio(){
-        $oldValue = $this->value;
-        $newValue = $this->newestValue();
-
-        $changeRatio = $newValue / $oldValue;
-        return $changeRatio;
-    }
-
 
     public function earned(){
-
+        return $this->resale()->grossEarned();
     }
 
     public function sellOffer(){
         return $this->totalPaid() + $this->earned();
     }
 
-    public static function feeRate(){
-        return static::$feeBase;
-    }
 
     /**
      * @return string
@@ -107,11 +84,7 @@ class Purchase extends BaseModel {
     }
 
     public function earnedMode(){
-        $earned = $this->earned();
-
-        if($earned == 0) return "neutral";
-
-        return ($earned > 0)? "rising" : "falling";
+        return $this->resale()->earnedMode();
     }
 
 

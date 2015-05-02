@@ -40,6 +40,11 @@ class Resale
      */
     public $stock;
 
+    /**
+     * @var Bank
+     */
+    private $bank;
+
 
     /**
      * @param Purchase $purchase
@@ -54,13 +59,17 @@ class Resale
         $this->purchaseValue = $this->purchase->value;
         $this->leverage = $this->purchase->leverage;
 
+        $this->bank = \App::make('Bank');
+
+
     }
+
 
     public function nettEarned(){
         $valueDifference = $this->newestValue - $this->purchaseValue;
 
         $earned = $valueDifference
-            * (static::$globalLeverage * ($this->leverageFactor()))
+            * ($this->bank->globalLeverage() * ($this->leverageFactor()))
             * $this->purchase->amount;
 
         if($this->purchase->mode == "falling"){
@@ -84,5 +93,13 @@ class Resale
 
     public function offer(){
         return $this->purchase->totalPaid() + $this->purchase->earned();
+    }
+
+    public function earnedMode(){
+        $earned = $this->grossEarned();
+
+        if($earned == 0) return "neutral";
+
+        return ($earned > 0)? "rising" : "falling";
     }
 } 

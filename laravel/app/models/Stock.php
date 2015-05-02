@@ -23,8 +23,10 @@ class Stock extends BaseModel
     protected $marketLogic;
 
 
-    public function __construct()
+    public function __construct($attributes = array())
     {
+        parent::__construct($attributes);
+
         $this->newestValuesCache = CacheManager::add('newestStockValues', 'StockValuesCache');
         $this->arrayGenerator = App::make('BrokingClub\\Statistics\\ArrayGenerator');
         $this->marketLogic = App::make('BrokingClub\\Statistics\\MarketLogic');

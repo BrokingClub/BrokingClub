@@ -9,6 +9,8 @@
 namespace BrokingClub\Purchase;
 
 
+use Config;
+
 class Bank {
     public function feeRate(){
         return $this->feeBase();

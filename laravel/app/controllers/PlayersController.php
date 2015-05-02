@@ -14,6 +14,8 @@ class PlayersController extends \BaseController {
 
         $this->data['players'] = $players;
 
+
+
         $this->setTitle('Ranking');
 
         return $this->makeView('pages.game.player.index');
@@ -52,9 +54,13 @@ class PlayersController extends \BaseController {
     {
         $player = Player::findOrFail($id);
 
+
         $this->setTitle('User information: '. $player->name());
 
+
         $this->data['player'] = $player;
+
+
 
         return $this->makeView('pages.game.player.show');
     }

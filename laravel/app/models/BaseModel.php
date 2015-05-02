@@ -9,6 +9,20 @@
 class BaseModel extends \Eloquent{
     public static $validationMessages = null;
 
+    public function __construct(array $attributes = array())  {
+        parent::__construct($attributes); // Eloquent
+    }
+
+    public function fill(array $attributes){
+        $result = parent::fill($attributes);
+
+        if(method_exists($this, 'filled'))
+            $this->filled($attributes);
+
+        return $result;
+    }
+
+
     public static function validate($input = null, $useRules = "all") {
         if (is_null($input)) {
             $input = Input::all();
