@@ -7,7 +7,8 @@ use BrokingClub\Repositories\StockRepository;
  * Project: BrokingClub | CalculationService.php
  * Author: Simon - www.triggerdesign.de
  * Date: 29.04.2015
- * Time: 13:51
+ * Time: 13:52
+ * Time: 13:52
  */
 
 
