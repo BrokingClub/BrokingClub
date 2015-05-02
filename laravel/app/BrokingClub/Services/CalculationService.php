@@ -8,7 +8,6 @@ use BrokingClub\Repositories\StockRepository;
  * Author: Simon - www.triggerdesign.de
  * Date: 29.04.2015
  * Time: 13:52
- * Time: 13:52
  */
 
 
@@ -32,14 +31,11 @@ class CalculationService {
      */
     public function bill($purchase){
         $stock = $this->stockRepository->findByPurchase($purchase);
-        $bill = new Bill($purchase, $stock);
+        $bill = new Bill(purchase, $stock);
 
         return $bill;
     }
 
-    public function fee(){
-
-    }
 
 
 

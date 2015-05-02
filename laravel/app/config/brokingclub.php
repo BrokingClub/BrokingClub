@@ -7,7 +7,11 @@ return [
         'github' => 'https://github.com/marc1404/BrokingClub/tree/master/doc',
         'facebook' => 'https://www.facebook.com/groups/1494274394164280/?fref=nf'
 
-    ]
+    ],
+
+    'feeBase' => 0.01,
+
+    'globalLeverage' => 1
 
 
 ]

@@ -14,6 +14,11 @@ use \Stock;
 
 class Bill
 {
+    /**
+     * @var Bank
+     */
+    private $bank;
+
     private $fee;
 
     private $price;
@@ -28,14 +33,27 @@ class Bill
     public $purchase;
 
     /**
+     * @var float
+     */
+    private $newestValue;
+
+    /**
      * @var Stock
      */
     public $stock;
 
+    /**
+     * @param Purchase $purchase
+     * @param Stock $stock
+     */
     public function __construct($purchase, $stock)
     {
         $this->purchase = $purchase;
         $this->stock = $stock;
+
+        $this->newestValue = $this->stock->newestValue();
+
+        $this->bank = \App::make('Bank');
 
         $this->calculate();
     }
@@ -52,20 +70,25 @@ class Bill
         $this->perStock = $this->perStock();
     }
 
-    private function fee(){
-        return $this->purchase->calculateFee($this->stock);
+    private function fee()
+    {
+        return
+            ($this->newestValue * $this->stock->amount) * $this->bank->feeBase();
     }
 
-    private function price(){
-        return $this->purchase->calculatePrice($this->stock);
+    private function price()
+    {
+        return ($this->newestValue * $this->stock->amount);
     }
 
-    private function total(){
+    private function total()
+    {
         return intval($this->price + $this->fee);
     }
 
-    private function perStock(){
-        return  $this->total / $this->amount;
+    private function perStock()
+    {
+        return $this->total / $this->amount;
     }
 
     public function toArray()
@@ -111,4 +134,4 @@ class Bill
     }
 
 
-} 
+}

@@ -1,7 +1,7 @@
 <?php
 
 use BrokingClub\Cache\CacheManager;
-use BrokingClub\Html\FontAwesome;
+use BrokingClub\View\FontAwesome;
 
 class Stock extends BaseModel
 {

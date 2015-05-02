@@ -1,13 +1,21 @@
 <?php
 
+use BrokingClub\View\ViewInjector;
+use BrokingClub\Purchase\Bank;
+
 class BaseController extends Controller
 {
+    /**
+     * @var ViewInjector
+     */
+    protected $viewInjector;
 
     protected $data = array();
 
+
     public function __construct()
     {
-
+        $this->viewInjector = App::make('ViewInjector');
     }
 
 	/**
@@ -36,8 +44,7 @@ class BaseController extends Controller
     }
 
     private function beforeView(){
-        //TODO: Outsource this to the config file
-        $projectName = "Broking Club";
+        $projectName = Config::get('brokingclub.name');
 
         if(!isset($this->data['title'])){
             $this->data['title'] =  'Welcome';
@@ -47,13 +54,16 @@ class BaseController extends Controller
             $this->data['headTitle'] =  $this->data['title'] . ' | ' . $projectName;
         }
 
-        $this->data['mainMenu'] =  Menu::get('MainMenu');
 
-        if(Confide::user())
-            $this->data['theplayer'] = Confide::user()->player;
-        else
-            $this->data['theplayer'] = null;
+        $this->viewInjection();
+
     }
+
+    private function viewInjection(){
+        $this->data = $this->viewInjector->inject($this->data);
+    }
+
+
 
 
 

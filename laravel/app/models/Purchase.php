@@ -1,5 +1,6 @@
 <?php
 
+use BrokingClub\View\FontAwesome;
 use BrokingClub\Purchase\Bill;
 
 class Purchase extends BaseModel {
@@ -24,8 +25,7 @@ class Purchase extends BaseModel {
         'amount' => 'required|integer|between:1,9999',
     );
 
-    protected static $feeBase = 0.01;
-    protected static $globalLeverage = 1;
+
 
     public function stock() {
         return $this->belongsTo('Stock');
@@ -49,19 +49,8 @@ class Purchase extends BaseModel {
     /**
      * @return Bill
      */
-    public function calculateBill(){
+    public function bill(){
         return $this->calculator->bill($this->stock_id);
-    }
-
-    public function calculatePrice($stock){
-        $newestValue = $stock->newestValue();
-        return ($newestValue * $this->amount);
-    }
-
-    public function calculateFee($stock){
-        $newestValue = $stock->newestValue();
-
-        return ($newestValue * $this->amount)* static::$feeBase;
     }
 
     public function price(){
@@ -105,13 +94,11 @@ class Purchase extends BaseModel {
         return static::$feeBase;
     }
 
+    /**
+     * @return string
+     */
     public function earnedIcon(){
-        switch($this->earnedMode()){
-            case "rising": return "<i class='fa fa-caret-up'></i>";
-            case "falling": return "<i class='fa fa-caret-down'></i>";
-            default: return "<i class='fa fa-sort'></i>";
-
-        }
+        return FontAwesome::changeRateIcon($this->earnedMode());
     }
 
     public function earnedMode(){
@@ -121,5 +108,8 @@ class Purchase extends BaseModel {
 
         return ($earned > 0)? "rising" : "falling";
     }
+
+
+
 
 }

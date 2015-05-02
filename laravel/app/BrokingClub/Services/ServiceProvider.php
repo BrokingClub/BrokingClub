@@ -23,6 +23,9 @@ class ServiceProvider extends IlluminateProvider{
         {
             return new CalculationService();
         });
+
+        $this->app->bind('Bank', 'BrokingClub\\Purchase\\Bank');
+        $this->app->bind('ViewInjector', 'BrokingClub\\Html\\ViewInjector');
     }
 
 

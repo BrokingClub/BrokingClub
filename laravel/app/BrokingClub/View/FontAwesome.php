@@ -6,7 +6,7 @@
  * Time: 22:42
  */
 
-namespace BrokingClub\Html;
+namespace BrokingClub\View;
 
 
 class FontAwesome {
