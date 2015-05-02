@@ -34,19 +34,38 @@ class Bill
 
     public function __construct($purchase, $stock)
     {
+        $this->purchase = $purchase;
+        $this->stock = $stock;
 
+        $this->calculate();
     }
 
     /**
      * @param Purchase $purchase
      * @param Stock $stock
      */
-    public function calculate($purchase, $stock)
+    public function calculate()
     {
-        $this->fee = $purchase->calculateFee($stock);
-        $this->price = $purchase->calculatePrice($stock);
-        $this->total = intval($this->price + $this->fee);
-        $this->perStock = $this->total / $this->amount;
+        $this->fee = $this->fee();
+        $this->price = $this->price();
+        $this->total = $this->total();
+        $this->perStock = $this->perStock();
+    }
+
+    private function fee(){
+        return $this->purchase->calculateFee($this->stock);
+    }
+
+    private function price(){
+        return $this->purchase->calculatePrice($this->stock);
+    }
+
+    private function total(){
+        return intval($this->price + $this->fee);
+    }
+
+    private function perStock(){
+        return  $this->total / $this->amount;
     }
 
     public function toArray()
@@ -57,6 +76,38 @@ class Bill
             "perStock" => $this->perStock,
             "total" => $this->total
         ];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFee()
+    {
+        return $this->fee;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPerStock()
+    {
+        return $this->perStock;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotal()
+    {
+        return $this->total;
     }
 
 

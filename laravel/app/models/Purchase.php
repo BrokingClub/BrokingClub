@@ -46,28 +46,11 @@ class Purchase extends BaseModel {
         return $this->value + $feePerStock;
     }
 
+    /**
+     * @return Bill
+     */
     public function calculateBill(){
         return $this->calculator->bill($this->stock_id);
-
-        /*
-        $stock = Stock::findOrFail($this->stock_id);
-
-        $fee =      $this->calculateFee($stock);
-        $price =    $this->calculatePrice($stock);
-        $total =    intval($price + $fee);
-        $perStock = $total / $this->amount;
-
-        $bill = [
-            "fee" => $fee,
-            "price" => $price,
-            "perStock" => $perStock,
-            "total" => $total
-        ];
-
-        $bill = array_map(function($double){ return round($double, 4); }, $bill);
-
-        return $bill;
-        */
     }
 
     public function calculatePrice($stock){
