@@ -44,6 +44,10 @@ class Purchase extends BaseModel {
         return $this->value * $this->amount + $this->fee;
     }
 
+    public function paidPerStock(){
+        return $this->bill()->getPerStock();
+    }
+
     /**
      * @return Bill
      */

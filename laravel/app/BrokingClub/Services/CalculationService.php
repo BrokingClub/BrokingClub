@@ -33,7 +33,7 @@ class CalculationService {
      */
     public function bill($purchase){
         $stock = $this->stockRepository->findByPurchase($purchase);
-        $bill = new Bill(purchase, $stock);
+        $bill = new Bill($purchase, $stock);
 
         return $bill;
     }

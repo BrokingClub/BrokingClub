@@ -38,7 +38,7 @@ class Bill
     /**
      * @var float
      */
-    private $newestValue;
+    private $value;
 
     /**
      * @var Stock
@@ -54,7 +54,7 @@ class Bill
         $this->purchase = $purchase;
         $this->stock = $stock;
 
-        $this->newestValue = $this->stock->newestValue();
+        $this->value = $this->purchase->value;
 
         $this->bank = \App::make('Bank');
 
@@ -71,17 +71,18 @@ class Bill
         $this->price = $this->price();
         $this->total = $this->total();
         $this->perStock = $this->perStock();
-    }
+
+   }
 
     private function fee()
     {
         return
-            ($this->newestValue * $this->stock->amount) * $this->bank->feeBase();
+            ($this->value * $this->purchase->amount) * $this->bank->feeRate();
     }
 
     private function price()
     {
-        return ($this->newestValue * $this->stock->amount);
+        return ($this->value * $this->purchase->amount);
     }
 
     private function total()
@@ -91,7 +92,7 @@ class Bill
 
     private function perStock()
     {
-        return $this->total / $this->amount;
+        return $this->total / $this->purchase->amount;
     }
 
 
