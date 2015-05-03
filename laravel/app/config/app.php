@@ -132,7 +132,8 @@ return array(
         'Lavary\Menu\ServiceProvider',
         'BrokingClub\Services\ServiceProvider',
         'BrokingClub\Repositories\RepositoryProvider',
-        'BrokingClub\Cache\CacheServiceProvider'
+        'BrokingClub\Cache\CacheServiceProvider',
+        'Triggerdesign\Hermes\HermesServiceProvider'
 	),
 
 	/*
@@ -203,7 +204,7 @@ return array(
         'QForm'             => 'Triggerdesign\Quickforms\QuickFormFacade',
         'Confide'           => 'Zizaco\Confide\Facade',
         'Menu'              => 'Lavary\Menu\Facade',
-
+        'Messaging'         => 'Triggerdesign\Hermes\Facades\Messaging'
 
 	),
 

@@ -11,13 +11,13 @@
         "patricktalmadge/bootstrapper": "~5",
         "zizaco/confide": "~4.0@dev",
         "guzzlehttp/guzzle": "~4.0",
-        "lavary/laravel-menu": "dev-master"
+        "lavary/laravel-menu": "dev-master",
+        "triggerdesign/hermes": "dev-master"
     },
     "require-dev": {
         "way/generators": "~2.0",
         "phpunit/phpunit": "4.6.4",
-        "laracasts/testdummy": "2.3.1",
-		"codeclimate/php-test-reporter": "dev-master"
+        "laracasts/testdummy": "2.3.1"
     },
     "autoload": {
         "classmap": [
