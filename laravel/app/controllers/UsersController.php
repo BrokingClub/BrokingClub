@@ -12,6 +12,7 @@ class UsersController extends BaseController
 
     public function __construct()
     {
+        parent::__construct();
        /*$this->beforeFilter('auth', ['except' => 'create', 'store', 'login', 'doLogin', 'confirm',
                                         'forgotPassword', 'doForgotPassword']);*/
     }
