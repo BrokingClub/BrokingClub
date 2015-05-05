@@ -55,6 +55,9 @@ class Bill
         $this->stock = $stock;
 
         $this->value = $this->purchase->value;
+        if(!$this->value)
+            $this->value = $stock->newestValue();
+
 
         $this->bank = \App::make('Bank');
 

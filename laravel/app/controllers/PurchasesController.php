@@ -51,14 +51,11 @@ class PurchasesController extends \BaseController
         $purchase->amount = Input::get('amount');
         $purchase->mode = $mode;
         $purchase->leverage = $leverage;
-        $purchase->stock_id = $stock->id;
         $purchase->player_id = $thePlayer->id;
-        $purchase->value = $stock->newestValue();
 
+        $purchase->fillPurchase($stock, Input::get('amount'));
 
         $bill = $purchase->bill();
-        $purchase->fee = $bill->getFee();
-
         $charge = $thePlayer->charge($bill->getTotal());
 
         if (!$charge)

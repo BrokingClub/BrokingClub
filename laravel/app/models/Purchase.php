@@ -91,6 +91,15 @@ class Purchase extends BaseModel {
         return $this->resale()->earnedMode();
     }
 
+    public function fillPurchase($stock, $amount){
+        $this->stock_id = $stock->id;
+        $this->amount = $amount;
+        $this->value = $stock->newestValue();
+
+        $this->fee = $this->bill()->getFee();
+
+    }
+
 
 
 

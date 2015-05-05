@@ -1,10 +1,12 @@
 <?php
 
+use Triggerdesign\Hermes\Models\UserTrait as HermesTrait;
 use Zizaco\Confide\ConfideUser;
 use Zizaco\Confide\ConfideUserInterface;
 
 class User extends BaseModel implements ConfideUserInterface
 {
+    use HermesTrait;
     use ConfideUser;
 
     public function player(){
