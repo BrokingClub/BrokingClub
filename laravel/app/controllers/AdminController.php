@@ -3,6 +3,7 @@
 class AdminController extends \BaseController {
 
     public function __construct(){
+        parent::__construct();
         $this->beforeFilter('adminOnly');
     }
 
@@ -12,7 +13,7 @@ class AdminController extends \BaseController {
      *
      * @return Response
      */
-    public function getIndex()
+    public function index()
     {
         $users = User::all();
 
@@ -21,7 +22,7 @@ class AdminController extends \BaseController {
         return $this->makeView('pages.admin.index');
     }
 
-    public function getUser($id){
+    public function administrateUsers($id) {
         $user = User::findOrFail($id);
         $player = $user->player;
         $data = [];
@@ -29,6 +30,9 @@ class AdminController extends \BaseController {
         $data['player'] = $player;
 
         return $this->makeView('pages.admin.user')->with($data);
+    }
+
+    public function getUser($id){
     }
 
     /**

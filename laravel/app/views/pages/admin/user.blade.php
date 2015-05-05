@@ -4,20 +4,20 @@
 
 {{ Fickle::openPanel($user->username, 12) }}
 
-    {{ Fickle::openTabbedPanel(12,array('user' => 'User Information', 'Player' => 'Player Information')) }}
-        {{ Fickle::openTabContent('user') }}
-            {{ QForm::model($user, array('route' => array('users.update', $user->id), 'method' => 'PUT')) }}
-                {{ QForm::text('email') }}
+    {{ QForm::model($player, array('route' => array('players.update', $player->id), 'method' => 'PUT')) }}
 
-                {{ QForm::text('username') }}
+                    {{ QForm::label('firstname', 'First name:') }}
+                    {{ QForm::text('firstname') }}
 
-                {{ QForm::btnPrimary('Submit', 'check') }}
-            {{ QForm::close() }}
-        {{ Fickle::closeTabContent() }}
+                    {{ QForm::label('lastname', 'Last name:') }}
+                    {{ QForm::text('lastname') }}
 
-        {{ Fickle::openTabContent('player') }}
-            Player
-        {{ Fickle::closeTabContent() }}
+                    {{ QForm::text('email', $user->email) }}
+
+                    {{ QForm::text('username', $user->username) }}
+
+                    {{ QForm::btnPrimary('Submit', 'check') }}
+                {{ QForm::close() }}
 
 {{ Fickle::closePanel() }}
 
