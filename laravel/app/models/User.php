@@ -19,6 +19,10 @@ class User extends BaseModel implements ConfideUserInterface
         return parent::delete();
     }
 
+    public function isAdmin(){
+        return $this->role === "admin";
+    }
+
     public static function canEdit($user_id){
         $auth_id = Auth::user()->id;
 

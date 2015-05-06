@@ -2,9 +2,9 @@
 
 @section('content')
 
-{{ Fickle::openPanel($user->username, 12) }}
+{{ Fickle::openPanel("Edit " . $user->username, 12) }}
 
-    {{ QForm::model($player, array('route' => array('players.update', $player->id), 'method' => 'PUT')) }}
+    {{ QForm::model($player, array('route' => array('admin.user.update', $player->id), 'method' => 'PUT')) }}
 
                     {{ QForm::label('firstname', 'First name:') }}
                     {{ QForm::text('firstname') }}
