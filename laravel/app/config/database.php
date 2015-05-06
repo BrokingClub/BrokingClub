@@ -1,12 +1,6 @@
 <?php
 
-if(empty($_ENV)){
-    $_ENV['DB_HOST']     = getenv('DB_HOST');
-    $_ENV['DB_DATABASE'] = getenv('DB_DATABASE');
-	$_ENV['DB_USERNAME'] = getenv('DB_USERNAME');
-	$_ENV['DB_PASSWORD'] = getenv('DB_PASSWORD');
-}
-
+$databaseConfig = new \BrokingClub\Services\DatabaseConfigService();
 
 return array(
 
@@ -62,10 +56,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => $_ENV['DB_HOST'],
-			'database'  => $_ENV['DB_DATABASE'],
-			'username'  => $_ENV['DB_USERNAME'],
-			'password'  => $_ENV['DB_PASSWORD'],
+			'host'      => $databaseConfig->getHost(),
+			'database'  => $databaseConfig->getDatabase(),
+			'username'  => $databaseConfig->getUsername(),
+			'password'  => $databaseConfig->getPassword(),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
