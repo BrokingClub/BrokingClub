@@ -41,4 +41,8 @@ class User extends BaseModel implements ConfideUserInterface
             return true;
         }
     }
+
+    public function name(){
+        return $this->player->name();
+    }
 }

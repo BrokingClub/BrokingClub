@@ -31,7 +31,7 @@ class AdminUserController extends AdminBaseController
      */
     public function create()
     {
-        //
+
     }
 
     /**
