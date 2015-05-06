@@ -3,32 +3,30 @@
 @section('content')
 
     {{ Fickle::openPanel('Administration area', 12) }}
-        {{Fickle::openTable()}}
-            <tr>
-            <td>UserId</td>
-            <td>Username</td>
-            <td>E-Mail</td>
-            <td>Role</td>
-            <td>Manage</td>
-            <td>Profile</td>
-            </tr>
-            @foreach($users AS $user)
-            <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->username }}</td>
-                <td>{{ $user->email }}</td>
-                <td>
-                    @if($user->role == "admin")
-                        <i class="fa fa-star-o"></i>
-                    @else
-                        <i class="fa fa-user"></i>
-                    @endif
-                </td>
-                <td><a href="/admin/user/{{ $user->id }}"><i class="fa fa-pencil-square-o"></i></a></td>
-                <td><a href='/players/{{ $user->id }}' target="_blank"><i class="fa fa-external-link"></i></a></td>
-            </tr>
-            @endforeach
-        {{Fickle::closeTable()}}
+
+         <div class="row">
+             <div class="col-md-3 col-sm-3 col-xs-6">
+                 <div class="ls-circle-widget label-light-green white">
+                     <i class="fa fa-users"></i>
+
+                     <h1>Manage users</h1>
+                 </div>
+             </div>
+             <div class="col-md-3 col-sm-3 col-xs-6">
+                 <div class="ls-circle-widget label-red white">
+                     <i class="fa fa-line-chart"></i>
+
+                     <h1>Manage stocks</h1>
+                 </div>
+             </div>
+             <div class="col-md-3 col-sm-3 col-xs-6">
+
+             </div>
+             <div class="col-md-3 col-sm-3 col-xs-6">
+             
+             </div>
+         </div>
+
     {{ Fickle::closePanel() }}
 
 @endsection

@@ -15,11 +15,19 @@ class AdminController extends \BaseController {
      */
     public function index()
     {
+        return $this->makeView('pages.admin.index');
+    }
+
+    public function users() {
         $users = User::all();
 
         $this->data['users'] = $users;
 
-        return $this->makeView('pages.admin.index');
+        return $this->makeView('pages.admin.users');
+    }
+
+    public function stocks() {
+        return $this->makeView('pages.admin.stocks');
     }
 
     public function administrateUsers($id) {
