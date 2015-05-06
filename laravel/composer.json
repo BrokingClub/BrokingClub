@@ -12,7 +12,9 @@
         "zizaco/confide": "~4.0@dev",
         "guzzlehttp/guzzle": "~4.0",
         "lavary/laravel-menu": "dev-master",
-        "triggerdesign/hermes": "dev-master"
+        "triggerdesign/hermes": "dev-master",
+        "codeclimate/php-test-reporter": "dev-master"
+
     },
     "require-dev": {
         "way/generators": "~2.0",

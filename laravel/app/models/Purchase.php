@@ -75,7 +75,7 @@ class Purchase extends BaseModel {
     }
 
     public function sellOffer(){
-        return $this->totalPaid() + $this->earned();
+        return $this->resale()->offer();
     }
 
 

@@ -92,7 +92,7 @@
                 </td>
                 <td class="hidden-sm">{{ $purchase->amount }}</td>
                 <td class="hidden-sm">
-                    <a tabindex="0" data-toggle="popover" title="Purchase price" href="#" data-content="Old price: {{ Format::money($purchase->value)  }} <br/> Fee: {{ Format::money($purchase->fee)  }} <br/> Total paid: {{ Format::money($purchase->totalPaid()) }}">
+                    <a tabindex="0" data-toggle="popover" title="Purchase price" href="#" data-content="Old price: {{ Format::money($purchase->value)  }} <br/> Fee: {{ Format::money($purchase->fee)  }} <br/> Total paid: {{ Format::money($purchase->total()) }}">
                         {{ Format::money($purchase->paidPerStock()) }}
                     </a>
                 </td>

@@ -92,7 +92,7 @@ class Resale
     }
 
     public function offer(){
-        return $this->purchase->totalPaid() + $this->purchase->earned();
+        return $this->purchase->total() + $this->grossEarned();
     }
 
     public function earnedMode(){
