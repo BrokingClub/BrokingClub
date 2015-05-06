@@ -28,6 +28,9 @@
                 <td><a href='/players/{{ $user->id }}' target="_blank"><i class="fa fa-external-link"></i></a></td>
             </tr>
             @endforeach
+
+            {{ $users->links() }}
+
         {{Fickle::closeTable()}}
     {{ Fickle::closePanel() }}
 

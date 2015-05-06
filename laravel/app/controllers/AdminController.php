@@ -19,7 +19,7 @@ class AdminController extends \BaseController {
     }
 
     public function users() {
-        $users = User::all();
+        $users = User::paginate(15);
 
         $this->data['users'] = $users;
 
