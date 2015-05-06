@@ -6,6 +6,7 @@ var oneHourDelay = 60 * 60 * 1000;
 
 module.exports = function(app){
     app.get('/api/linesofcode', handleRequest);
+    app.get('/api/linesofcode/csv', csv);
 };
 
 refreshTasks();
@@ -49,4 +50,22 @@ function refreshTasks(){
 
         console.timeEnd(label);
     });
+}
+
+function csv(req, res){
+    if(cache){
+        var lines = [];
+
+        cache.data.forEach(function(task){
+            lines.push(task.id + ';' + task.summary + ';' + task.lines + ';' + task.spentTime);
+        });
+
+        res.attachment('linesofcode.csv');
+        res.set('Content-Type', 'text/csv');
+        res.send(lines.join('\n'));
+    }else{
+        setTimeout(function(){
+            csv(req, res);
+        }, 1000);
+    }
 }
