@@ -11,6 +11,8 @@ Menu::make('MainMenu', function($menu){
 
     if(Player::auth() && Player::auth()->user->role == 'admin') {
         $menu->add('Administrate', 'admin')->data('icon', 'gavel');
+        $menu->item('administrate')->add('Users', 'admin/users');
+        $menu->item('administrate')->add('Stocks', 'admin/stocks');
     }
 
 });
