@@ -56,7 +56,7 @@ class PurchasesController extends \BaseController
         $purchase->fillPurchase($stock, Input::get('amount'));
 
         $bill = $purchase->bill();
-        $charge = $thePlayer->charge($bill->getTotal());
+        $charge = $thePlayer->charge($purchase->total());
 
         if (!$charge)
             return Redirect::back()->withError('You do not have enough money for this purchase.');

@@ -23,7 +23,10 @@ class Purchase extends BaseModel {
 	protected $fillable = [];
 
     public static $rules = array(
-        'amount' => 'required|integer|between:1,9999',
+        'stock_id'  => 'required|exists:stocks,id',
+        'amount'    => 'required|integer|between:1,9999',
+        'fee'       => 'required|numeric|min:0',
+        'value'       => 'required|numeric|min:0',
     );
 
     public function __construct(array $attributes = array()){
@@ -38,10 +41,6 @@ class Purchase extends BaseModel {
 
     public function player() {
         return $this->belongsTo('Player');
-    }
-
-    public function totalPaid() {
-        return $this->value * $this->amount + $this->fee;
     }
 
     public function paidPerStock(){
@@ -91,14 +90,35 @@ class Purchase extends BaseModel {
         return $this->resale()->earnedMode();
     }
 
-    public function fillPurchase($stock, $amount){
-        $this->stock_id = $stock->id;
-        $this->amount = $amount;
-        $this->value = $stock->newestValue();
-
-        $this->fee = $this->bill()->getFee();
-
+    public function total(){
+        return $this->bill()->getTotal();
     }
+
+    /**
+     * @param Stock $stock
+     * @param int $amount
+     */
+    public function fillPurchase($stock, $amount = 0){
+
+
+        if($this->stock_id != $stock->id){
+            $this->stock_id = $stock->id;
+            $this->stock = $stock;
+        }
+
+        $this->amount = $amount;
+    }
+
+    public function setAmountAttribute($amount){
+        if($amount == 0){
+            $amount = $this->amount;
+        }
+
+        $this->attributes['amount'] = $amount;
+        $this->attributes['value']  = $this->stock->newestValue();
+        $this->attributes['fee']  = $this->bill()->getFee();
+    }
+
 
 
 

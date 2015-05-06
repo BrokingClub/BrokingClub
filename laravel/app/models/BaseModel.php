@@ -9,6 +9,8 @@
 class BaseModel extends \Eloquent{
     public static $validationMessages = null;
 
+    private $objectValidation;
+
     public function __construct(array $attributes = array())  {
         parent::__construct($attributes); // Eloquent
     }
@@ -23,7 +25,13 @@ class BaseModel extends \Eloquent{
     }
 
 
-    public static function validate($input = null, $useRules = "all") {
+    /**
+     * @param null $input
+     * @param string $useRules
+     * @param bool $flash
+     * @return bool
+     */
+    public static function validate($input = null, $useRules = "all", $flash = true) {
         if (is_null($input)) {
             $input = Input::all();
         }
@@ -46,10 +54,14 @@ class BaseModel extends \Eloquent{
             return true;
         } else {
             // save the input to the current session
-            Input::flash();
 
             self::$validationMessages = $v->messages();
-            Session::flash('validationErrors',  self::$validationMessages);
+
+            if($flash) {
+                Input::flash();
+                Session::flash('validationErrors', self::$validationMessages);
+            }
+
             return false;
         }
     }
@@ -70,6 +82,21 @@ class BaseModel extends \Eloquent{
             return false;
         }
 
+    }
+
+    public function validateAttributes(){
+        $passed =  $this->validate($this->attributes, 'all', false);
+
+        $this->objectValidation = static::$validationMessages;
+
+        return $passed;
+    }
+
+    /**
+     * @return Illuminate\Support\MessageBag | null
+     */
+    public function getValidationMessages(){
+        return $this->objectValidation;
     }
 
     protected function urlId(){
