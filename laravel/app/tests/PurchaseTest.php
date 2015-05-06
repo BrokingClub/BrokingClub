@@ -9,6 +9,9 @@
 use Laracasts\TestDummy\Factory as LFaker;
 
 class PurchaseTest extends TestCase{
+    /**
+     * @test
+     */
     public function testAmountIsPositive(){
         $fakePurchase = $this->randomPurchase();
         $fakePurchase->amount = -5;
@@ -16,6 +19,9 @@ class PurchaseTest extends TestCase{
         $this->assertModelHasError($fakePurchase, 'amount');
     }
 
+    /**
+     * @test
+     */
     public function testNotExistingStock(){
         $fakePurchase = $this->randomPurchase();
         $fakePurchase->stock_id = 129389162381;
@@ -23,11 +29,16 @@ class PurchaseTest extends TestCase{
         $this->assertModelHasError($fakePurchase, 'stock_id');
     }
 
+    /**
+     * @test
+     */
     public function testFeeIsPositive(){
         $fakePurchase = $this->randomPurchase();
 
         $this->assertGreaterThan(0, $fakePurchase->bill()->getFee(), 'stock_id');
     }
+
+
 
     /**
      * @return Purchase
