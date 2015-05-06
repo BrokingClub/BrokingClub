@@ -29,9 +29,12 @@
             </tr>
             @endforeach
 
-            {{ $users->links() }}
-
         {{Fickle::closeTable()}}
+
+            <div class="text-center">
+                {{ $users->links() }}
+            </div>
+
     {{ Fickle::closePanel() }}
 
 @endsection
