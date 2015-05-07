@@ -2,6 +2,8 @@
 /laravel/vendor
 .idea/
 /laravel/public/fickle
+/laravel/public/js/documo
+/laravel/build/logs
 composer.phar
 composer.lock
 .env.*.php

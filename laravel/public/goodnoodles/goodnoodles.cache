@@ -1,0 +1,4 @@
+<br />
+<b>Warning</b>:  imagejpeg() expects parameter 1 to be resource, boolean given in <b>/brokingclub/laravel/public/goodnoodles/index.php</b> on line <b>55</b><br />
+<br />
+<b>Warning</b>:  imagedestroy() expects parameter 1 to be resource, boolean given in <b>/brokingclub/laravel/public/goodnoodles/index.php</b> on line <b>56</b><br />
