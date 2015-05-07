@@ -23,8 +23,6 @@ values to add a new stock.
 
 ![Activity Diagram](http://broking.club/img/doc/ad/ad_ManageStocks.png)
 
-TODO: WRONG FEATURE!
-
 [[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/managestocks.feature"]]
 
 
