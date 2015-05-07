@@ -25,7 +25,7 @@ values to add a new stock.
 
 TODO: WRONG FEATURE!
 
-[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/login.feature"]]
+[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/managestocks.feature"]]
 
 
 ## 	Alternative Flows
