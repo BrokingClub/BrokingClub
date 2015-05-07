@@ -31,6 +31,10 @@ class BaseController extends Controller
 		}
 	}
 
+    protected function shareToView($key, $value){
+        $this->data[$key] = $value;
+    }
+
     protected function makeView($viewKey){
         $this->beforeView();
 

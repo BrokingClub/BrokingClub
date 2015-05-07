@@ -13,12 +13,13 @@
 */
 
 
-Route::group(array('before' => 'auth'), function(){
+Route::group(array('before' => 'auth'), function () {
 
 
     Route::resource('stocks', 'StocksController');
     Route::resource('clubs', 'ClubsController');
     Route::resource('players', 'PlayersController');
+    Route::resource('messages', 'MessagesController');
 
     Route::get('setcarreer', 'PlayersController@setCareer');
     Route::post('setcarreer', 'PlayersController@doSetCareer');
@@ -46,9 +47,13 @@ Route::group(array('before' => 'auth'), function(){
 
     Route::get('admin', 'AdminController@index');
     Route::get('admin/user/{id}', 'AdminController@administrateUsers');
-    Route::get('admin/users', 'AdminController@users');
-    Route::get('admin/stocks', 'AdminController@stocks');
 
+});
+
+Route::group(array('prefix' => 'admin', 'before' => 'adminOnly'), function () {
+    Route::get('/', 'AdminBaseController@index');
+    Route::resource('users', 'AdminUserController');
+    Route::resource('stocks', 'AdminStockController');
 });
 
 Route::get('/', 'HomeController@showWelcome');

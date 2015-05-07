@@ -7,16 +7,7 @@ class AdminController extends \BaseController {
         $this->beforeFilter('adminOnly');
     }
 
-    /**
-     * Display a listing of the resource.
-     * GET /players
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        return $this->makeView('pages.admin.index');
-    }
+
 
     public function users() {
         $users = User::paginate(15);

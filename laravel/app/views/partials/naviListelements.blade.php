@@ -4,7 +4,7 @@
       <span>{{ $item->title }}</span></a>
       @if($item->hasChildren())
         <ul class="dropdown-menu">
-              @include('custom-menu-items', array('items' => $item->children()))
+              @include('partials.naviListelements', array('items' => $item->children()))
         </ul>
       @endif
   </li>
