@@ -23,7 +23,7 @@ By choosing one user out of the list, the admin can edit the attributes of this 
 
 TODO: WRONG FEATURE!
 
-[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/login.feature"]]
+[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/manageusers.feature"]]
 
 
 ## 	Alternative Flows
