@@ -1,8 +1,20 @@
 <?php
 
+use BrokingClub\Repositories\ConversationRepository;
 use Triggerdesign\Hermes\Models\Conversation;
 
 class MessagesController extends \BaseController {
+
+    /**
+     * @var ConversationRepository
+     */
+    private $conversationRepository;
+
+    public function __construct(ConversationRepository $conversationRepository){
+        parent::__construct();
+
+        $this->conversationRepository = $conversationRepository;
+    }
 
 	/**
 	 * Display a listing of the resource.
@@ -63,16 +75,19 @@ class MessagesController extends \BaseController {
 	 */
 	public function show($id)
 	{
-        $conversation = Conversation::findOrFail($id);
+        $conversation = $this->conversationRepository->findById($id, true);
 
         $this->shareToView('conversations', Auth::user()->conversations);
         $this->shareToView('conversation', $conversation);
         $this->shareToView('messageGroups', $conversation->buildGroups());
 
+        $this->setTitle('Conversation with ' . $conversation->otherUsers()->first()->name());
+
         $conversation->doRead();
 
         return $this->makeView('pages.game.message.show');
 	}
+
 
 	/**
 	 * Show the form for editing the specified resource.

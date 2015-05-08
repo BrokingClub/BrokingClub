@@ -15,12 +15,17 @@
                     <li><div class="userHead">
                                     <img class="img-circle" src="/img/testavatar.png"/>
                                     <div class="actions" style="margin: 10px;">
+
+                                        @if(!$isMyself)
                                         <a href="{{ URL::route('messages.create', ['receiver' => $player->user->id]) }}">
-                                        {{ Fickle::iconBtn('envelope', 'default') }}
+                                        {{ Fickle::iconBtn('envelope', 'success') }}
                                         </a>
+                                        @endif
+                                        <!--
                                         {{ Fickle::iconBtn('plus-square', 'primary') }}
                                         {{ Fickle::iconBtn('mortar-board', 'warning') }}
                                         {{ Fickle::iconBtn('exclamation-triangle', 'success') }}
+                                        -->
                                     </div>
                                 </div></li>
                     <li>Name: <div class="setting-switch">{{ $player->name(false) }}</div></li>

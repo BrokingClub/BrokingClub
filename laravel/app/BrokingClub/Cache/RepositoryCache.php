@@ -17,7 +17,8 @@ class RepositoryCache extends ObjectCache{
 
         if($inCache) return $inCache;
 
-        $class = "\\" . $this->class;
+        $class = $this->class;
+        if(strpos($class, "\\") === false) $class = "\\" . $class;
 
         if(!$fail){
             $newObject = $class::find($id);

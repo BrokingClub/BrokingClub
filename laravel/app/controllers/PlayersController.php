@@ -59,6 +59,7 @@ class PlayersController extends \BaseController {
 
 
         $this->data['player'] = $player;
+        $this->shareToView('isMyself', $player->id == Player::auth()->id);
 
 
 

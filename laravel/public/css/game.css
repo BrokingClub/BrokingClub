@@ -353,6 +353,7 @@ table.table-striped tr:nth-child(even){
 
 .mail-main-content .messages{
     max-height: 500px;
+    max-height: 50vh;
     overflow: auto;
     padding: 0px 15px;
 
