@@ -12,7 +12,13 @@ class MessagesController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$conversations = Auth::user()->conversations;
+
+
+        if($conversations->count() == 0)
+            return Redirect::route('dashboard')->withMessage('No conversations yet.');
+
+        return Redirect::route('messages.show', ['id' => $conversations->last()->id]);
 	}
 
 	/**
@@ -63,7 +69,7 @@ class MessagesController extends \BaseController {
         $this->shareToView('conversation', $conversation);
         $this->shareToView('messageGroups', $conversation->buildGroups());
 
-        $conversation->addMessage('hello there', $conversation->users->random());
+        $conversation->doRead();
 
         return $this->makeView('pages.game.message.show');
 	}
@@ -89,8 +95,14 @@ class MessagesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
-	}
+        $conversation = Conversation::findOrFail($id);
+
+        $conversation->addMessage(Input::get('message'));
+
+        return Redirect::route('messages.show', ['id' => $conversation->id]);
+
+
+    }
 
 	/**
 	 * Remove the specified resource from storage.

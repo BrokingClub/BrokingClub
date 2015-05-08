@@ -47,7 +47,7 @@
         <!--Email drop down start-->
         <a href="{{ URL::route('messages.index') }}">
             <span class="fa fa-envelope-o"></span>
-            <span class="badge badge-red">3</span>
+            <span class="badge unread-messages unread-messages-{{$unreadMessagesCount}}">{{ $unreadMessagesCount }}</span>
         </a>
     </li>
     {{--

@@ -9,6 +9,7 @@
 namespace BrokingClub\View;
 
 use App;
+use Auth;
 use Confide;
 use Menu;
 
@@ -31,6 +32,7 @@ class Injector {
 
         $data['mainMenu'] =  Menu::get('MainMenu');
         $data['theplayer'] = $this->thePlayer();
+        $data['unreadMessagesCount'] = $this->unreadMessagesCount();
 
         return $data;
     }
@@ -43,6 +45,12 @@ class Injector {
         if(Confide::user()) return Confide::user()->player;
 
         return null;
+    }
+
+    public function unreadMessagesCount(){
+        if(!Auth::user()) return 0;
+
+        return Auth::user()->unreadMessagesCount();
     }
 
 }

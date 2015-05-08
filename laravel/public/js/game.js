@@ -1,6 +1,12 @@
 jQuery(document).ready(function($) {
     'use strict';
 
+    var $messagesContainer = $(".mail-main-content .messages");
+
+    if($messagesContainer.length > 0) {
+        $messagesContainer.animate({scrollTop: $messagesContainer[0].scrollHeight - $messagesContainer.height()}, 0);
+    }
+
     bootstrap_switch_call();
     ladda_call();
 
@@ -36,6 +42,8 @@ jQuery(document).ready(function($) {
         'fill': '#eeeeee',
         'stroke': '#cccccc'
     })
+
+
 
 
 });

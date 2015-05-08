@@ -47,13 +47,20 @@ ul.mainNav li a, .navigation a{
     color: #fff !important;
 }
 
+.brokingclub-color .unread-messages,
 .brokingclub-color .badge-red{
     background-color: #FFE500;
     color: #222;
 }
 
+.brokingclub-color  .unread-messages-0{
+    background-color: #777;
+    color: #FFF;
+}
+
 .brokingclub-color ul.mainNav.active li.active a i{
-    color: #222;
+    background-color: #777;
+    color: #ffffff;
 }
 
 table.table-striped tr:nth-child(even){
@@ -319,4 +326,48 @@ table.table-striped tr:nth-child(even){
 
 .mini-stockchart{
     display: none;
+}
+
+
+.mail-main-content .message{
+    background: #EEEEEE;
+    border-bottom: 5px solid #cccccc;
+    margin-bottom: 10px;
+}
+
+.mail-main-content .message .content{
+    padding: 10px;
+    background: #ffffff;
+    border-top: 1px solid #EEEEEE;
+}
+
+.mail-main-content .message .name,
+.mail-main-content .message .time{
+    padding: 10px;
+    display: inline-block;
+}
+
+.mail-main-content .message .name{
+    font-weight: bold;
+}
+
+.mail-main-content .messages{
+    max-height: 500px;
+    overflow: auto;
+    padding: 0px 15px;
+
+}
+
+.new-message-container{
+    margin-top: 10px;
+    padding-left: 15px;
+}
+
+.mail-main-content .new-message-container textarea{
+    height: 100px;
+    background-color: #ffffff;
+}
+
+.mail-list li.active{
+    background-color: #ffffff;
 }
