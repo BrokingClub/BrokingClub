@@ -23,7 +23,7 @@ The players can write themselfes messages to communicate with each other.
 
 TODO: WRONG FEATURE!
 
-[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/login.feature"]]
+[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/messaging.feature"]]
 
 
 ## 	Alternative Flows
