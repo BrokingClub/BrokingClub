@@ -1,5 +1,7 @@
 <?php
 namespace BrokingClub\Repositories;
+use BrokingClub\Cache\RepositoryCache;
+
 /**
  * Project: BrokingClub | PurchaseRepository.php
  * Author: Simon - www.triggerdesign.de
@@ -7,13 +9,8 @@ namespace BrokingClub\Repositories;
  * Time: 13:40
  */
 
-class StockRepository {
-    public function findById($id, $orFail = true){
-        if(!$orFail)
-            return \Stock::find($id);
-
-        return \Stock::findOrFail($id);
-    }
+class StockRepository extends RepositoryCache{
+    protected $class = "Stock";
 
     public function findByPurchase($purchase){
         return $this->findById($purchase->stock_id);
