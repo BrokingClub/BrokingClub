@@ -28,7 +28,11 @@ document.Form_FPResult.tProjFP.value = iCountTotal * (0.65 + (0.01 * iTotalCAV))
 *fAdjScaleSum* is the result of your complexity table. You can set a breakpoint and copy it out of the variable – ours is **33**.
 Inside the *fFindCounTotal* you will find the weighting of each factor. Finally this calculation `iCountTotal * (0.65 + (0.01 * iTotalCAV))` will give you the final result for every usecase.
 
+## The Excel sheet
+[FunctionPoints.xlsx](http://broking.club/doc/rsc/FunctionPoints.xlsx)
+
 ## Function points vs effort
+
 ![FP Graph](http://broking.club/img/doc/functionpoints/FP Graph.JPG)
 
 ![Calculation for graph](http://broking.club/img/doc/functionpoints/Usecases FPs.JPG)
