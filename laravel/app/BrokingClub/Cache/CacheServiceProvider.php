@@ -11,7 +11,8 @@ namespace BrokingClub\Cache;
 
 use Zizaco\Confide\ServiceProvider;
 
-class CacheServiceProvider extends ServiceProvider {
+class CacheServiceProvider extends CacheManager
+{
     /**
      * Register the service provider.
      *

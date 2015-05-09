@@ -27,6 +27,8 @@ $documo->addFile('Software Architecture Document',  'SoftwareArchitectureDocumen
 $documo->addFile('Change Management',  'ChangeManagement.md', 'changemanagement', true);
 
 $documo->addFile('Function Points',  'FunctionPoints.md', 'functionpoints', true);
+$documo->addFile('Patterns',  'Patterns.md', 'patterns', true);
+
 
 $documo->parseMarkdown();
 
