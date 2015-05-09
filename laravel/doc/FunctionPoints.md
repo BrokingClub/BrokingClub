@@ -31,10 +31,11 @@ Inside the *fFindCounTotal* you will find the weighting of each factor. Finally 
 ## Function points vs effort
 ![FP Graph](http://broking.club/img/doc/functionpoints/FP Graph.JPG)
 
-**Outliers:** Like you can see in this graph we have some outliers. For the reasons why they exist please check the corresponding FP calculation.
-
-
 ![Calculation for graph](http://broking.club/img/doc/functionpoints/Usecases FPs.JPG)
+
+### Outliers
+Like you can see in this graph we have **some outliers**. For the reasons why they exist please check the corresponding FP calculation below.
+
 
 ## Use cases
 
