@@ -26,6 +26,8 @@ $documo->addFile('Software Requirements Specification',  'SoftwareRequirementsSp
 $documo->addFile('Software Architecture Document',  'SoftwareArchitectureDocument.md', 'sad', true);
 $documo->addFile('Change Management',  'ChangeManagement.md', 'changemanagement', true);
 
+$documo->addFile('Function Points',  'FunctionPoints.md', 'functionpoints', true);
+
 $documo->parseMarkdown();
 
 ?>
