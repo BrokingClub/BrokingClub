@@ -30,10 +30,18 @@ class Purchase extends BaseModel {
     );
 
     public function __construct(array $attributes = array()){
+        debug('constructor called', $attributes);
+
         $this->calculator = App::make('CalculationService');
 
         parent::__construct($attributes);
     }
+
+    public function filled(){
+        debug('filled called', $this->attributes);
+    }
+
+
 
     public function stock() {
         return $this->belongsTo('Stock');
@@ -48,10 +56,12 @@ class Purchase extends BaseModel {
     }
 
     /**
+     * @param bool $recalculate
      * @return Bill
      */
-    public function bill(){
-        $this->bill = $this->calculator->bill($this);
+    public function bill($recalculate = false){
+        if(!$this->bill || $recalculate)
+            $this->bill = $this->calculator->bill($this);
 
         return $this->bill;
     }
@@ -59,8 +69,9 @@ class Purchase extends BaseModel {
     /**
      * @return Resale
      */
-    public function resale(){
-        $this->resale = $this->calculator->resale($this);
+    public function resale($recalculate = false){
+        if(!$this->resale || $recalculate)
+            $this->resale = $this->calculator->resale($this);
 
         return $this->resale;
     }
@@ -99,24 +110,27 @@ class Purchase extends BaseModel {
      * @param int $amount
      */
     public function fillPurchase($stock, $amount = 0){
-
-
         if($this->stock_id != $stock->id){
             $this->stock_id = $stock->id;
             $this->stock = $stock;
         }
 
+        $this->bill(true);
+        $this->resale(true);
+
         $this->amount = $amount;
     }
 
     public function setAmountAttribute($amount){
+        debug('set amount called');
+
         if($amount == 0){
             $amount = $this->amount;
         }
 
         $this->attributes['amount'] = $amount;
         $this->attributes['value']  = $this->stock->newestValue();
-        $this->attributes['fee']  = $this->bill()->getFee();
+        $this->attributes['fee']  = $this->bill(true)->getFee();
     }
 
 

@@ -76,6 +76,8 @@ Route::get('login', ['as' => 'login', 'uses' => 'UsersController@login']);
 Route::post('login', ['as' => 'doLogin', 'uses' => 'UsersController@doLogin']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'UsersController@logout']);
 
+Route::controller('debug', 'DebugController');
+
 include('menu.php');
 
 

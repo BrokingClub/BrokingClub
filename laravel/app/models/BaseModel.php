@@ -24,6 +24,15 @@ class BaseModel extends \Eloquent{
         return $result;
     }
 
+    public function setRawAttributes(array $attributes, $sync = false){
+        $result = parent::setRawAttributes($attributes, $sync);
+
+        if(method_exists($this, 'filled'))
+            $this->filled($attributes);
+
+        return $result;
+    }
+
 
     /**
      * @param null $input
