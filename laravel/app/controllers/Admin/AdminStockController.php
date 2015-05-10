@@ -9,7 +9,12 @@
 class AdminStockController extends AdminBaseController
 {
     public function index(){
-        dd('stock admin');
+        $stocks = Stock::all();
+        $this->data['stocks'] = $stocks;
+
+        $this->setTitle('Manage stocks');
+
+        return $this->makeView('pages.admin.stocks');
     }
 
     /**

@@ -96,4 +96,9 @@ class Stock extends BaseModel
         return $this->marketLogic->changeRateMode($newestValues);
     }
 
+    public function category()
+    {
+        return $this->hasOne('StockCategory', 'id');
+    }
+
 }
