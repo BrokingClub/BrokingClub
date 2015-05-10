@@ -28,6 +28,7 @@ $documo->addFile('Change Management',  'ChangeManagement.md', 'changemanagement'
 
 $documo->addFile('Function Points',  'FunctionPoints.md', 'functionpoints', true);
 $documo->addFile('Patterns',  'Patterns.md', 'patterns', true);
+$documo->addFile('Testing',  'Testing.md', 'testing', true);
 
 
 $documo->parseMarkdown();
