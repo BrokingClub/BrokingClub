@@ -8,10 +8,10 @@
 
 namespace BrokingClub\Cache;
 
+use Illuminate\Support\ServiceProvider;
+use App;
 
-use Zizaco\Confide\ServiceProvider;
-
-class CacheServiceProvider extends CacheManager
+class CacheServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +21,7 @@ class CacheServiceProvider extends CacheManager
     public function register()
     {
         //Bind Cache Manager as a singleton to the Laravel IoC container
-        $this->app->singleton('CacheManager', function()
+        App::singleton('CacheManager', function()
         {
             return new CacheManager();
         });

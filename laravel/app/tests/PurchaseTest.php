@@ -38,6 +38,17 @@ class PurchaseTest extends TestCase{
         $this->assertGreaterThan(0, $fakePurchase->bill()->getFee(), 'stock_id');
     }
 
+    public function testFeeIsCorrect(){
+        $fakePurchase = $this->randomPurchase();
+
+        $bill = new \BrokingClub\Purchase\Bill($fakePurchase, $fakePurchase->stock);
+
+        $bank = new \BrokingClub\Purchase\Bank();
+        $expectedFee = $fakePurchase->amount * $fakePurchase->stock->newestValue() * $bank->feeRate();
+
+        $this->assertEquals($expectedFee, $bill->getFee());
+    }
+
 
 
     /**

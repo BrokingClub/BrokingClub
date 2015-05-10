@@ -68,7 +68,7 @@ class Bill
      * @param Purchase $purchase
      * @param Stock $stock
      */
-    public function calculate()
+    private function calculate()
     {
         $this->fee = $this->fee();
         $this->price = $this->price();
