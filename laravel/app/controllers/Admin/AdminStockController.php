@@ -17,46 +17,9 @@ class AdminStockController extends AdminBaseController
         return $this->makeView('pages.admin.stocks');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
     public function create()
     {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -65,8 +28,12 @@ class AdminStockController extends AdminBaseController
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $stock = Stock::find($id);
+
+        $stock->delete();
+
+        return Redirect::back()->withMessage('Deleted ' . $stock->name);
     }
 } 

@@ -98,7 +98,7 @@ class Stock extends BaseModel
 
     public function category()
     {
-        return $this->hasOne('StockCategory', 'id');
+        return $this->belongsTo('StockCategory', 'stock_category_id', 'id');
     }
 
 }

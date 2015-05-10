@@ -53,7 +53,9 @@ Route::group(array('before' => 'auth'), function () {
 Route::group(array('prefix' => 'admin', 'before' => 'adminOnly'), function () {
     Route::get('/', 'AdminBaseController@index');
     Route::resource('users', 'AdminUserController');
-    Route::resource('stocks', 'AdminStockController');
+    Route::get('stocks', 'AdminStockController@index');
+    Route::get('stocks/{id}/delete', 'AdminStockController@delete');
+    Route::post('stocks/create', 'AdminStockController@create');
 });
 
 Route::get('/', 'HomeController@showWelcome');
