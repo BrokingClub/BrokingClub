@@ -87,6 +87,20 @@ class Resale
         return $grossEarned;
     }
 
+    public function earnedString(){
+        $string = "";
+
+        $grossEarned = floor($this->grossEarned());
+
+        if($grossEarned > 0)
+            $string = "You have earned ". $grossEarned . "$ with this sale, f*** yeah.";
+        else
+            $string = "Oh no, you lost ". $grossEarned . "$ with this sale.";
+
+
+        return $string;
+    }
+
     public function leverageFactor(){
         return $this->leverage/100;
     }

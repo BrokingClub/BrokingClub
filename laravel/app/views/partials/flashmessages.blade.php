@@ -1,4 +1,3 @@
-{{ debug(Session::all()) }}
 @if (Session::get('error'))
     <div class="alert alert-error alert-danger">
         @if (is_array(Session::get('error')))
@@ -24,8 +23,6 @@
 @if (Session::get('message'))
     <div class="alert alert-success">{{ Session::get('message') }}</div>
 @endif
-
-{{ debug(Session::all()) }}
 
 @if (Session::get('rolePlay.expAdded'))
     <div class="alert alert-info">
