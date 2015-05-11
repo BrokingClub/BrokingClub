@@ -22,6 +22,10 @@ class AdminUserController extends AdminBaseController
     }
 
     public function index(){
+
+        $users = User::paginate(15);
+        $data['users'] = $users;
+        return $this->makeView('pages.admin.users')->with($data);
     }
 
     /**
@@ -52,6 +56,7 @@ class AdminUserController extends AdminBaseController
      */
     public function show($id)
     {
+        return "show user";
     }
 
     /**
@@ -62,7 +67,19 @@ class AdminUserController extends AdminBaseController
      */
     public function edit($id)
     {
-        return $this->makeView('pages.admin.users.edit');
+        $user = User::findOrFail($id);
+        $player = $user->player;
+        $data['user'] = $user;
+        $data['player'] = $player;
+        return $this->makeView("pages.admin.users.edit")->with($data);
+    }
+
+    public function update($id) {
+        $player = Player::findOrFail($id);
+        $player->validateAndSave();
+        $user = $player->user;
+        $user->validateAndSave();
+        return $this->makeView("pages.admin.users");
     }
 
     /**

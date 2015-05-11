@@ -4,20 +4,20 @@
 
 {{ Fickle::openPanel("Edit " . $user->username, 12) }}
 
-    {{ QForm::model($player, array('route' => array('admin.user.update', $player->id), 'method' => 'PUT')) }}
+    {{ QForm::model($player, array('route' => array('admin.users.update', $player->id), 'method' => 'PUT')) }}
 
-                    {{ QForm::label('firstname', 'First name:') }}
-                    {{ QForm::text('firstname') }}
+        {{ QForm::label('firstname', 'First name:') }}
+        {{ QForm::text('firstname') }}
 
-                    {{ QForm::label('lastname', 'Last name:') }}
-                    {{ QForm::text('lastname') }}
+        {{ QForm::label('lastname', 'Last name:') }}
+        {{ QForm::text('lastname') }}
 
-                    {{ QForm::text('email', $user->email) }}
+        {{ QForm::text('email', $user->email) }}
 
-                    {{ QForm::text('username', $user->username) }}
+        {{ QForm::text('username', $user->username) }}
 
-                    {{ QForm::btnPrimary('Submit', 'check') }}
-                {{ QForm::close() }}
+        {{ QForm::btnPrimary('Submit', 'check') }}
+    {{ QForm::close() }}
 
 {{ Fickle::closePanel() }}
 
