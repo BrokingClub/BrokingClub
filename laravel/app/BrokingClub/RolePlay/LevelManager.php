@@ -30,7 +30,7 @@ class LevelManager {
      * @return int
      */
     public function expForLevel($level){
-        return ceil((($level ^ 2) * 4) + 50);
+        return ceil((($level ^ 2) * 4) + 10);
     }
 
     /**
@@ -38,7 +38,9 @@ class LevelManager {
      * @return int
      */
     public function levelForExp($exp){
-        return floor(sqrt(($exp - 50) / 4));
+        if($exp < 10) return 0;
+
+        return floor(sqrt(($exp - 10) / 4));
     }
 
 
@@ -47,9 +49,6 @@ class LevelManager {
 
         $newLevel = $this->levelForExp($player->exp);
 
-        var_dump($newLevel);
-        var_dump($player->exp);
-        dd('exp added' . $expAdded);
 
         if($oldLevel != $newLevel)
             $this->levelUp($player, $newLevel);
