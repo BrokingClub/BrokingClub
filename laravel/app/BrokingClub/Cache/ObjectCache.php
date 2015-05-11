@@ -9,6 +9,7 @@ namespace BrokingClub\Cache;
 
 abstract class ObjectCache {
 
+    public static $statistics = ['hit'=> 0, 'miss' => 0];
 
     protected $values = [];
 
@@ -28,8 +29,12 @@ abstract class ObjectCache {
     }
 
     public function get($id){
-        if(!$this->has($id)) return null;
+        if(!$this->has($id)){
+            $this->addMiss();
+            return null;
+        }
 
+        $this->addHit();
         return $this->values[$id];
     }
 
@@ -43,6 +48,14 @@ abstract class ObjectCache {
         }
 
         return true;
+    }
+
+    protected function addHit(){
+        static::$statistics['hit']++;
+    }
+
+    protected function addMiss(){
+        static::$statistics['miss']++;
     }
 
 

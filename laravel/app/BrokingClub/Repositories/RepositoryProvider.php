@@ -18,14 +18,19 @@ class RepositoryProvider extends ServiceProvider{
      */
     public function register()
     {
-        $this->app->bind('PurchaseRepository', function()
+        $this->app->singleton('PurchaseRepository', function()
         {
             return new PurchaseRepository();
         });
 
-        $this->app->bind('StockRepository', function()
+        $this->app->singleton('StockRepository', function()
         {
             return new StockRepository();
+        });
+
+        $this->app->singleton('PlayerRepository', function()
+        {
+            return new PlayerRepository();
         });
 
 

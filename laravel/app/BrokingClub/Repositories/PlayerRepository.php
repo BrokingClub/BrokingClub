@@ -9,18 +9,11 @@
 namespace BrokingClub\Repositories;
 
 
+use BrokingClub\Cache\RepositoryCache;
 use Player;
 
-class PlayerRepository {
+class PlayerRepository extends RepositoryCache{
 
-    /**
-     * @param int $id
-     * @return \Illuminate\Support\Collection|null|static
-     */
-    public function findById($id)
-    {
-        return Player::find($id);
-    }
-
+    protected $class = "Player";
 
 }

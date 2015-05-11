@@ -80,6 +80,8 @@ class Resale
     }
 
     public function grossEarned(){
+        if($this->purchase->earned != 0) return $this->purchase->earned;
+
         $nettEarned = $this->nettEarned();
 
         $grossEarned = $nettEarned - $this->purchase->fee;
