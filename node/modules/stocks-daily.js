@@ -53,6 +53,10 @@ exports.unchangedStocks = function(){
 function getLastDailyId(stockId, callback){
     sql.query('SELECT daily_id FROM stock_values WHERE stock_id = ? ORDER BY updated_at DESC LIMIT 1', [stockId], function(err, rows){
         if(no(err)){
+            if(rows.length === 0){
+                return callback(null, 0);
+            }
+
             callback(null, rows[0].daily_id);   
         }
     });
