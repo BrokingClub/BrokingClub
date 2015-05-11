@@ -28,7 +28,7 @@ values to add a new stock.
 
 ## 	Alternative Flows
 ### Values do not match the requirementsN
-admin receives an error message.
+Admin receives an error message.
 
 # Special Requirements
 *n.a.*

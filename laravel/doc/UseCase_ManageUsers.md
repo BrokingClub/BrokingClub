@@ -26,7 +26,7 @@ By choosing one user out of the list, the admin can edit the attributes of this 
 
 ## 	Alternative Flows
 ### Values do not match the requirements
-admin receives an error message.
+Admin receives an error message.
 
 # Special Requirements
 *n.a.*
