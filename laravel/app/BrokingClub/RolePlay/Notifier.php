@@ -14,6 +14,8 @@ class Notifier {
     private $dispatcher;
 
 
+
+
     /**
      * @param $oldLevel
      * @param $newLevel
@@ -31,7 +33,7 @@ class Notifier {
     public function onExpAdded($player, $amount, $reason){
         $message = 'You have just gained ' .  $amount . ' Experience Points. Reason: ' . $reason;
 
-        static::flash('levelUp', 'EXP gained', $message);
+        static::flash('expAdded', 'EXP gained', $message);
     }
 
 
@@ -41,7 +43,7 @@ class Notifier {
      * @param string $message
      */
     private static function flash($key, $title = "", $message = ""){
-        \Session::flash('rolePlay.' . $key, ['title' => $title, $message => $message]);
+        \Session::flash('rolePlay.' . $key, ['title' => $title, 'message' => $message]);
     }
 
     /**

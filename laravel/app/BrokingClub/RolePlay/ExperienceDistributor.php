@@ -10,12 +10,23 @@
 namespace BrokingClub\RolePlay;
 
 
+use App;
 use Event;
+use Player;
 use Purchase;
 
 class ExperienceDistributor {
 
+    /**
+     * @var Notifier
+     */
+    private $notifier;
+
     private $dispatcher;
+
+    public function __construct(){
+        $this->notifier = App::make('RolePlayNotifier');
+    }
 
 
     public function onStocksSold(Purchase $purchase){
@@ -23,9 +34,9 @@ class ExperienceDistributor {
 
         if($moneyMade < 0) return false;
 
-        $exp = floor($moneyMade / 1000);
+        $exp = floor($moneyMade / 200);
 
-        return $this->addPoints($exp);
+        return $this->addPoints($exp, "Winning " + $moneyMade + "$ by trading stocks.");
 
 
     }
@@ -36,13 +47,9 @@ class ExperienceDistributor {
 
         $exp = floor($moneySpent / 2000);
 
-        return $this->addPoints($exp);
+        return $this->addPoints($exp, "Spending " + $moneySpent + "$ on stocks.");
 
     }
-
-    public function onEventsCreated($hello){
-    }
-
 
     /**
      * @param $amount
@@ -77,7 +84,6 @@ class ExperienceDistributor {
 
         $this->dispatcher = $dispatcher;
 
-        $this->listenTo('events.created', 'onEventsCreated');
         $this->listenTo('stocks.sold', 'onStocksSold');
         $this->listenTo('stocks.purchased', 'onStocksPurchased');
 

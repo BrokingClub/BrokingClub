@@ -10,9 +10,20 @@
 namespace BrokingClub\RolePlay;
 
 
+use App;
+
 class LevelManager {
 
+    /**
+     * @var Notifier
+     */
+    private $notifier;
+
     private $dispatcher;
+
+    public function __construct(){
+        $this->notifier = App::make('RolePlayNotifier');
+    }
 
     /**
      * @param $level
@@ -35,6 +46,10 @@ class LevelManager {
         $oldLevel = $player->level;
 
         $newLevel = $this->levelForExp($player->exp);
+
+        var_dump($newLevel);
+        var_dump($player->exp);
+        dd('exp added' . $expAdded);
 
         if($oldLevel != $newLevel)
             $this->levelUp($player, $newLevel);

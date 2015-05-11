@@ -25,3 +25,19 @@
     <div class="alert alert-success">{{ Session::get('message') }}</div>
 @endif
 
+{{ debug(Session::all()) }}
+
+@if (Session::get('rolePlay.expAdded'))
+    <div class="alert alert-info">
+        <b>{{ Session::get('rolePlay.expAdded.title') }}:</b>
+        {{ Session::get('rolePlay.expAdded.message') }}
+    </div>
+@endif
+
+@if (Session::get('rolePlay.levelUp'))
+    <div class="alert alert-success">
+        <b>{{ Session::get('rolePlay.levelUp.title') }}:</b>
+        {{ Session::get('rolePlay.levelUp.message') }}
+    </div>
+@endif
+

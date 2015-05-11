@@ -40,20 +40,21 @@ class PurchasesController extends \BaseController
         $stock = Stock::findOrFail(Input::get('stock_id'));
 
         $purchase = new Purchase();
-        if (!$purchase->validate(Input::all()))
-            return Redirect::back();
+
 
         $mode = "falling";
         if (Input::get('betOnRise')) $mode = "rising";
 
         $leverage = min(500, max(100, intval(Input::get('leverage'))));
 
-        $purchase->amount = Input::get('amount');
         $purchase->mode = $mode;
         $purchase->leverage = $leverage;
         $purchase->player_id = $thePlayer->id;
 
         $purchase->fillPurchase($stock, Input::get('amount'));
+
+        if (!$purchase->validateAttributes())
+            return Redirect::back();
 
         $bill = $purchase->bill();
         $charge = $thePlayer->charge($purchase->total());
