@@ -122,6 +122,7 @@ class PurchasesController extends \BaseController
         $player->balance += $sellOffer;
 
         $purchase->mode = "sold";
+        $purchase->earned = $moneyGained;
 
         $player->save();
 

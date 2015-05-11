@@ -28,6 +28,7 @@ class ServiceProvider extends IlluminateProvider{
         $this->app->bind('ViewInjector', 'BrokingClub\\View\\Injector');
 
         $this->app->singleton('RolePlayNotifier', 'BrokingClub\\RolePlay\Notifier');
+        $this->app->singleton('PlayerPerformance', 'BrokingClub\\Statistics\\PlayerPerformance');
     }
 
 
