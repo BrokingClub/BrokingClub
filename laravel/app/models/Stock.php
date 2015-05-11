@@ -5,7 +5,13 @@ use BrokingClub\View\FontAwesome;
 
 class Stock extends BaseModel
 {
-    protected $fillable = [];
+    protected $fillable = ['symbol', 'name', 'stock_category_id'];
+
+    public static $rules = array(
+        'symbol'  => 'required',
+        'name' => 'required',
+        'stock_category_id' => 'required'
+    );
 
     /**
      * @var BrokingClub\Cache\StockValuesCache

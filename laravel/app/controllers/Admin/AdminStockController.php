@@ -9,17 +9,23 @@
 class AdminStockController extends AdminBaseController
 {
     public function index(){
-        $stocks = Stock::all();
-        $this->data['stocks'] = $stocks;
+        $this->data['stocks'] = Stock::all();
+        $this->data['categories'] = StockCategory::lists('name', 'id');
 
         $this->setTitle('Manage stocks');
 
         return $this->makeView('pages.admin.stocks');
     }
 
-    public function create()
+    public function store()
     {
+        $stock = new Stock;
 
+        if(!$stock->validateAndSave()){
+            return Redirect::back();
+        }
+
+        return Redirect::back()->withMessage('Created ' . $stock->name);
     }
 
     /**
@@ -28,12 +34,17 @@ class AdminStockController extends AdminBaseController
      * @param  int  $id
      * @return Response
      */
-    public function delete($id)
+    public function destroy($id)
     {
         $stock = Stock::find($id);
+
+        if(!$stock){
+            return;
+        }
 
         $stock->delete();
 
         return Redirect::back()->withMessage('Deleted ' . $stock->name);
     }
+
 } 
