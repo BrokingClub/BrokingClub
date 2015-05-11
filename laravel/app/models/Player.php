@@ -1,7 +1,7 @@
 <?php
 
 class Player extends BaseModel {
-	protected $fillable = ['firstname', 'lastname'];
+	protected $fillable = ['firstname', 'lastname', 'career_id', 'club_id', 'club_role', 'balance', 'exp'];
 
     public static $rules = array(
         'firstname' => 'Min:3|Max:80|alpha_spaces',

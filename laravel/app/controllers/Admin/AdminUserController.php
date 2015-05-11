@@ -72,6 +72,8 @@ class AdminUserController extends AdminBaseController
 
         $this->shareToView('user', $user);
         $this->shareToView('player', $player);
+        $this->shareToView('careers', Career::lists('name', 'id'));
+        $this->shareToView('clubs', Club::lists('name', 'id'));
 
         return $this->makeView("pages.admin.users.edit");
     }

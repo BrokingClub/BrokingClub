@@ -23,13 +23,13 @@
     </div>
     <div class="col-md-6">
         {{ QForm::label('career', 'Career') }}
-        {{ Form::select('career', array('admin' => 'Administrator', 'user' => 'User'), $user->role, ['class' => 'form-control']) }}
+        {{ Form::select('career', $careers, $player->career_id, ['class' => 'form-control']) }}
         <br/>
         {{ QForm::label('club', 'Club') }}
-        {{ Form::select('club', array('admin' => 'Administrator', 'user' => 'User'), $user->role, ['class' => 'form-control']) }}
+        {{ Form::select('club', $clubs, $user->club_id, ['class' => 'form-control']) }}
         <br/>
         {{ QForm::label('club_role', 'Club Role') }}
-        {{ Form::select('club_role', array('admin' => 'Administrator', 'user' => 'User'), $user->role, ['class' => 'form-control']) }}
+        {{ Form::select('club_role', array('member' => 'Member', 'founder' => 'Founder'), $user->club_role, ['class' => 'form-control']) }}
 
         {{ QForm::label('balance', 'Balance') }}
         {{ QForm::text('balance') }}
