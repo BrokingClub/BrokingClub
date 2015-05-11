@@ -30,15 +30,19 @@ class Purchase extends BaseModel {
     );
 
     public function __construct(array $attributes = array()){
-        debug('constructor called', $attributes);
 
         $this->calculator = App::make('CalculationService');
 
         parent::__construct($attributes);
     }
 
+    /**
+     * Calculate the bill and the offer if values from the database are filled in
+     */
     public function filled(){
-        debug('filled called', $this->attributes);
+
+        $this->bill();
+        $this->resale();
     }
 
 
@@ -67,6 +71,7 @@ class Purchase extends BaseModel {
     }
 
     /**
+     * @param bool $recalculate
      * @return Resale
      */
     public function resale($recalculate = false){
@@ -122,8 +127,6 @@ class Purchase extends BaseModel {
     }
 
     public function setAmountAttribute($amount){
-        debug('set amount called');
-
         if($amount == 0){
             $amount = $this->amount;
         }
