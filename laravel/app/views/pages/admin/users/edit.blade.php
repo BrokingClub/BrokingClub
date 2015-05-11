@@ -16,6 +16,8 @@
 
         {{ QForm::text('username', $user->username) }}
 
+        {{ Form::select('role', array('admin' => 'Administrator', 'user' => 'User'), $user->role, ['class' => 'form-control']) }}
+
         {{ QForm::btnPrimary('Submit', 'check') }}
     {{ QForm::close() }}
 

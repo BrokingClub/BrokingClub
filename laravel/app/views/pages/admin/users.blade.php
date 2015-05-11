@@ -17,15 +17,16 @@
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->email }}</td>
-                <td>
+                <td><span class="badge">
                     @if($user->role == "admin")
                         <i class="fa fa-star-o"></i>
                     @else
                         <i class="fa fa-user"></i>
                     @endif
+                </span></td>
+                <td><a href="/admin/users/{{ $user->id }}/edit" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i></a>
                 </td>
-                <td><a href="/admin/users/{{ $user->id }}/edit"><i class="fa fa-pencil-square-o"></i></a></td>
-                <td><a href='/players/{{ $user->id }}' target="_blank"><i class="fa fa-external-link"></i></a></td>
+                <td><a href='/players/{{ $user->id }}' target="_blank" class="btn btn-default"><i class="fa fa-external-link"></i></a></td>
             </tr>
             @endforeach
 
