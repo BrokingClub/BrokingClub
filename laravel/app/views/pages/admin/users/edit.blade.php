@@ -2,10 +2,10 @@
 
 @section('content')
 
-{{ Fickle::openPanel("Edit " . $user->username, 12) }}
+{{ Fickle::openPanel("Edit " . $user->username . ", UserID: " . $user->id, 12) }}
 
+    <div class="col-md-6">
     {{ QForm::model($player, array('route' => array('admin.users.update', $player->id), 'method' => 'PUT')) }}
-
         {{ QForm::label('firstname', 'First name:') }}
         {{ QForm::text('firstname') }}
 
@@ -16,7 +16,30 @@
 
         {{ QForm::text('username', $user->username) }}
 
-        {{ QForm::btnPrimary('Submit', 'check') }}
+        {{ QForm::label('role', 'Role') }}
+        {{ Form::select('role', array('admin' => 'Administrator', 'user' => 'User'), $user->role, ['class' => 'form-control']) }}
+
+        <br/>{{ QForm::btnPrimary('Submit', 'check') }}
+    </div>
+    <div class="col-md-6">
+        {{ QForm::label('career', 'Career') }}
+        {{ Form::select('career', array('admin' => 'Administrator', 'user' => 'User'), $user->role, ['class' => 'form-control']) }}
+        <br/>
+        {{ QForm::label('club', 'Club') }}
+        {{ Form::select('club', array('admin' => 'Administrator', 'user' => 'User'), $user->role, ['class' => 'form-control']) }}
+        <br/>
+        {{ QForm::label('club_role', 'Club Role') }}
+        {{ Form::select('club_role', array('admin' => 'Administrator', 'user' => 'User'), $user->role, ['class' => 'form-control']) }}
+
+        {{ QForm::label('balance', 'Balance') }}
+        {{ QForm::text('balance') }}
+
+        {{ QForm::label('exp', 'Experience') }}
+        {{ QForm::text('exp') }}
+
+
+    </div>
+
     {{ QForm::close() }}
 
 {{ Fickle::closePanel() }}

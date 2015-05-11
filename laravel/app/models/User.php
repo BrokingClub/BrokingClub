@@ -9,7 +9,7 @@ class User extends BaseModel implements ConfideUserInterface
     use HermesTrait;
     use ConfideUser;
 
-    protected $fillable = ['email', 'username'];
+    protected $fillable = ['email', 'username', 'role'];
 
     public static $rules = array(
 

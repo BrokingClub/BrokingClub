@@ -117,19 +117,19 @@ class Purchase extends BaseModel {
     public function fillPurchase($stock, $amount = 0){
         if($this->stock_id != $stock->id){
             $this->stock_id = $stock->id;
-            $this->stock = $stock;
         }
+
+        $this->amount = $amount;
 
         $this->bill(true);
         $this->resale(true);
-
-        $this->amount = $amount;
     }
 
     public function setAmountAttribute($amount){
         if($amount == 0){
             $amount = $this->amount;
         }
+
 
         $this->attributes['amount'] = $amount;
         $this->attributes['value']  = $this->stock->newestValue();
