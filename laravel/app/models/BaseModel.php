@@ -18,8 +18,7 @@ class BaseModel extends \Eloquent{
     public function fill(array $attributes){
         $result = parent::fill($attributes);
 
-        if(method_exists($this, 'filled'))
-            $this->filled($attributes);
+        $this->callFilled($attributes);
 
         return $result;
     }
@@ -27,10 +26,17 @@ class BaseModel extends \Eloquent{
     public function setRawAttributes(array $attributes, $sync = false){
         $result = parent::setRawAttributes($attributes, $sync);
 
-        if(method_exists($this, 'filled'))
-            $this->filled($attributes);
+        $this->callFilled($attributes);
 
         return $result;
+    }
+
+    private function callFilled($attributes){
+        if(!method_exists($this, 'filled')) return false;
+
+        if(empty($attributes)) return false;
+
+        $this->filled($attributes);
     }
 
 

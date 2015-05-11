@@ -78,7 +78,13 @@
                     <tr>
                         <td>{{ $stock->symbol }}</td>
                         <td>{{ $stock->name }}</td>
-                        <td>{{ $stock->category->name }}</td>
+                        <td>
+                            @if($stock->category)
+                            {{ $stock->category->name }}
+                            @else
+                               No category
+                            @endif
+                            </td>
                         <td>
                             {{ Form::open(array('action' => array('AdminStockController@destroy', $stock->id), 'method' => 'DELETE', 'class' => 'pull-right')) }}
                                 <button type="submit" class="btn btn-danger btn-xs btn-confirm">
