@@ -9,6 +9,12 @@ class User extends BaseModel implements ConfideUserInterface
     use HermesTrait;
     use ConfideUser;
 
+    protected $fillable = ['email', 'username'];
+
+    public static $rules = array(
+
+    );
+
     public function player(){
         return $this->hasOne('Player');
     }
