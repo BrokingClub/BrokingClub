@@ -28,7 +28,7 @@ We finish up this section by including a unit test from our project written in P
 
 ### Test Plan (RUP)
 `Von Marc auszufüllen`
-*[RUP Test Plan.md](http://broking.club/doc/?f=rup-testing)*
+**[RUP Test Plan.md](http://broking.club/doc/?f=rup-testing)**
 
 ### Test coverage
 In software programming test coverage (also known as code coverage) describes a metric used to determine if source code is completely covered by its test suite.  
