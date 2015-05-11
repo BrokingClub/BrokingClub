@@ -10,6 +10,7 @@ namespace BrokingClub\RolePlay;
 
 
 use Event;
+use Purchase;
 
 class ExperienceDistributor {
 
@@ -17,11 +18,24 @@ class ExperienceDistributor {
 
 
     public function onStocksSold(Purchase $purchase){
+        $moneyMade = $purchase->resale()->grossEarned();
+
+        if($moneyMade < 0) return false;
+
+        $exp = floor($moneyMade / 1000);
+
+        return $this->addPoints($exp);
 
 
     }
 
     public function onStocksPurchased(Purchase $purchase){
+        $moneySpent = $purchase->bill()->getTotal();
+
+
+        $exp = floor($moneySpent / 2000);
+
+        return $this->addPoints($exp);
 
     }
 
@@ -35,6 +49,8 @@ class ExperienceDistributor {
      * @return bool
      */
     public function addPoints($amount, $reason = "No reason."){
+        if($amount < 0) return false;
+
         $player = Player::auth();
 
         if(!$player) return false;

@@ -28,10 +28,10 @@ class Notifier {
      * @param $oldLevel
      * @param $newLevel
      */
-    public function onExpAdded($player, $expGained){
-        $message = 'Your level increased from ' . $oldLevel . ' to ' . $newLevel;
+    public function onExpAdded($player, $amount, $reason){
+        $message = 'You have just gained ' .  $amount . ' Experience Points. Reason: ' . $reason;
 
-        static::flash('levelUp', 'Congratulations!', $message);
+        static::flash('levelUp', 'EXP gained', $message);
     }
 
 
