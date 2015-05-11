@@ -14,6 +14,8 @@ class PlayersController extends \BaseController {
 
         $this->data['players'] = $players;
 
+        $playersPerformances = App::make('PlayersPerformance');
+
 
 
         $this->setTitle('Ranking');

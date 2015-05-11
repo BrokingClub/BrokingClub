@@ -13,7 +13,7 @@ use BrokingClub\Cache\ObjectCache;
 use Carbon\Carbon;
 use Purchase;
 
-class PlayerPerformance extends ObjectCache
+class LeaderBoard extends ObjectCache
 {
 
     public function leaderBoard(){
