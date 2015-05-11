@@ -12,7 +12,6 @@ class PlayersController extends \BaseController {
 
         $this->leaderBoard = App::make('LeaderBoard');
     }
-
 	/**
 	 * Display a listing of the resource.
 	 * GET /players
@@ -21,11 +20,8 @@ class PlayersController extends \BaseController {
 	 */
 	public function index()
 	{
-        $players = Player::orderBy('balance', 'desc')->with('user')->get();
-
-        $this->data['players'] = $players;
-
         $this->leaderBoard->calculate();
+        $this->shareToView('entries', $this->leaderBoard->getEntries());
 
         $this->setTitle('Ranking');
 

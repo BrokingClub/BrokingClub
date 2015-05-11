@@ -10,14 +10,19 @@ namespace BrokingClub\Statistics;
 
 
 use BrokingClub\Repositories\PlayerRepository;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Collection;
+use Purchase;
 
 class LeaderBoardEntry {
+    /**
+     * @var \Player
+     */
     public $player;
 
     /**
-     * @var Collection
+     * @var Purchase[]
      */
     public $sales;
 
@@ -27,9 +32,15 @@ class LeaderBoardEntry {
     public $performance;
 
     /**
+     * @var float
+     */
+    public $steppedPerformance;
+
+    /**
      * @var PlayerRepository
      */
     private $playerRepository;
+
 
     /**
      * @param int $playerId
@@ -40,15 +51,51 @@ class LeaderBoardEntry {
 
         $this->player = $this->playerRepository->findById($playerId);
 
-        $this->sales = new Collection($sales);
+        $this->sales = $sales;
 
         $this->performance = $this->calculate();
+
+        $this->steppedPerformance = $this->steppedPerformance();
+
+    }
+
+
+    private function steppedPerformance(){
+        $start = Carbon::now()->subDays(LeaderBoard::$days);
+        $end = Carbon::now();
+
+        $stepDay = $start->copy();
+
+        $dailyPerformances = [];
+
+        for($i = 0; $i != LeaderBoard::$days; $i++){
+            $stepDay->addDay();
+
+            $dailyPerformances[$i] = 0;
+
+            /** @var Purchase $sale */
+            foreach($this->sales as $sale){
+
+
+                if($stepDay->lte($sale->created_at))
+                    break;
+
+
+
+                $dailyPerformances[$i] += $sale->resale()->grossEarned();
+            }
+        }
+
+        debug($dailyPerformances);
+
+        return $dailyPerformances;
+
+
     }
 
     private function calculate(){
         $performance = 0;
 
-        /** @var \Purchase $purchase */
         foreach($this->sales as $purchase){
             $performance += $purchase->resale()->grossEarned();
         }
@@ -65,8 +112,9 @@ class LeaderBoardEntry {
         $entries = new Collection();
 
         foreach($playersSales as $playerId => $playerSales){
-            $entries[$playerId] = new LeaderBoardEntry($playerId, $playersSales);
+            $entries[$playerId] = new LeaderBoardEntry($playerId, $playerSales);
         }
+
 
         return $entries;
     }

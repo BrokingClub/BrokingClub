@@ -16,11 +16,29 @@ use Purchase;
 class LeaderBoard extends ObjectCache
 {
 
+    public static $days = 60;
+
+    /**
+     * @var LeaderBoardEntry[]
+     */
+    private $entries;
+
+    /**
+     * Calculate which entries we will render
+     */
     public function calculate(){
 
-        $recentSales = $this->recentSales();
-        $entries = LeaderBoardEntry::entries($recentSales);
+        $recentSales = $this->recentSales(static::$days);
+        $this->entries = LeaderBoardEntry::entries($recentSales);
+        $this->entries->sortBy('performance', SORT_REGULAR, true);
 
+    }
+
+    /**
+     * @return LeaderBoardEntry[]
+     */
+    public function getEntries(){
+        return $this->entries->values();
     }
 
 
