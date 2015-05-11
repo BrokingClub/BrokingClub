@@ -63,6 +63,8 @@ class PurchasesController extends \BaseController
 
         $purchase->save();
 
+        Event::fire('stocks.purchased', [$purchase]);
+
         return Redirect::back()->withMessage(
             'You have just bought ' . $purchase->amount . 'x '
             . $stock->name . ' stocks, for ' . $bill->getTotal() . '$.');
@@ -123,6 +125,9 @@ class PurchasesController extends \BaseController
 
 
         $purchase->save();
+
+        Event::fire('stocks.sold', [$purchase]);
+
 
         return Redirect::back()->withMessage('Stocks sold for ' . Format::money($sellOffer) . '.');
 

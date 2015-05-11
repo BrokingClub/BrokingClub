@@ -14,7 +14,7 @@
 
 ### Test Plan (RUP)
 `Von Marc auszufüllen`
-*(RUP Test Plan.md)[http://broking.club/doc/?f=rup-testing)*
+**[RUP Test Plan.md](http://broking.club/doc/?f=rup-testing)**
 
 ### Test coverage
 `welche tools, wie benachrichtigung, aktueller stand und link`

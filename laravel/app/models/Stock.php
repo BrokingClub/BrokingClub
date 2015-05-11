@@ -50,7 +50,11 @@ class Stock extends BaseModel
 
     public function newestValue()
     {
-        return $this->newestValueObject()->value;
+        $newestValueObject = $this->newestValueObject();
+
+        if(!$newestValueObject) return 0;
+
+        return $newestValueObject->value;
     }
 
     public function newestValues($limit = 20)
@@ -87,6 +91,7 @@ class Stock extends BaseModel
     public function changeRatePercent($asString = false, $range = 20)
     {
         $newestValues = $this->newestValues($range);
+
         return $this->marketLogic->changeRatePercent($newestValues, $asString);
     }
 
