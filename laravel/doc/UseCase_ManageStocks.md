@@ -17,9 +17,15 @@ The admin can manage the stocks in the admin panel.
 # Flow of Events
 ## 	Basic Flow
 
-By choosing one stock out of the list, the admin can edit the attributes of this stock.
-The admin can also add a new stock bei clicking the "Add stock" button. Then he has to type in the required
-values to add a new stock.
+![Login screenshot](http://broking.club/img/doc/screens/scr_managestocks.PNG)
+
+An administrator is able to create a new stock by entering the symbol and the name of the stock. Also a
+category has to be selected out of the list. 
+The categories of the different stocks can be managed on the same page. New categories can be added, and
+existing categories can be removed from the system. 
+At the bottom of this page there is a list of all stocks in the system with an overview
+about the names, symbols and categories of the stocks. Those stocks can be directly in this list
+removed from the system.
 
 ![Activity Diagram](http://broking.club/img/doc/ad/ad_ManageStocks.png)
 
