@@ -1,3 +1,4 @@
+<div class="flashmessages">
 @if (Session::get('error'))
     <div class="alert alert-error alert-danger">
         @if (is_array(Session::get('error')))
@@ -26,15 +27,17 @@
 
 @if (Session::get('rolePlay.expAdded'))
     <div class="alert alert-info">
-        <b>{{ Session::get('rolePlay.expAdded.title') }}:</b>
+        <h3><i class="fa fa-book"></i> {{ Session::get('rolePlay.expAdded.title') }}</h3>
         {{ Session::get('rolePlay.expAdded.message') }}
     </div>
 @endif
 
 @if (Session::get('rolePlay.levelUp'))
     <div class="alert alert-success">
-        <b>{{ Session::get('rolePlay.levelUp.title') }}:</b>
+        <h3><i class="fa fa-rocket"></i> {{ Session::get('rolePlay.levelUp.title') }} </h3>
         {{ Session::get('rolePlay.levelUp.message') }}
     </div>
 @endif
+
+</div>
 

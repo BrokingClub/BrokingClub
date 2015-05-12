@@ -16,6 +16,13 @@ class Club extends \BaseModel {
         return $this->belongsTo('Player');
     }
 
+    public function isValid(){
+        if(!$this->owner) return false;
+        if($this->countMembers() == 0) return false;
+
+        return true;
+    }
+
     public function members() {
         return $this->hasMany('Player');
     }

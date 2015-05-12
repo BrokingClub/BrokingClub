@@ -67,6 +67,11 @@ class BaseController extends Controller
         $this->data = $this->viewInjector->inject($this->data);
     }
 
+    protected function failBack($message){
+        return Redirect::back()->withError($message);
+
+    }
+
 
 
 

@@ -29,6 +29,7 @@ class ServiceProvider extends IlluminateProvider{
 
         $this->app->singleton('RolePlayNotifier', 'BrokingClub\\RolePlay\Notifier');
         $this->app->singleton('LeaderBoard', 'BrokingClub\\Statistics\\LeaderBoard');
+        $this->app->bind('LevelManager', 'BrokingClub\\RolePlay\\LevelManager');
     }
 
 

@@ -30,7 +30,13 @@ class LevelManager {
      * @return int
      */
     public function expForLevel($level){
-        return ceil((($level ^ 2) * 4) + 10);
+        $levels = \Config::get('brokingclub.levels');
+
+        if(isset($levels[$level]))
+            return $levels[$level];
+
+        return 9 * 10^6;
+
     }
 
     /**
@@ -38,12 +44,11 @@ class LevelManager {
      * @return int
      */
     public function levelForExp($exp){
-        if($exp < 10) return 1;
+        for($i = 0; $i != 100; $i++){
+            if($this->expForLevel($i) > $exp && $i > 0) return $i-1;
+        }
 
-        $level = floor(sqrt(($exp - 10) / 4));
-        if($level == 0) $level = 1;
-
-        return $level;
+        return 0;
 
     }
 

@@ -68,7 +68,7 @@ class PlayersController extends \BaseController {
 
         $this->data['player'] = $player;
         $this->shareToView('isMyself', $player->id == Player::auth()->id);
-
+        $this->shareToView('nextLevelExp', App::make('LevelManager')->expForLevel($player->level+1));
 
 
         return $this->makeView('pages.game.player.show');
@@ -212,6 +212,6 @@ class PlayersController extends \BaseController {
         if(Player::auth()->career_id == 0)
             return Redirect::action('PlayersController@setCareer');
         else
-            return Redirect::to('players/' . Player::auth()->id);
+            return $this->show(Player::auth()->id);
     }
 }

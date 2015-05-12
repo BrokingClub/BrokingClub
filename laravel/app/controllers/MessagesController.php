@@ -28,7 +28,7 @@ class MessagesController extends \BaseController {
 
 
         if($conversations->count() == 0)
-            return Redirect::route('dashboard')->withMessage('No conversations yet.');
+            return Redirect::route('dashboard')->withNotice('No conversations yet.');
 
         return Redirect::route('messages.show', ['id' => $conversations->last()->id]);
 	}

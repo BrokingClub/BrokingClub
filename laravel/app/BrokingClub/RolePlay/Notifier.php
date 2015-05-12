@@ -33,7 +33,7 @@ class Notifier {
     public function onExpAdded($player, $amount, $reason){
         $message = 'You have just gained ' .  $amount . ' Experience Points. Reason: ' . $reason;
 
-        static::flash('expAdded', 'EXP gained', $message);
+        static::flash('expAdded', 'Experience gained', $message);
     }
 
 

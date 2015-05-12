@@ -33,6 +33,7 @@
                     <li>Purchases Worth: <div class="setting-switch">{{ Format::money($player->purchasesWorth()) }}</div></li>
                     <li>Worth: <div class="setting-switch"><b>{{ Format::money($player->totalWorth()) }}</b></div></li>
                     <li>Career: <div class="setting-switch">{{ $player->careerName() }}</div></li>
+                    <li>EXP: <div class="setting-switch">{{ $player->exp }} / {{ $nextLevelExp }}</div></li>
                     <li>Club:
                         <div class="setting-switch">
                             {{ $player->clubLink() }}

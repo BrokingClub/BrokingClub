@@ -24,6 +24,10 @@ class Player extends BaseModel {
         return $this->hasMany('Purchase')->orderBy('created_at', 'DESC')->where('mode', '<>', 'sold');
     }
 
+    public function sold(){
+        return $this->hasMany('Purchase')->orderBy('created_at', 'DESC')->where('mode', '=', 'sold');
+    }
+
     public function charge($price){
         $balance = $this->balance;
 

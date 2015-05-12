@@ -24,7 +24,10 @@ class RepositoryCache extends ObjectCache{
         if(!$fail){
             $newObject = $class::find($id);
         } else {
-            $newObject = $class::findOrFail($id);
+            $newObject = $class::find($id);
+            if(!$newObject){
+                throw new \Exception("Model " . $this->class . ':' . $id . ' not found.');
+            }
         }
 
         $this->store($id, $newObject);

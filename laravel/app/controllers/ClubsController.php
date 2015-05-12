@@ -83,6 +83,8 @@ class ClubsController extends \BaseController {
 
         $club = Club::findOrFail($id);
 
+        if(!$club->isValid()) return $this->failBack('Club ' . $id . ' is not valid.');
+
         $this->setTitle($club->name . ' - ' . $club->teaser);
 
         $this->data['club'] = $club;
