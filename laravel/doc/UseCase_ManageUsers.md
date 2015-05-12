@@ -17,7 +17,15 @@ The admin can manage the users in the admin panel.
 # Flow of Events
 ## 	Basic Flow
 
-By choosing one user out of the list, the admin can edit the attributes of this user.
+![Login screenshot](http://broking.club/img/doc/screens/scr_manageusers.PNG)
+
+On the overview of the users an admin can see immediately some basic informations like
+the UserID and the username but also the role of the user, whether he is just a normal
+user or an administratior of broking.club.
+With one click an admin can open an user's profile in a new tab with the button on the right.
+The yellow button opens the view to edit all informations about one user. Editable for an administrator
+are the full name, the mail, the username, the role, the chosen career, the membership and the role of a club,
+the total balanace and the experience points.
 
 ![Activity Diagram](http://broking.club/img/doc/ad/ad_ManageUsers.png)
 

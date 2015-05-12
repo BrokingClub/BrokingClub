@@ -17,7 +17,11 @@ The players can write themselfes messages to communicate with each other.
 # Flow of Events
 ## 	Basic Flow
 
---
+![Login screenshot](http://broking.club/img/doc/screens/scr_messages.PNG)
+Any user can write messages to other users. To write a message you can visit any profile
+and click the "message" button to add this person to your message history. 
+Now you can send messages to this user. 
+
 
 ![Activity Diagram](http://broking.club/img/doc/ad/ad_ManageStocks.png)
 

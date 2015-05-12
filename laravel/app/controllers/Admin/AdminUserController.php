@@ -81,16 +81,19 @@ class AdminUserController extends AdminBaseController
     public function update($id) {
         $player = Player::findOrFail($id);
 
-        $inputPlayer = Input::only('firstname', 'lastname');
+        $inputPlayer = Input::only('firstname', 'lastname', 'balance', 'exp', 'club_id', 'club_role', 'career_id');
         $inputUser = Input::only('email', 'username', 'role');
 
-        $player->validateAndSave($inputPlayer);
+        $playerResult = $player->validateAndSave($inputPlayer);
+
         $user = $player->user;
-        $user->validateAndSave($inputUser);
+        $userResult = $user->validateAndSave($inputUser);
 
+        if(!$playerResult || !$userResult){
+            return Redirect::back()->withError("Fail");
+        }
 
-        $data['users'] = User::paginate(15);
-        return $this->makeView("pages.admin.users")->with($data);
+        return Redirect::back()->withMessage('Success!!');
     }
 
     /**
