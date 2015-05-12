@@ -18,7 +18,6 @@ The admin can manage the stocks in the admin panel.
 ## 	Basic Flow
 
 ![Login screenshot](http://broking.club/img/doc/screens/scr_managestocks.PNG)
-
 An administrator is able to create a new stock by entering the symbol and the name of the stock. Also a
 category has to be selected out of the list. 
 The categories of the different stocks can be managed on the same page. New categories can be added, and
