@@ -21,7 +21,7 @@
                                 <a href="{{ URL::route('players.show', $entry->player->id)  }}">{{ $entry->player->name() }}</a></td>
                                 <td>{{ Format::money($entry->player->balance) }} $</td>
                                 <td>
-                                     <span class="mini-stockchart">{{ implode(',', $entry->steppedPerformance) }}</span>
+                                     <span class="mini-performance">{{ implode(',', $entry->steppedPerformance) }}</span>
                                      <b>{{ Format::money($entry->performance) }}</b>
 
                                 </td>

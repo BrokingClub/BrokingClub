@@ -43,6 +43,15 @@ jQuery(document).ready(function($) {
         'stroke': '#cccccc'
     })
 
+    $(".mini-performance").peity("bar", {
+        'height': 30,
+        'width': 100,
+        'fill': function(value) {
+            return value > 0 ? "#27ae60" : "#e74c3c"
+        }
+
+    })
+
 
 
 

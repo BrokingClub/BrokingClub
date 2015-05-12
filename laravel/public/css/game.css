@@ -324,7 +324,7 @@ table.table-striped tr:nth-child(even){
     min-width: 100px;
 }
 
-.mini-stockchart{
+.mini-stockchart, .mini-performance{
     display: none;
 }
 

@@ -6,7 +6,8 @@
  * Time: 20:31
  */
 
-class BaseModel extends \Eloquent{
+class BaseModel extends Eloquent
+{
     public static $validationMessages = null;
 
     private $objectValidation;

@@ -1,6 +1,6 @@
 <?php
 
-class PurchasesController extends \BaseController
+class PurchasesController extends BaseController
 {
 
     /**

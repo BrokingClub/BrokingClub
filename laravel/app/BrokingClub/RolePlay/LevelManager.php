@@ -38,9 +38,13 @@ class LevelManager {
      * @return int
      */
     public function levelForExp($exp){
-        if($exp < 10) return 0;
+        if($exp < 10) return 1;
 
-        return floor(sqrt(($exp - 10) / 4));
+        $level = floor(sqrt(($exp - 10) / 4));
+        if($level == 0) $level = 1;
+
+        return $level;
+
     }
 
 

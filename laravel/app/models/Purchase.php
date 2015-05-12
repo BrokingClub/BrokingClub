@@ -5,8 +5,7 @@ use BrokingClub\View\FontAwesome;
 use BrokingClub\Purchase\Bill;
 
 class Purchase extends BaseModel {
-    /**
-     * @var Bill
+    /**      * @var Bill
      */
     public $bill;
 

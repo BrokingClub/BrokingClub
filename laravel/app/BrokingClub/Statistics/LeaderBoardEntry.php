@@ -55,12 +55,10 @@ class LeaderBoardEntry {
 
         $this->performance = $this->calculate();
 
-        $this->steppedPerformance = $this->steppedPerformance();
-
     }
 
 
-    private function steppedPerformance(){
+    public function steppedPerformance($maximum){
         $start = Carbon::now()->subDays(LeaderBoard::$days);
         $end = Carbon::now();
 
@@ -68,8 +66,8 @@ class LeaderBoardEntry {
 
         $dailyPerformances = [];
 
-        for($i = 0; $i != LeaderBoard::$days; $i++){
-            $stepDay->addDay();
+        for($i = 0; $i != LeaderBoard::$days; $i += 5){
+            $stepDay->addDays(5);
 
             $dailyPerformances[$i] = 0;
 
@@ -84,13 +82,12 @@ class LeaderBoardEntry {
 
                 $dailyPerformances[$i] += $sale->resale()->grossEarned();
             }
+
         }
 
-        debug($dailyPerformances);
+        $this->steppedPerformance = $dailyPerformances;
 
-        return $dailyPerformances;
-
-
+        return $this->steppedPerformance;
     }
 
     private function calculate(){

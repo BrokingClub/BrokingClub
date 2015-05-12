@@ -32,6 +32,13 @@ class LeaderBoard extends ObjectCache
         $this->entries = LeaderBoardEntry::entries($recentSales);
         $this->entries->sortBy('performance', SORT_REGULAR, true);
 
+        $this->performanceSteps($this->entries->first()->performance);
+    }
+
+    private function performanceSteps($maximum){
+        foreach($this->entries as $entry){
+            $entry->steppedPerformance($maximum);
+        }
     }
 
     /**
