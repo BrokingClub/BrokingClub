@@ -34,10 +34,11 @@ class ExperienceDistributor {
         $moneyMade = $purchase->resale()->grossEarned();
 
         if($moneyMade < 0) return false;
+        $moneyMade = floor($moneyMade / 200) * 200;
 
         $exp = floor($moneyMade / 200);
 
-        return $this->addPoints($exp, "Winning " + $moneyMade + "$ by trading stocks.");
+        return $this->addPoints($exp, "Winning more than " . $moneyMade . "$ by trading stocks.");
 
 
     }
@@ -47,8 +48,10 @@ class ExperienceDistributor {
 
 
         $exp = floor($moneySpent / 2000);
+        $moneySpent = floor($moneySpent / 2000) * 2000;
 
-        return $this->addPoints($exp, "Spending " + $moneySpent + "$ on stocks.");
+
+        return $this->addPoints($exp, "Spending " . $moneySpent . "$ on stocks.");
 
     }
 

@@ -13,9 +13,10 @@ class RepositoryCache extends ObjectCache{
     protected $class = "EmptyClass";
 
     public function findById($id, $fail = true){
-        $inCache = $this->findInCache($id);
+        $inCache = $this->get($id);
 
         if($inCache) return $inCache;
+
 
         $class = $this->class;
         if(strpos($class, "\\") === false) $class = "\\" . $class;
@@ -32,9 +33,4 @@ class RepositoryCache extends ObjectCache{
 
     }
 
-    private function findInCache($id){
-        if(!$this->has($id)) return false;
-
-        return $this->get($id);
-    }
 } 

@@ -80,11 +80,27 @@ class Resale
     }
 
     public function grossEarned(){
+        if($this->purchase->earned != 0) return $this->purchase->earned;
+
         $nettEarned = $this->nettEarned();
 
         $grossEarned = $nettEarned - $this->purchase->fee;
 
         return $grossEarned;
+    }
+
+    public function earnedString(){
+        $string = "";
+
+        $grossEarned = floor($this->grossEarned());
+
+        if($grossEarned > 0)
+            $string = "You have earned ". $grossEarned . "$ with this sale, f*** yeah.";
+        else
+            $string = "Oh no, you lost ". $grossEarned . "$ with this sale.";
+
+
+        return $string;
     }
 
     public function leverageFactor(){

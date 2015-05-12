@@ -25,5 +25,10 @@ class CacheServiceProvider extends ServiceProvider
         {
             return new CacheManager();
         });
+
+        App::after(function($request, $response)
+        {
+            debug(ObjectCache::$statistics);
+        });
     }
 } 

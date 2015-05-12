@@ -2,6 +2,16 @@
 
 class PlayersController extends \BaseController {
 
+    /**
+     * @var \BrokingClub\Statistics\LeaderBoard
+     */
+    private $leaderBoard;
+
+    public function __construct(){
+        parent::__construct();
+
+        $this->leaderBoard = App::make('LeaderBoard');
+    }
 	/**
 	 * Display a listing of the resource.
 	 * GET /players
@@ -10,16 +20,14 @@ class PlayersController extends \BaseController {
 	 */
 	public function index()
 	{
-        $players = Player::orderBy('balance', 'desc')->with('user')->get();
-
-        $this->data['players'] = $players;
-
-
+        $this->leaderBoard->calculate();
+        $this->shareToView('entries', $this->leaderBoard->getEntries());
 
         $this->setTitle('Ranking');
 
         return $this->makeView('pages.game.player.index');
 	}
+
 
 	/**
 	 * Show the form for creating a new resource.

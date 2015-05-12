@@ -12,14 +12,17 @@
                     </thead>
                     <tbody>
 
-                        @foreach($players as $i => $player)
+                        @foreach($entries as $i => $entry)
                             <tr>
                                 <td>{{ $i + 1 }}</td>
-                                <td><a href="{{ URL::route('players.show', $player->id)  }}">{{ $player->name() }}</a></td>
-                                <td>{{ $player->balance }} $</td>
                                 <td>
 
-                                         <span class="mini-stockchart">{{ Fickle::randomChartValues() }}</span>
+
+                                <a href="{{ URL::route('players.show', $entry->player->id)  }}">{{ $entry->player->name() }}</a></td>
+                                <td>{{ Format::money($entry->player->balance) }} $</td>
+                                <td>
+                                     <span class="mini-stockchart">{{ implode(',', $entry->steppedPerformance) }}</span>
+                                     <b>{{ Format::money($entry->performance) }}</b>
 
                                 </td>
                             </tr>

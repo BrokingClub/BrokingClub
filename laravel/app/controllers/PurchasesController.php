@@ -112,15 +112,17 @@ class PurchasesController extends \BaseController
             return $this->sell($purchase);
     }
 
-    public function sell($purchase)
+    public function sell(Purchase $purchase)
     {
         $player = $purchase->player;
         $player->editAllowedOrFail();
 
         $sellOffer = $purchase->sellOffer();
+        $moneyGained = $purchase->resale()->grossEarned();
         $player->balance += $sellOffer;
 
         $purchase->mode = "sold";
+        $purchase->earned = $moneyGained;
 
         $player->save();
 
@@ -130,7 +132,7 @@ class PurchasesController extends \BaseController
         Event::fire('stocks.sold', [$purchase]);
 
 
-        return Redirect::back()->withMessage('Stocks sold for ' . Format::money($sellOffer) . '.');
+        return Redirect::back()->withMessage('Stocks sold for ' . Format::money($sellOffer) . '. ' . $purchase->resale()->earnedString());
 
 
     }

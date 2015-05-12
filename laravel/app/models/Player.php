@@ -78,6 +78,10 @@ class Player extends BaseModel {
     }
 
     public function name($hide_username = true) {
+        if(!$this->user){
+            throw new Exception("Unkown user ". $this->user_id ." for player " . $this->id);
+        }
+
         $name = $this->user->username;
         $fullname = trim(implode(' ', [$this->firstname, $this->lastname]));
 
