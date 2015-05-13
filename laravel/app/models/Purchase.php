@@ -1,11 +1,14 @@
 <?php
 
 use BrokingClub\Purchase\Resale;
+use BrokingClub\Services\CalculationService;
 use BrokingClub\View\FontAwesome;
 use BrokingClub\Purchase\Bill;
 
-class Purchase extends BaseModel {
-    /**      * @var Bill
+class Purchase extends BaseModel
+{
+    /**
+     * @var Bill
      */
     public $bill;
 
@@ -15,20 +18,21 @@ class Purchase extends BaseModel {
     public $resale;
 
     /**
-     * @var BrokingClub\Services\CalculationService
+     * @var CalculationService
      */
     private $calculator;
 
-	protected $fillable = [];
+    protected $fillable = [];
 
     public static $rules = array(
-        'stock_id'  => 'required|exists:stocks,id',
-        'amount'    => 'required|integer|between:1,9999',
-        'fee'       => 'required|numeric|min:0',
-        'value'       => 'required|numeric|min:0',
+        'stock_id' => 'required|exists:stocks,id',
+        'amount' => 'required|integer|between:1,9999',
+        'fee' => 'required|numeric|min:0',
+        'value' => 'required|numeric|min:0',
     );
 
-    public function __construct(array $attributes = array()){
+    public function __construct(array $attributes = array())
+    {
 
         $this->calculator = App::make('CalculationService');
 
@@ -38,23 +42,26 @@ class Purchase extends BaseModel {
     /**
      * Calculate the bill and the offer if values from the database are filled in
      */
-    public function filled(){
+    public function filled()
+    {
 
         $this->bill();
         $this->resale();
     }
 
 
-
-    public function stock() {
+    public function stock()
+    {
         return $this->belongsTo('Stock');
     }
 
-    public function player() {
+    public function player()
+    {
         return $this->belongsTo('Player');
     }
 
-    public function paidPerStock(){
+    public function paidPerStock()
+    {
         return $this->bill()->getPerStock();
     }
 
@@ -62,8 +69,9 @@ class Purchase extends BaseModel {
      * @param bool $recalculate
      * @return Bill
      */
-    public function bill($recalculate = false){
-        if(!$this->bill || $recalculate)
+    public function bill($recalculate = false)
+    {
+        if (!$this->bill || $recalculate)
             $this->bill = $this->calculator->bill($this);
 
         return $this->bill;
@@ -73,23 +81,27 @@ class Purchase extends BaseModel {
      * @param bool $recalculate
      * @return Resale
      */
-    public function resale($recalculate = false){
-        if(!$this->resale || $recalculate)
+    public function resale($recalculate = false)
+    {
+        if (!$this->resale || $recalculate)
             $this->resale = $this->calculator->resale($this);
 
         return $this->resale;
     }
 
-    public function price(){
+    public function price()
+    {
         return $this->stock->price($this->amount);
     }
 
 
-    public function earned(){
+    public function earned()
+    {
         return $this->resale()->grossEarned();
     }
 
-    public function sellOffer(){
+    public function sellOffer()
+    {
         return $this->resale()->offer();
     }
 
@@ -97,15 +109,18 @@ class Purchase extends BaseModel {
     /**
      * @return string
      */
-    public function earnedIcon(){
+    public function earnedIcon()
+    {
         return FontAwesome::changeRateIcon($this->earnedMode());
     }
 
-    public function earnedMode(){
+    public function earnedMode()
+    {
         return $this->resale()->earnedMode();
     }
 
-    public function total(){
+    public function total()
+    {
         return $this->bill()->getTotal();
     }
 
@@ -113,8 +128,9 @@ class Purchase extends BaseModel {
      * @param Stock $stock
      * @param int $amount
      */
-    public function fillPurchase($stock, $amount = 0){
-        if($this->stock_id != $stock->id){
+    public function fillPurchase($stock, $amount = 0)
+    {
+        if ($this->stock_id != $stock->id) {
             $this->stock_id = $stock->id;
         }
 
@@ -124,19 +140,17 @@ class Purchase extends BaseModel {
         $this->resale(true);
     }
 
-    public function setAmountAttribute($amount){
-        if($amount == 0){
+    public function setAmountAttribute($amount)
+    {
+        if ($amount == 0) {
             $amount = $this->amount;
         }
 
 
         $this->attributes['amount'] = $amount;
-        $this->attributes['value']  = $this->stock->newestValue();
-        $this->attributes['fee']  = $this->bill(true)->getFee();
+        $this->attributes['value'] = $this->stock->newestValue();
+        $this->attributes['fee'] = $this->bill(true)->getFee();
     }
-
-
-
 
 
 }
