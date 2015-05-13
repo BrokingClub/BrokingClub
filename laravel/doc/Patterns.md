@@ -53,9 +53,6 @@ We decided that the SR-principle is the way to go.
 ### Single Responsibility principle
 Some of our classes grew over the course of the last semester. Especially the purchase model had a lot of logic that a simple model should not contain.
 
-#### Changes in the software architecture (document)
-
-!!TODO
 
 #### Why / Pros
 Our models contain some logic that should not be inside a simple MVC model. Since models are just the connection between the database values and the 
@@ -167,13 +164,25 @@ class Purchase extends BaseModel
 
 #### Drawed UMLs
 
+##### Changes in the software architecture (orange)
+
+![SAD diagram](http://broking.club/img/doc/diagrams/architecture_overview_refactored.png)  
+[Full size](http://broking.club/img/doc/diagrams/architecture_overview_refactored.png)  
+
+**Software architecture document**: [Link to SAD](http://broking.club/doc/?f=sad)  
+
+
 ##### Before refactoring
-![Purchase part before refactoring](http://broking.club/img/doc/patterns/BeforeRefactoring.jpg)  
+![Purchase part before refactoring](http://broking.club/img/doc/patterns/Refactoring_Before.jpg)  
+[Full Size](http://broking.club/img/doc/patterns/Refactoring_Before.jpg)  
+
 
 
 
 ##### After refactoring
-![Purchase part after refactoring](http://broking.club/img/doc/patterns/AfterRefactoring.jpg)  
+![Purchase part after refactoring](http://broking.club/img/doc/patterns/Refactoring_After.jpg)  
+[Full Size](http://broking.club/img/doc/patterns/Refactoring_After.jpg)  
+
 
 
 

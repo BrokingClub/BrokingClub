@@ -84,6 +84,11 @@ The PHP Framework Laravel provides a clean implementation of the MVC-Concept. In
 ## Architecturally Significant Design Packages
 ![Architecture Overview](http://broking.club/img/doc/diagrams/architecture_overview.png)
 
+
+**Parts that were changed by refactoring**
+![Refactored part](http://broking.club/img/doc/diagrams/architecture_overview_refactored.png)  
+[Full size](http://broking.club/img/doc/diagrams/architecture_overview_refactored.png)  
+
 # Data View (optional)
 To store the data of our users and the transactions they started we need a good database planning. In this ERM you can see how the data will be structured in our game.
 The stock values table will be filled by our NodeJS Tracker, that received the data from the Yahoo finance API. Persistence is realised via the Laravel ORM Eloquent.
