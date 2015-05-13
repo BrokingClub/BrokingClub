@@ -64,13 +64,21 @@ view it is not nice to have calculation logic inside them.
 It is easy to put code into models, but decreases readability and the system will be harder to maintain. 
 
 This is wy we removed the mathematical formulas from the purchase model into services and repositories:
-* BrokingClub/Purchase/Bill: A class that handles the pricing of a stock. It calculates the fee, the nett costs and the gross costs. A user will be charged by a certain amount if he buys stocks.
-* BrokingClub/Purchase/Resale: A class that just works like the bill. But instead of handling the price of a purchase, it will calculate the offer for a sale.
-* BrokingClub/Purchase/Bank: The bank tells you how much fees you have to pay
-* BrokingClub/Repositories/PurchaseRepository: Has to be used to get purchases out of the database.
-* BrokingClub/Repositories/StockRepository: Has to be used to get stocks out of the database. It contains some handy functions like "getByPurchase". So you don't have the logic for database relations inside your controller or even your model.
-* BrokingClub/Cache/RepositoryCache: All the repositories that extend this class will automatically cache the database results (Small classes are awesome!)
-* BrokingClub/Cache/StockValuesCache: We have a lot of stock values from each day inside our database. This is why we use a intelligent system to cache them effectively (Hit:Miss ratio is about 50:1) - this speeds up the system.
+* **BrokingClub/Purchase/Bill** A class that handles the pricing of a stock. It calculates the fee, the nett costs and the gross costs. A user will be charged by a certain amount if he buys stocks.
+* **BrokingClub/Purchase/Resale**: A class that just works like the bill. But instead of handling the price of a purchase, it will calculate the offer for a sale.
+* **BrokingClub/Purchase/Bank**: The bank tells you how much fees you have to pay
+* **BrokingClub/Repositories/PurchaseRepository**: Has to be used to get purchases out of the database.
+* **BrokingClub/Repositories/StockRepository**: Has to be used to get stocks out of the database. It contains some handy functions like "getByPurchase". So you don't have the logic for database relations inside your controller or even your model.
+* **BrokingClub/Cache/RepositoryCache**: All the repositories that extend this class will automatically cache the database results (Small classes are awesome!)
+* **BrokingClub/Cache/StockValuesCache**: We have a lot of stock values from each day inside our database. This is why we use a intelligent system to cache them effectively (Hit:Miss ratio is about 50:1) - this speeds up the system.
+
+
+#### Result
+**Before**:
+[Purchase Class before](https://github.com/BrokingClub/BrokingClub/blob/39847ba8bbaedea9dde514a741f692cbc0519c27/laravel/app/models/Purchase.php)
+
+**After**:
+[Purchase Class after](https://github.com/BrokingClub/BrokingClub/blob/master/laravel/app/models/Purchase.php)
 
 #### Cons
 Like you see in the list above - we need a lot of classes for the single responsibility pattern. Certainly you can not have both small classes and few files, the code has to be somewhere.
@@ -128,7 +136,8 @@ The test values are **not hard coded**.
 [Further explanation in our test documentation](?f=testing)
 
 
-#### UML
+#### Auto generating UML
+
 It is possible to create UML diagrams inside our IDE Jetbrains PhpStorm, just like in any other Jetbrains IDE.
 The problem is that PHP does not support a strong type system. This makes the language very flexible and nice for rapid prototyping, but this behaviour is not good for creating UML diagrams automatically.
 
@@ -153,11 +162,20 @@ class Purchase extends BaseModel
     private $calculator;
 ```
 
-**The auto generated digram just looks like this**:
+**The auto generated digram just looks like this (no bill, resale or calculator connections)**:
 ![Purchase UML auto generated](http://broking.club/img/doc/patterns/Refactoring_Purchase_PhpStorm.png)  
 
+#### Drawed UMLs
 
-!! TODO
+##### Before refactoring
+![Purchase part before refactoring](http://broking.club/img/doc/patterns/BeforeRefactoring.jpg)  
+
+
+
+##### After refactoring
+![Purchase part after refactoring](http://broking.club/img/doc/patterns/AfterRefactoring.jpg)  
+
+
 
 {{{ ENDCONTENT }}}
 

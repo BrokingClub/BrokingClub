@@ -38,6 +38,10 @@ class DebugController extends Controller{
     public function getRichsimon(){
         $player = Player::find(9);
 
+        $player->level = 1;
+        $player->exp = 9;
+        $player->save();
+
         foreach($player->sold as $purchase){
             if($purchase->mode == "sold" && $purchase->earned > 1){
                 echo "Revived purchase " . $purchase->id . " " . $purchase->earned . "€";
