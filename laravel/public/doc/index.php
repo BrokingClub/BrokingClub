@@ -21,6 +21,8 @@ $documo->addFile('Use case manageclubs'     , 'UseCase_ManageClubs.md', 'uc_mana
 $documo->addFile('Use case managestocks'     , 'UseCase_ManageStocks.md', 'uc_managestocks', false);
 $documo->addFile('Use case manageusers'     , 'UseCase_ManageUsers.md', 'uc_manageusers', false);
 $documo->addFile('Use case messaging'     , 'UseCase_Messaging.md', 'uc_messaging', false);
+$documo->addFile('Use case roleplay'     , 'UseCase_Roleplay.md', 'uc_roleplay', false);
+$documo->addFile('Use case ranking'     , 'UseCase_Ranking.md', 'uc_ranking', false);
 
 $documo->addFile('Software Requirements Specification',  'SoftwareRequirementsSpecification.md', 'srs', true);
 $documo->addFile('Software Architecture Document',  'SoftwareArchitectureDocument.md', 'sad', true);

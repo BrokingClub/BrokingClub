@@ -36,11 +36,21 @@ The definitions listed beyond are used inside the document and are summarized ve
 
 ## References 
 
-* [Use case diagram]( http://blog.broking.club/documentation/use-case-diagram/)
-* [Use case: Login](http://broking.club/doc/?f=uc_login)
-* [Use case: Change password](http://broking.club/doc/?f=uc_changepassword)
-* [Use case: Manage clubs](http://broking.club/doc/?f=uc_manageclubs)
-* [Use case: Exchange stocks](http://broking.club/doc/?f=uc_exchangestocks)
+###Semester 3
+
+* [Use Case: Login](?f=uc_login)
+* [Use Case: Register](?f=uc_register)
+* [Use Case: Edit Profile](?f=uc_editprofile)
+* [Use Case: Manage clubs](?f=uc_manageclubs)
+* [Use Case: Exchange stocks](?f=uc_exchangestocks)
+
+###Semester 4
+
+* [Use Case: Manage stocks](?f=uc_managestocks)
+* [Use Case: Manage users](?f=uc_manageusers)
+* [Use Case: Messaging between players](?f=uc_messaging)
+* [Use Case: Ranking and stats](?f=uc_ranking)
+* [Use Case: Roleplay and level up](?f=uc_roleplay)
 
 > TODO: Add the rest
 
