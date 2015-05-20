@@ -27,7 +27,6 @@ We finish up this section by including a unit test from our project written in P
 ![Unit test](http://broking.club/img/doc/testing/unittest.jpg)
 
 ### Test Plan (RUP)
-`Von Marc auszufüllen`
 **[RUP Test Plan.md](http://broking.club/doc/?f=rup-testing)**
 
 ### Test coverage
