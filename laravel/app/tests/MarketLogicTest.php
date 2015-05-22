@@ -41,13 +41,6 @@ class MarketLogicTest extends TestCase{
         $fallingChangeRateMode = $marketLogic->changeRateMode($stockValuesFalling);
         $risingChangeRateMode = $marketLogic->changeRateMode($stockValuesRising);
 
-        var_dump($fallingChangeRate);
-        var_dump($risingChangeRate);
-        var_dump($fallingChangeRatePercent);
-        var_dump($risingChangeRatePercent);
-        var_dump($fallingChangeRateMode);
-        var_dump($risingChangeRateMode);
-
 
         $this->assertLessThan(1, $fallingChangeRate, '$fallingChangeRate ');
         $this->assertGreaterThan(1, $risingChangeRate, '$risingChangeRate');

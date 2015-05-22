@@ -29,8 +29,11 @@ class User extends BaseModel implements ConfideUserInterface
         return $this->role === "admin";
     }
 
-    public static function canEdit($user_id){
-        $auth_id = Auth::user()->id;
+    public static function canEdit($user_id, $editingUser = false){
+        if(!$editingUser)
+            $auth_id = Auth::user()->id;
+        else
+            $auth_id = $editingUser;
 
         if($user_id == $auth_id)    return true;
         else                        return false;

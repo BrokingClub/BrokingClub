@@ -5,4 +5,5 @@ exclude_paths:
 - "*fancybox/*"
 - "*documo/*"
 - "*landing/*"
-- "*vendor/*"
+- "vendor/*"
+- "app/controllers/DebugController.php"
