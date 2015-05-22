@@ -19,10 +19,7 @@ class MarketLogic {
      */
     public function changeRate($stockValues)
     {
-
         if($stockValues->count() < 2) return 0;
-
-
 
         $newestValue = $stockValues->first()->value;
         $oldestValue = $stockValues->last()->value;
