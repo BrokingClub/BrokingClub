@@ -25,8 +25,11 @@ class ArrayGenerator {
 
             $percent = ($variation / $maxVariation) * 100;
 
+            $percent = round($percent,2);
+
             $variations[] = $percent;
         }
+
 
         return $variations;
     }

@@ -9,7 +9,6 @@
 
 
 @section('content')
-
         {{ Fickle::openWidget(4, 'setting', $player->name(), 'user') }}
                 <ul>
                     <li><div class="userHead">

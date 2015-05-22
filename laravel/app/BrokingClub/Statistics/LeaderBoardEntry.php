@@ -112,7 +112,6 @@ class LeaderBoardEntry {
             $entries[$playerId] = new LeaderBoardEntry($playerId, $playerSales);
         }
 
-
         return $entries;
     }
 } 

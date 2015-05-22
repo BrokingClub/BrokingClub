@@ -57,11 +57,21 @@ class Stock extends BaseModel
         return $newestValueObject->value;
     }
 
+    /**
+     * @param int $limit
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     public function newestValues($limit = 20)
     {
         return $this->newestValuesCache->newest($this, $limit);
     }
 
+    /**
+     * @param int $limit
+     * @param int $step
+     * @param bool $valuesOnly
+     * @return array
+     */
     public function newestValuesArray($limit = 3000, $step = 250, $valuesOnly = true)
     {
         $newestValues = $this->newestValues($limit);
@@ -70,6 +80,11 @@ class Stock extends BaseModel
         return $this->arrayGenerator->steppedArray($newestValues, $step, $attribute);
     }
 
+    /**
+     * @param int $limit
+     * @param int $step
+     * @return array
+     */
     public function newestVariationsArray($limit = 3000, $step = 250)
     {
         $newestValues = $this->newestValuesArray($limit, $step);

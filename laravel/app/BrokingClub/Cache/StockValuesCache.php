@@ -10,6 +10,7 @@ namespace BrokingClub\Cache;
 
 
 use App;
+use Illuminate\Database\Eloquent\Collection;
 
 class StockValuesCache extends ObjectCache
 {
@@ -25,6 +26,11 @@ class StockValuesCache extends ObjectCache
 
     }
 
+    /**
+     * @param $stock
+     * @param $limit
+     * @return Collection
+     */
     public function newest($stock, $limit)
     {
         $id = $this->generateId($stock);
