@@ -174,15 +174,18 @@ class Purchase extends BaseModel
 
 ##### Before refactoring
 ![Purchase part before refactoring](http://broking.club/img/doc/patterns/Refactoring_Before.jpg)  
-[Full Size](http://broking.club/img/doc/patterns/Refactoring_Before.jpg)  
+[Full Size](http://broking.club/img/doc/patterns/Refactoring_Before.jpg)
 
-
+[Purchase Class before](https://github.com/BrokingClub/BrokingClub/blob/39847ba8bbaedea9dde514a741f692cbc0519c27/laravel/app/models/Purchase.php)
+![Purchase Metrics Before Refactoring](http://broking.club/img/doc/metrics/Purchase_before.JPG)
 
 
 ##### After refactoring
 ![Purchase part after refactoring](http://broking.club/img/doc/patterns/Refactoring_After.jpg)  
-[Full Size](http://broking.club/img/doc/patterns/Refactoring_After.jpg)  
+[Full Size](http://broking.club/img/doc/patterns/Refactoring_After.jpg)
 
+[Purchase Class after](https://github.com/BrokingClub/BrokingClub/blob/master/laravel/app/models/Purchase.php)
+![Purchase Metrics After Refactoring](http://broking.club/img/doc/metrics/Purchase_after.JPG)
 
 
 
