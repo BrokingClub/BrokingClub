@@ -162,7 +162,7 @@ class Purchase extends BaseModel
 **The auto generated digram just looks like this (no bill, resale or calculator connections)**:
 ![Purchase UML auto generated](http://broking.club/img/doc/patterns/Refactoring_Purchase_PhpStorm.png)  
 
-#### Drawed UMLs
+#### Drawn UMLs
 
 ##### Changes in the software architecture (orange)
 
