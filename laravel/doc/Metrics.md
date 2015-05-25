@@ -31,7 +31,8 @@ Code climates uses this page to show in which files bugs and missing quality is 
 The duplication page tells us that we have duplicate code in some config files. These duplications are intentional, because we use different database credentials for every environment (test, staging, development...).
 ![CodeClimate Duplicates](http://broking.club/img/doc/metrics/Duplication.JPG)  
 
-
+## Lines of Code per hour
+`TODO`
 
 # Refactoring Metrics
 
@@ -72,7 +73,7 @@ public function calculateBill(){
     }
 ```
 
-And after:
+And after (with dependency injection and SRP applied):
 ```
     /**
      * @var Bill
