@@ -32,7 +32,11 @@ The duplication page tells us that we have duplicate code in some config files. 
 ![CodeClimate Duplicates](http://broking.club/img/doc/metrics/Duplication.JPG)  
 
 ## Lines of Code per hour
-`TODO`
+
+We calculate the lines of code associated to our YouTrack issues automatically.  
+This is possible because the commit messages on our GitHub repository include the Task number linking back to YouTrack.  
+You can view the result [here](http://node.broking.club/#/linesofcode) or take a look at the source code to use it for your own project [here](https://github.com/marc1404/LinesOfCode).
+![Lines of code](http://broking.club/img/doc/metrics/linesofcode.JPG)
 
 # Refactoring Metrics
 
