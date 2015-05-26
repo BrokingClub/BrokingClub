@@ -4,15 +4,19 @@ var youtrack = require('./youtrack');
 var cache;
 var oneHourDelay = 60 * 60 * 1000;
 
-module.exports = function(app){
-    app.get('/api/linesofcode', handleRequest);
-    app.get('/api/linesofcode/csv', csv);
+module.exports = function(){
+    var router = require('koa-router')();
+
+    router.get('/api/linesofcode', handleRequest);
+    router.get('/api/linesofcode/csv', csv);
+
+    return router.routes();
 };
 
 refreshTasks();
 setInterval(refreshTasks, oneHourDelay);
 
-function handleRequest(req, res){
+function* handleRequest(req, res){
     if(cache){
         res.json(cache);
     }else{
@@ -52,7 +56,7 @@ function refreshTasks(){
     });
 }
 
-function csv(req, res){
+function* csv(req, res){
     if(cache){
         var lines = [];
 

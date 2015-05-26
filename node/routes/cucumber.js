@@ -6,13 +6,17 @@ var async = require('async');
 var no = require.main.require('./modules/util/no');
 var debug = false;
 
-module.exports = function(app, io){
-	app.get('/api/cucumber/features', getFeatures);
-	app.get('/api/cucumber/features/:feature', getFeature);
+module.exports = function(){
+    var router = require('koa-router')();
+
+	router.get('/api/cucumber/features', getFeatures);
+	router.get('/api/cucumber/features/:feature', getFeature);
     listenForConnections(io);
+
+    return router.routes();
 };
 
-function getFeatures(req, res){
+function* getFeatures(req, res){
 	fs.readdir('./test/features', function(err, files){
 		if (err) throw err;
 		
@@ -30,7 +34,7 @@ function getFeatures(req, res){
 	});
 }
 
-function getFeature(req, res){
+function* getFeature(req, res){
 	var feature = req.params.feature;
     
     async.parallel({

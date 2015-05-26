@@ -14,10 +14,8 @@
     "vinyl-buffer": "*"
   },
   "dependencies": {
-    "express": "*",
-    "body-parser": "*",
-    "cookie-parser": "*",
-    "serve-favicon": "*",
+    "koala": "marc1404/koala",
+    "koa-router": "*",
 	"lodash": "*",
 	"strip-ansi": "*",
 	"shell-escape": "*",
@@ -26,11 +24,10 @@
     "moment": "*",
     "socket.io": "*",
     "async": "*",
-    "dotenv": "*",
-    "loc": "marc1404/LinesOfCode",
-    "logger": "marc1404/node-logger"
+    "loc": "marc1404/LinesOfCode"
   },
   "scripts": {
+    "start": "screen -S node nodemon app.js",
     "test": "cd test && cucumber"
   }
 }
