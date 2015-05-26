@@ -5,49 +5,54 @@ var shellEscape = require('shell-escape');
 var async = require('async');
 var no = require.main.require('./modules/util/no');
 var debug = false;
+var router = require('koa-router')();
 
-module.exports = function(){
-    var router = require('koa-router')();
+router.get('/api/cucumber/features', getFeatures);
+router.get('/api/cucumber/features/:feature', getFeature);
 
-	router.get('/api/cucumber/features', getFeatures);
-	router.get('/api/cucumber/features/:feature', getFeature);
-    listenForConnections(io);
+exports.routes = router.routes();
+exports.socket = listenForConnections;
 
-    return router.routes();
-};
-
-function* getFeatures(req, res){
-	fs.readdir('./test/features', function(err, files){
-		if (err) throw err;
-		
-		var features = [];
-
-		files.forEach(function(file){
-			if(fs.statSync('./test/features/' + file).isFile()){
-				var feature = file.split('.')[0];
-
-				features.push(feature);
-			}
-		});
-		
-		res.json(features);
-	});
+function* getFeatures(){
+    this.body = yield features;
 }
 
-function* getFeature(req, res){
-	var feature = req.params.feature;
-    
-    async.parallel({
-        feature: function(callback){
-            fs.readFile('./test/features/' + feature + '.feature', { encoding: 'utf8' }, callback);
-        },
-        source: function(callback){
-             fs.readFile('./test/features/step_definitions/' + feature + '.js', { encoding: 'utf8' }, callback);
-        }
-    }, function(err, results){
-        if(no(err, res)){
-            res.json(results);
-        }
+function* getFeature(){
+    this.body = yield feature(this.params.feature);
+}
+
+function features(callback){
+    fs.readdir('./test/features', function(err, files){
+        if (err) throw err;
+
+        var features = [];
+
+        files.forEach(function(file){
+            if(fs.statSync('./test/features/' + file).isFile()){
+                var feature = file.split('.')[0];
+
+                features.push(feature);
+            }
+        });
+
+        callback(null, features);
+    });
+}
+
+function feature(name){
+    return new Promise(function(resolve, reject){
+        async.parallel({
+            feature: function(callback){
+                fs.readFile('./test/features/' + name + '.feature', { encoding: 'utf8' }, callback);
+            },
+            source: function(callback){
+                fs.readFile('./test/features/step_definitions/' + name + '.js', { encoding: 'utf8' }, callback);
+            }
+        }, function(err, results){
+            if(err) return reject(err);
+
+            resolve(results);
+        });
     });
 }
 

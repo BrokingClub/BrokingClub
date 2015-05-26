@@ -3,25 +3,26 @@ var config = require.main.require('./modules/config');
 var youtrack = require('./youtrack');
 var cache;
 var oneHourDelay = 60 * 60 * 1000;
+var router = require('koa-router')();
 
-module.exports = function(){
-    var router = require('koa-router')();
+router.get('/api/linesofcode', handleRequest);
+router.get('/api/linesofcode/csv', csv);
 
-    router.get('/api/linesofcode', handleRequest);
-    router.get('/api/linesofcode/csv', csv);
-
-    return router.routes();
-};
+module.exports = router.routes();
 
 refreshTasks();
 setInterval(refreshTasks, oneHourDelay);
 
-function* handleRequest(req, res){
+function* handleRequest(){
+    this.body = yield getCache;
+}
+
+function getCache(callback){
     if(cache){
-        res.json(cache);
+        callback(null, cache);
     }else{
         setTimeout(function(){
-            handleRequest(req, res);
+            getCache(callback);
         }, 1000);
     }
 }
@@ -56,20 +57,16 @@ function refreshTasks(){
     });
 }
 
-function* csv(req, res){
-    if(cache){
-        var lines = [];
+function* csv(){
+    var cache = yield getCache;
+    var lines = [];
 
-        cache.data.forEach(function(task){
-            lines.push(task.id + ';' + task.summary + ';' + task.lines + ';' + task.spentTime);
-        });
+    cache.data.forEach(function(task){
+        lines.push(task.id + ';' + task.summary + ';' + task.lines + ';' + task.spentTime);
+    });
 
-        res.attachment('linesofcode.csv');
-        res.set('Content-Type', 'text/csv');
-        res.send(lines.join('\n'));
-    }else{
-        setTimeout(function(){
-            csv(req, res);
-        }, 1000);
-    }
+    this.attachment('linesofcode.csv');
+    this.set('Content-Type', 'text/csv');
+
+    this.body = lines.join('\n');
 }
