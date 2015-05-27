@@ -1,20 +1,19 @@
-var cluster = require('cluster');
 var koala = require('koala');
+var cucumber = require('./routes/cucumber');
 
-koala(function(app){
-    var cucumber = require('./routes/cucumber');
+koala.once(function(){
+    require('./modules/stocks');
+});
+
+koala.config(function(app){
     app.proxy = true;
 
     app.use(require('./routes/lines-of-code'));
     app.use(cucumber.routes);
-
-    app.on('server', function(server){
-        var io = require('socket.io')(server);
-
-        cucumber.socket(io);
-    });
 });
 
-if(cluster.isMaster){
-    require('./modules/stocks');
-}
+koala.run(function(server){
+    var io = require('socket.io')(server);
+
+    cucumber.socket(io);
+});
