@@ -124,7 +124,7 @@ Load testing is a performance test that subjects the target-of-test to varying w
 The goal of load testing is to determine and ensure that the system functions properly beyond the expected maximum workload.  
 Additionally, load testing evaluates the performance characteristics, such as response times, transaction rates, and other time-sensitive issues.  
   
-The results can be seen on the bottom of [this page](http://broking.club/doc/?f=testing).  
+The results can be seen on the bottom of [this page](http://broking.club/doc/?f=testing#section-1.3).  
 
 **Technique Objective:**  
 Exercise designated transactions or business cases under varying workload conditions to observe and log target behavior and system performance data.
