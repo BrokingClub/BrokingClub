@@ -2,6 +2,7 @@
   "name": "brokingclub",
   "version": "0.0.1",
   "private": true,
+  "main": "app.js",
   "devDependencies": {
     "cucumber": "*",
 	"zombie": "*",
@@ -24,10 +25,11 @@
     "moment": "*",
     "socket.io": "*",
     "async": "*",
-    "loc": "marc1404/LinesOfCode"
+    "loc": "marc1404/LinesOfCode",
+    "limem": "marc1404/limem"
   },
   "scripts": {
-    "start": "screen -S node nodemon app.js",
+    "start": "screen -S node forever --verbose -o out.log -e err.log -c nodemon --exitcrash --verbose --delay 1 app.js",
     "test": "cd test && cucumber"
   }
 }

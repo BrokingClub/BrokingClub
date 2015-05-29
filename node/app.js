@@ -1,6 +1,7 @@
 var koala = require('koala');
 var cucumber = require('./routes/cucumber');
 var memwatch = require('./modules/memwatch');
+var limem = require('limem');
 
 koala.once(function(){
     require('./modules/stocks');
@@ -13,6 +14,7 @@ koala.config(function(app){
     app.use(require('./routes/lines-of-code'));
     app.use(cucumber.routes);
     memwatch();
+    limem(100);
 });
 
 koala.run(function(server){
