@@ -1,5 +1,5 @@
 {
-  "name": "brokingclub",
+  "name": "brokingclub-docs",
   "version": "0.0.1",
   "private": true,
   "main": "app.js",
@@ -25,11 +25,10 @@
     "moment": "*",
     "socket.io": "*",
     "async": "*",
-    "loc": "marc1404/LinesOfCode",
-    "limem": "marc1404/limem"
+    "loc": "marc1404/LinesOfCode"
   },
   "scripts": {
-    "start": "screen -S node forever --verbose -o out.log -e err.log -c nodemon --exitcrash --verbose --delay 1 app.js",
+    "start": "screen -S docs forever --verbose -o out.log -e err.log -c nodemon --exitcrash --verbose --delay 1 app.js",
     "test": "cd test && cucumber"
   }
 }

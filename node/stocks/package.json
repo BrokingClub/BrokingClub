@@ -1,0 +1,15 @@
+{
+  "name": "brokingclub-stocks",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "request": "*",
+    "mysql": "*",
+    "async": "*",
+    "dotenv": "*",
+    "lodash": "*"
+  },
+  "scripts": {
+    "start": "screen -S stocks forever --verbose -o out.log -e err.log -c nodemon --exitcrash --verbose --delay 1 app.js"
+  }
+}

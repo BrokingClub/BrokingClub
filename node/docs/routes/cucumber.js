@@ -3,7 +3,6 @@ var exec = require('child_process').exec;
 var stripAnsi = require('strip-ansi');
 var shellEscape = require('shell-escape');
 var async = require('async');
-var no = require.main.require('./modules/util/no');
 var debug = false;
 var router = require('koa-router')();
 
