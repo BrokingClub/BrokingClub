@@ -10,6 +10,6 @@
     "lodash": "*"
   },
   "scripts": {
-    "start": "screen -S stocks forever --verbose -o out.log -e err.log -c nodemon --exitcrash --verbose --delay 1 app.js -- --max_old_space_size=50"
+    "start": "screen -S stocks forever --verbose -o out.log -e err.log --watch --watchIgnore '' app.js --max_old_space_size=50"
   }
 }
