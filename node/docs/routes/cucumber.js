@@ -69,13 +69,13 @@ function listenForConnections(io){
 function handleConnection(socket){
     socket.on('feature', function(feature){
         feature = shellEscape([feature]);
-        
+
         if(debug){
             testFeature(feature, function(err, stdout){
                 socket.emit('data', stdout);
             });
         }else{
-            var cmd = 'cd test && ../node_modules/.bin/cucumber.js features/' + feature + '.feature';
+            var cmd = 'cd test && ../node_modules/cucumber/bin/cucumber.js features/' + feature + '.feature';
             var process = exec(cmd, no);
             var stdout = process.stdout;
 
