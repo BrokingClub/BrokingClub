@@ -3,7 +3,7 @@ var exec = require('child_process').exec;
 var stripAnsi = require('strip-ansi');
 var shellEscape = require('shell-escape');
 var async = require('async');
-var debug = false;
+var debug = true;
 var router = require('koa-router')();
 var no = function(err){
     if(err){
@@ -73,6 +73,7 @@ function handleConnection(socket){
         if(debug){
             testFeature(feature, function(err, stdout){
                 socket.emit('data', stdout);
+                socket.emit('end');
             });
         }else{
             var cmd = 'cd test && ../node_modules/cucumber/bin/cucumber.js features/' + feature + '.feature';
