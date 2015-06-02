@@ -5,6 +5,11 @@ var shellEscape = require('shell-escape');
 var async = require('async');
 var debug = false;
 var router = require('koa-router')();
+var no = function(err){
+    if(err){
+        console.error(err);
+    }
+};
 
 router.get('/api/cucumber/features', getFeatures);
 router.get('/api/cucumber/features/:feature', getFeature);
