@@ -1,0 +1,28 @@
+{
+  "apps": [
+    {
+      "name": "stocks",
+      "script": "app.js",
+      "cwd": "./stocks",
+      "node_args": "--max_old_space_size=50",
+      "log_date_format": "YYYY-MM-DD HH:mm:ss.SSS",
+      "out_file": "out.log",
+      "error_file": "err.log",
+      "watch": true,
+      "ignore_watch": [ "node_modules", "./*.json", "./*.log" ],
+      "max_memory_restart": "60M"
+    },
+    {
+      "name": "docs",
+      "script": "app.js",
+      "cwd": "./docs",
+      "node_args": "--max_old_space_size=70",
+      "log_date_format": "YYYY-MM-DD HH:mm:ss.SSS",
+      "out_file": "out.log",
+      "error_file": "err.log",
+      "watch": true,
+      "ignore_watch": [ "node_modules", "./*.json", "./*.log" ],
+      "max_memory_restart": "80M"
+    }
+  ]
+}
