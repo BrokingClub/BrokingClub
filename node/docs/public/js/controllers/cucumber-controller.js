@@ -14,6 +14,7 @@ module.exports = /*@ngInject*/ function($routeParams, $scope, $http, $interval){
 
     $scope.selectFeature = function(feature){
         $scope.feature = feature;
+
         $scope.testing = true;
 
         $http.get('/api/cucumber/features/' + $scope.feature).success(function(data){
@@ -29,7 +30,7 @@ module.exports = /*@ngInject*/ function($routeParams, $scope, $http, $interval){
 
         var socket = io.connect();
 
-        socket.emit('feature', feature.name);
+        socket.emit('feature', feature);
         socket.on('data', function(data){
             $scope.$apply(function(){
                 $scope.output += data;
