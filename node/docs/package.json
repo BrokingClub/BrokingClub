@@ -28,7 +28,7 @@
     "loc": "marc1404/LinesOfCode"
   },
   "scripts": {
-    "start": "screen -S docs forever --verbose -o out.log -e err.log --watch --watchIgnore '' app.js --max_old_space_size=75",
+    "start": "screen -S docs forever --verbose -o out.log -e err.log --append --watch --watchIgnore '' -c 'node --max_old_space_size=75' app.js",
     "test": "cd test && cucumber"
   }
 }
