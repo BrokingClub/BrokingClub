@@ -7,9 +7,9 @@ module.exports = function(){
 
 function memwatch(){
     var memory = process.memoryUsage();
-    var percent = Math.round(memory.heapUsed / memory.heapTotal * 100);
+    var rss = Math.round(memory.rss / 1024 / 1024);
     var used = Math.round(memory.heapUsed / 1024 / 1024);
     var total = Math.round(memory.heapTotal / 1024 / 1024);
 
-    console.log('memory usage: ' + percent + '% - ' + used + ' MB / ' + total + ' MB');
+    console.log('Resident set size: ' + rss + ' MB - V8 Heap: ' + used + ' MB / ' + total + ' MB');
 }
