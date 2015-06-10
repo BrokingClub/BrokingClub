@@ -289,7 +289,7 @@ Improvements:
 - Clojure now allows a function call in the beginning of s-expressions
   `(($filter "myCount") (arr 1 2 3 4 5))`.
 - Haskell's got new keywords and now recognizes more things like pragmas,
-  preprocessors, modules, containers, FFIs etc. Thanks to [Zena Treep][treep]
+  preprocessors, docs.modules, containers, FFIs etc. Thanks to [Zena Treep][treep]
   for the implementation and to [Jeremy Hull][sourrust] for guiding it.
 - Miscellaneous fixes in PHP, Brainfuck, SCSS, Asciidoc, CMake, Python and F#.
 

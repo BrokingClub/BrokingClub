@@ -1,6 +1,6 @@
-var sql = require.main.require('./modules/sql');
-var timer = require.main.require('./modules/util/timer').create();
-var no = require.main.require('./modules/util/no.js');
+var sql = require('./sql');
+var timer = require('./util/timer').create();
+var no = require('./util/no.js');
 
 exports.deleteOldStocks = function(){
     timer.start();

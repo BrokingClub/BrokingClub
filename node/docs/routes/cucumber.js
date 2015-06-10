@@ -3,9 +3,13 @@ var exec = require('child_process').exec;
 var stripAnsi = require('strip-ansi');
 var shellEscape = require('shell-escape');
 var async = require('async');
-var no = require.main.require('./modules/util/no');
-var debug = false;
+var debug = true;
 var router = require('koa-router')();
+var no = function(err){
+    if(err){
+        console.error(err);
+    }
+};
 
 router.get('/api/cucumber/features', getFeatures);
 router.get('/api/cucumber/features/:feature', getFeature);
@@ -65,13 +69,14 @@ function listenForConnections(io){
 function handleConnection(socket){
     socket.on('feature', function(feature){
         feature = shellEscape([feature]);
-        
+
         if(debug){
             testFeature(feature, function(err, stdout){
                 socket.emit('data', stdout);
+                socket.emit('end');
             });
         }else{
-            var cmd = 'cd test && ../node_modules/.bin/cucumber.js features/' + feature + '.feature';
+            var cmd = 'cd test && ../node_modules/cucumber/bin/cucumber.js features/' + feature + '.feature';
             var process = exec(cmd, no);
             var stdout = process.stdout;
 

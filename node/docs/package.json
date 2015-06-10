@@ -1,7 +1,8 @@
 {
-  "name": "brokingclub",
+  "name": "brokingclub-docs",
   "version": "0.0.1",
   "private": true,
+  "main": "app.js",
   "devDependencies": {
     "cucumber": "*",
 	"zombie": "*",
@@ -27,7 +28,7 @@
     "loc": "marc1404/LinesOfCode"
   },
   "scripts": {
-    "start": "screen -S node nodemon app.js",
+    "start": "screen -S docs forever --verbose -o out.log -e err.log --append --watch --watchIgnore '' -c 'node --max_old_space_size=75' app.js",
     "test": "cd test && cucumber"
   }
 }

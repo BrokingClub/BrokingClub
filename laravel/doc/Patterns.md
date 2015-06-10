@@ -32,7 +32,7 @@ This principle is important if you use Java or other languages that are build ar
 ### Dependency Inversion Principle
 `One should “Depend upon Abstractions. Do not depend upon concretions.`
 
-High level modules should not depend on low level modules. Instead, both should only depend on abstractions (interfaces, contracts...). 
+High level docs.modules should not depend on low level docs.modules. Instead, both should only depend on abstractions (interfaces, contracts...). 
 **One class should never depend on one concrete implementation**.
 This allows is to decouple the code or in other words create code that is easy to maintain.
 

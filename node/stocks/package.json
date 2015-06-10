@@ -1,0 +1,12 @@
+{
+  "name": "brokingclub-stocks",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "request": "*",
+    "mysql": "*",
+    "async": "*",
+    "dotenv": "*",
+    "lodash": "*"
+  }
+}

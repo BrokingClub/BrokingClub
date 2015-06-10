@@ -1,12 +1,12 @@
-var sql = require.main.require('./modules/sql');
-var yahoo = require.main.require('./modules/stocks-yahoo');
-var daily = require.main.require('./modules/stocks-daily');
-var no = require.main.require('./modules/util/no');
+var sql = require('./sql');
+var yahoo = require('./stocks-yahoo');
+var daily = require('./stocks-daily');
+var no = require('./util/no');
 var fs = require('fs');
-var timer = require.main.require('./modules/util/timer').create();
+var timer = require('./util/timer').create();
 var _ = require('lodash');
 var cache = {};
-var cacheFile = 'cache/stocks.json';
+var cacheFile = 'stocks.json';
 var allSymbols, dailyIds;
 
 if(fs.existsSync(cacheFile)){

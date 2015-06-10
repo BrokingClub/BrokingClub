@@ -1,5 +1,4 @@
 var loc = require('loc');
-var config = require.main.require('./modules/config');
 var youtrack = require('./youtrack');
 var cache;
 var oneHourDelay = 60 * 60 * 1000;
@@ -30,7 +29,7 @@ function getCache(callback){
 function getTasks(cb){
     var options = {
         repository: 'BrokingClub/BrokingClub',
-        githubToken: config.githubToken
+        githubToken: process.env.GITHUB_TOKEN
     };
 
     loc(options, function(err, issues){
