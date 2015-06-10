@@ -33,6 +33,7 @@ $documo->addFile('Patterns', 'Patterns.md', 'patterns', true);
 $documo->addFile('Testing', 'Testing.md', 'testing', true);
 $documo->addFile('Metrics', 'Metrics.md', 'metrics', true);
 $documo->addFile('RUP Test Plan', 'RupTestPlan.md', 'rup-testing', true);
+$documo->addFile('Installation Manual', 'InstallationManual.md', 'installation-manual', true);
 
 
 $documo->parseMarkdown();
