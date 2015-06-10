@@ -25,7 +25,7 @@ If this is not the case and the password is typed in correctly the user will be 
 
 ![Activity Diagram](http://broking.club/img/doc/ad/ad_login.png)
 
-[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/login.feature"]]
+[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/docs/test/features/login.feature"]]
 
 
 ## 	Alternative Flows

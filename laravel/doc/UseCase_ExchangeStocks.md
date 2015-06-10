@@ -34,7 +34,7 @@ If the transaction is successful a summary will be shown.
 
 ![Activity Diagram - Exchange stocks](http://broking.club/img/doc/ac-exchange_stocks.png)
 
-[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/exchange_stocks.feature"]]
+[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/docs/test/features/exchange_stocks.feature"]]
 
 ## 	Alternative Flows
 ### Outside trading hours

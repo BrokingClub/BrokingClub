@@ -24,7 +24,7 @@ After completing the registration process the user will be redirected to the log
 
 ![Activity Diagram](http://broking.club/img/doc/ad/ad_register.png)
 
-[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/register.feature"]]
+[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/docs/test/features/register.feature"]]
 
 
 ## 	Alternative Flows

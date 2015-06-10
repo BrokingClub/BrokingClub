@@ -27,7 +27,7 @@ If the user confirms the changes with the button, the names have to match the re
 
 ![Activity Diagram](http://broking.club/img/doc/ad/ad_userInfo.png)
 
-[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/edit_profile.feature"]]
+[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/docs/test/features/edit_profile.feature"]]
 
 ### Change password
 For changing the password the application needs the current password. 
@@ -36,7 +36,7 @@ If those changes are confirmed by the user, it will be checked whether the curre
 
 ![Activity Diagram](http://broking.club/img/doc/ad/ad_changePassword.png)
 
-[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/changepassword.feature"]]
+[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/docs/test/features/changepassword.feature"]]
 
 ### Delete Account
 Deleting an user account requires the current password.
@@ -44,7 +44,7 @@ After the password is checked the account is successfully deleted from the appli
 
 ![Activity Diagram](http://broking.club/img/doc/ad/ad_deleteAccount.png)
 
-[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/deleteaccount.feature"]]
+[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/docs/test/features/deleteaccount.feature"]]
 
 
 ## 	Alternative Flows
