@@ -29,7 +29,7 @@ the total balanace and the experience points.
 
 ![Activity Diagram](http://broking.club/img/doc/ad/ad_ManageUsers.png)
 
-[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/manageusers.feature"]]
+[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/docs/test/features/manageusers.feature"]]
 
 
 ## 	Alternative Flows

@@ -28,7 +28,7 @@ removed from the system.
 
 ![Activity Diagram](http://broking.club/img/doc/ad/ad_ManageStocks.png)
 
-[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/managestocks.feature"]]
+[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/docs/test/features/managestocks.feature"]]
 
 
 ## 	Alternative Flows

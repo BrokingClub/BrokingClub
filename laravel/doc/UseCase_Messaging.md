@@ -27,7 +27,7 @@ Now you can send messages to this user.
 
 TODO: WRONG FEATURE!
 
-[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/test/features/messaging.feature"]]
+[[include url="https://raw.githubusercontent.com/BrokingClub/BrokingClub/master/node/docs/test/features/messaging.feature"]]
 
 
 ## 	Alternative Flows
