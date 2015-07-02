@@ -23,7 +23,7 @@ and click the "message" button to add this person to your message history.
 Now you can send messages to this user. 
 
 
-![Activity Diagram](http://broking.club/img/doc/ad/ad_ManageStocks.png)
+![Activity Diagram](http://broking.club/img/doc/ad/ad_Messaging.png)
 
 TODO: WRONG FEATURE!
 
