@@ -52,10 +52,8 @@ The definitions listed beyond are used inside the document and are summarized ve
 * [Use Case: Ranking and stats](?f=uc_ranking)
 * [Use Case: Roleplay and level up](?f=uc_roleplay)
 
-> TODO: Add the rest
-
 ## Overview
-> TODO: Write a nice overview about the contents of this srs
+We will talk about the perspective, the requirements and the demands we have. Also the technical realisation will be part of this document.
 
 # Overall Description 
 ## Product perspective
